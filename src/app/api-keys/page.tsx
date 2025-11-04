@@ -10,6 +10,15 @@ export default function ApiKeysPage() {
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  const handleGetApiKey = async () => {
+    if (!email) {
+      alert('Please enter your email address')
+      return
+    }
+    // For free API key generation, redirect to success page
+    window.location.href = `/success?email=${encodeURIComponent(email)}`
+  }
+
   const handleSubscribe = async (planId: string) => {
     if (!email) {
       alert('Please enter your email address')
@@ -57,7 +66,7 @@ export default function ApiKeysPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
             {pricingPlans.map((plan) => (
               <div
                 key={plan.id}
@@ -75,11 +84,17 @@ export default function ApiKeysPage() {
 
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <div className="text-4xl font-bold text-primary-600 mb-1">
-                    ${plan.price}
-                    <span className="text-lg text-gray-500 font-normal">/month</span>
+                  <div className="text-3xl font-bold text-primary-600 mb-2">
+                    {typeof plan.price === 'number' ? (
+                      <>
+                        ${plan.price}
+                        <span className="text-lg text-gray-500 font-normal">/free</span>
+                      </>
+                    ) : (
+                      plan.price
+                    )}
                   </div>
-                  <p className="text-gray-600 mb-6">{plan.requests.toLocaleString()} requests/month</p>
+                  <p className="text-gray-600 mb-6">{plan.description}</p>
                 </div>
 
                 <ul className="space-y-3 mb-8">
@@ -94,17 +109,17 @@ export default function ApiKeysPage() {
                 </ul>
 
                 <button
-                  onClick={() => plan.id === 'free' ? null : handleSubscribe(plan.id)}
-                  disabled={isLoading || (plan.id === 'free')}
+                  onClick={() => plan.id === 'free' ? handleGetApiKey() : handleSubscribe(plan.id)}
+                  disabled={isLoading}
                   className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors duration-200 ${
                     plan.popular
                       ? 'bg-primary-600 text-white hover:bg-primary-700'
                       : plan.id === 'free'
-                      ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      ? 'bg-primary-100 text-primary-600 hover:bg-primary-200'
                       : 'bg-primary-100 text-primary-600 hover:bg-primary-200'
                   }`}
                 >
-                  {plan.id === 'free' ? 'Coming Soon' : 'Get Started'}
+                  {plan.id === 'free' ? 'Get API Key' : 'Setup Billing'}
                 </button>
               </div>
             ))}

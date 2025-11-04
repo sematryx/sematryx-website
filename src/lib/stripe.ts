@@ -7,41 +7,28 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export const pricingPlans = [
   {
     id: 'free',
-    name: 'Free',
+    name: 'Get API key',
     price: 0,
-    requests: 1000,
+    description: 'Get your API key instantly',
     features: [
-      '1,000 API requests/month',
-      'Basic documentation',
-      'Community support',
-      'Standard rate limits'
+      'Instant API key generation',
+      'Full API access',
+      'Documentation & tutorials',
+      'Community support'
     ]
   },
   {
-    id: 'pro',
-    name: 'Pro',
-    price: 29,
-    requests: 50000,
+    id: 'payg',
+    name: 'Pay-per-execution',
+    price: '$0.01 per execution',
+    description: 'Only pay for what you use',
     popular: true,
     features: [
-      '50,000 API requests/month',
+      'All automation features',
+      'No monthly commitments',
+      'Usage-based billing',
       'Priority support',
-      'Advanced analytics',
-      'Higher rate limits',
-      'Webhooks support'
-    ]
-  },
-  {
-    id: 'enterprise',
-    name: 'Enterprise',
-    price: 199,
-    requests: 1000000,
-    features: [
-      '1M+ API requests/month',
-      'Dedicated support',
-      'Custom integrations',
-      'SLA guarantees',
-      'Advanced security features'
+      'Advanced analytics'
     ]
   }
 ]

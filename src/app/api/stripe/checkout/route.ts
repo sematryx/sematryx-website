@@ -14,8 +14,7 @@ export async function POST(req: NextRequest) {
 
     // Map plan IDs to Stripe price IDs (you'll need to create these in Stripe)
     const priceIdMap: { [key: string]: string } = {
-      'pro': process.env.STRIPE_PRO_PRICE_ID || 'price_pro_placeholder',
-      'enterprise': process.env.STRIPE_ENTERPRISE_PRICE_ID || 'price_enterprise_placeholder'
+      'payg': process.env.STRIPE_PAYG_PRICE_ID || 'price_payg_placeholder'
     }
 
     const priceId = priceIdMap[planId]

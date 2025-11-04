@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 export default function SuccessPage() {
   const searchParams = useSearchParams()
   const sessionId = searchParams.get('session_id')
+  const email = searchParams.get('email')
   const [apiKey, setApiKey] = useState('')
 
   useEffect(() => {
@@ -20,10 +21,10 @@ export default function SuccessPage() {
       return prefix + randomPart
     }
 
-    if (sessionId) {
+    if (sessionId || email) {
       setApiKey(generateApiKey())
     }
-  }, [sessionId])
+  }, [sessionId, email])
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(apiKey)
