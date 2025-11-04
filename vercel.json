@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "src/app/api/stripe/webhook/route.ts": {
+      "maxDuration": 10
+    }
+  },
+  "env": {
+    "STRIPE_SECRET_KEY": "@stripe-secret-key",
+    "STRIPE_WEBHOOK_SECRET": "@stripe-webhook-secret",
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "@stripe-publishable-key",
+    "STRIPE_PRO_PRICE_ID": "@stripe-pro-price-id",
+    "STRIPE_ENTERPRISE_PRICE_ID": "@stripe-enterprise-price-id"
+  }
+}
