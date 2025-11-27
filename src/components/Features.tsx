@@ -1,34 +1,34 @@
 export default function Features() {
   const features = [
     {
-      title: "Intelligent Automation",
-      description: "AI-powered workflows that adapt and optimize themselves based on your data patterns and business logic.",
-      icon: "🤖"
+      title: "AI-Enhanced Optimization",
+      description: "Intelligence Hub coordinates 14+ AI systems for adaptive optimization with cross-problem learning and strategy synthesis.",
+      icon: "🧠"
     },
     {
-      title: "Real-time Analytics",
-      description: "Monitor performance, track metrics, and get insights into your automation processes with detailed benchmarks.",
-      icon: "📊"
+      title: "MasterOptimizer Engine",
+      description: "10+ integrated optimizers including self-improving, multi-fidelity, and specialized algorithms for diverse problem types.",
+      icon: "⚙️"
+    },
+    {
+      title: "Domain Libraries",
+      description: "Specialized optimization libraries for Financial, Healthcare, Supply Chain, AI/ML, and Marketing domains.",
+      icon: "📚"
+    },
+    {
+      title: "Enterprise Platform",
+      description: "Production-ready API server, authentication, monitoring, and business intelligence with comprehensive SDKs.",
+      icon: "🏢"
+    },
+    {
+      title: "Knowledge Management",
+      description: "Neo4j knowledge graphs and vector storage for RAG, semantic search, and temporal intelligence.",
+      icon: "🔍"
     },
     {
       title: "MCP Integration",
-      description: "Seamlessly integrate with Model Context Protocol for enhanced AI model interactions and data exchange.",
+      description: "Seamless integration with Model Context Protocol for enhanced AI model interactions and data exchange.",
       icon: "🔗"
-    },
-    {
-      title: "Developer-First API",
-      description: "Simple, powerful REST API with comprehensive documentation and SDKs for popular programming languages.",
-      icon: "⚡"
-    },
-    {
-      title: "Enterprise Security",
-      description: "Bank-grade security with encryption, compliance certifications, and granular access controls.",
-      icon: "🔒"
-    },
-    {
-      title: "24/7 Support",
-      description: "Expert support team available around the clock with comprehensive tutorials and resources.",
-      icon: "🚀"
     }
   ]
 
