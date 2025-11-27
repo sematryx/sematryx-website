@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { handleWebhook } from '@/lib/stripe'
 
+export const maxDuration = 10
+
 export async function POST(req: NextRequest) {
   try {
     const event = await handleWebhook(req)
