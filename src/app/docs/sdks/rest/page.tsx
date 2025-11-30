@@ -1,7 +1,24 @@
+'use client'
+
+import { useState } from 'react'
 import CodeBlock from '@/components/CodeBlock'
+import ExpandableEndpoint from '@/components/ExpandableEndpoint'
 
 export default function RESTAPIPage() {
+  const [expandedEndpoints, setExpandedEndpoints] = useState<Set<string>>(new Set())
   const baseUrl = `https://api.aeao.com/v1`
+  
+  const toggleEndpoint = (endpointKey: string) => {
+    setExpandedEndpoints(prev => {
+      const next = new Set(prev)
+      if (next.has(endpointKey)) {
+        next.delete(endpointKey)
+      } else {
+        next.add(endpointKey)
+      }
+      return next
+    })
+  }
 
   const authentication = `Authorization: Bearer YOUR_API_KEY`
 
@@ -808,55 +825,283 @@ export default function RESTAPIPage() {
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Complete Endpoint List
+            API Endpoints Reference
           </h2>
           <p className="text-gray-700 mb-6">
-            Complete reference of all available API endpoints, organized by category.
+            Click on any endpoint to view detailed parameter information, request/response examples, and cURL commands.
           </p>
           {(() => {
+
+            const getEndpointDetails = (endpoint: typeof endpoints[0]): any => {
+              const key = `${endpoint.method}-${endpoint.path}`
+              const baseUrl = 'https://api.aeao.com/v1'
+              
+              // Extract path parameters
+              const pathParams: any[] = []
+              const pathParamRegex = /\{([^}]+)\}/g
+              let match
+              while ((match = pathParamRegex.exec(endpoint.path)) !== null) {
+                pathParams.push({
+                  name: match[1],
+                  type: 'string',
+                  required: true,
+                  description: `The ${match[1].replace(/_/g, ' ')} identifier`
+                })
+              }
+
+              // Common endpoint details
+              const baseDetails = {
+                method: endpoint.method,
+                path: endpoint.path,
+                description: endpoint.description,
+                category: endpoint.category,
+                pathParams: pathParams.length > 0 ? pathParams : undefined,
+              }
+
+              // Add specific details for key endpoints
+              if (endpoint.path === '/optimization/') {
+                return {
+                  ...baseDetails,
+                  requestBody: {
+                    description: 'Start a new optimization operation',
+                    parameters: [
+                      { name: 'objective_function', type: 'string', required: true, description: 'Objective function name or expression' },
+                      { name: 'variables', type: 'array[string]', required: true, description: 'Variable names' },
+                      { name: 'bounds', type: 'array[array[float]]', required: true, description: 'Variable bounds [[min, max], ...]' },
+                      { name: 'max_evaluations', type: 'integer', required: false, default: '1000', description: 'Maximum function evaluations' },
+                      { name: 'strategy', type: 'string', required: false, description: 'Optimization strategy (e.g., "differential_evolution", "shgo")' },
+                      { name: 'domain', type: 'string', required: false, default: '"general"', description: 'Domain library to use' },
+                      { name: 'constraints', type: 'array[object]', required: false, description: 'Optimization constraints' },
+                      { name: 'problem_id', type: 'string', required: false, description: 'Unique problem identifier' },
+                      { name: 'use_ai_reasoning', type: 'boolean', required: false, default: 'true', description: 'Enable AI reasoning' },
+                      { name: 'use_context_intelligence', type: 'boolean', required: false, default: 'true', description: 'Enable context intelligence' },
+                    ],
+                    example: JSON.stringify({
+                      objective_function: 'sphere',
+                      variables: ['x1', 'x2'],
+                      bounds: [[-5.0, 5.0], [-5.0, 5.0]],
+                      max_evaluations: 1000,
+                      strategy: 'differential_evolution'
+                    }, null, 2)
+                  },
+                  curlExample: `curl -X POST ${baseUrl}${endpoint.path} \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "objective_function": "sphere",
+    "variables": ["x1", "x2"],
+    "bounds": [[-5.0, 5.0], [-5.0, 5.0]],
+    "max_evaluations": 1000
+  }'`,
+                  response: {
+                    example: JSON.stringify({
+                      success: true,
+                      message: 'Optimization started successfully',
+                      operation_id: 'opt_1234567890',
+                      created_at: '2024-01-01T00:00:00Z',
+                      estimated_duration: 10.5,
+                      problem_id: 'prob_123',
+                      problem_size: 2,
+                      status: 'created',
+                      progress_url: '/optimization/status/opt_1234567890'
+                    }, null, 2)
+                  }
+                }
+              }
+
+              if (endpoint.path === '/optimization/status/{operation_id}') {
+                return {
+                  ...baseDetails,
+                  curlExample: `curl -X GET ${baseUrl}${endpoint.path.replace('{operation_id}', 'opt_1234567890')} \\
+  -H "Authorization: Bearer YOUR_API_KEY"`,
+                  response: {
+                    example: JSON.stringify({
+                      operation_id: 'opt_1234567890',
+                      status: 'running',
+                      created_at: '2024-01-01T00:00:00Z',
+                      started_at: '2024-01-01T00:00:01Z',
+                      progress: {
+                        current_status: 'running',
+                        has_result: false
+                      }
+                    }, null, 2)
+                  }
+                }
+              }
+
+              if (endpoint.path === '/optimization/result/{operation_id}') {
+                return {
+                  ...baseDetails,
+                  curlExample: `curl -X GET ${baseUrl}${endpoint.path.replace('{operation_id}', 'opt_1234567890')} \\
+  -H "Authorization: Bearer YOUR_API_KEY"`,
+                  response: {
+                    example: JSON.stringify({
+                      optimal_solution: [0.0, 0.0],
+                      optimal_value: 0.0,
+                      strategy_used: 'differential_evolution',
+                      evaluations_used: 150,
+                      execution_time: 2.5,
+                      iterations: 15,
+                      problem_id: 'prob_123',
+                      operation_id: 'opt_1234567890',
+                      completed_at: '2024-01-01T00:00:03Z'
+                    }, null, 2)
+                  }
+                }
+              }
+
+              if (endpoint.path === '/identity/') {
+                return {
+                  ...baseDetails,
+                  requestBody: {
+                    parameters: [
+                      { name: 'email', type: 'string', required: true, description: 'Email address' },
+                      { name: 'organization_id', type: 'string', required: false, description: 'Organization identifier' },
+                      { name: 'privacy_level', type: 'string', required: false, default: '"aggregated"', description: 'Privacy level: "public", "aggregated", "federated", "private"' },
+                      { name: 'subscription_tier', type: 'string', required: false, default: '"starter"', description: 'Subscription tier: "free", "starter", "professional", "enterprise", "custom"' },
+                    ],
+                    example: JSON.stringify({
+                      email: 'user@example.com',
+                      organization_id: 'org_123',
+                      privacy_level: 'aggregated',
+                      subscription_tier: 'professional'
+                    }, null, 2)
+                  },
+                  curlExample: `curl -X POST ${baseUrl}${endpoint.path} \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "email": "user@example.com",
+    "privacy_level": "aggregated",
+    "subscription_tier": "professional"
+  }'`,
+                  response: {
+                    example: JSON.stringify({
+                      client_id: 'client_1234567890',
+                      organization_id: 'org_123',
+                      privacy_level: 'aggregated',
+                      subscription_tier: 'professional',
+                      billing_email: 'user@example.com',
+                      status: 'active',
+                      created_at: '2024-01-01T00:00:00Z',
+                      updated_at: '2024-01-01T00:00:00Z',
+                      federated_learning_enabled: false
+                    }, null, 2)
+                  }
+                }
+              }
+
+              if (endpoint.path === '/identity/{client_id}/quotas') {
+                return {
+                  ...baseDetails,
+                  curlExample: `curl -X GET ${baseUrl}${endpoint.path.replace('{client_id}', 'client_1234567890')} \\
+  -H "Authorization: Bearer YOUR_API_KEY"`,
+                  response: {
+                    example: JSON.stringify({
+                      client_id: 'client_1234567890',
+                      subscription_tier: 'professional',
+                      api_quotas: {
+                        optimizations_per_day: 1000,
+                        batch_jobs_per_day: 50,
+                        data_storage_mb: 10000
+                      },
+                      current_usage: {
+                        optimizations_per_day: 245,
+                        batch_jobs_per_day: 12,
+                        data_storage_mb: 3450
+                      },
+                      quota_utilization: {
+                        optimizations_per_day: 24.5,
+                        batch_jobs_per_day: 24.0,
+                        data_storage_mb: 34.5
+                      }
+                    }, null, 2)
+                  }
+                }
+              }
+
+              if (endpoint.path === '/batch/submit') {
+                return {
+                  ...baseDetails,
+                  requestBody: {
+                    description: 'Submit a batch optimization job',
+                    parameters: [
+                      { name: 'batch_name', type: 'string', required: true, description: 'Name for the batch job' },
+                      { name: 'optimizations', type: 'array[object]', required: true, description: 'List of optimization jobs' },
+                      { name: 'parallel_workers', type: 'integer', required: false, default: '2', description: 'Number of parallel workers' },
+                      { name: 'max_total_time', type: 'integer', required: false, description: 'Maximum total time in seconds' },
+                      { name: 'notification_webhook', type: 'string', required: false, description: 'Webhook URL for completion notification' },
+                    ],
+                    example: JSON.stringify({
+                      batch_name: 'portfolio_analysis',
+                      optimizations: [
+                        {
+                          job_name: 'portfolio_1',
+                          objective_function: 'sphere',
+                          bounds: [[-5, 5], [-5, 5]],
+                          max_evaluations: 1000
+                        }
+                      ],
+                      parallel_workers: 2
+                    }, null, 2)
+                  },
+                  curlExample: `curl -X POST ${baseUrl}${endpoint.path} \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "batch_name": "portfolio_analysis",
+    "optimizations": [...],
+    "parallel_workers": 2
+  }'`,
+                  response: {
+                    example: JSON.stringify({
+                      success: true,
+                      batch_id: 'batch_1234567890',
+                      total_jobs: 5,
+                      estimated_duration: 45.0,
+                      status: 'created'
+                    }, null, 2)
+                  }
+                }
+              }
+
+              // Default for endpoints without specific details
+              return {
+                ...baseDetails,
+                curlExample: `curl -X ${endpoint.method} ${baseUrl}${endpoint.path} \\
+  -H "Authorization: Bearer YOUR_API_KEY"`,
+                response: {
+                  description: 'Response structure varies by endpoint',
+                  example: JSON.stringify({ success: true, data: '...' }, null, 2)
+                }
+              }
+            }
+
             const categories = Array.from(new Set(endpoints.map(e => e.category))).sort()
             return categories.map(category => {
               const categoryEndpoints = endpoints.filter(e => e.category === category)
               return (
                 <div key={category} className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{category}</h3>
-                  <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <thead className="bg-gray-50">
-                          <tr>
-                            <th className="px-6 py-3 text-left text-sm font-medium text-gray-900">Method</th>
-                            <th className="px-6 py-3 text-left text-sm font-medium text-gray-900">Endpoint</th>
-                            <th className="px-6 py-3 text-left text-sm font-medium text-gray-900">Description</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-200">
-                          {categoryEndpoints.map((endpoint, index) => (
-                            <tr key={index}>
-                              <td className="px-6 py-4">
-                                <span className={`px-2 py-1 rounded text-sm font-medium ${
-                                  endpoint.method === 'GET' ? 'bg-blue-100 text-blue-800' :
-                                  endpoint.method === 'POST' ? 'bg-green-100 text-green-800' :
-                                  endpoint.method === 'PUT' ? 'bg-yellow-100 text-yellow-800' :
-                                  endpoint.method === 'PATCH' ? 'bg-orange-100 text-orange-800' :
-                                  'bg-red-100 text-red-800'
-                                }`}>
-                                  {endpoint.method}
-                                </span>
-                              </td>
-                              <td className="px-6 py-4">
-                                <code className="text-sm bg-gray-100 px-2 py-1 rounded">
-                                  {endpoint.path}
-                                </code>
-                              </td>
-                              <td className="px-6 py-4 text-sm text-gray-700">
-                                {endpoint.description}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{category}</h3>
+                  <div className="space-y-2">
+                    {categoryEndpoints.map((endpoint, index) => {
+                      const endpointKey = `${endpoint.method}-${endpoint.path}-${index}`
+                      const details = getEndpointDetails(endpoint)
+                      return (
+                        <ExpandableEndpoint
+                          key={endpointKey}
+                          endpoint={details}
+                          isExpanded={expandedEndpoints.has(endpointKey)}
+                          onToggle={() => toggleEndpoint(endpointKey)}
+                        />
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })
+          })()}
+                    })}
                   </div>
                 </div>
               )
