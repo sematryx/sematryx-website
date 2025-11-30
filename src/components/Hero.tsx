@@ -6,13 +6,13 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            AI-Enhanced
-            <span className="text-primary-600"> Adaptive </span>
-            Optimization
+            Agentic Expository
+            <span className="text-primary-600"> Audidactic </span>
+            Optimizer
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            The world's most advanced AI-powered optimization framework. 
-            Coordinate multiple AI systems, leverage domain expertise, and solve complex problems across industries.
+            The world's most advanced AI-powered optimization framework built on four pillars:
+            Multi-agent coordination, explainable intelligence, self-improving learning, and domain-specific expertise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link 

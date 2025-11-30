@@ -1,9 +1,13 @@
 import CodeBlock from '@/components/CodeBlock'
 
 export default function AuthenticationPage() {
-  const authExample = `curl -X GET https://api.aeao.com/v1/automations \\
+  const authExample = `curl -X POST https://api.aeao.com/v1/optimize \\
   -H "Authorization: Bearer aeao_1234567890abcdef" \\
-  -H "Content-Type: application/json"`
+  -H "Content-Type: application/json" \\
+  -d '{
+    "objective_function_id": "func_1234567890",
+    "bounds": [[-5, 5], [-5, 5]]
+  }'`
 
   const jsAuthExample = `import { AEAO } from '@aeao/javascript-sdk'
 
@@ -11,7 +15,11 @@ export default function AuthenticationPage() {
 const aeao = new AEAO('aeao_1234567890abcdef')
 
 // All requests will automatically include authentication
-const automations = await aeao.automations.list()`
+const result = await aeao.optimize({
+  objective_function: (x) => x.reduce((s, v) => s + v * v, 0),
+  bounds: [[-5, 5], [-5, 5]],
+  max_evaluations: 1000
+})`
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">

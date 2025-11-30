@@ -24,7 +24,7 @@ export const pricingPlans = [
     description: 'Only pay for what you use',
     popular: true,
     features: [
-      'All automation features',
+      'All optimization features',
       'No monthly commitments',
       'Usage-based billing',
       'Priority support',

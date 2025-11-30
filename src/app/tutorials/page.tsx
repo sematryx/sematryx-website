@@ -7,50 +7,50 @@ export default function TutorialsPage() {
     {
       id: 'getting-started',
       title: 'Getting Started with AEAO',
-      description: 'Learn the basics of creating your first automation workflow',
+      description: 'Learn the basics of solving your first optimization problem with AEAO',
       difficulty: 'Beginner',
       duration: '15 min',
       category: 'Fundamentals'
     },
     {
       id: 'data-transformation',
-      title: 'Data Transformation Pipeline',
-      description: 'Build a complete data transformation pipeline with real-time processing',
+      title: 'Optimization Problem Setup',
+      description: 'Learn how to define objective functions, bounds, and constraints for optimization',
       difficulty: 'Intermediate',
       duration: '30 min',
-      category: 'Data Processing'
-    },
-    {
-      id: 'webhook-automation',
-      title: 'Webhook-Triggered Automations',
-      description: 'Create automations that respond to external webhook events',
-      difficulty: 'Intermediate',
-      duration: '25 min',
-      category: 'Integrations'
+      category: 'Problem Setup'
     },
     {
       id: 'ai-content-generation',
-      title: 'AI-Powered Content Generation',
-      description: 'Use AI models to automatically generate and process content',
-      difficulty: 'Advanced',
+      title: 'Configuring the AEAO Tetrad',
+      description: 'Master the four pillars: Agentic, Expository, Autodidactic, and Domain Extension',
+      difficulty: 'Intermediate',
       duration: '45 min',
-      category: 'AI Integration'
+      category: 'Tetrad Configuration'
     },
     {
       id: 'monitoring-alerts',
-      title: 'Monitoring and Alerting',
-      description: 'Set up comprehensive monitoring and alerting for your automations',
+      title: 'Understanding Optimization Results',
+      description: 'Learn to interpret results, explanations, and performance metrics',
       difficulty: 'Intermediate',
       duration: '20 min',
-      category: 'Operations'
+      category: 'Results Analysis'
     },
     {
       id: 'enterprise-workflows',
-      title: 'Enterprise Workflow Patterns',
-      description: 'Learn advanced patterns for complex enterprise automation scenarios',
+      title: 'Domain-Specific Optimization',
+      description: 'Use specialized libraries for Financial, Healthcare, Supply Chain, and other domains',
       difficulty: 'Advanced',
       duration: '60 min',
-      category: 'Enterprise'
+      category: 'Domain Libraries'
+    },
+    {
+      id: 'webhook-automation',
+      title: 'Advanced Optimization Strategies',
+      description: 'Explore multi-strategy optimization, GPU acceleration, and performance tuning',
+      difficulty: 'Advanced',
+      duration: '45 min',
+      category: 'Advanced Features'
     }
   ]
 
@@ -78,8 +78,8 @@ export default function TutorialsPage() {
               Tutorials
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Step-by-step guides to help you master AEAO automation. 
-              From beginner concepts to advanced enterprise patterns.
+              Step-by-step guides to help you master AEAO optimization. 
+              From basic problem setup to advanced domain-specific optimization.
             </p>
           </div>
 
@@ -124,7 +124,7 @@ export default function TutorialsPage() {
               </h2>
               <p className="text-gray-600 mb-6">
                 If you're new to AEAO, we recommend starting with our Quick Start guide 
-                in the documentation to get familiar with the basic concepts.
+                in the documentation to get familiar with optimization concepts and the AEAO Tetrad.
               </p>
               <Link
                 href="/docs"

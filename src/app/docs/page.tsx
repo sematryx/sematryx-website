@@ -1,43 +1,50 @@
 import CodeBlock from '@/components/CodeBlock'
 
 export default function DocsPage() {
-  const quickStartCode = `curl -X POST https://api.aeao.com/v1/automation \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "name": "data-processor",
-    "trigger": "webhook",
-    "actions": [
-      {
-        "type": "transform",
-        "config": {
-          "input_format": "json",
-          "output_format": "csv"
-        }
-      }
-    ]
-  }'`
+  const quickStartCode = `from aeao import aeao
 
-  const jsExample = `import { AEAO } from '@aeao/javascript-sdk'
+# Define your objective function
+def sphere(x):
+    return sum(xi**2 for xi in x)
 
-const aeao = new AEAO('YOUR_API_KEY')
+# Run optimization
+result = aeao(
+    objective_function=sphere,
+    bounds=[[-5, 5], [-5, 5]],
+    max_evaluations=1000
+)
 
-// Create an automation
-const automation = await aeao.automations.create({
-  name: 'data-processor',
-  trigger: 'webhook',
-  actions: [
-    {
-      type: 'transform',
-      config: {
-        input_format: 'json',
-        output_format: 'csv'
-      }
+print(f"Best solution: {result['best_solution']}")
+print(f"Best fitness: {result['best_fitness']}")`
+
+  const tetradExample = `from aeao import aeao
+
+# Use preset configuration
+result = aeao(
+    objective_function=sphere,
+    bounds=[[-5, 5], [-5, 5]],
+    preset="production"  # development, production, research, enterprise
+)
+
+# Or enable specific tetrad pillars
+result = aeao(
+    objective_function=sphere,
+    bounds=[[-5, 5], [-5, 5]],
+    use_agentic_intelligence=True,
+    use_autodidactic_intelligence=True,
+    explanation_level=3
+)`
+
+  const domainExample = `from aeao import financial_optimize
+
+# Financial portfolio optimization
+result = financial_optimize(
+    problem_type="portfolio",
+    config={
+        "assets": ["AAPL", "GOOGL", "MSFT"],
+        "risk_tolerance": 0.3
     }
-  ]
-})
-
-console.log('Automation created:', automation.id)`
+)`
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
@@ -46,17 +53,31 @@ console.log('Automation created:', automation.id)`
           Quick Start Guide
         </h1>
         <p className="text-xl text-gray-600">
-          Get started with AEAO in minutes. This guide will walk you through creating your first automation.
+          Get started with AEAO in minutes. This guide will walk you through your first optimization problem.
         </p>
       </div>
 
       <div className="space-y-8">
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            1. Get Your API Key
+            1. Installation
           </h2>
           <p className="text-gray-700 mb-4">
-            First, you'll need to get your API key from the{' '}
+            Install AEAO using pip:
+          </p>
+          <CodeBlock
+            code="pip install aeao"
+            language="bash"
+            title="Install AEAO"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            2. Get Your API Key
+          </h2>
+          <p className="text-gray-700 mb-4">
+            For API access, get your API key from the{' '}
             <a href="/api-keys" className="text-primary-600 hover:text-primary-700 underline">
               API Keys page
             </a>
@@ -66,55 +87,92 @@ console.log('Automation created:', automation.id)`
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            2. Make Your First API Call
+            3. Your First Optimization
           </h2>
           <p className="text-gray-700 mb-4">
-            Once you have your API key, you can start making requests to the AEAO API. 
-            Here's a simple example using curl:
+            Define your objective function and bounds, then let AEAO find the optimal solution:
           </p>
           <CodeBlock
             code={quickStartCode}
-            language="bash"
-            title="Create an automation with curl"
+            language="python"
+            title="Basic optimization example"
           />
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            3. Using the JavaScript SDK
-          </h2>
-          <p className="text-gray-700 mb-4">
-            For JavaScript/Node.js applications, we recommend using our official SDK:
-          </p>
-          <CodeBlock
-            code="npm install @aeao/javascript-sdk"
-            language="bash"
-            title="Install the JavaScript SDK"
-          />
-          <CodeBlock
-            code={jsExample}
-            language="javascript"
-            title="Using the JavaScript SDK"
-          />
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            4. Key Concepts
-          </h2>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Understanding Automations</h3>
-            <ul className="space-y-2 text-blue-800">
-              <li><strong>Triggers:</strong> Events that start your automation (webhooks, schedules, manual)</li>
-              <li><strong>Actions:</strong> Operations performed when triggered (transform, send, analyze)</li>
-              <li><strong>Workflows:</strong> Chains of actions that process data sequentially</li>
+          <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-green-900 mb-3">What happened?</h3>
+            <ul className="space-y-2 text-green-800">
+              <li>AEAO analyzed your problem and selected the best optimization strategy</li>
+              <li>It evaluated your function 1000 times to find the optimal solution</li>
+              <li>The result includes the best parameters and objective value found</li>
             </ul>
           </div>
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            5. Next Steps
+            4. Configure the AEAO Tetrad
+          </h2>
+          <p className="text-gray-700 mb-4">
+            AEAO is built on four pillars of intelligence. Configure them to match your needs:
+          </p>
+          <CodeBlock
+            code={tetradExample}
+            language="python"
+            title="Tetrad configuration"
+          />
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-blue-900 mb-3">The AEAO Tetrad</h3>
+            <ul className="space-y-2 text-blue-800">
+              <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
+              <li><strong>📖 Expository Intelligence:</strong> Explainable results with configurable detail levels</li>
+              <li><strong>🧠 Autodidactic Intelligence:</strong> Self-improvement through learning from experience</li>
+              <li><strong>🏗️ Domain Extension:</strong> Specialized libraries for business domains</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            5. Domain-Specific Optimization
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Use specialized optimization libraries for specific business domains:
+          </p>
+          <CodeBlock
+            code={domainExample}
+            language="python"
+            title="Domain-specific optimization"
+          />
+          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-purple-900 mb-3">Available Domains</h3>
+            <ul className="space-y-2 text-purple-800">
+              <li>Financial: Portfolio optimization, trading strategies</li>
+              <li>Healthcare: Drug discovery, clinical trials</li>
+              <li>Supply Chain: Vehicle routing, inventory management</li>
+              <li>AI/ML: Hyperparameter tuning, architecture search</li>
+              <li>Marketing: Campaign optimization, budget allocation</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            6. Key Concepts
+          </h2>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-blue-900 mb-3">Understanding Optimization</h3>
+            <ul className="space-y-2 text-blue-800">
+              <li><strong>Objective Function:</strong> The function you want to minimize or maximize</li>
+              <li><strong>Bounds:</strong> Search space constraints for each variable</li>
+              <li><strong>Strategy Selection:</strong> AEAO automatically chooses the best optimization algorithm</li>
+              <li><strong>Explainability:</strong> Get detailed explanations of optimization decisions</li>
+              <li><strong>Learning:</strong> AEAO improves performance on repeated problems</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            7. Next Steps
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-50 rounded-lg p-6">
@@ -122,7 +180,7 @@ console.log('Automation created:', automation.id)`
                 Explore Tutorials
               </h3>
               <p className="text-gray-600 mb-4">
-                Follow step-by-step tutorials to build real-world automations.
+                Follow step-by-step tutorials to solve real-world optimization problems.
               </p>
               <a 
                 href="/tutorials" 
@@ -136,13 +194,41 @@ console.log('Automation created:', automation.id)`
                 API Reference
               </h3>
               <p className="text-gray-600 mb-4">
-                Detailed documentation for all API endpoints and parameters.
+                Detailed documentation for all optimization APIs and tetrad configuration.
               </p>
               <a 
                 href="/docs/api/automation" 
                 className="text-primary-600 hover:text-primary-700 font-medium"
               >
                 API Reference →
+              </a>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Tetrad Configuration
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Learn how to configure the four pillars of AEAO intelligence.
+              </p>
+              <a 
+                href="/docs/advanced/best-practices" 
+                className="text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Configuration Guide →
+              </a>
+            </div>
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Domain Libraries
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Explore specialized optimization libraries for your industry.
+              </p>
+              <a 
+                href="/docs/sdks/python" 
+                className="text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Domain Docs →
               </a>
             </div>
           </div>

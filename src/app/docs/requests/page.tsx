@@ -248,7 +248,7 @@ X-RateLimit-Reset: 1640995200`}
                 <li>Commit API keys to version control</li>
                 <li>Make synchronous requests for long-running optimizations</li>
                 <li>Ignore error responses - always check status codes</li>
-                <li>Make unnecessary requests - use polling or webhooks for status updates</li>
+                <li>Make unnecessary requests - use polling for status updates</li>
                 <li>Exceed rate limits without implementing backoff strategies</li>
               </ul>
             </div>

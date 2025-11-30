@@ -1,6 +1,6 @@
 # AEAO Website
 
-The official website for AEAO (AI-Enhanced Automation Operations) - a comprehensive SaaS platform for intelligent automation.
+The official website for AEAO (Agentic Expository Audidactic Optimizer) - the world's most advanced AI-powered optimization framework.
 
 ## Features
 

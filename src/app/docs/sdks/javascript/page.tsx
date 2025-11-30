@@ -7,87 +7,171 @@ export default function JavaScriptSDKPage() {
 
 const aeao = new AEAO('your-api-key')
 
-// Create an automation
-const automation = await aeao.automations.create({
-  name: 'data-processor',
-  trigger: {
-    type: 'webhook',
-    config: {
-      path: '/webhook/data-processor'
-    }
-  },
-  actions: [
-    {
-      type: 'transform',
-      config: {
-        input_format: 'json',
-        output_format: 'csv'
-      }
-    }
-  ]
-})
+// Define objective function
+const sphere = (x) => {
+  return x.reduce((sum, val) => sum + val * val, 0)
+}
 
-console.log('Automation created:', automation.id)`
-
-  const optimizationCode = `// Run an optimization
+// Run optimization
 const result = await aeao.optimize({
-  objective_function: (x) => {
-    return x.reduce((sum, val) => sum + val * val, 0)
-  },
-  bounds: [[-5, 5], [-5, 5], [-5, 5]],
+  objective_function: sphere,
+  bounds: [[-5, 5], [-5, 5]],
   max_evaluations: 1000
 })
 
 console.log('Best solution:', result.best_solution)
 console.log('Best fitness:', result.best_fitness)`
 
-  const listCode = `// List all automations
-const automations = await aeao.automations.list({
-  status: 'active',
-  limit: 20
+  const tetradConfig = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Option 1: Use preset configuration
+const result = await aeao.optimize({
+  objective_function: sphere,
+  bounds: [[-5, 5], [-5, 5]],
+  preset: 'production'  // development, production, research, enterprise, minimal
 })
 
-console.log('Found ' + automations.length + ' automations')`
+// Option 2: Enable specific tetrad pillars
+const result = await aeao.optimize({
+  objective_function: sphere,
+  bounds: [[-5, 5], [-5, 5]],
+  use_agentic_intelligence: true,      // Multi-agent coordination
+  use_autodidactic_intelligence: true,  // Self-improvement
+  explanation_level: 3                   // Detailed explanations
+})
 
-  const triggerCode = `// Trigger an automation
-const execution = await aeao.automations.trigger('auto_1234567890', {
-  input_data: {
-    records: [1, 2, 3, 4, 5]
+// Option 3: Complete custom configuration
+const config = {
+  tetrad: {
+    use_agentic_intelligence: true,
+    use_expository_intelligence: true,
+    use_autodidactic_intelligence: true,
+    use_domain_extension: true
+  },
+  expository: {
+    explanation_level: 4
+  },
+  agentic: {
+    max_agents_per_problem: 5
   }
+}
+const result = await aeao.optimize({
+  objective_function: sphere,
+  bounds: [[-5, 5], [-5, 5]],
+  config: config
+})`
+
+  const domainOptimization = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Financial portfolio optimization
+const portfolioResult = await aeao.financial.optimize({
+  problem_type: 'portfolio',
+  config: {
+    assets: ['AAPL', 'GOOGL', 'MSFT', 'TSLA'],
+    risk_tolerance: 0.15,
+    expected_returns: [0.12, 0.15, 0.10, 0.20]
+  },
+  max_evaluations: 2000
 })
 
-console.log('Execution ID:', execution.id)`
+// Healthcare drug discovery
+const drugResult = await aeao.healthcare.optimize({
+  problem_type: 'drug_discovery',
+  config: {
+    target_protein: 'protein_id_123',
+    constraints: { toxicity: '< 0.1', solubility: '> 0.5' }
+  }
+})`
 
   const errorHandling = `try {
-  const automation = await aeao.automations.create({
-    name: 'my-automation',
-    // ... config
+  const result = await aeao.optimize({
+    objective_function: sphere,
+    bounds: [[-5, 5], [-5, 5]],
+    max_evaluations: 1000
   })
 } catch (error) {
   if (error.status === 401) {
     console.error('Invalid API key')
   } else if (error.status === 429) {
-    console.error('Rate limit exceeded')
+    console.error('Rate limit exceeded. Please wait and retry.')
+  } else if (error.code === 'OPTIMIZATION_ERROR') {
+    console.error('Optimization failed:', error.message)
   } else {
     console.error('Error:', error.message)
   }
 }`
 
-  const typescriptCode = `import { AEAO, Automation, OptimizationResult } from '@aeao/javascript-sdk'
+  const typescriptCode = `import { AEAO, OptimizationResult, TetradConfig } from '@aeao/javascript-sdk'
 
 const aeao = new AEAO(process.env.AEAO_API_KEY!)
-
-const automation: Automation = await aeao.automations.create({
-  name: 'typed-automation',
-  trigger: { type: 'manual' },
-  actions: []
-})
 
 const result: OptimizationResult = await aeao.optimize({
   objective_function: (x: number[]) => x.reduce((s, v) => s + v * v, 0),
   bounds: [[-5, 5], [-5, 5]],
-  max_evaluations: 1000
+  max_evaluations: 1000,
+  preset: 'production'
+})
+
+const config: TetradConfig = {
+  tetrad: {
+    use_agentic_intelligence: true,
+    use_expository_intelligence: true
+  },
+  expository: {
+    explanation_level: 3
+  }
+}`
+
+  const advancedFeatures = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// GPU acceleration
+const gpuResult = await aeao.optimize({
+  objective_function: complexFunction,
+  bounds: Array(100).fill([-10, 10]),  // High-dimensional
+  use_gpu_acceleration: true
+})
+
+// Visual intelligence
+const visualResult = await aeao.optimize({
+  objective_function: landscapeFunction,
+  bounds: [[-5, 5], [-5, 5]],
+  use_visual_intelligence: true,
+  explanation_level: 4
+})
+
+// Neural-symbolic reasoning
+const neuralResult = await aeao.optimize({
+  objective_function: hybridFunction,
+  bounds: [[-5, 5], [-5, 5]],
+  use_neural_symbolic: true
 })`
+
+  const batchOptimization = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Run multiple optimizations in parallel
+const problems = [
+  { objective: sphere1, bounds: [[-5, 5], [-5, 5]] },
+  { objective: sphere2, bounds: [[-10, 10], [-10, 10]] },
+  { objective: sphere3, bounds: [[-3, 3], [-3, 3]] }
+]
+
+const results = await Promise.all(
+  problems.map(p => 
+    aeao.optimize({
+      objective_function: p.objective,
+      bounds: p.bounds,
+      max_evaluations: 1000
+    })
+  )
+)`
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
@@ -120,7 +204,7 @@ const result: OptimizationResult = await aeao.optimize({
             Quick Start
           </h2>
           <p className="text-gray-700 mb-4">
-            Initialize the SDK with your API key and start making requests:
+            Initialize the SDK with your API key and start optimizing:
           </p>
           <CodeBlock
             code={basicUsage}
@@ -131,37 +215,66 @@ const result: OptimizationResult = await aeao.optimize({
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Optimization
+            AEAO Tetrad Configuration
           </h2>
           <p className="text-gray-700 mb-4">
-            Run optimization problems directly from JavaScript:
+            Configure the four pillars of AEAO intelligence:
           </p>
           <CodeBlock
-            code={optimizationCode}
+            code={tetradConfig}
             language="javascript"
-            title="Running optimizations"
+            title="Tetrad configuration examples"
+          />
+          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-purple-900 mb-3">The AEAO Tetrad</h3>
+            <ul className="space-y-2 text-purple-800">
+              <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
+              <li><strong>📖 Expository Intelligence:</strong> Explainable results (levels 0-5)</li>
+              <li><strong>🧠 Autodidactic Intelligence:</strong> Self-improvement through learning</li>
+              <li><strong>🏗️ Domain Extension:</strong> Business domain libraries (enabled by default)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Domain-Specific Optimization
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Use specialized domain libraries for industry-specific problems:
+          </p>
+          <CodeBlock
+            code={domainOptimization}
+            language="javascript"
+            title="Domain-specific optimization"
           />
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Automation Management
+            Advanced Features
           </h2>
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
-            List Automations
-          </h3>
+          <p className="text-gray-700 mb-4">
+            Enable advanced capabilities for complex optimization problems:
+          </p>
           <CodeBlock
-            code={listCode}
+            code={advancedFeatures}
             language="javascript"
-            title="List automations"
+            title="Advanced features"
           />
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
-            Trigger Automation
-          </h3>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Batch Optimization
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Run multiple optimizations in parallel:
+          </p>
           <CodeBlock
-            code={triggerCode}
+            code={batchOptimization}
             language="javascript"
-            title="Trigger an automation"
+            title="Batch optimization"
           />
         </section>
 
@@ -203,40 +316,39 @@ const result: OptimizationResult = await aeao.optimize({
               <ul className="space-y-2 text-gray-700">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">new AEAO(apiKey, options?)</code> - Initialize the SDK</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.optimize(config)</code> - Run an optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.automations</code> - Automation management</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.financial</code> - Financial domain optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.healthcare</code> - Healthcare domain optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.supplyChain</code> - Supply chain optimization</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.analytics</code> - Analytics and metrics</li>
               </ul>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Automations</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Optimization Config</h3>
               <ul className="space-y-2 text-gray-700">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">create(config)</code> - Create a new automation</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">list(options?)</code> - List automations</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">get(id)</code> - Get automation details</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">update(id, config)</code> - Update an automation</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">delete(id)</code> - Delete an automation</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">trigger(id, data?)</code> - Trigger an automation</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">objective_function</code> - Function to optimize (required)</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">bounds</code> - Search bounds (required)</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">max_evaluations</code> - Max function evaluations</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">preset</code> - Preset configuration</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">use_agentic_intelligence</code> - Enable agentic pillar</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">use_expository_intelligence</code> - Enable expository pillar</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">use_autodidactic_intelligence</code> - Enable autodidactic pillar</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">explanation_level</code> - Explanation detail (0-5)</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">use_gpu_acceleration</code> - Enable GPU</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">use_visual_intelligence</code> - Enable visual analysis</li>
               </ul>
             </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Configuration Options
-          </h2>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">SDK Options</h3>
-            <ul className="space-y-2 text-blue-800">
-              <li><strong>apiUrl:</strong> Custom API base URL (default: https://api.aeao.com)</li>
-              <li><strong>timeout:</strong> Request timeout in milliseconds (default: 30000)</li>
-              <li><strong>retries:</strong> Number of retry attempts (default: 3)</li>
-              <li><strong>retryDelay:</strong> Delay between retries in milliseconds (default: 1000)</li>
-            </ul>
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Configuration Options</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li><code className="bg-gray-200 px-2 py-1 rounded">apiUrl</code> - Custom API base URL (default: https://api.aeao.com)</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">timeout</code> - Request timeout in milliseconds (default: 30000)</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">retries</code> - Number of retry attempts (default: 3)</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">retryDelay</code> - Delay between retries in milliseconds (default: 1000)</li>
+              </ul>
+            </div>
           </div>
         </section>
       </div>
     </div>
   )
 }
-

@@ -7,7 +7,7 @@ export default function AnalyticsEndpointsPage() {
   const getExecutionStats = `curl -X GET https://api.aeao.com/v1/analytics/executions \\
   -H "Authorization: Bearer YOUR_API_KEY"`
 
-  const getPerformanceData = `curl -X GET "https://api.aeao.com/v1/analytics/performance?automation_id=auto_1234567890" \\
+  const getPerformanceData = `curl -X GET "https://api.aeao.com/v1/analytics/performance?optimization_id=opt_1234567890" \\
   -H "Authorization: Bearer YOUR_API_KEY"`
 
   const metricsResponse = `{
@@ -16,18 +16,18 @@ export default function AnalyticsEndpointsPage() {
     "end": "2024-01-31T23:59:59Z"
   },
   "metrics": {
-    "total_executions": 1250,
-    "successful_executions": 1195,
-    "failed_executions": 55,
-    "average_execution_time": 1.23,
-    "total_data_processed": 1250000,
+    "total_optimizations": 1250,
+    "successful_optimizations": 1195,
+    "failed_optimizations": 55,
+    "average_optimization_time": 2.34,
+    "total_evaluations": 1250000,
     "cost": {
       "total": 125.50,
       "currency": "USD"
     }
   },
   "trends": {
-    "executions_per_day": [45, 52, 38, 61, ...],
+    "optimizations_per_day": [45, 52, 38, 61, ...],
     "success_rate": [0.96, 0.97, 0.95, 0.98, ...]
   }
 }`
@@ -38,9 +38,9 @@ export default function AnalyticsEndpointsPage() {
     "completed": 1195,
     "failed": 55
   },
-  "by_automation": [
+  "by_optimization": [
     {
-      "automation_id": "auto_1234567890",
+      "optimization_id": "opt_1234567890",
       "count": 450,
       "success_rate": 0.98
     }
@@ -48,7 +48,7 @@ export default function AnalyticsEndpointsPage() {
   "time_series": [
     {
       "date": "2024-01-01",
-      "executions": 45,
+      "optimizations": 45,
       "successful": 43,
       "failed": 2
     }
@@ -84,7 +84,7 @@ export default function AnalyticsEndpointsPage() {
             <ul className="space-y-2 text-blue-800">
               <li><strong>start_date</strong> (required): Start date in ISO 8601 format</li>
               <li><strong>end_date</strong> (required): End date in ISO 8601 format</li>
-              <li><strong>automation_id</strong> (optional): Filter by specific automation</li>
+              <li><strong>optimization_id</strong> (optional): Filter by specific optimization</li>
               <li><strong>granularity</strong> (optional): hour, day, week, month (default: day)</li>
             </ul>
           </div>
@@ -100,7 +100,7 @@ export default function AnalyticsEndpointsPage() {
             Get Execution Statistics
           </h2>
           <p className="text-gray-700 mb-4">
-            Get detailed statistics about automation executions.
+            Get detailed statistics about optimization runs.
           </p>
           <CodeBlock
             code={getExecutionStats}
@@ -112,8 +112,8 @@ export default function AnalyticsEndpointsPage() {
             <ul className="space-y-2 text-blue-800">
               <li><strong>start_date</strong> (optional): Filter executions from this date</li>
               <li><strong>end_date</strong> (optional): Filter executions until this date</li>
-              <li><strong>automation_id</strong> (optional): Filter by specific automation</li>
-              <li><strong>status</strong> (optional): Filter by status (completed, failed, running)</li>
+              <li><strong>optimization_id</strong> (optional): Filter by specific optimization</li>
+              <li><strong>status</strong> (optional): Filter by status (completed, failed, running, pending)</li>
             </ul>
           </div>
           <CodeBlock
@@ -128,7 +128,7 @@ export default function AnalyticsEndpointsPage() {
             Get Performance Data
           </h2>
           <p className="text-gray-700 mb-4">
-            Retrieve performance metrics for specific automations or overall account.
+            Retrieve performance metrics for specific optimizations or overall account.
           </p>
           <CodeBlock
             code={getPerformanceData}
@@ -155,17 +155,17 @@ export default function AnalyticsEndpointsPage() {
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Execution Metrics</h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• Total executions</li>
-                <li>• Successful executions</li>
-                <li>• Failed executions</li>
-                <li>• Execution time statistics</li>
+                <li>• Total optimizations</li>
+                <li>• Successful optimizations</li>
+                <li>• Failed optimizations</li>
+                <li>• Optimization time statistics</li>
                 <li>• Success rate</li>
               </ul>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Business Metrics</h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• Data processed</li>
+                <li>• Function evaluations</li>
                 <li>• Cost analysis</li>
                 <li>• ROI calculations</li>
                 <li>• Usage trends</li>
@@ -207,6 +207,7 @@ export default function AnalyticsEndpointsPage() {
               <li><strong>CSV:</strong> Add <code className="bg-blue-100 px-2 py-1 rounded">?format=csv</code> to any endpoint</li>
               <li><strong>JSON:</strong> Default format for all endpoints</li>
               <li><strong>Excel:</strong> Add <code className="bg-blue-100 px-2 py-1 rounded">?format=xlsx</code> for Excel export</li>
+              <li><strong>PDF:</strong> Add <code className="bg-blue-100 px-2 py-1 rounded">?format=pdf</code> for report export</li>
             </ul>
           </div>
         </section>

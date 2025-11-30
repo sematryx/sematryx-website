@@ -1,158 +1,227 @@
 import CodeBlock from '@/components/CodeBlock'
 
-export default function AutomationEndpointsPage() {
-  const createAutomation = `curl -X POST https://api.aeao.com/v1/automations \\
+export default function OptimizationAPIPage() {
+  const basicOptimization = `curl -X POST https://api.aeao.com/v1/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "name": "data-processor",
-    "description": "Processes incoming data",
-    "trigger": {
-      "type": "webhook",
-      "config": {
-        "path": "/webhook/data-processor"
-      }
+    "objective": "minimize",
+    "bounds": [[-5, 5], [-5, 5]],
+    "max_evaluations": 1000
+  }'`
+
+  const pythonExample = `from aeao import aeao
+import numpy as np
+
+# Define your objective function
+def sphere(x):
+    return sum(xi**2 for xi in x)
+
+# Run optimization
+result = aeao(
+    objective_function=sphere,
+    bounds=[[-5, 5], [-5, 5]],
+    max_evaluations=1000
+)
+
+print(f"Best solution: {result['best_solution']}")
+print(f"Best fitness: {result['best_fitness']}")`
+
+  const tetradConfig = `from aeao import aeao, AEAOTetradCompleteConfig
+
+# Use preset configuration
+result = aeao(
+    objective_function=sphere,
+    bounds=[[-5, 5], [-5, 5]],
+    preset="production"  # development, production, research, enterprise, minimal
+)
+
+# Or enable specific tetrad pillars
+result = aeao(
+    objective_function=sphere,
+    bounds=[[-5, 5], [-5, 5]],
+    use_agentic_intelligence=True,
+    use_autodidactic_intelligence=True,
+    explanation_level=3
+)
+
+# Or complete custom configuration
+config = AEAOTetradCompleteConfig.enterprise()
+config.expository.explanation_level = 4
+result = aeao(objective_function=sphere, bounds=[[-5, 5], [-5, 5]], config=config)`
+
+  const domainOptimization = `from aeao import financial_optimize, healthcare_optimize, supply_chain_optimize
+
+# Financial portfolio optimization
+result = financial_optimize(
+    problem_type="portfolio",
+    config={
+        "assets": ["AAPL", "GOOGL", "MSFT"],
+        "risk_tolerance": 0.3
     },
-    "actions": [
-      {
-        "type": "transform",
-        "config": {
-          "input_format": "json",
-          "output_format": "csv"
-        }
-      }
-    ]
-  }'`
+    max_evaluations=2000
+)
 
-  const listAutomations = `curl -X GET https://api.aeao.com/v1/automations \\
-  -H "Authorization: Bearer YOUR_API_KEY"`
-
-  const getAutomation = `curl -X GET https://api.aeao.com/v1/automations/auto_1234567890 \\
-  -H "Authorization: Bearer YOUR_API_KEY"`
-
-  const updateAutomation = `curl -X PATCH https://api.aeao.com/v1/automations/auto_1234567890 \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "name": "updated-data-processor",
-    "status": "active"
-  }'`
-
-  const deleteAutomation = `curl -X DELETE https://api.aeao.com/v1/automations/auto_1234567890 \\
-  -H "Authorization: Bearer YOUR_API_KEY"`
-
-  const triggerAutomation = `curl -X POST https://api.aeao.com/v1/automations/auto_1234567890/trigger \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "input_data": {
-      "records": [1, 2, 3, 4, 5]
+# Healthcare drug discovery
+result = healthcare_optimize(
+    problem_type="drug_discovery",
+    config={
+        "target_protein": "protein_id_123",
+        "constraints": {"toxicity": "< 0.1"}
     }
-  }'`
+)
 
-  const automationResponse = `{
-  "id": "auto_1234567890",
-  "name": "data-processor",
-  "description": "Processes incoming data",
-  "status": "active",
-  "trigger": {
-    "type": "webhook",
-    "id": "trigger_1234567890",
-    "config": {
-      "path": "/webhook/data-processor"
+# Supply chain routing
+result = supply_chain_optimize(
+    problem_type="vehicle_routing",
+    config={
+        "locations": [...],
+        "vehicle_capacity": 1000
     }
+)`
+
+  const optimizationResponse = `{
+  "success": true,
+  "best_solution": [0.001, -0.002, 0.003],
+  "best_fitness": 0.000014,
+  "evaluations": 847,
+  "duration_seconds": 2.34,
+  "strategy_used": "shgo",
+  "tetrad_config": {
+    "use_agentic_intelligence": true,
+    "use_expository_intelligence": true,
+    "use_autodidactic_intelligence": false,
+    "use_domain_extension": true
   },
-  "actions": [
-    {
-      "id": "action_1234567890",
-      "type": "transform",
-      "config": {
-        "input_format": "json",
-        "output_format": "csv"
-      }
-    }
-  ],
-  "created_at": "2024-01-01T00:00:00Z",
-  "updated_at": "2024-01-01T00:00:00Z"
+  "features_active": {
+    "agentic_intelligence": true,
+    "expository_intelligence": true,
+    "explanation_level": 2,
+    "cross_problem_learning": false
+  }
 }`
+
+  const restAPIExample = `curl -X POST https://api.aeao.com/v1/optimize \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "objective_function_id": "func_1234567890",
+    "bounds": [[-10, 10], [-10, 10], [-10, 10]],
+    "max_evaluations": 2000,
+    "preset": "production",
+    "tetrad_config": {
+      "use_agentic_intelligence": true,
+      "use_expository_intelligence": true,
+      "explanation_level": 3
+    }
+  }'`
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Automation Endpoints
+          Optimization API
         </h1>
         <p className="text-xl text-gray-600">
-          Create, manage, and trigger automations through the AEAO API.
+          Solve optimization problems using the AEAO framework with configurable AI intelligence through the AEAO Tetrad.
         </p>
       </div>
 
       <div className="space-y-12">
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Create Automation
+            Basic Optimization
           </h2>
           <p className="text-gray-700 mb-4">
-            Create a new automation with triggers and actions.
+            The simplest way to optimize a function. Define your objective function and bounds, then let AEAO find the optimal solution.
           </p>
           <CodeBlock
-            code={createAutomation}
-            language="bash"
-            title="POST /v1/automations"
+            code={pythonExample}
+            language="python"
+            title="Python SDK - Basic Optimization"
           />
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Request Body</h3>
+            <h3 className="text-lg font-semibold text-blue-900 mb-3">Parameters</h3>
             <ul className="space-y-2 text-blue-800">
-              <li><strong>name</strong> (required): Unique name for the automation</li>
-              <li><strong>description</strong> (optional): Description of what the automation does</li>
-              <li><strong>trigger</strong> (required): Trigger configuration (webhook, schedule, manual)</li>
-              <li><strong>actions</strong> (required): Array of actions to execute</li>
+              <li><strong>objective_function</strong> (required): Function to optimize f(x) → float</li>
+              <li><strong>bounds</strong> (required): Search bounds [[min1, max1], [min2, max2], ...]</li>
+              <li><strong>max_evaluations</strong> (optional): Maximum function evaluations (default: 1000)</li>
+              <li><strong>mode</strong> (optional): "fast", "balanced", or "accurate" (default: "balanced")</li>
             </ul>
           </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            AEAO Tetrad Configuration
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Configure the four pillars of AEAO intelligence: Agentic, Expository, Autodidactic, and Domain Extension.
+          </p>
+          <CodeBlock
+            code={tetradConfig}
+            language="python"
+            title="Tetrad Configuration Examples"
+          />
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-green-900 mb-3">Response</h3>
-            <p className="text-green-800">
-              Returns the created automation object with a unique ID.
-            </p>
+            <h3 className="text-lg font-semibold text-green-900 mb-3">Tetrad Pillars</h3>
+            <ul className="space-y-2 text-green-800">
+              <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
+              <li><strong>📖 Expository Intelligence:</strong> Explainability with configurable levels (0-5)</li>
+              <li><strong>🧠 Autodidactic Intelligence:</strong> Self-improvement and learning from experience</li>
+              <li><strong>🏗️ Domain Extension:</strong> Business domain libraries for rapid adoption</li>
+            </ul>
           </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            List Automations
-          </h2>
-          <p className="text-gray-700 mb-4">
-            Retrieve a list of all your automations.
-          </p>
-          <CodeBlock
-            code={listAutomations}
-            language="bash"
-            title="GET /v1/automations"
-          />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Query Parameters</h3>
-            <ul className="space-y-2 text-blue-800">
-              <li><strong>status</strong> (optional): Filter by status (active, paused, archived)</li>
-              <li><strong>limit</strong> (optional): Number of results per page (default: 20, max: 100)</li>
-              <li><strong>offset</strong> (optional): Pagination offset</li>
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-yellow-900 mb-3">Preset Configurations</h3>
+            <ul className="space-y-2 text-yellow-800">
+              <li><strong>development:</strong> Fast iteration, basic explanations</li>
+              <li><strong>production:</strong> Balanced performance, standard explanations</li>
+              <li><strong>research:</strong> Maximum capabilities, comprehensive explanations</li>
+              <li><strong>enterprise:</strong> Full features, advanced monitoring</li>
+              <li><strong>minimal:</strong> Core optimization only</li>
             </ul>
           </div>
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Get Automation
+            Domain-Specific Optimization
           </h2>
           <p className="text-gray-700 mb-4">
-            Retrieve details about a specific automation.
+            Use specialized optimization libraries for specific business domains with pre-configured constraints and objectives.
           </p>
           <CodeBlock
-            code={getAutomation}
+            code={domainOptimization}
+            language="python"
+            title="Domain-Specific Optimization"
+          />
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-blue-900 mb-3">Available Domains</h3>
+            <ul className="space-y-2 text-blue-800">
+              <li><strong>Financial:</strong> Portfolio optimization, trading strategies, risk management</li>
+              <li><strong>Healthcare:</strong> Drug discovery, clinical trial design, treatment protocols</li>
+              <li><strong>Supply Chain:</strong> Vehicle routing, inventory management, warehouse optimization</li>
+              <li><strong>AI/ML:</strong> Hyperparameter tuning, neural architecture search</li>
+              <li><strong>Marketing:</strong> Campaign optimization, budget allocation</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            REST API
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Use the REST API for server-side optimization requests. Upload your objective function first, then call the optimize endpoint.
+          </p>
+          <CodeBlock
+            code={restAPIExample}
             language="bash"
-            title="GET /v1/automations/{id}"
+            title="POST /v1/optimize"
           />
           <CodeBlock
-            code={automationResponse}
+            code={optimizationResponse}
             language="json"
             title="Response"
           />
@@ -160,104 +229,74 @@ export default function AutomationEndpointsPage() {
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Update Automation
+            Response Format
           </h2>
-          <p className="text-gray-700 mb-4">
-            Update an existing automation. Only provided fields will be updated.
-          </p>
-          <CodeBlock
-            code={updateAutomation}
-            language="bash"
-            title="PATCH /v1/automations/{id}"
-          />
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-yellow-900 mb-3">Note</h3>
-            <p className="text-yellow-800">
-              Updating trigger or action configurations may require the automation to be paused first.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Delete Automation
-          </h2>
-          <p className="text-gray-700 mb-4">
-            Permanently delete an automation. This action cannot be undone.
-          </p>
-          <CodeBlock
-            code={deleteAutomation}
-            language="bash"
-            title="DELETE /v1/automations/{id}"
-          />
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Trigger Automation
-          </h2>
-          <p className="text-gray-700 mb-4">
-            Manually trigger an automation execution.
-          </p>
-          <CodeBlock
-            code={triggerAutomation}
-            language="bash"
-            title="POST /v1/automations/{id}/trigger"
-          />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Request Body</h3>
-            <ul className="space-y-2 text-blue-800">
-              <li><strong>input_data</strong> (optional): Data to pass to the automation</li>
-              <li><strong>async</strong> (optional): If true, returns immediately and executes in background</li>
+          <div className="bg-gray-50 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Optimization Result</h3>
+            <ul className="space-y-2 text-gray-700">
+              <li><strong>success:</strong> Whether optimization succeeded</li>
+              <li><strong>best_solution:</strong> Optimal parameter values found</li>
+              <li><strong>best_fitness:</strong> Best objective value achieved</li>
+              <li><strong>evaluations:</strong> Number of function evaluations used</li>
+              <li><strong>duration_seconds:</strong> Time taken for optimization</li>
+              <li><strong>strategy_used:</strong> Optimization algorithm selected</li>
+              <li><strong>tetrad_config:</strong> Tetrad configuration that was active</li>
+              <li><strong>features_active:</strong> Which tetrad features were enabled</li>
             </ul>
           </div>
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Trigger Types
+            Advanced Features
           </h2>
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Webhook</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                Explainability
+              </h3>
               <p className="text-gray-700 mb-3">
-                Triggered by HTTP POST requests to a webhook URL.
+                Get detailed explanations of optimization decisions with configurable explanation levels (0-5).
               </p>
               <CodeBlock
-                code={`{
-  "type": "webhook",
-  "config": {
-    "path": "/webhook/my-automation"
-  }
-}`}
-                language="json"
+                code={`result = aeao(objective, bounds, explanation_level=4)`}
+                language="python"
               />
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Schedule</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                Self-Improvement
+              </h3>
               <p className="text-gray-700 mb-3">
-                Triggered on a recurring schedule (cron format).
+                Enable learning from optimization experience to improve performance on repeated problems.
               </p>
               <CodeBlock
-                code={`{
-  "type": "schedule",
-  "config": {
-    "cron": "0 0 * * *"
-  }
-}`}
-                language="json"
+                code={`result = aeao(objective, bounds, use_autodidactic_intelligence=True)`}
+                language="python"
               />
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Manual</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                Multi-Agent Coordination
+              </h3>
               <p className="text-gray-700 mb-3">
-                Only triggered manually via API or dashboard.
+                Use multiple AI agents to collaboratively select the best optimization strategy.
               </p>
               <CodeBlock
-                code={`{
-  "type": "manual"
-}`}
-                language="json"
+                code={`result = aeao(objective, bounds, use_agentic_intelligence=True)`}
+                language="python"
+              />
+            </div>
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                GPU Acceleration
+              </h3>
+              <p className="text-gray-700 mb-3">
+                Accelerate optimization with GPU/CUDA support for large-scale problems.
+              </p>
+              <CodeBlock
+                code={`result = aeao(objective, bounds, use_gpu_acceleration=True)`}
+                language="python"
               />
             </div>
           </div>
@@ -266,4 +305,3 @@ export default function AutomationEndpointsPage() {
     </div>
   )
 }
-

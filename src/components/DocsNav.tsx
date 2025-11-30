@@ -15,9 +15,9 @@ const docsSections = [
   {
     title: 'API Reference',
     items: [
-      { title: 'Automation Endpoints', href: '/docs/api/automation' },
+      { title: 'Optimization API', href: '/docs/api/automation' },
       { title: 'Analytics Endpoints', href: '/docs/api/analytics' },
-      { title: 'Webhooks', href: '/docs/api/webhooks' },
+      { title: 'Tetrad Configuration', href: '/docs/api/automation' },
     ]
   },
   {

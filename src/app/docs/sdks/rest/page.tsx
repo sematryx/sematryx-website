@@ -9,18 +9,52 @@ export default function RESTAPIPage() {
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "objective_function": "sphere",
+    "objective_function_id": "func_1234567890",
     "bounds": [[-5, 5], [-5, 5], [-5, 5]],
-    "max_evaluations": 1000
+    "max_evaluations": 1000,
+    "preset": "production"
   }'`
 
-  const automationExample = `curl -X POST https://api.aeao.com/v1/automations \\
+  const tetradConfigExample = `curl -X POST https://api.aeao.com/v1/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "name": "my-automation",
-    "trigger": {"type": "manual"},
-    "actions": []
+    "objective_function_id": "func_1234567890",
+    "bounds": [[-5, 5], [-5, 5]],
+    "max_evaluations": 1000,
+    "tetrad_config": {
+      "use_agentic_intelligence": true,
+      "use_expository_intelligence": true,
+      "use_autodidactic_intelligence": true,
+      "explanation_level": 3
+    }
+  }'`
+
+  const uploadFunction = `curl -X POST https://api.aeao.com/v1/functions \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "name": "sphere",
+    "code": "def sphere(x): return sum(xi**2 for xi in x)",
+    "language": "python"
+  }'`
+
+  const getOptimization = `curl -X GET https://api.aeao.com/v1/optimize/opt_1234567890 \\
+  -H "Authorization: Bearer YOUR_API_KEY"`
+
+  const listOptimizations = `curl -X GET "https://api.aeao.com/v1/optimize?limit=20&offset=0" \\
+  -H "Authorization: Bearer YOUR_API_KEY"`
+
+  const domainOptimization = `curl -X POST https://api.aeao.com/v1/domains/financial/optimize \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "problem_type": "portfolio",
+    "config": {
+      "assets": ["AAPL", "GOOGL", "MSFT"],
+      "risk_tolerance": 0.15
+    },
+    "max_evaluations": 2000
   }'`
 
   const responseExample = `{
@@ -28,27 +62,45 @@ export default function RESTAPIPage() {
   "status": "completed",
   "best_solution": [0.001, -0.002, 0.003],
   "best_fitness": 0.000014,
-  "created_at": "2024-01-01T00:00:00Z"
+  "evaluations": 847,
+  "duration_seconds": 2.34,
+  "strategy_used": "shgo",
+  "tetrad_config": {
+    "use_agentic_intelligence": true,
+    "use_expository_intelligence": true,
+    "use_autodidactic_intelligence": false,
+    "use_domain_extension": true
+  },
+  "features_active": {
+    "agentic_intelligence": true,
+    "expository_intelligence": true,
+    "explanation_level": 2
+  },
+  "created_at": "2024-01-01T00:00:00Z",
+  "completed_at": "2024-01-01T00:00:02Z"
 }`
 
   const errorExample = `{
   "error": {
     "code": "invalid_request",
-    "message": "The 'bounds' parameter is required"
+    "message": "The 'bounds' parameter is required",
+    "field": "bounds"
   }
 }`
 
   const endpoints = [
     { method: 'POST', path: '/optimize', description: 'Run an optimization problem' },
     { method: 'GET', path: '/optimize/{id}', description: 'Get optimization status and results' },
-    { method: 'POST', path: '/automations', description: 'Create a new automation' },
-    { method: 'GET', path: '/automations', description: 'List all automations' },
-    { method: 'GET', path: '/automations/{id}', description: 'Get automation details' },
-    { method: 'PATCH', path: '/automations/{id}', description: 'Update an automation' },
-    { method: 'DELETE', path: '/automations/{id}', description: 'Delete an automation' },
-    { method: 'POST', path: '/automations/{id}/trigger', description: 'Trigger an automation' },
-    { method: 'GET', path: '/analytics/metrics', description: 'Get analytics metrics' },
+    { method: 'GET', path: '/optimize', description: 'List all optimizations' },
+    { method: 'POST', path: '/functions', description: 'Upload an objective function' },
+    { method: 'GET', path: '/functions/{id}', description: 'Get function details' },
+    { method: 'GET', path: '/functions', description: 'List uploaded functions' },
+    { method: 'DELETE', path: '/functions/{id}', description: 'Delete a function' },
+    { method: 'POST', path: '/domains/{domain}/optimize', description: 'Domain-specific optimization' },
+    { method: 'GET', path: '/domains', description: 'List available domains' },
+    { method: 'GET', path: '/analytics/metrics', description: 'Get optimization metrics' },
     { method: 'GET', path: '/analytics/executions', description: 'Get execution statistics' },
+    { method: 'GET', path: '/analytics/performance', description: 'Get performance analytics' },
   ]
 
   return (
@@ -58,7 +110,7 @@ export default function RESTAPIPage() {
           REST API
         </h1>
         <p className="text-xl text-gray-600">
-          Complete REST API reference for AEAO. Use HTTP requests to interact with all AEAO features.
+          Complete REST API reference for AEAO. Use HTTP requests to interact with all optimization features and configure the AEAO Tetrad.
         </p>
       </div>
 
@@ -89,31 +141,82 @@ export default function RESTAPIPage() {
             language="bash"
             title="Authorization header"
           />
+          <p className="text-gray-700 mt-4">
+            Get your API key from the <a href="/api-keys" className="text-primary-600 hover:text-primary-700 underline">API Keys page</a>.
+          </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Request Format
+            Optimization Endpoints
           </h2>
-          <p className="text-gray-700 mb-4">
-            All requests use JSON format. Include <code className="bg-gray-100 px-2 py-1 rounded">Content-Type: application/json</code> header.
-          </p>
           <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
-            Optimization Example
+            Run Optimization
           </h3>
+          <p className="text-gray-700 mb-4">
+            Upload your objective function first, then run optimization:
+          </p>
+          <CodeBlock
+            code={uploadFunction}
+            language="bash"
+            title="POST /v1/functions - Upload objective function"
+          />
           <CodeBlock
             code={optimizeExample}
             language="bash"
-            title="POST /v1/optimize"
+            title="POST /v1/optimize - Run optimization"
           />
           <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
-            Automation Example
+            Configure AEAO Tetrad
+          </h3>
+          <p className="text-gray-700 mb-4">
+            Enable tetrad pillars and configure intelligence features:
+          </p>
+          <CodeBlock
+            code={tetradConfigExample}
+            language="bash"
+            title="POST /v1/optimize - With Tetrad configuration"
+          />
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+            Get Optimization Status
           </h3>
           <CodeBlock
-            code={automationExample}
+            code={getOptimization}
             language="bash"
-            title="POST /v1/automations"
+            title="GET /v1/optimize/{id}"
           />
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+            List Optimizations
+          </h3>
+          <CodeBlock
+            code={listOptimizations}
+            language="bash"
+            title="GET /v1/optimize"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Domain-Specific Optimization
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Use specialized endpoints for domain-specific problems:
+          </p>
+          <CodeBlock
+            code={domainOptimization}
+            language="bash"
+            title="POST /v1/domains/{domain}/optimize"
+          />
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-blue-900 mb-3">Available Domains</h3>
+            <ul className="space-y-2 text-blue-800">
+              <li><code className="bg-blue-100 px-2 py-1 rounded">financial</code> - Portfolio optimization, trading strategies</li>
+              <li><code className="bg-blue-100 px-2 py-1 rounded">healthcare</code> - Drug discovery, clinical trials</li>
+              <li><code className="bg-blue-100 px-2 py-1 rounded">supply_chain</code> - Vehicle routing, inventory optimization</li>
+              <li><code className="bg-blue-100 px-2 py-1 rounded">ai_ml</code> - Hyperparameter tuning, architecture search</li>
+              <li><code className="bg-blue-100 px-2 py-1 rounded">marketing</code> - Campaign optimization, pricing</li>
+            </ul>
+          </div>
         </section>
 
         <section>
@@ -121,7 +224,7 @@ export default function RESTAPIPage() {
             Response Format
           </h2>
           <p className="text-gray-700 mb-4">
-            Successful responses return JSON with the requested data:
+            Successful responses return JSON with optimization results:
           </p>
           <CodeBlock
             code={responseExample}
@@ -178,6 +281,34 @@ export default function RESTAPIPage() {
                 </tbody>
               </table>
             </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Request Parameters
+          </h2>
+          <div className="bg-gray-50 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Optimization Request</h3>
+            <ul className="space-y-2 text-gray-700">
+              <li><strong>objective_function_id</strong> (required): ID of uploaded function</li>
+              <li><strong>bounds</strong> (required): Search bounds [[min1, max1], [min2, max2], ...]</li>
+              <li><strong>max_evaluations</strong> (optional): Maximum function evaluations (default: 1000)</li>
+              <li><strong>preset</strong> (optional): Preset config ("development", "production", "research", "enterprise", "minimal")</li>
+              <li><strong>tetrad_config</strong> (optional): Custom tetrad configuration object</li>
+            </ul>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Tetrad Configuration</h3>
+            <ul className="space-y-2 text-gray-700">
+              <li><strong>use_agentic_intelligence</strong> (boolean): Enable multi-agent coordination</li>
+              <li><strong>use_expository_intelligence</strong> (boolean): Enable explainability</li>
+              <li><strong>use_autodidactic_intelligence</strong> (boolean): Enable self-improvement</li>
+              <li><strong>use_domain_extension</strong> (boolean): Enable domain libraries</li>
+              <li><strong>explanation_level</strong> (integer 0-5): Explanation detail level</li>
+              <li><strong>use_gpu_acceleration</strong> (boolean): Enable GPU/CUDA</li>
+              <li><strong>use_visual_intelligence</strong> (boolean): Enable visual analysis</li>
+            </ul>
           </div>
         </section>
 
@@ -255,7 +386,7 @@ X-RateLimit-Reset: 1640995200`}
             List endpoints support pagination with <code className="bg-gray-100 px-2 py-1 rounded">limit</code> and <code className="bg-gray-100 px-2 py-1 rounded">offset</code> parameters:
           </p>
           <CodeBlock
-            code="GET /v1/automations?limit=20&offset=40"
+            code="GET /v1/optimize?limit=20&offset=40"
             language="bash"
             title="Pagination example"
           />
@@ -264,4 +395,3 @@ X-RateLimit-Reset: 1640995200`}
     </div>
   )
 }
-

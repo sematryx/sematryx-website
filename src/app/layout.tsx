@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'AEAO - AI-Enhanced Automation Operations',
-  description: 'The most advanced AI automation platform for modern businesses',
+  title: 'AEAO - Agentic Expository Audidactic Optimizer',
+  description: 'The world\'s most advanced AI-powered optimization framework. Coordinate multiple AI systems, leverage domain expertise, and solve complex problems across industries.',
 }
 
 export default function RootLayout({
