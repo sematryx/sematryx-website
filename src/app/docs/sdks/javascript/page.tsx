@@ -173,6 +173,258 @@ const results = await Promise.all(
   )
 )`
 
+  const identityManagement = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Create client identity
+const identity = await aeao.identity.create({
+  email: 'user@example.com',
+  organization_id: 'org_123',
+  privacy_level: 'aggregated',
+  subscription_tier: 'professional'
+})
+
+// Get privacy status
+const privacyStatus = await aeao.identity.getPrivacyStatus(identity.client_id)
+console.log('Privacy level:', privacyStatus.privacy_level)
+
+// Get usage quotas
+const quotas = await aeao.identity.getQuotas(identity.client_id)
+console.log('Optimizations used:', quotas.current_usage.optimizations_per_day)
+console.log('Quota:', quotas.api_quotas.optimizations_per_day)
+
+// Configure data sharing
+await aeao.identity.configureSharing(identity.client_id, {
+  optimization_results: true,
+  performance_metrics: true,
+  problem_signatures: false
+})`
+
+  const batchOperations = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Submit batch optimization job
+const batchJob = await aeao.batch.submit({
+  batch_name: 'portfolio_analysis',
+  optimizations: [
+    {
+      job_name: 'portfolio_1',
+      objective_function: 'sphere',
+      bounds: [[-5, 5], [-5, 5]],
+      max_evaluations: 1000
+    },
+    {
+      job_name: 'portfolio_2',
+      objective_function: 'rosenbrock',
+      bounds: [[-5, 5], [-5, 5]],
+      max_evaluations: 1000
+    }
+  ],
+  parallel_workers: 2
+})
+
+// Check batch status
+const status = await aeao.batch.getStatus(batchJob.batch_id)
+console.log('Progress:', status.progress_percentage + '%')
+
+// Get batch results
+const results = await aeao.batch.getResults(batchJob.batch_id)
+results.job_results.forEach(job => {
+  console.log(job.job_name + ':', job.optimal_value)
+})`
+
+  const learningSystem = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Train learning model
+const trainingData = [
+  { problem_type: 'sphere', strategy: 'differential_evolution', success: true },
+  { problem_type: 'rosenbrock', strategy: 'shgo', success: true }
+]
+
+const trainingResult = await aeao.learning.train({
+  training_data: trainingData,
+  model_type: 'cross_problem',
+  max_epochs: 100
+})
+
+// List trained models
+const models = await aeao.learning.listModels()
+models.forEach(model => {
+  console.log('Model:', model.model_name, 'Type:', model.model_type)
+})
+
+// Get learning insights
+const insights = await aeao.learning.getInsights()
+console.log('Total models:', insights.total_models)
+console.log('Learning enabled:', insights.learning_enabled)`
+
+  const advancedOptimization = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Multi-objective optimization
+const multiObjResult = await aeao.advanced.multiObjective({
+  objectives: ['sphere', 'rosenbrock'],
+  bounds: [[-5, 5], [-5, 5]],
+  method: 'nsga2',
+  max_evaluations: 2000
+})
+
+// Get Pareto frontier
+multiObjResult.pareto_frontier.forEach(point => {
+  console.log('Solution:', point.solution, 'Objectives:', point.objectives)
+})
+
+// Sensitivity analysis
+const sensitivityResult = await aeao.advanced.sensitivityAnalysis({
+  objective_function: 'sphere',
+  bounds: [[-5, 5], [-5, 5]],
+  reference_point: [0.0, 0.0],
+  analysis_type: 'global'
+})
+
+console.log('Sensitivity scores:', sensitivityResult.sensitivity_scores)`
+
+  const contextIntelligence = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Analyze problem context
+const context = {
+  problem_id: 'prob_123',
+  problem_type: 'portfolio_optimization',
+  domain: 'financial',
+  description: 'Optimize portfolio allocation for risk-return tradeoff',
+  parameters: { risk_tolerance: 0.15 }
+}
+
+const analysis = await aeao.context.analyze({
+  target_context: context,
+  similarity_threshold: 0.7,
+  include_recommendations: true
+})
+
+// Get similar problems
+analysis.similar_problems.forEach(similar => {
+  console.log('Similar problem:', similar.problem_id, 'Score:', similar.similarity_score)
+})
+
+// Get optimization recommendations
+analysis.optimization_recommendations.forEach(rec => {
+  console.log('Recommendation:', rec)
+})`
+
+  const dataLake = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Create data connection
+const connection = await aeao.dataLake.createConnection({
+  connection_type: 's3',
+  endpoint_url: 'https://s3.amazonaws.com/bucket',
+  credentials: { access_key: '...', secret_key: '...' }
+})
+
+// Upload dataset
+const dataset = await aeao.dataLake.uploadDataset({
+  dataset_name: 'optimization_results',
+  data_type: 'optimization_results',
+  data: [...],  // Your data
+  description: 'Historical optimization results'
+})
+
+// Store optimization data
+await aeao.dataLake.storeOptimizationData({
+  experiment_id: 'exp_123',
+  problem_definition: { bounds: [[-5, 5], [-5, 5]] },
+  optimization_results: [...],
+  performance_metrics: { duration: 2.5, evaluations: 1000 }
+})
+
+// Query data lake
+const queryResult = await aeao.dataLake.query({
+  query_type: 'filter',
+  dataset_ids: [dataset.dataset_id],
+  filters: { experiment_id: 'exp_123' }
+})`
+
+  const analytics = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Submit performance metrics
+await aeao.analytics.submitMetrics({
+  metrics: [
+    {
+      metric_name: 'optimization_duration',
+      metric_value: 2.5,
+      metric_type: 'time'
+    },
+    {
+      metric_name: 'solution_quality',
+      metric_value: 0.95,
+      metric_type: 'quality'
+    }
+  ],
+  source_system: 'production'
+})
+
+// Generate performance report
+const report = await aeao.analytics.generateReport({
+  report_type: 'comprehensive',
+  metric_categories: ['time', 'quality', 'efficiency'],
+  time_range: { start: '2024-01-01', end: '2024-01-31' }
+})
+
+// Get performance insights
+const insights = await aeao.analytics.getInsights()
+insights.forEach(insight => {
+  console.log(insight.insight_type + ':', insight.description)
+})
+
+// Get metrics summary
+const summary = await aeao.analytics.getMetricsSummary()
+console.log('Average duration:', summary.average_duration)
+console.log('Success rate:', summary.success_rate)`
+
+  const configuration = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Get API configuration
+const config = await aeao.config.get()
+console.log('API Version:', config.version)
+console.log('Environment:', config.environment)
+
+// Get available features
+const features = await aeao.config.getFeatures()
+console.log('Optimization available:', features.optimization.available)
+console.log('Learning system:', features.ai_capabilities.learning_system)
+
+// Get operational limits
+const limits = await aeao.config.getLimits()
+console.log('Max evaluations:', limits.optimization.max_evaluations)
+console.log('Max variables:', limits.optimization.max_variables)`
+
+  const healthChecks = `import { AEAO } from '@aeao/javascript-sdk'
+
+const aeao = new AEAO('your-api-key')
+
+// Basic health check
+const health = await aeao.health.check()
+console.log('Status:', health.status)
+console.log('Uptime:', health.uptime, 'seconds')
+
+// Detailed health check
+const detailedHealth = await aeao.health.detailed()
+console.log('Memory usage:', detailedHealth.memory_usage + '%')
+console.log('CPU usage:', detailedHealth.cpu_usage + '%')
+console.log('Components:', detailedHealth.components)`
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
@@ -308,6 +560,123 @@ const results = await Promise.all(
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Identity Management
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Manage client identity, privacy settings, and usage quotas:
+          </p>
+          <CodeBlock
+            code={identityManagement}
+            language="javascript"
+            title="Identity management examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Batch Operations
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Submit and manage batch optimization jobs:
+          </p>
+          <CodeBlock
+            code={batchOperations}
+            language="javascript"
+            title="Batch operations examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Learning System
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Train models and get learning insights:
+          </p>
+          <CodeBlock
+            code={learningSystem}
+            language="javascript"
+            title="Learning system examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Advanced Optimization
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Multi-objective optimization and sensitivity analysis:
+          </p>
+          <CodeBlock
+            code={advancedOptimization}
+            language="javascript"
+            title="Advanced optimization examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Context Intelligence
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Analyze problem context and get recommendations:
+          </p>
+          <CodeBlock
+            code={contextIntelligence}
+            language="javascript"
+            title="Context intelligence examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Data Lake
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Store and query optimization data:
+          </p>
+          <CodeBlock
+            code={dataLake}
+            language="javascript"
+            title="Data lake examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Analytics
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Submit metrics and generate performance reports:
+          </p>
+          <CodeBlock
+            code={analytics}
+            language="javascript"
+            title="Analytics examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Configuration & Health
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Get API configuration and check system health:
+          </p>
+          <CodeBlock
+            code={configuration}
+            language="javascript"
+            title="Configuration examples"
+          />
+          <CodeBlock
+            code={healthChecks}
+            language="javascript"
+            title="Health check examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
             API Reference
           </h2>
           <div className="space-y-6">
@@ -319,7 +688,15 @@ const results = await Promise.all(
                 <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.financial</code> - Financial domain optimization</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.healthcare</code> - Healthcare domain optimization</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.supplyChain</code> - Supply chain optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.identity</code> - Identity management</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.batch</code> - Batch operations</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.learning</code> - Learning system</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.advanced</code> - Advanced optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.context</code> - Context intelligence</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.dataLake</code> - Data lake operations</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.analytics</code> - Analytics and metrics</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.config</code> - Configuration</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.health</code> - Health checks</li>
               </ul>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">

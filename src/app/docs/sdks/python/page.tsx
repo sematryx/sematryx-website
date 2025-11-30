@@ -156,6 +156,253 @@ result = aeao(
     use_neural_symbolic=True
 )`
 
+  const identityManagement = `from aeao import AEAOClient
+
+client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+
+# Create client identity
+identity = client.register_with_identity(
+    email="user@example.com",
+    organization_id="org_123",
+    privacy_level=PrivacyLevel.AGGREGATED,
+    subscription_tier=SubscriptionTier.PROFESSIONAL
+)
+
+# Get privacy status
+privacy_status = client.get_privacy_status()
+print(f"Privacy level: {privacy_status['privacy_level']}")
+
+# Get usage quotas
+quotas = client.get_usage_quotas()
+print(f"Optimizations used: {quotas['current_usage']['optimizations_per_day']}")
+print(f"Quota: {quotas['api_quotas']['optimizations_per_day']}")
+
+# Configure data sharing
+client.configure_data_sharing({
+    'optimization_results': True,
+    'performance_metrics': True,
+    'problem_signatures': False
+})`
+
+  const batchOperations = `from aeao import AEAOClient
+
+client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+
+# Submit batch optimization job
+batch_job = client.submit_batch_optimization(
+    batch_name="portfolio_analysis",
+    optimizations=[
+        {
+            "job_name": "portfolio_1",
+            "objective_function": "sphere",
+            "bounds": [[-5, 5], [-5, 5]],
+            "max_evaluations": 1000
+        },
+        {
+            "job_name": "portfolio_2",
+            "objective_function": "rosenbrock",
+            "bounds": [[-5, 5], [-5, 5]],
+            "max_evaluations": 1000
+        }
+    ],
+    parallel_workers=2
+)
+
+# Check batch status
+status = client.get_batch_status(batch_job['batch_id'])
+print(f"Progress: {status['progress_percentage']}%")
+
+# Get batch results
+results = client.get_batch_results(batch_job['batch_id'])
+for job_result in results['job_results']:
+    print(f"{job_result['job_name']}: {job_result['optimal_value']}")`
+
+  const learningSystem = `from aeao import AEAOClient
+
+client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+
+# Train learning model
+training_data = [
+    {"problem_type": "sphere", "strategy": "differential_evolution", "success": True},
+    {"problem_type": "rosenbrock", "strategy": "shgo", "success": True}
+]
+
+training_result = client.train_learning_model(
+    training_data=training_data,
+    model_type="cross_problem",
+    max_epochs=100
+)
+
+# List trained models
+models = client.list_learning_models()
+for model in models:
+    print(f"Model: {model['model_name']}, Type: {model['model_type']}")
+
+# Get learning insights
+insights = client.get_learning_insights()
+print(f"Total models: {insights['total_models']}")
+print(f"Learning enabled: {insights['learning_enabled']}")`
+
+  const advancedOptimization = `from aeao import AEAOClient
+
+client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+
+# Multi-objective optimization
+multi_obj_result = client.multi_objective_optimize(
+    objectives=["sphere", "rosenbrock"],
+    bounds=[[-5, 5], [-5, 5]],
+    method="nsga2",
+    max_evaluations=2000
+)
+
+# Get Pareto frontier
+pareto_frontier = multi_obj_result['pareto_frontier']
+for point in pareto_frontier:
+    print(f"Solution: {point['solution']}, Objectives: {point['objectives']}")
+
+# Sensitivity analysis
+sensitivity_result = client.sensitivity_analysis(
+    objective_function="sphere",
+    bounds=[[-5, 5], [-5, 5]],
+    reference_point=[0.0, 0.0],
+    analysis_type="global"
+)
+
+print(f"Sensitivity scores: {sensitivity_result['sensitivity_scores']}")`
+
+  const contextIntelligence = `from aeao import AEAOClient
+
+client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+
+# Analyze problem context
+context = {
+    "problem_id": "prob_123",
+    "problem_type": "portfolio_optimization",
+    "domain": "financial",
+    "description": "Optimize portfolio allocation for risk-return tradeoff",
+    "parameters": {"risk_tolerance": 0.15}
+}
+
+analysis = client.analyze_context(
+    target_context=context,
+    similarity_threshold=0.7,
+    include_recommendations=True
+)
+
+# Get similar problems
+for similar in analysis['similar_problems']:
+    print(f"Similar problem: {similar['problem_id']}, Score: {similar['similarity_score']}")
+
+# Get optimization recommendations
+for recommendation in analysis['optimization_recommendations']:
+    print(f"Recommendation: {recommendation}")`
+
+  const dataLake = `from aeao import AEAOClient
+
+client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+
+# Create data connection
+connection = client.create_data_connection(
+    connection_type="s3",
+    endpoint_url="https://s3.amazonaws.com/bucket",
+    credentials={"access_key": "...", "secret_key": "..."}
+)
+
+# Upload dataset
+dataset = client.upload_dataset(
+    dataset_name="optimization_results",
+    data_type="optimization_results",
+    data=[...],  # Your data
+    description="Historical optimization results"
+)
+
+# Store optimization data
+client.store_optimization_data(
+    experiment_id="exp_123",
+    problem_definition={"bounds": [[-5, 5], [-5, 5]]},
+    optimization_results=[...],
+    performance_metrics={"duration": 2.5, "evaluations": 1000}
+)
+
+# Query data lake
+query_result = client.query_data_lake(
+    query_type="filter",
+    dataset_ids=[dataset['dataset_id']],
+    filters={"experiment_id": "exp_123"}
+)`
+
+  const analytics = `from aeao import AEAOClient
+
+client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+
+# Submit performance metrics
+client.submit_metrics(
+    metrics=[
+        {
+            "metric_name": "optimization_duration",
+            "metric_value": 2.5,
+            "metric_type": "time"
+        },
+        {
+            "metric_name": "solution_quality",
+            "metric_value": 0.95,
+            "metric_type": "quality"
+        }
+    ],
+    source_system="production"
+)
+
+# Generate performance report
+report = client.generate_performance_report(
+    report_type="comprehensive",
+    metric_categories=["time", "quality", "efficiency"],
+    time_range={"start": "2024-01-01", "end": "2024-01-31"}
+)
+
+# Get performance insights
+insights = client.get_performance_insights()
+for insight in insights:
+    print(f"{insight['insight_type']}: {insight['description']}")
+
+# Get metrics summary
+summary = client.get_metrics_summary()
+print(f"Average duration: {summary['average_duration']}")
+print(f"Success rate: {summary['success_rate']}")`
+
+  const configuration = `from aeao import AEAOClient
+
+client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+
+# Get API configuration
+config = client.get_api_config()
+print(f"API Version: {config['version']}")
+print(f"Environment: {config['environment']}")
+
+# Get available features
+features = client.get_features()
+print(f"Optimization available: {features['optimization']['available']}")
+print(f"Learning system: {features['ai_capabilities']['learning_system']}")
+
+# Get operational limits
+limits = client.get_limits()
+print(f"Max evaluations: {limits['optimization']['max_evaluations']}")
+print(f"Max variables: {limits['optimization']['max_variables']}")`
+
+  const healthChecks = `from aeao import AEAOClient
+
+client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+
+# Basic health check
+health = client.get_system_status()
+print(f"API Server: {health['api_server']['success']}")
+print(f"Local System: {health['local_system']['success']}")
+
+# Get system health
+health_status = client.get_system_health()
+print(f"Status: {health_status['status']}")
+print(f"Uptime: {health_status['uptime']} seconds")
+print(f"Memory usage: {health_status['memory_usage']}%")`
+
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
@@ -307,6 +554,123 @@ result = aeao(
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Identity Management
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Manage client identity, privacy settings, and usage quotas:
+          </p>
+          <CodeBlock
+            code={identityManagement}
+            language="python"
+            title="Identity management examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Batch Operations
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Submit and manage batch optimization jobs:
+          </p>
+          <CodeBlock
+            code={batchOperations}
+            language="python"
+            title="Batch operations examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Learning System
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Train models and get learning insights:
+          </p>
+          <CodeBlock
+            code={learningSystem}
+            language="python"
+            title="Learning system examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Advanced Optimization
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Multi-objective optimization and sensitivity analysis:
+          </p>
+          <CodeBlock
+            code={advancedOptimization}
+            language="python"
+            title="Advanced optimization examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Context Intelligence
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Analyze problem context and get recommendations:
+          </p>
+          <CodeBlock
+            code={contextIntelligence}
+            language="python"
+            title="Context intelligence examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Data Lake
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Store and query optimization data:
+          </p>
+          <CodeBlock
+            code={dataLake}
+            language="python"
+            title="Data lake examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Analytics
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Submit metrics and generate performance reports:
+          </p>
+          <CodeBlock
+            code={analytics}
+            language="python"
+            title="Analytics examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Configuration & Health
+          </h2>
+          <p className="text-gray-700 mb-4">
+            Get API configuration and check system health:
+          </p>
+          <CodeBlock
+            code={configuration}
+            language="python"
+            title="Configuration examples"
+          />
+          <CodeBlock
+            code={healthChecks}
+            language="python"
+            title="Health check examples"
+          />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
             API Reference
           </h2>
           <div className="space-y-6">
@@ -347,6 +711,15 @@ result = aeao(
                 <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOClient(api_url, api_key)</code> - Initialize API client</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.authenticate()</code> - Authenticate with API</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.optimize(objective, bounds, **kwargs)</code> - Run optimization via API</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">client.register_with_identity()</code> - Create client identity</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">client.get_usage_quotas()</code> - Get usage quotas</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">client.submit_batch_optimization()</code> - Submit batch job</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">client.train_learning_model()</code> - Train learning model</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">client.multi_objective_optimize()</code> - Multi-objective optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">client.analyze_context()</code> - Analyze problem context</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">client.upload_dataset()</code> - Upload to data lake</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">client.submit_metrics()</code> - Submit performance metrics</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">client.get_system_status()</code> - Get system health</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">AsyncAEAO</code> - Async version of API client</li>
               </ul>
             </div>
