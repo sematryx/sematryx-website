@@ -1,4 +1,7 @@
+'use client'
+
 import CodeBlock from '@/components/CodeBlock'
+import CollapsibleSection from '@/components/CollapsibleSection'
 
 export default function JavaScriptSDKPage() {
   const installCode = `npm install @aeao/javascript-sdk`
@@ -437,10 +440,7 @@ console.log('Components:', detailedHealth.components)`
       </div>
 
       <div className="space-y-12">
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Installation
-          </h2>
+        <CollapsibleSection title="Installation" defaultOpen={true}>
           <CodeBlock
             code={installCode}
             language="bash"
@@ -449,12 +449,9 @@ console.log('Components:', detailedHealth.components)`
           <p className="text-gray-700 mt-4">
             The SDK requires Node.js 16+ or a modern browser with ES6+ support.
           </p>
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Quick Start
-          </h2>
+        <CollapsibleSection title="Quick Start" defaultOpen={true}>
           <p className="text-gray-700 mb-4">
             Initialize the SDK with your API key and start optimizing:
           </p>
@@ -463,12 +460,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Basic usage example"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            AEAO Tetrad Configuration
-          </h2>
+        <CollapsibleSection title="AEAO Tetrad Configuration">
           <p className="text-gray-700 mb-4">
             Configure the four pillars of AEAO intelligence:
           </p>
@@ -486,12 +480,9 @@ console.log('Components:', detailedHealth.components)`
               <li><strong>🏗️ Domain Extension:</strong> Business domain libraries (enabled by default)</li>
             </ul>
           </div>
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Domain-Specific Optimization
-          </h2>
+        <CollapsibleSection title="Domain-Specific Optimization">
           <p className="text-gray-700 mb-4">
             Use specialized domain libraries for industry-specific problems:
           </p>
@@ -500,12 +491,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Domain-specific optimization"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Advanced Features
-          </h2>
+        <CollapsibleSection title="Advanced Features">
           <p className="text-gray-700 mb-4">
             Enable advanced capabilities for complex optimization problems:
           </p>
@@ -514,12 +502,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Advanced features"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Batch Optimization
-          </h2>
+        <CollapsibleSection title="Batch Optimization">
           <p className="text-gray-700 mb-4">
             Run multiple optimizations in parallel:
           </p>
@@ -528,12 +513,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Batch optimization"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Error Handling
-          </h2>
+        <CollapsibleSection title="Error Handling">
           <p className="text-gray-700 mb-4">
             The SDK throws errors for failed requests. Always handle errors appropriately:
           </p>
@@ -542,12 +524,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Error handling"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            TypeScript Support
-          </h2>
+        <CollapsibleSection title="TypeScript Support">
           <p className="text-gray-700 mb-4">
             The SDK includes full TypeScript definitions for type safety:
           </p>
@@ -556,12 +535,9 @@ console.log('Components:', detailedHealth.components)`
             language="typescript"
             title="TypeScript usage"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Identity Management
-          </h2>
+        <CollapsibleSection title="Identity Management">
           <p className="text-gray-700 mb-4">
             Manage client identity, privacy settings, and usage quotas:
           </p>
@@ -570,12 +546,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Identity management examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Batch Operations
-          </h2>
+        <CollapsibleSection title="Batch Operations">
           <p className="text-gray-700 mb-4">
             Submit and manage batch optimization jobs:
           </p>
@@ -584,12 +557,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Batch operations examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Learning System
-          </h2>
+        <CollapsibleSection title="Learning System">
           <p className="text-gray-700 mb-4">
             Train models and get learning insights:
           </p>
@@ -598,12 +568,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Learning system examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Advanced Optimization
-          </h2>
+        <CollapsibleSection title="Advanced Optimization">
           <p className="text-gray-700 mb-4">
             Multi-objective optimization and sensitivity analysis:
           </p>
@@ -612,12 +579,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Advanced optimization examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Context Intelligence
-          </h2>
+        <CollapsibleSection title="Context Intelligence">
           <p className="text-gray-700 mb-4">
             Analyze problem context and get recommendations:
           </p>
@@ -626,12 +590,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Context intelligence examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Data Lake
-          </h2>
+        <CollapsibleSection title="Data Lake">
           <p className="text-gray-700 mb-4">
             Store and query optimization data:
           </p>
@@ -640,12 +601,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Data lake examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Analytics
-          </h2>
+        <CollapsibleSection title="Analytics">
           <p className="text-gray-700 mb-4">
             Submit metrics and generate performance reports:
           </p>
@@ -654,12 +612,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Analytics examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Configuration & Health
-          </h2>
+        <CollapsibleSection title="Configuration & Health">
           <p className="text-gray-700 mb-4">
             Get API configuration and check system health:
           </p>
@@ -673,12 +628,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Health check examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            API Reference
-          </h2>
+        <CollapsibleSection title="API Reference">
           <div className="space-y-6">
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">AEAO Class</h3>
@@ -724,7 +676,7 @@ console.log('Components:', detailedHealth.components)`
               </ul>
             </div>
           </div>
-        </section>
+        </CollapsibleSection>
       </div>
     </div>
   )

@@ -1,4 +1,7 @@
+'use client'
+
 import CodeBlock from '@/components/CodeBlock'
+import CollapsibleSection from '@/components/CollapsibleSection'
 
 export default function PythonSDKPage() {
   const installCode = `pip install aeao`
@@ -416,10 +419,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
       </div>
 
       <div className="space-y-12">
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Installation
-          </h2>
+        <CollapsibleSection title="Installation" defaultOpen={true}>
           <CodeBlock
             code={installCode}
             language="bash"
@@ -433,12 +433,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="bash"
             title="Install with domain libraries"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Quick Start
-          </h2>
+        <CollapsibleSection title="Quick Start" defaultOpen={true}>
           <p className="text-gray-700 mb-4">
             The simplest way to use AEAO is with the main <code className="bg-gray-100 px-2 py-1 rounded">aeao()</code> function:
           </p>
@@ -447,12 +444,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Basic optimization example"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            AEAO Tetrad Configuration
-          </h2>
+        <CollapsibleSection title="AEAO Tetrad Configuration">
           <p className="text-gray-700 mb-4">
             Configure the four pillars of AEAO intelligence to match your needs:
           </p>
@@ -470,12 +464,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
               <li><strong>🏗️ Domain Extension:</strong> Business domain libraries (enabled by default)</li>
             </ul>
           </div>
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Domain-Specific Optimization
-          </h2>
+        <CollapsibleSection title="Domain-Specific Optimization">
           <p className="text-gray-700 mb-4">
             Use specialized domain libraries for industry-specific problems:
           </p>
@@ -494,12 +485,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
               <li><strong>marketing:</strong> Campaign optimization, pricing strategies</li>
             </ul>
           </div>
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            API Client
-          </h2>
+        <CollapsibleSection title="API Client">
           <p className="text-gray-700 mb-4">
             For server-side optimization via the REST API:
           </p>
@@ -508,12 +496,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Using the API client"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Advanced Features
-          </h2>
+        <CollapsibleSection title="Advanced Features">
           <p className="text-gray-700 mb-4">
             Enable advanced capabilities for complex optimization problems:
           </p>
@@ -522,12 +507,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Advanced features"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Error Handling
-          </h2>
+        <CollapsibleSection title="Error Handling">
           <p className="text-gray-700 mb-4">
             The SDK provides specific exception types for different error scenarios:
           </p>
@@ -536,12 +518,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Error handling"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Async Support
-          </h2>
+        <CollapsibleSection title="Async Support">
           <p className="text-gray-700 mb-4">
             Use AsyncAEAO for concurrent operations:
           </p>
@@ -550,12 +529,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Async usage"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Identity Management
-          </h2>
+        <CollapsibleSection title="Identity Management">
           <p className="text-gray-700 mb-4">
             Manage client identity, privacy settings, and usage quotas:
           </p>
@@ -564,12 +540,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Identity management examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Batch Operations
-          </h2>
+        <CollapsibleSection title="Batch Operations">
           <p className="text-gray-700 mb-4">
             Submit and manage batch optimization jobs:
           </p>
@@ -578,12 +551,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Batch operations examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Learning System
-          </h2>
+        <CollapsibleSection title="Learning System">
           <p className="text-gray-700 mb-4">
             Train models and get learning insights:
           </p>
@@ -592,12 +562,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Learning system examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Advanced Optimization
-          </h2>
+        <CollapsibleSection title="Advanced Optimization">
           <p className="text-gray-700 mb-4">
             Multi-objective optimization and sensitivity analysis:
           </p>
@@ -606,12 +573,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Advanced optimization examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Context Intelligence
-          </h2>
+        <CollapsibleSection title="Context Intelligence">
           <p className="text-gray-700 mb-4">
             Analyze problem context and get recommendations:
           </p>
@@ -620,12 +584,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Context intelligence examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Data Lake
-          </h2>
+        <CollapsibleSection title="Data Lake">
           <p className="text-gray-700 mb-4">
             Store and query optimization data:
           </p>
@@ -634,12 +595,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Data lake examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Analytics
-          </h2>
+        <CollapsibleSection title="Analytics">
           <p className="text-gray-700 mb-4">
             Submit metrics and generate performance reports:
           </p>
@@ -648,12 +606,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Analytics examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Configuration & Health
-          </h2>
+        <CollapsibleSection title="Configuration & Health">
           <p className="text-gray-700 mb-4">
             Get API configuration and check system health:
           </p>
@@ -667,12 +622,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Health check examples"
           />
-        </section>
+        </CollapsibleSection>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            API Reference
-          </h2>
+        <CollapsibleSection title="API Reference">
           <div className="space-y-6">
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Main Function</h3>
@@ -724,7 +676,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
               </ul>
             </div>
           </div>
-        </section>
+        </CollapsibleSection>
       </div>
     </div>
   )
