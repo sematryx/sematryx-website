@@ -42,7 +42,7 @@ export default function Features() {
     {
       title: "Domain Extension",
       subtitle: "Business Domain Libraries",
-      description: "Domain-specific application extensions that integrate AEAO as a backend processor for domain-specific problems. Engine-domain separation enables core optimization algorithms across 13+ business domains with automatic code generation and deployment.",
+      description: "Build domain-specific applications with AEAO as your optimization backend. Engine-domain separation enables rapid development of specialized solutions across 13+ business domains, with automatic code generation and production-ready deployment.",
       icon: "🏗️",
       color: "orange",
       features: [

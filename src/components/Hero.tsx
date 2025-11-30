@@ -12,7 +12,7 @@ export default function Hero() {
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
             The world's most advanced AI-powered optimization framework built on four pillars:
-            Multi-agent coordination, explainable intelligence, self-improving learning, and domain-specific application extensions that integrate AEAO as a backend processor for domain-specific problems.
+            Multi-agent coordination, explainable intelligence, self-improving learning, and domain-specific applications powered by AEAO's optimization engine.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link 
