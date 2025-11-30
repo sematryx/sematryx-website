@@ -1101,12 +1101,6 @@ export default function RESTAPIPage() {
               )
             })
           })()}
-                    })}
-                  </div>
-                </div>
-              )
-            })
-          })()}
         </section>
 
         <section>
