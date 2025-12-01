@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
 interface CollapsibleSectionProps {
   title: string
@@ -26,9 +26,9 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
           {title}
         </h2>
         {isOpen ? (
-          <ChevronUpIcon className="h-6 w-6 text-gray-600 flex-shrink-0" />
+          <ChevronUp className="h-6 w-6 text-gray-600 flex-shrink-0" />
         ) : (
-          <ChevronDownIcon className="h-6 w-6 text-gray-600 flex-shrink-0" />
+          <ChevronDown className="h-6 w-6 text-gray-600 flex-shrink-0" />
         )}
       </button>
       {isOpen && (
