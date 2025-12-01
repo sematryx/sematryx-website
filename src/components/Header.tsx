@@ -18,6 +18,9 @@ export default function Header() {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
+              <Link href="/why-aeao" className="text-gray-900 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">
+                Why AEAO
+              </Link>
               <Link href="/docs" className="text-gray-900 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">
                 Documentation
               </Link>
@@ -52,6 +55,9 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <Link href="/why-aeao" className="text-gray-900 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
+                Why AEAO
+              </Link>
               <Link href="/docs" className="text-gray-900 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">
                 Documentation
               </Link>

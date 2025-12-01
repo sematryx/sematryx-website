@@ -10,8 +10,8 @@ export default function Footer() {
               AEAO
             </Link>
             <p className="text-gray-400 mb-4 max-w-md">
-              AI-Enhanced Automation Operations platform helping businesses scale 
-              with intelligent automation solutions.
+              Agentic Expository Autodidactic Optimizer - The world's most advanced optimization framework 
+              with AI-powered intelligence, enterprise compliance, and continuous learning.
             </p>
           </div>
 
