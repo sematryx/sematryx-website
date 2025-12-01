@@ -17,8 +17,8 @@ const docsSections = [
     title: 'API Reference',
     items: [
       { title: 'Optimization API', href: '/docs/api/automation' },
+      { title: 'Tetrad Configuration', href: '/docs/api/tetrad-config' },
       { title: 'Analytics Endpoints', href: '/docs/api/analytics' },
-      { title: 'Tetrad Configuration', href: '/docs/api/automation' },
     ]
   },
   {
