@@ -25,7 +25,13 @@ export default function Hero() {
               22-26% Performance Boost
             </span>
             <span className="bg-primary-100 text-primary-700 px-4 py-2 rounded-full font-semibold">
-              Self-Improving Learning
+              Temporal Intelligence
+            </span>
+            <span className="bg-primary-100 text-primary-700 px-4 py-2 rounded-full font-semibold">
+              Knowledge Graphs + RAG
+            </span>
+            <span className="bg-primary-100 text-primary-700 px-4 py-2 rounded-full font-semibold">
+              Multi-Library Integration
             </span>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
