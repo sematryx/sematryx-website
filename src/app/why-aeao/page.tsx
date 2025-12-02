@@ -59,10 +59,10 @@ export default function WhyAEAOPage() {
       comparison: "Traditional optimizers: Single library | AEAO: Unified registry across multiple optimization libraries"
     },
     {
-      title: "Federated Learning",
-      description: "Privacy-preserving federated meta-learning across organizations. Collaborate on optimization strategies while maintaining data privacy and competitive advantage.",
+      title: "Continuous Learning",
+      description: "AEAO becomes more effective with every new problem it sees. As more teams run diverse optimizations, it learns which strategies work best on which problem types—so you spend less time guessing and more time getting good solutions quickly.",
       icon: "🌐",
-      comparison: "Traditional optimizers: Isolated learning | AEAO: Federated learning with privacy preservation"
+      comparison: "Traditional optimizers: Static, no learning | AEAO: Learns from every optimization across all users"
     }
   ]
 
@@ -311,27 +311,38 @@ export default function WhyAEAOPage() {
               
               <div className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-8 border-l-4 border-primary-600">
                 <div className="text-5xl mb-4">🌐</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Federated Learning</h3>
-                <p className="text-gray-700 mb-4">
-                  Privacy-preserving federated meta-learning across organizations. Collaborate on optimization strategies 
-                  while maintaining data privacy and competitive advantage through secure aggregation protocols.
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Continuous Learning</h3>
+                <p className="text-gray-700 mb-6">
+                  <strong>AEAO becomes more effective with every new problem it sees.</strong>
                 </p>
+                <p className="text-gray-700 mb-6">
+                  As more teams run diverse optimizations, it learns which strategies work best on which problem types—so you 
+                  spend less time guessing, trying dead ends, and tuning, and more time getting good solutions quickly.
+                </p>
+                <div className="bg-white rounded-lg p-4 border-l-4 border-primary-600 mb-6">
+                  <h4 className="font-semibold text-gray-900 mb-2">🔒 Private Learning for Regulated & Competitive Teams</h4>
+                  <p className="text-sm text-gray-700">
+                    For teams in regulated or highly competitive spaces, AEAO can also learn privately from your history only—capturing 
+                    the quirks, constraints, and proprietary behavior of your systems so the optimizer becomes specifically better for 
+                    you, without contributing those patterns back to anyone else.
+                  </p>
+                </div>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center">
                     <span className="text-primary-600 mr-2">✓</span>
-                    Privacy-preserving federated learning
+                    Learn which strategies work best on which problem types
                   </li>
                   <li className="flex items-center">
                     <span className="text-primary-600 mr-2">✓</span>
-                    Secure aggregation protocols
+                    Spend less time guessing and trying dead ends
                   </li>
                   <li className="flex items-center">
                     <span className="text-primary-600 mr-2">✓</span>
-                    Cross-organization meta-learning
+                    Get good solutions quickly from collective experience
                   </li>
                   <li className="flex items-center">
                     <span className="text-primary-600 mr-2">✓</span>
-                    Byzantine fault tolerance
+                    Private learning available for regulated/competitive environments
                   </li>
                 </ul>
               </div>
@@ -493,9 +504,9 @@ export default function WhyAEAOPage() {
                     <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Unified Registry</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td className="py-4 px-6 font-medium text-gray-900">Federated Learning</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ Isolated</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Privacy-Preserving</td>
+                    <td className="py-4 px-6 font-medium text-gray-900">Continuous Learning</td>
+                    <td className="py-4 px-6 text-center text-gray-700">❌ Static, No Learning</td>
+                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Learns From Every Optimization</td>
                   </tr>
                   <tr>
                     <td className="py-4 px-6 font-medium text-gray-900">Causal Discovery</td>
