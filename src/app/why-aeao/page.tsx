@@ -23,12 +23,6 @@ export default function WhyAEAOPage() {
       comparison: "Traditional optimizers: Black box | AEAO: Full explainability + performance boost"
     },
     {
-      title: "Self-Improving Learning",
-      description: "Cross-problem learning, pattern recognition, and strategy adaptation. AEAO gets better over time by learning from every optimization. (Core learning systems active; advanced self-improvement integration in progress)",
-      icon: "🧠",
-      comparison: "Traditional optimizers: Static algorithms | AEAO: Continuous learning and adaptation"
-    },
-    {
       title: "Domain-Specific Solutions",
       description: "13+ business domain libraries with automatic code generation. Financial, healthcare, supply chain, manufacturing, and more - all production-ready.",
       icon: "🏗️",
@@ -58,12 +52,6 @@ export default function WhyAEAOPage() {
       icon: "🔗",
       comparison: "Traditional optimizers: Single library | AEAO: Unified registry across multiple optimization libraries"
     },
-    {
-      title: "Continuous Learning",
-      description: "AEAO becomes more effective with every new problem it sees. As more teams run diverse optimizations, it learns which strategies work best on which problem types—so you spend less time guessing and more time getting good solutions quickly.",
-      icon: "🌐",
-      comparison: "Traditional optimizers: Static, no learning | AEAO: Learns from every optimization across all users"
-    }
   ]
 
   const useCases = [
@@ -199,7 +187,7 @@ export default function WhyAEAOPage() {
               What Makes AEAO Different
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Six key advantages that set AEAO apart from traditional optimization solutions
+              Key advantages that set AEAO apart from traditional optimization solutions
             </p>
           </div>
 
@@ -227,7 +215,75 @@ export default function WhyAEAOPage() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+              <div className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-8 border-l-4 border-primary-600">
+                <div className="text-5xl mb-4">🌐</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Continuous Learning</h3>
+                <p className="text-gray-700 mb-6">
+                  <strong>AEAO becomes more effective with every new problem it sees.</strong>
+                </p>
+                <p className="text-gray-700 mb-6">
+                  As more teams run diverse optimizations, it learns which strategies work best on which problem types—so you 
+                  spend less time guessing, trying dead ends, and tuning, and more time getting good solutions quickly.
+                </p>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-primary-600">
+                    <h4 className="font-semibold text-gray-900 mb-2">🔒 Professional: Private Learning</h4>
+                    <p className="text-sm text-gray-700">
+                      For teams in regulated or highly competitive spaces, AEAO can learn privately from your history only—capturing 
+                      the quirks, constraints, and proprietary behavior of your systems so the optimizer becomes specifically better for 
+                      you, without contributing those patterns back to anyone else. Data stored in AEAO's dedicated infrastructure.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-purple-600">
+                    <h4 className="font-semibold text-gray-900 mb-2">🏢 Enterprise: Bring Your Own Database (BYOD)</h4>
+                    <p className="text-sm text-gray-700 mb-3">
+                      For organizations with strict data sovereignty, compliance, or security requirements, connect AEAO to your own infrastructure. 
+                      All optimization data stays in your Qdrant, Neo4j, or cloud storage—under your control, with your encryption keys.
+                    </p>
+                    <ul className="space-y-1 text-xs text-gray-600">
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        Data sovereignty (HIPAA, SOC2, FedRAMP, regional requirements)
+                      </li>
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        Full control over encryption keys and access
+                      </li>
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        Integration with existing data platform
+                      </li>
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        Use your own Qdrant, Neo4j, S3/GCS/Azure
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex items-center">
+                    <span className="text-primary-600 mr-2">✓</span>
+                    Learn which strategies work best on which problem types
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-primary-600 mr-2">✓</span>
+                    Cross-problem meta-learning and pattern recognition
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-primary-600 mr-2">✓</span>
+                    Get good solutions quickly from collective experience
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-primary-600 mr-2">✓</span>
+                    Private learning (Professional+) and BYOD (Enterprise) available
+                  </li>
+                </ul>
+              </div>
+              
               <div className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-8 border-l-4 border-primary-600">
                 <div className="text-5xl mb-4">⏱️</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">Temporal Intelligence</h3>
@@ -309,73 +365,6 @@ export default function WhyAEAOPage() {
                 </ul>
               </div>
               
-              <div className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-8 border-l-4 border-primary-600">
-                <div className="text-5xl mb-4">🌐</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Continuous Learning</h3>
-                <p className="text-gray-700 mb-6">
-                  <strong>AEAO becomes more effective with every new problem it sees.</strong>
-                </p>
-                <p className="text-gray-700 mb-6">
-                  As more teams run diverse optimizations, it learns which strategies work best on which problem types—so you 
-                  spend less time guessing, trying dead ends, and tuning, and more time getting good solutions quickly.
-                </p>
-                
-                <div className="space-y-4 mb-6">
-                  <div className="bg-white rounded-lg p-4 border-l-4 border-primary-600">
-                    <h4 className="font-semibold text-gray-900 mb-2">🔒 Professional: Private Learning</h4>
-                    <p className="text-sm text-gray-700">
-                      For teams in regulated or highly competitive spaces, AEAO can learn privately from your history only—capturing 
-                      the quirks, constraints, and proprietary behavior of your systems so the optimizer becomes specifically better for 
-                      you, without contributing those patterns back to anyone else. Data stored in AEAO's dedicated infrastructure.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-white rounded-lg p-4 border-l-4 border-purple-600">
-                    <h4 className="font-semibold text-gray-900 mb-2">🏢 Enterprise: Bring Your Own Database (BYOD)</h4>
-                    <p className="text-sm text-gray-700 mb-3">
-                      For organizations with strict data sovereignty, compliance, or security requirements, connect AEAO to your own infrastructure. 
-                      All optimization data stays in your Qdrant, Neo4j, or cloud storage—under your control, with your encryption keys.
-                    </p>
-                    <ul className="space-y-1 text-xs text-gray-600">
-                      <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
-                        Data sovereignty (HIPAA, SOC2, FedRAMP, regional requirements)
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
-                        Full control over encryption keys and access
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
-                        Integration with existing data platform
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
-                        Use your own Qdrant, Neo4j, S3/GCS/Azure
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Learn which strategies work best on which problem types
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Spend less time guessing and trying dead ends
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Get good solutions quickly from collective experience
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Private learning (Professional+) and BYOD (Enterprise) available
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>
