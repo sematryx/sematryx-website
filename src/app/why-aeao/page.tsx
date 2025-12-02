@@ -319,14 +319,44 @@ export default function WhyAEAOPage() {
                   As more teams run diverse optimizations, it learns which strategies work best on which problem types—so you 
                   spend less time guessing, trying dead ends, and tuning, and more time getting good solutions quickly.
                 </p>
-                <div className="bg-white rounded-lg p-4 border-l-4 border-primary-600 mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-2">🔒 Private Learning for Regulated & Competitive Teams</h4>
-                  <p className="text-sm text-gray-700">
-                    For teams in regulated or highly competitive spaces, AEAO can also learn privately from your history only—capturing 
-                    the quirks, constraints, and proprietary behavior of your systems so the optimizer becomes specifically better for 
-                    you, without contributing those patterns back to anyone else.
-                  </p>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-primary-600">
+                    <h4 className="font-semibold text-gray-900 mb-2">🔒 Professional: Private Learning</h4>
+                    <p className="text-sm text-gray-700">
+                      For teams in regulated or highly competitive spaces, AEAO can learn privately from your history only—capturing 
+                      the quirks, constraints, and proprietary behavior of your systems so the optimizer becomes specifically better for 
+                      you, without contributing those patterns back to anyone else. Data stored in AEAO's dedicated infrastructure.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white rounded-lg p-4 border-l-4 border-purple-600">
+                    <h4 className="font-semibold text-gray-900 mb-2">🏢 Enterprise: Bring Your Own Database (BYOD)</h4>
+                    <p className="text-sm text-gray-700 mb-3">
+                      For organizations with strict data sovereignty, compliance, or security requirements, connect AEAO to your own infrastructure. 
+                      All optimization data stays in your Qdrant, Neo4j, or cloud storage—under your control, with your encryption keys.
+                    </p>
+                    <ul className="space-y-1 text-xs text-gray-600">
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        Data sovereignty (HIPAA, SOC2, FedRAMP, regional requirements)
+                      </li>
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        Full control over encryption keys and access
+                      </li>
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        Integration with existing data platform
+                      </li>
+                      <li className="flex items-center">
+                        <span className="text-purple-600 mr-2">✓</span>
+                        Use your own Qdrant, Neo4j, S3/GCS/Azure
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+                
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li className="flex items-center">
                     <span className="text-primary-600 mr-2">✓</span>
@@ -342,7 +372,7 @@ export default function WhyAEAOPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-primary-600 mr-2">✓</span>
-                    Private learning available for regulated/competitive environments
+                    Private learning (Professional+) and BYOD (Enterprise) available
                   </li>
                 </ul>
               </div>
