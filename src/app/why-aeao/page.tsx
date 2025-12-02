@@ -3,54 +3,65 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 
 export default function WhyAEAOPage() {
-  const competitiveAdvantages = [
+  // Core Enterprise Differentiators - What makes AEAO enterprise-ready
+  const enterpriseFeatures = [
+    {
+      title: "Async Explainability (22-26% Performance Boost)",
+      description: "Revolutionary background-processed explanations that improve performance while maintaining full transparency. Natural language summaries, technical logs, and visualizations. The only optimizer that makes explainability faster, not slower.",
+      icon: "📖",
+      comparison: "Traditional optimizers: Black box | AEAO: Full explainability + performance boost"
+    },
     {
       title: "15 AI Systems Coordinated",
-      description: "Unlike single-algorithm optimizers, AEAO coordinates 15 specialized AI systems working together to analyze problems, select strategies, and ensure compliance.",
+      description: "Unlike single-algorithm optimizers, AEAO coordinates 15 specialized AI systems working together: research agents analyze problems, validation engineers ensure safety, performance analysts track metrics, and learning systems adapt strategies.",
       icon: "🤖",
       comparison: "Traditional optimizers: Single algorithm | AEAO: 15-system Intelligence Hub"
     },
     {
       title: "Enterprise-Grade Compliance",
-      description: "Built-in regulatory compliance, safety constraints, and audit trails. Essential for financial services, healthcare, and manufacturing where regulations matter.",
+      description: "Built-in regulatory compliance, safety constraints, and audit trails. Essential for financial services, healthcare, and manufacturing where regulations matter. Production-ready from day one.",
       icon: "🛡️",
       comparison: "Traditional optimizers: No compliance features | AEAO: Built-in regulatory compliance"
     },
     {
-      title: "Async Explainability (22-26% Performance Boost)",
-      description: "Revolutionary background-processed explanations that improve performance while maintaining full transparency. Natural language summaries, technical logs, and visualizations.",
-      icon: "📖",
-      comparison: "Traditional optimizers: Black box | AEAO: Full explainability + performance boost"
-    },
-    {
       title: "Domain-Specific Solutions",
-      description: "13+ business domain libraries with automatic code generation. Financial, healthcare, supply chain, manufacturing, and more - all production-ready.",
+      description: "13+ business domain libraries with automatic code generation. Financial, healthcare, supply chain, manufacturing, and more - all production-ready with industry-specific constraints and best practices.",
       icon: "🏗️",
       comparison: "Traditional optimizers: Generic only | AEAO: 13+ specialized domain libraries"
     },
+  ]
+
+  // Advanced AI Intelligence Systems - What makes AEAO intelligent
+  const intelligenceSystems = [
     {
-      title: "Visual Intelligence",
-      description: "Computer vision-based optimization landscape analysis. Understand your problem space visually and make better decisions. (Available but integration in progress)",
-      icon: "👁️",
-      comparison: "Traditional optimizers: Mathematical only | AEAO: Visual + mathematical intelligence"
+      title: "Continuous Learning",
+      description: "AEAO becomes more effective with every new problem it sees. Cross-problem meta-learning means what works for portfolio optimization informs supply chain decisions. Professional tier: private learning. Enterprise tier: bring your own database.",
+      icon: "🌐",
+      comparison: "Traditional optimizers: Static, no learning | AEAO: Learns from every optimization"
     },
     {
       title: "Temporal Intelligence",
-      description: "Unified temporal context manager that fuses historical and real-time data for predictive optimization. Domain-specific temporal engines adapt to changing conditions in finance, healthcare, supply chain, and more.",
+      description: "Unified temporal context manager that fuses historical patterns with real-time data for predictive optimization. Domain-specific temporal engines adapt to changing conditions in finance, healthcare, supply chain, and manufacturing.",
       icon: "⏱️",
-      comparison: "Traditional optimizers: Static snapshots | AEAO: Real-time temporal intelligence with predictive modeling"
+      comparison: "Traditional optimizers: Static snapshots | AEAO: Real-time + historical fusion with predictive modeling"
     },
     {
       title: "Advanced Knowledge Systems",
-      description: "60-80% vector memory compression, Neo4j knowledge graphs, RAG retrieval, and causal discovery. AEAO builds and maintains comprehensive optimization knowledge across all problems.",
+      description: "60-80% vector memory compression, Neo4j knowledge graphs, RAG retrieval, and causal discovery. AEAO builds and maintains comprehensive optimization knowledge that improves over time.",
       icon: "🧬",
-      comparison: "Traditional optimizers: No memory | AEAO: Compressed knowledge graphs with semantic relationships"
+      comparison: "Traditional optimizers: No memory | AEAO: Knowledge graphs + RAG + causal discovery"
     },
     {
       title: "Multi-Library Integration",
-      description: "Unified strategy registry seamlessly integrates SCIPY, CMA-ES, SKOPT, AX, and custom optimizers. One interface, multiple optimization libraries working together.",
+      description: "Unified strategy registry seamlessly integrates SCIPY, CMA-ES, SKOPT, AX, and custom optimizers. One interface, multiple optimization libraries working together intelligently.",
       icon: "🔗",
-      comparison: "Traditional optimizers: Single library | AEAO: Unified registry across multiple optimization libraries"
+      comparison: "Traditional optimizers: Single library | AEAO: Unified registry across 5+ libraries"
+    },
+    {
+      title: "Visual Intelligence",
+      description: "Computer vision-based optimization landscape analysis. Understand your problem space visually and make better decisions. See patterns humans can't detect in mathematical representations alone.",
+      icon: "👁️",
+      comparison: "Traditional optimizers: Mathematical only | AEAO: Visual + mathematical intelligence"
     },
   ]
 
@@ -122,44 +133,6 @@ export default function WhyAEAOPage() {
     }
   ]
 
-  const whyCuttingEdge = [
-    {
-      title: "Revolutionary Async Explainability",
-      description: "AEAO is the first optimization framework to provide background-processed explanations that actually improve performance (22-26% boost) rather than slowing it down. Traditional explainability adds overhead; AEAO's async approach makes optimization faster while maintaining transparency.",
-      stat: "22-26% Performance Improvement"
-    },
-    {
-      title: "Multi-Agent Intelligence Coordination",
-      description: "15 specialized AI systems work together in real-time: research agents analyze problems, validation engineers ensure safety, performance analysts track metrics, and learning systems adapt strategies. No other optimizer coordinates multiple AI systems.",
-      stat: "15 AI Systems Active"
-    },
-    {
-      title: "Cross-Problem Meta-Learning",
-      description: "AEAO learns patterns across different optimization problems. What works for portfolio optimization informs supply chain decisions. This meta-learning capability means AEAO gets smarter with every use case.",
-      stat: "60-80% Knowledge Compression"
-    },
-    {
-      title: "Temporal Intelligence System",
-      description: "Revolutionary unified temporal context manager that fuses historical patterns with real-time data. Domain-specific temporal engines provide predictive optimization for finance (market conditions), healthcare (regulatory changes), supply chain (weather/geopolitical events), and more.",
-      stat: "Real-Time + Historical Fusion"
-    },
-    {
-      title: "Advanced Knowledge & Memory Systems",
-      description: "Enterprise-grade knowledge management with 60-80% vector compression, Neo4j knowledge graphs for semantic relationships, RAG retrieval for optimization insights, and causal discovery for understanding optimization dynamics. AEAO builds comprehensive knowledge that improves over time.",
-      stat: "Neo4j + Vector + RAG + Causal"
-    },
-    {
-      title: "Unified Multi-Library Strategy Registry",
-      description: "Seamlessly integrates optimization strategies from SCIPY, CMA-ES, SKOPT, AX, and custom libraries through a unified interface. No need to choose one library - AEAO coordinates them all intelligently.",
-      stat: "5+ Libraries Unified"
-    },
-    {
-      title: "Enterprise Architecture from Day One",
-      description: "Built for production with 2,379 lines of explainability code, 1,519 lines of learning system code, comprehensive monitoring, security, and compliance features. Not a research prototype - a production-ready enterprise platform.",
-      stat: "Production-Ready"
-    }
-  ]
-
   return (
     <main>
       <Header />
@@ -179,222 +152,53 @@ export default function WhyAEAOPage() {
         </div>
       </div>
 
-      {/* What Makes AEAO Different */}
+      {/* Enterprise Features */}
       <div className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Makes AEAO Different
+              Enterprise-Grade Optimization
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Key advantages that set AEAO apart from traditional optimization solutions
+              Production-ready features that make AEAO the only enterprise-grade optimization platform
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {competitiveAdvantages.map((advantage, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 border-l-4 border-primary-600">
-                <div className="text-4xl mb-4">{advantage.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{advantage.title}</h3>
-                <p className="text-gray-700 mb-4">{advantage.description}</p>
-                <div className="bg-white rounded-lg p-3 text-sm text-gray-600 border border-gray-200">
-                  <strong className="text-primary-600">Comparison:</strong> {advantage.comparison}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {enterpriseFeatures.map((feature, index) => (
+              <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border-l-4 border-primary-600 shadow-sm">
+                <div className="text-5xl mb-4">{feature.icon}</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-700 mb-4 text-lg">{feature.description}</p>
+                <div className="bg-white rounded-lg p-4 text-sm text-gray-600 border border-gray-200">
+                  <strong className="text-primary-600">Comparison:</strong> {feature.comparison}
                 </div>
               </div>
             ))}
           </div>
-          
-          {/* Advanced Intelligence Systems Section */}
-          <div className="mt-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Advanced Intelligence Systems
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Enterprise-grade AI systems that power AEAO's superior optimization capabilities
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-              <div className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-8 border-l-4 border-primary-600">
-                <div className="text-5xl mb-4">🌐</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Continuous Learning</h3>
-                <p className="text-gray-700 mb-6">
-                  <strong>AEAO becomes more effective with every new problem it sees.</strong>
-                </p>
-                <p className="text-gray-700 mb-6">
-                  As more teams run diverse optimizations, it learns which strategies work best on which problem types—so you 
-                  spend less time guessing, trying dead ends, and tuning, and more time getting good solutions quickly.
-                </p>
-                
-                <div className="space-y-4 mb-6">
-                  <div className="bg-white rounded-lg p-4 border-l-4 border-primary-600">
-                    <h4 className="font-semibold text-gray-900 mb-2">🔒 Professional: Private Learning</h4>
-                    <p className="text-sm text-gray-700">
-                      For teams in regulated or highly competitive spaces, AEAO can learn privately from your history only—capturing 
-                      the quirks, constraints, and proprietary behavior of your systems so the optimizer becomes specifically better for 
-                      you, without contributing those patterns back to anyone else. Data stored in AEAO's dedicated infrastructure.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-white rounded-lg p-4 border-l-4 border-purple-600">
-                    <h4 className="font-semibold text-gray-900 mb-2">🏢 Enterprise: Bring Your Own Database (BYOD)</h4>
-                    <p className="text-sm text-gray-700 mb-3">
-                      For organizations with strict data sovereignty, compliance, or security requirements, connect AEAO to your own infrastructure. 
-                      All optimization data stays in your Qdrant, Neo4j, or cloud storage—under your control, with your encryption keys.
-                    </p>
-                    <ul className="space-y-1 text-xs text-gray-600">
-                      <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
-                        Data sovereignty (HIPAA, SOC2, FedRAMP, regional requirements)
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
-                        Full control over encryption keys and access
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
-                        Integration with existing data platform
-                      </li>
-                      <li className="flex items-center">
-                        <span className="text-purple-600 mr-2">✓</span>
-                        Use your own Qdrant, Neo4j, S3/GCS/Azure
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Learn which strategies work best on which problem types
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Cross-problem meta-learning and pattern recognition
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Get good solutions quickly from collective experience
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Private learning (Professional+) and BYOD (Enterprise) available
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-8 border-l-4 border-primary-600">
-                <div className="text-5xl mb-4">⏱️</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Temporal Intelligence</h3>
-                <p className="text-gray-700 mb-4">
-                  Unified temporal context manager that fuses historical patterns with real-time data for predictive optimization. 
-                  Domain-specific temporal engines adapt to changing conditions in finance, healthcare, supply chain, and manufacturing.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Historical + real-time data fusion
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Domain-specific temporal engines
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Predictive modeling and event-driven triggers
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Real-time context alignment
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-8 border-l-4 border-primary-600">
-                <div className="text-5xl mb-4">🧬</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Knowledge & Memory Systems</h3>
-                <p className="text-gray-700 mb-4">
-                  Enterprise-grade knowledge management with vector compression, knowledge graphs, RAG retrieval, 
-                  and causal discovery. AEAO builds comprehensive optimization knowledge that improves over time.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    60-80% vector memory compression
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Neo4j knowledge graphs for semantic relationships
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    RAG retrieval for optimization insights
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Causal discovery for understanding dynamics
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-8 border-l-4 border-primary-600">
-                <div className="text-5xl mb-4">🔗</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">Multi-Library Integration</h3>
-                <p className="text-gray-700 mb-4">
-                  Unified strategy registry seamlessly integrates optimization strategies from SCIPY, CMA-ES, SKOPT, AX, 
-                  and custom libraries. One interface, multiple optimization libraries working together intelligently.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Unified strategy registry
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Dynamic library integration
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Intelligent strategy selection
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-primary-600 mr-2">✓</span>
-                    Extensible architecture
-                  </li>
-                </ul>
-              </div>
-              
-            </div>
-          </div>
         </div>
       </div>
 
-      {/* Why It's Cutting Edge */}
+      {/* Advanced Intelligence Systems */}
       <div className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why AEAO is Cutting Edge
+              Advanced Intelligence Systems
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Revolutionary innovations that don't exist in traditional optimization frameworks
+              AI-powered intelligence that makes AEAO smarter with every optimization
             </p>
           </div>
 
-          <div className="space-y-8">
-            {whyCuttingEdge.map((item, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-4">
-                      <h3 className="text-2xl font-bold text-gray-900">{item.title}</h3>
-                      <span className="bg-primary-100 text-primary-700 px-4 py-1 rounded-full text-sm font-semibold">
-                        {item.stat}
-                      </span>
-                    </div>
-                    <p className="text-gray-700 text-lg">{item.description}</p>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {intelligenceSystems.map((system, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 border-l-4 border-primary-600 shadow-sm">
+                <div className="text-4xl mb-4">{system.icon}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{system.title}</h3>
+                <p className="text-gray-700 mb-4">{system.description}</p>
+                <div className="bg-gray-50 rounded-lg p-3 text-sm text-gray-600 border border-gray-200">
+                  <strong className="text-primary-600">Comparison:</strong> {system.comparison}
                 </div>
               </div>
             ))}
