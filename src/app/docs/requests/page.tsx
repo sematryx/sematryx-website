@@ -66,37 +66,37 @@ console.log(result)`
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-white mb-4">
           Making Requests
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-400">
           Learn how to make API requests to AEAO, handle responses, and work with errors.
         </p>
       </div>
 
       <div className="space-y-8">
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Base URL
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             All API requests should be made to the following base URL:
           </p>
-          <div className="bg-gray-50 rounded-lg p-4 mb-4">
-            <code className="text-lg font-mono text-primary-600">
+          <div className="bg-[#1a1f2e] rounded-lg p-4 mb-4 border border-gray-700">
+            <code className="text-lg font-mono text-primary-400">
               https://api.aeao.com
             </code>
           </div>
-          <p className="text-gray-700">
-            The API uses versioned endpoints. The current version is <code className="bg-gray-100 px-2 py-1 rounded">v1</code>.
+          <p className="text-gray-400">
+            The API uses versioned endpoints. The current version is <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">v1</code>.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Authentication
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             All API requests require authentication using a Bearer token in the Authorization header:
           </p>
           <CodeBlock
@@ -104,23 +104,23 @@ console.log(result)`
             language="bash"
             title="Authorization header format"
           />
-          <p className="text-gray-700 mt-4">
+          <p className="text-gray-400 mt-4">
             You can obtain an API key from the{' '}
-            <a href="/api-keys" className="text-primary-600 hover:text-primary-700 underline">
+            <a href="/api-keys" className="text-primary-400 hover:text-primary-300 underline">
               API Keys page
             </a>.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Request Format
           </h2>
-          <p className="text-gray-700 mb-4">
-            AEAO uses JSON for request and response bodies. All requests should include the <code className="bg-gray-100 px-2 py-1 rounded">Content-Type: application/json</code> header.
+          <p className="text-gray-400 mb-4">
+            AEAO uses JSON for request and response bodies. All requests should include the <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">Content-Type: application/json</code> header.
           </p>
           
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
             Using cURL
           </h3>
           <CodeBlock
@@ -129,7 +129,7 @@ console.log(result)`
             title="Basic optimization request with cURL"
           />
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
             Using Python
           </h3>
           <CodeBlock
@@ -138,7 +138,7 @@ console.log(result)`
             title="Python request example"
           />
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
             Using JavaScript/Node.js
           </h3>
           <CodeBlock
@@ -149,10 +149,10 @@ console.log(result)`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Response Format
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Successful API responses return JSON with the requested data. The structure varies by endpoint, but typically includes:
           </p>
           <CodeBlock
@@ -160,25 +160,25 @@ console.log(result)`
             language="json"
             title="Example successful response"
           />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Response Fields</h3>
-            <ul className="space-y-2 text-blue-800">
-              <li><strong>id:</strong> Unique identifier for the optimization job</li>
-              <li><strong>status:</strong> Current status (pending, running, completed, failed)</li>
-              <li><strong>best_solution:</strong> The best solution found</li>
-              <li><strong>best_fitness:</strong> The fitness value of the best solution</li>
-              <li><strong>evaluations:</strong> Number of function evaluations performed</li>
-              <li><strong>strategy_used:</strong> Optimization algorithm that was selected</li>
-              <li><strong>execution_time:</strong> Time taken in seconds</li>
+          <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-blue-400 mb-3">Response Fields</h3>
+            <ul className="space-y-2 text-blue-300">
+              <li><strong className="text-blue-200">id:</strong> Unique identifier for the optimization job</li>
+              <li><strong className="text-blue-200">status:</strong> Current status (pending, running, completed, failed)</li>
+              <li><strong className="text-blue-200">best_solution:</strong> The best solution found</li>
+              <li><strong className="text-blue-200">best_fitness:</strong> The fitness value of the best solution</li>
+              <li><strong className="text-blue-200">evaluations:</strong> Number of function evaluations performed</li>
+              <li><strong className="text-blue-200">strategy_used:</strong> Optimization algorithm that was selected</li>
+              <li><strong className="text-blue-200">execution_time:</strong> Time taken in seconds</li>
             </ul>
           </div>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Error Handling
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             When an error occurs, the API returns an error response with appropriate HTTP status codes:
           </p>
           <CodeBlock
@@ -187,35 +187,35 @@ console.log(result)`
             title="Example error response"
           />
           <div className="mt-6 space-y-4">
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-red-900 mb-3">HTTP Status Codes</h3>
-              <ul className="space-y-2 text-red-800">
-                <li><strong>400 Bad Request:</strong> Invalid request parameters or malformed JSON</li>
-                <li><strong>401 Unauthorized:</strong> Missing or invalid API key</li>
-                <li><strong>403 Forbidden:</strong> API key doesn't have permission for this operation</li>
-                <li><strong>404 Not Found:</strong> Resource not found</li>
-                <li><strong>429 Too Many Requests:</strong> Rate limit exceeded</li>
-                <li><strong>500 Internal Server Error:</strong> Server error - contact support</li>
+            <div className="bg-red-900/30 border border-red-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-red-400 mb-3">HTTP Status Codes</h3>
+              <ul className="space-y-2 text-red-300">
+                <li><strong className="text-red-200">400 Bad Request:</strong> Invalid request parameters or malformed JSON</li>
+                <li><strong className="text-red-200">401 Unauthorized:</strong> Missing or invalid API key</li>
+                <li><strong className="text-red-200">403 Forbidden:</strong> API key doesn't have permission for this operation</li>
+                <li><strong className="text-red-200">404 Not Found:</strong> Resource not found</li>
+                <li><strong className="text-red-200">429 Too Many Requests:</strong> Rate limit exceeded</li>
+                <li><strong className="text-red-200">500 Internal Server Error:</strong> Server error - contact support</li>
               </ul>
             </div>
           </div>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Rate Limiting
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             API requests are rate-limited to ensure fair usage. Rate limits vary by plan:
           </p>
-          <div className="bg-gray-50 rounded-lg p-6">
-            <ul className="space-y-2 text-gray-700">
-              <li><strong>Free Plan:</strong> 100 requests per hour</li>
-              <li><strong>Pro Plan:</strong> 1,000 requests per hour</li>
-              <li><strong>Enterprise Plan:</strong> 10,000+ requests per hour (custom limits)</li>
+          <div className="bg-[#1a1f2e] rounded-lg p-6 border border-gray-700">
+            <ul className="space-y-2 text-gray-300">
+              <li><strong className="text-white">Free Plan:</strong> 100 requests per hour</li>
+              <li><strong className="text-white">Pro Plan:</strong> 1,000 requests per hour</li>
+              <li><strong className="text-white">Enterprise Plan:</strong> 10,000+ requests per hour (custom limits)</li>
             </ul>
           </div>
-          <p className="text-gray-700 mt-4">
+          <p className="text-gray-400 mt-4">
             Rate limit information is included in response headers:
           </p>
           <CodeBlock
@@ -228,13 +228,13 @@ X-RateLimit-Reset: 1640995200`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Best Practices
           </h2>
           <div className="space-y-4">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-green-900 mb-3">✅ Do</h3>
-              <ul className="space-y-2 text-green-800">
+            <div className="bg-green-900/30 border border-green-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-green-400 mb-3">✅ Do</h3>
+              <ul className="space-y-2 text-green-300">
                 <li>Always include error handling in your code</li>
                 <li>Store API keys securely (environment variables, secrets management)</li>
                 <li>Use appropriate timeout values for long-running operations</li>
@@ -242,9 +242,9 @@ X-RateLimit-Reset: 1640995200`}
                 <li>Monitor rate limit headers to avoid hitting limits</li>
               </ul>
             </div>
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-red-900 mb-3">❌ Don't</h3>
-              <ul className="space-y-2 text-red-800">
+            <div className="bg-red-900/30 border border-red-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-red-400 mb-3">❌ Don't</h3>
+              <ul className="space-y-2 text-red-300">
                 <li>Commit API keys to version control</li>
                 <li>Make synchronous requests for long-running optimizations</li>
                 <li>Ignore error responses - always check status codes</li>

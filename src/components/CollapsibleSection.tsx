@@ -19,16 +19,16 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   return (
     <section className="mb-6">
       <button
-        className="flex justify-between items-center w-full p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+        className="flex justify-between items-center w-full p-4 bg-[#242b3d] rounded-lg hover:bg-[#2a3347] transition-colors text-left focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-[#0f1419]"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h2 className="text-2xl font-semibold text-gray-900">
+        <h2 className="text-2xl font-semibold text-white">
           {title}
         </h2>
         {isOpen ? (
-          <ChevronUp className="h-6 w-6 text-gray-600 flex-shrink-0" />
+          <ChevronUp className="h-6 w-6 text-gray-400 flex-shrink-0" />
         ) : (
-          <ChevronDown className="h-6 w-6 text-gray-600 flex-shrink-0" />
+          <ChevronDown className="h-6 w-6 text-gray-400 flex-shrink-0" />
         )}
       </button>
       {isOpen && (

@@ -138,13 +138,13 @@ export default function WhyAEAOPage() {
       <Header />
       
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary-50 to-white py-20">
+      <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Why Choose AEAO?
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               The world's most advanced optimization framework. Where traditional optimizers solve mathematical problems, 
               AEAO solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.
             </p>
@@ -153,25 +153,25 @@ export default function WhyAEAOPage() {
       </div>
 
       {/* Enterprise Features */}
-      <div className="py-20 bg-white">
+      <div className="py-20 bg-[#0f1419]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Enterprise-Grade Optimization
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Production-ready features that make AEAO the only enterprise-grade optimization platform
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {enterpriseFeatures.map((feature, index) => (
-              <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border-l-4 border-primary-600 shadow-sm">
+              <div key={index} className="bg-[#1a1f2e] rounded-xl p-8 border-l-4 border-primary-500">
                 <div className="text-5xl mb-4">{feature.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-700 mb-4 text-lg">{feature.description}</p>
-                <div className="bg-white rounded-lg p-4 text-sm text-gray-600 border border-gray-200">
-                  <strong className="text-primary-600">Comparison:</strong> {feature.comparison}
+                <h3 className="text-2xl font-bold text-white mb-3">{feature.title}</h3>
+                <p className="text-gray-400 mb-4 text-lg">{feature.description}</p>
+                <div className="bg-[#242b3d] rounded-lg p-4 text-sm text-gray-400 border border-gray-700">
+                  <strong className="text-primary-400">Comparison:</strong> {feature.comparison}
                 </div>
               </div>
             ))}
@@ -180,25 +180,25 @@ export default function WhyAEAOPage() {
       </div>
 
       {/* Advanced AI Capabilities */}
-      <div className="py-20 bg-gray-50">
+      <div className="py-20 bg-[#1a1f2e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Advanced AI Capabilities
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               AI-powered systems that make AEAO smarter with every optimization
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {intelligenceSystems.map((system, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 border-l-4 border-primary-600 shadow-sm">
+              <div key={index} className="bg-[#242b3d] rounded-xl p-6 border-l-4 border-primary-500">
                 <div className="text-4xl mb-4">{system.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{system.title}</h3>
-                <p className="text-gray-700 mb-4">{system.description}</p>
-                <div className="bg-gray-50 rounded-lg p-3 text-sm text-gray-600 border border-gray-200">
-                  <strong className="text-primary-600">Comparison:</strong> {system.comparison}
+                <h3 className="text-xl font-bold text-white mb-3">{system.title}</h3>
+                <p className="text-gray-400 mb-4">{system.description}</p>
+                <div className="bg-[#1a1f2e] rounded-lg p-3 text-sm text-gray-400 border border-gray-700">
+                  <strong className="text-primary-400">Comparison:</strong> {system.comparison}
                 </div>
               </div>
             ))}
@@ -207,40 +207,40 @@ export default function WhyAEAOPage() {
       </div>
 
       {/* Real-World Use Cases */}
-      <div className="py-20 bg-white">
+      <div className="py-20 bg-[#0f1419]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Real-World Problems AEAO Solves
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Industry-specific optimization challenges where AEAO's enterprise intelligence makes the difference
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {useCases.map((useCase, index) => (
-              <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <div key={index} className="bg-[#1a1f2e] rounded-xl p-8 border border-gray-700 hover:border-gray-600 transition-colors">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="text-5xl">{useCase.icon}</div>
-                  <h3 className="text-2xl font-bold text-gray-900">{useCase.industry}</h3>
+                  <h3 className="text-2xl font-bold text-white">{useCase.industry}</h3>
                 </div>
                 
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-gray-500 uppercase mb-3">Common Problems:</h4>
                   <ul className="space-y-2">
                     {useCase.problems.map((problem, idx) => (
-                      <li key={idx} className="flex items-start text-gray-700">
-                        <span className="text-primary-600 mr-2 mt-1">•</span>
+                      <li key={idx} className="flex items-start text-gray-400">
+                        <span className="text-primary-400 mr-2 mt-1">•</span>
                         <span>{problem}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="bg-primary-50 rounded-lg p-4 border-l-4 border-primary-600">
-                  <h4 className="text-sm font-semibold text-primary-900 mb-2">AEAO Advantage:</h4>
-                  <p className="text-primary-800 text-sm">{useCase.advantage}</p>
+                <div className="bg-primary-900/30 rounded-lg p-4 border-l-4 border-primary-500">
+                  <h4 className="text-sm font-semibold text-primary-300 mb-2">AEAO Advantage:</h4>
+                  <p className="text-primary-200 text-sm">{useCase.advantage}</p>
                 </div>
               </div>
             ))}
@@ -249,101 +249,101 @@ export default function WhyAEAOPage() {
       </div>
 
       {/* Competitive Comparison */}
-      <div className="py-20 bg-gray-50">
+      <div className="py-20 bg-[#1a1f2e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               AEAO vs Traditional Optimizers
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               See how AEAO compares to solutions like SciPy, Optuna, and other optimization libraries
             </p>
           </div>
 
-          <div className="bg-white rounded-xl p-8 shadow-lg">
+          <div className="bg-[#242b3d] rounded-xl p-8 border border-gray-700">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-4 px-6 font-semibold text-gray-900">Feature</th>
-                    <th className="text-center py-4 px-6 font-semibold text-gray-900">Traditional Optimizers</th>
-                    <th className="text-center py-4 px-6 font-semibold text-primary-600">AEAO</th>
+                  <tr className="border-b-2 border-gray-600">
+                    <th className="text-left py-4 px-6 font-semibold text-white">Feature</th>
+                    <th className="text-center py-4 px-6 font-semibold text-gray-400">Traditional Optimizers</th>
+                    <th className="text-center py-4 px-6 font-semibold text-primary-400">AEAO</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-gray-700">
                   <tr>
-                    <td className="py-4 px-6 font-medium text-gray-900">Basic Optimization Performance</td>
-                    <td className="py-4 px-6 text-center text-gray-700">✅ Good</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Equivalent</td>
+                    <td className="py-4 px-6 font-medium text-white">Basic Optimization Performance</td>
+                    <td className="py-4 px-6 text-center text-gray-400">✅ Good</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Equivalent</td>
                   </tr>
-                  <tr className="bg-gray-50">
-                    <td className="py-4 px-6 font-medium text-gray-900">AI System Coordination</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ Single Algorithm</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ 15 AI Systems</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-gray-900">Enterprise Architecture</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ No Enterprise Features</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ 2,379 LOC Explainability</td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="py-4 px-6 font-medium text-gray-900">Constraint Handling</td>
-                    <td className="py-4 px-6 text-center text-gray-700">⚠️ Basic Constraints</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Built-in Compliance</td>
+                  <tr className="bg-[#1a1f2e]">
+                    <td className="py-4 px-6 font-medium text-white">AI System Coordination</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ Single Algorithm</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ 15 AI Systems</td>
                   </tr>
                   <tr>
-                    <td className="py-4 px-6 font-medium text-gray-900">Learning & Adaptation</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ No Learning</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Cross-Problem Learning</td>
+                    <td className="py-4 px-6 font-medium text-white">Enterprise Architecture</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ No Enterprise Features</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ 2,379 LOC Explainability</td>
                   </tr>
-                  <tr className="bg-gray-50">
-                    <td className="py-4 px-6 font-medium text-gray-900">Explainability</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ Black Box</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Full Audit Trails</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-gray-900">Domain-Specific Libraries</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ Generic Only</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ 13+ Business Domains</td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="py-4 px-6 font-medium text-gray-900">Visual Analysis</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ Mathematical Only</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Visual + Mathematical</td>
+                  <tr className="bg-[#1a1f2e]">
+                    <td className="py-4 px-6 font-medium text-white">Constraint Handling</td>
+                    <td className="py-4 px-6 text-center text-gray-400">⚠️ Basic Constraints</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Built-in Compliance</td>
                   </tr>
                   <tr>
-                    <td className="py-4 px-6 font-medium text-gray-900">Temporal Awareness</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ Static Snapshots</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Real-Time + Historical</td>
+                    <td className="py-4 px-6 font-medium text-white">Learning & Adaptation</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ No Learning</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Cross-Problem Learning</td>
                   </tr>
-                  <tr className="bg-gray-50">
-                    <td className="py-4 px-6 font-medium text-gray-900">Knowledge Systems</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ No Memory</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Knowledge Graphs + RAG</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-gray-900">Multi-Library Integration</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ Single Library</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Unified Registry</td>
-                  </tr>
-                  <tr className="bg-gray-50">
-                    <td className="py-4 px-6 font-medium text-gray-900">Continuous Learning</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ Static, No Learning</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Learns From Every Optimization</td>
+                  <tr className="bg-[#1a1f2e]">
+                    <td className="py-4 px-6 font-medium text-white">Explainability</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ Black Box</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Full Audit Trails</td>
                   </tr>
                   <tr>
-                    <td className="py-4 px-6 font-medium text-gray-900">Causal Discovery</td>
-                    <td className="py-4 px-6 text-center text-gray-700">❌ Not Available</td>
-                    <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Full Implementation</td>
+                    <td className="py-4 px-6 font-medium text-white">Domain-Specific Libraries</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ Generic Only</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ 13+ Business Domains</td>
+                  </tr>
+                  <tr className="bg-[#1a1f2e]">
+                    <td className="py-4 px-6 font-medium text-white">Visual Analysis</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ Mathematical Only</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Visual + Mathematical</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-white">Temporal Awareness</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ Static Snapshots</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Real-Time + Historical</td>
+                  </tr>
+                  <tr className="bg-[#1a1f2e]">
+                    <td className="py-4 px-6 font-medium text-white">Knowledge Systems</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ No Memory</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Knowledge Graphs + RAG</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-white">Multi-Library Integration</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ Single Library</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Unified Registry</td>
+                  </tr>
+                  <tr className="bg-[#1a1f2e]">
+                    <td className="py-4 px-6 font-medium text-white">Continuous Learning</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ Static, No Learning</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Learns From Every Optimization</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-white">Causal Discovery</td>
+                    <td className="py-4 px-6 text-center text-gray-400">❌ Not Available</td>
+                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Full Implementation</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div className="mt-8 text-center">
-              <p className="text-lg font-semibold text-gray-900 mb-4">
+              <p className="text-lg font-semibold text-white mb-4">
                 AEAO Wins: 13/13 Categories ⭐⭐⭐⭐⭐
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-400">
                 Traditional optimizers are great for academic problems. AEAO solves enterprise problems with intelligence, compliance, and learning.
               </p>
             </div>

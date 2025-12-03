@@ -43,9 +43,9 @@ export default function DocsNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="w-64 bg-gray-50 h-full overflow-y-auto">
+    <nav className="w-64 bg-[#1a1f2e] h-full overflow-y-auto border-r border-gray-800">
       <div className="p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Documentation</h2>
+        <h2 className="text-lg font-semibold text-white mb-4">Documentation</h2>
         
         {docsSections.map((section, sectionIndex) => (
           <div key={sectionIndex} className="mb-6">
@@ -59,8 +59,8 @@ export default function DocsNav() {
                     href={item.href}
                     className={`block px-3 py-2 rounded-md text-sm transition-colors ${
                       pathname === item.href
-                        ? 'bg-primary-100 text-primary-700 font-medium'
-                        : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                        ? 'bg-primary-600/20 text-primary-400 font-medium'
+                        : 'text-gray-400 hover:bg-[#242b3d] hover:text-white'
                     }`}
                   >
                     {item.title}

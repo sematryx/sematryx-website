@@ -10,7 +10,7 @@ export default function DocsLayout({
   return (
     <main>
       <Header />
-      <div className="flex min-h-screen bg-white">
+      <div className="flex min-h-screen bg-[#0f1419]">
         <DocsNav />
         <div className="flex-1">
           {children}

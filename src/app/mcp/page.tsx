@@ -132,13 +132,13 @@ const mcpTools = [
     <main>
       <Header />
       
-      <div className="bg-gradient-to-br from-primary-50 to-white py-24">
+      <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Model Context Protocol
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Integrate AI models seamlessly with your automations using the Model Context Protocol (MCP). 
               Share context, use tools, and build intelligent workflows.
             </p>
@@ -146,15 +146,15 @@ const mcpTools = [
 
           {/* Features Grid */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
               MCP Features in AEAO
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                <div key={index} className="bg-[#1a1f2e] rounded-xl p-6 border border-gray-700">
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+                  <p className="text-gray-400">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -162,16 +162,16 @@ const mcpTools = [
 
           {/* Code Examples */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
               Getting Started with MCP
             </h2>
             
             <div className="space-y-8">
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
+                <h3 className="text-2xl font-semibold text-white mb-4">
                   1. Initialize MCP Connection
                 </h3>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-400 mb-6">
                   Connect AEAO to the Model Context Protocol to enable AI model integration:
                 </p>
                 <CodeBlock
@@ -181,11 +181,11 @@ const mcpTools = [
                 />
               </div>
 
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
+                <h3 className="text-2xl font-semibold text-white mb-4">
                   2. Create AI-Enhanced Automations
                 </h3>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-400 mb-6">
                   Build automations that leverage AI models with shared context:
                 </p>
                 <CodeBlock
@@ -195,11 +195,11 @@ const mcpTools = [
                 />
               </div>
 
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
+                <h3 className="text-2xl font-semibold text-white mb-4">
                   3. Available MCP Tools
                 </h3>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-400 mb-6">
                   Access powerful tools through the MCP interface:
                 </p>
                 <CodeBlock
@@ -213,21 +213,21 @@ const mcpTools = [
 
           {/* Use Cases */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
               Real-World Use Cases
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {useCases.map((useCase, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-sm p-8 border border-gray-200">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <div key={index} className="bg-[#1a1f2e] rounded-xl p-8 border border-gray-700">
+                  <h3 className="text-xl font-semibold text-white mb-4">
                     {useCase.title}
                   </h3>
-                  <p className="text-gray-700 mb-4">
+                  <p className="text-gray-400 mb-4">
                     {useCase.description}
                   </p>
-                  <div className="bg-primary-50 rounded-lg p-4">
-                    <span className="text-sm font-medium text-primary-700">Example Flow:</span>
-                    <p className="text-primary-700 mt-1">{useCase.example}</p>
+                  <div className="bg-primary-900/30 rounded-lg p-4 border border-primary-700">
+                    <span className="text-sm font-medium text-primary-400">Example Flow:</span>
+                    <p className="text-primary-300 mt-1">{useCase.example}</p>
                   </div>
                 </div>
               ))}
@@ -235,43 +235,43 @@ const mcpTools = [
           </div>
 
           {/* Protocol Details */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+          <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">
               MCP Protocol Details
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-white mb-4">
                   Supported Transports
                 </h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• <strong>STDIO:</strong> Standard input/output communication</li>
-                  <li>• <strong>HTTP/SSE:</strong> Server-sent events for real-time updates</li>
-                  <li>• <strong>WebSocket:</strong> Bidirectional persistent connections</li>
-                  <li>• <strong>Custom:</strong> Plugin support for custom transports</li>
+                <ul className="space-y-2 text-gray-400">
+                  <li>• <strong className="text-gray-200">STDIO:</strong> Standard input/output communication</li>
+                  <li>• <strong className="text-gray-200">HTTP/SSE:</strong> Server-sent events for real-time updates</li>
+                  <li>• <strong className="text-gray-200">WebSocket:</strong> Bidirectional persistent connections</li>
+                  <li>• <strong className="text-gray-200">Custom:</strong> Plugin support for custom transports</li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-white mb-4">
                   Security Features
                 </h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• <strong>TLS Encryption:</strong> All communications encrypted</li>
-                  <li>• <strong>API Key Auth:</strong> Secure authentication mechanism</li>
-                  <li>• <strong>Rate Limiting:</strong> Prevents abuse and ensures stability</li>
-                  <li>• <strong>Context Isolation:</strong> Secure context boundaries</li>
+                <ul className="space-y-2 text-gray-400">
+                  <li>• <strong className="text-gray-200">TLS Encryption:</strong> All communications encrypted</li>
+                  <li>• <strong className="text-gray-200">API Key Auth:</strong> Secure authentication mechanism</li>
+                  <li>• <strong className="text-gray-200">Rate Limiting:</strong> Prevents abuse and ensures stability</li>
+                  <li>• <strong className="text-gray-200">Context Isolation:</strong> Secure context boundaries</li>
                 </ul>
               </div>
             </div>
             
-            <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-900 mb-3">
+            <div className="mt-8 bg-blue-900/30 border border-blue-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-blue-400 mb-3">
                 MCP Version Support
               </h3>
-              <p className="text-blue-800 mb-3">
+              <p className="text-blue-300 mb-3">
                 AEAO supports MCP version 2024-11-05 and maintains backward compatibility with earlier versions.
               </p>
-              <div className="text-sm text-blue-700">
+              <div className="text-sm text-blue-400">
                 <strong>Current Version:</strong> 2024-11-05 | 
                 <strong> Next Version:</strong> 2024-12-01 (Preview Available)
               </div>

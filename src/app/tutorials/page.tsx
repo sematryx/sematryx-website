@@ -57,13 +57,13 @@ export default function TutorialsPage() {
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'Beginner':
-        return 'bg-green-100 text-green-800'
+        return 'bg-green-900/50 text-green-400'
       case 'Intermediate':
-        return 'bg-yellow-100 text-yellow-800'
+        return 'bg-yellow-900/50 text-yellow-400'
       case 'Advanced':
-        return 'bg-red-100 text-red-800'
+        return 'bg-red-900/50 text-red-400'
       default:
-        return 'bg-gray-100 text-gray-800'
+        return 'bg-gray-700 text-gray-400'
     }
   }
 
@@ -71,13 +71,13 @@ export default function TutorialsPage() {
     <main>
       <Header />
       
-      <div className="bg-gradient-to-br from-primary-50 to-white py-24">
+      <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Tutorials
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               Step-by-step guides to help you master AEAO optimization. 
               From basic problem setup to advanced domain-specific optimization.
             </p>
@@ -88,10 +88,10 @@ export default function TutorialsPage() {
               <Link
                 key={tutorial.id}
                 href={`/tutorials/${tutorial.id}`}
-                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 p-6 border border-gray-200 hover:border-primary-200"
+                className="bg-[#1a1f2e] rounded-xl hover:bg-[#242b3d] transition-all duration-200 p-6 border border-gray-700 hover:border-primary-500"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-medium text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
+                  <span className="text-sm font-medium text-primary-400 bg-primary-900/30 px-3 py-1 rounded-full">
                     {tutorial.category}
                   </span>
                   <span className={`text-xs font-medium px-2 py-1 rounded-full ${getDifficultyColor(tutorial.difficulty)}`}>
@@ -99,11 +99,11 @@ export default function TutorialsPage() {
                   </span>
                 </div>
                 
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {tutorial.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-gray-400 mb-4 line-clamp-3">
                   {tutorial.description}
                 </p>
                 
@@ -118,17 +118,17 @@ export default function TutorialsPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <div className="bg-white rounded-lg shadow-sm p-8 max-w-2xl mx-auto">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <div className="bg-[#242b3d] rounded-lg p-8 max-w-2xl mx-auto border border-gray-700">
+              <h2 className="text-2xl font-semibold text-white mb-4">
                 Need Help Getting Started?
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-400 mb-6">
                 If you're new to AEAO, we recommend starting with our Quick Start guide 
                 in the documentation to get familiar with optimization concepts and the AEAO Tetrad.
               </p>
               <Link
                 href="/docs"
-                className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+                className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-500 transition-colors inline-block"
               >
                 View Quick Start Guide
               </Link>

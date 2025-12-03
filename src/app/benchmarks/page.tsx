@@ -101,13 +101,13 @@ export default function BenchmarksPage() {
     <main>
       <Header />
       
-      <div className="bg-gradient-to-br from-primary-50 to-white py-24">
+      <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Performance Benchmarks
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Real-world performance metrics and benchmarks demonstrating AEAO's 
               speed, reliability, and scalability.
             </p>
@@ -115,8 +115,8 @@ export default function BenchmarksPage() {
 
           {/* Performance Metrics */}
           <div className="mb-16">
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-              <div className="border-b border-gray-200">
+            <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 overflow-hidden">
+              <div className="border-b border-gray-700">
                 <nav className="flex">
                   {metricTabs.map((tab) => (
                     <button
@@ -124,8 +124,8 @@ export default function BenchmarksPage() {
                       onClick={() => setSelectedMetric(tab.id)}
                       className={`flex-1 py-4 px-6 text-center font-medium ${
                         selectedMetric === tab.id
-                          ? 'text-primary-600 border-b-2 border-primary-600 bg-primary-50'
-                          : 'text-gray-500 hover:text-gray-700'
+                          ? 'text-primary-400 border-b-2 border-primary-500 bg-primary-900/20'
+                          : 'text-gray-500 hover:text-gray-300'
                       }`}
                     >
                       {tab.label}
@@ -135,20 +135,20 @@ export default function BenchmarksPage() {
               </div>
               
               <div className="p-8">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-2xl font-semibold text-white mb-2">
                   {benchmarkData[selectedMetric as keyof typeof benchmarkData].title}
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-400 mb-6">
                   {benchmarkData[selectedMetric as keyof typeof benchmarkData].description}
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {benchmarkData[selectedMetric as keyof typeof benchmarkData].metrics.map((metric, index) => (
-                    <div key={index} className="bg-gray-50 rounded-lg p-6 text-center">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                    <div key={index} className="bg-[#242b3d] rounded-lg p-6 text-center border border-gray-700">
+                      <h4 className="text-lg font-semibold text-white mb-2">
                         {metric.name}
                       </h4>
-                      <div className="text-3xl font-bold text-primary-600 mb-1">
+                      <div className="text-3xl font-bold text-primary-400 mb-1">
                         {metric.value}
                       </div>
                       <div className="text-sm text-gray-500">
@@ -163,14 +163,14 @@ export default function BenchmarksPage() {
 
           {/* Performance Tests */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
               Recent Performance Tests
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {performanceTests.map((test, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                <div key={index} className="bg-[#1a1f2e] rounded-xl p-6 border border-gray-700">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-white">
                       {test.name}
                     </h3>
                     <span className="text-sm text-gray-500">
@@ -179,16 +179,16 @@ export default function BenchmarksPage() {
                   </div>
                   <div className="space-y-3">
                     <div>
-                      <span className="text-sm font-medium text-gray-700">Scenario:</span>
-                      <p className="text-gray-600">{test.scenario}</p>
+                      <span className="text-sm font-medium text-gray-400">Scenario:</span>
+                      <p className="text-gray-300">{test.scenario}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-gray-700">Result:</span>
-                      <p className="text-green-600 font-medium">{test.result}</p>
+                      <span className="text-sm font-medium text-gray-400">Result:</span>
+                      <p className="text-green-400 font-medium">{test.result}</p>
                     </div>
                     <div>
-                      <span className="text-sm font-medium text-gray-700">Details:</span>
-                      <p className="text-gray-600 text-sm">{test.details}</p>
+                      <span className="text-sm font-medium text-gray-400">Details:</span>
+                      <p className="text-gray-400 text-sm">{test.details}</p>
                     </div>
                   </div>
                 </div>
@@ -198,18 +198,18 @@ export default function BenchmarksPage() {
 
           {/* Competitive Comparison */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
               Competitive Comparison
             </h2>
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-[#0f1419]">
                     <tr>
-                      <th className="px-6 py-4 text-left text-sm font-medium text-gray-900">
+                      <th className="px-6 py-4 text-left text-sm font-medium text-white">
                         Feature
                       </th>
-                      <th className="px-6 py-4 text-center text-sm font-medium text-primary-600">
+                      <th className="px-6 py-4 text-center text-sm font-medium text-primary-400">
                         AEAO
                       </th>
                       <th className="px-6 py-4 text-center text-sm font-medium text-gray-500">
@@ -220,19 +220,19 @@ export default function BenchmarksPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200">
+                  <tbody className="divide-y divide-gray-700">
                     {comparisonData.map((row, index) => (
                       <tr key={index}>
-                        <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                        <td className="px-6 py-4 text-sm font-medium text-white">
                           {row.feature}
                         </td>
-                        <td className="px-6 py-4 text-center text-sm font-bold text-primary-600">
+                        <td className="px-6 py-4 text-center text-sm font-bold text-primary-400">
                           {row.aeao}
                         </td>
-                        <td className="px-6 py-4 text-center text-sm text-gray-600">
+                        <td className="px-6 py-4 text-center text-sm text-gray-400">
                           {row.competitor1}
                         </td>
-                        <td className="px-6 py-4 text-center text-sm text-gray-600">
+                        <td className="px-6 py-4 text-center text-sm text-gray-400">
                           {row.competitor2}
                         </td>
                       </tr>
@@ -244,16 +244,16 @@ export default function BenchmarksPage() {
           </div>
 
           {/* Methodology */}
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+          <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">
               Testing Methodology
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-white mb-4">
                   Performance Testing
                 </h3>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-gray-400">
                   <li>• Load testing with realistic traffic patterns</li>
                   <li>• Stress testing at 10x normal capacity</li>
                   <li>• Endurance testing over 72-hour periods</li>
@@ -261,10 +261,10 @@ export default function BenchmarksPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-white mb-4">
                   Measurement Standards
                 </h3>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-gray-400">
                   <li>• Industry-standard monitoring tools</li>
                   <li>• Third-party validation and auditing</li>
                   <li>• Real-time metrics collection</li>
@@ -273,7 +273,7 @@ export default function BenchmarksPage() {
               </div>
             </div>
             <div className="mt-8 text-center">
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-400 mb-4">
                 All benchmarks are updated monthly and validated by independent third parties.
               </p>
               <div className="text-sm text-gray-500">
