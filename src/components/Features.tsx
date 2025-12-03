@@ -106,29 +106,29 @@ export default function Features() {
   return (
     <>
       {/* The AEAO Engine - Core 3 Pillars */}
-      <div className="py-24 bg-gray-50">
+      <div className="py-24 bg-[#1a1f2e]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-2">Core Engine</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <p className="text-sm font-semibold text-primary-400 uppercase tracking-wide mb-2">Core Engine</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               The AEAO Engine
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Three core pillars that power enterprise-grade optimization
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {enginePillars.map((pillar, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border-t-4 border-primary-600">
+              <div key={index} className="bg-[#242b3d] p-8 rounded-xl hover:bg-[#2a3347] transition-all duration-200 border-t-4 border-primary-500">
                 <div className="text-5xl mb-4">{pillar.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">{pillar.title}</h3>
-                <p className="text-sm font-medium text-primary-600 mb-3">{pillar.subtitle}</p>
-                <p className="text-gray-700 mb-4">{pillar.description}</p>
+                <h3 className="text-2xl font-bold text-white mb-1">{pillar.title}</h3>
+                <p className="text-sm font-medium text-primary-400 mb-3">{pillar.subtitle}</p>
+                <p className="text-gray-400 mb-4">{pillar.description}</p>
                 <ul className="space-y-2">
                   {pillar.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-600">
-                      <span className="text-primary-600 mr-2">✓</span>
+                    <li key={idx} className="flex items-center text-sm text-gray-400">
+                      <span className="text-primary-400 mr-2">✓</span>
                       {feature}
                     </li>
                   ))}
@@ -140,14 +140,14 @@ export default function Features() {
       </div>
 
       {/* Vertical Intelligence - Domain Solution Libraries */}
-      <div className="py-24 bg-white">
+      <div className="py-24 bg-[#0f1419]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-orange-600 uppercase tracking-wide mb-2">Application Layer</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <p className="text-sm font-semibold text-orange-400 uppercase tracking-wide mb-2">Application Layer</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Vertical Intelligence
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Pre-built, production-ready solution libraries for your industry
             </p>
           </div>
@@ -156,19 +156,19 @@ export default function Features() {
             {domains.map((domain, idx) => (
               <div key={idx} className="group">
                 {/* Domain Header Tile */}
-                <div className="bg-gradient-to-br from-orange-50 to-white p-5 rounded-t-xl border border-orange-200 border-b-0">
+                <div className="bg-[#242b3d] p-5 rounded-t-xl border border-gray-700 border-b-0">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-3xl">{domain.icon}</span>
-                    <h3 className="text-lg font-bold text-gray-900">{domain.name}</h3>
+                    <h3 className="text-lg font-bold text-white">{domain.name}</h3>
                   </div>
-                  <p className="text-sm text-gray-600">{domain.tagline}</p>
+                  <p className="text-sm text-gray-400">{domain.tagline}</p>
                 </div>
                 
                 {/* Connected Real-World Problems Panel */}
-                <div className="bg-gray-50 p-4 rounded-b-xl border border-orange-200 border-t-0">
+                <div className="bg-[#1a1f2e] p-4 rounded-b-xl border border-gray-700 border-t-0">
                   <ul className="space-y-2">
                     {domain.realWorldProblems.map((problem, pidx) => (
-                      <li key={pidx} className="text-xs text-gray-600 flex items-start">
+                      <li key={pidx} className="text-xs text-gray-500 flex items-start">
                         <span className="text-orange-400 mr-2 mt-0.5">→</span>
                         <span>{problem}</span>
                       </li>
@@ -180,8 +180,8 @@ export default function Features() {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-gray-600">
-              <span className="font-semibold text-gray-900">All domains include:</span>{' '}
+            <p className="text-gray-500">
+              <span className="font-semibold text-gray-300">All domains include:</span>{' '}
               Production-ready frameworks • Automatic code generation • Industry-specific constraints • FastAPI deployment
             </p>
           </div>
