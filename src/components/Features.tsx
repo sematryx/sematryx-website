@@ -41,12 +41,36 @@ export default function Features() {
 
   // Domain solution libraries - application layer
   const domains = [
-    { name: "Financial Services", icon: "💼", examples: "Portfolio optimization, trading strategies, risk management" },
-    { name: "Healthcare", icon: "🏥", examples: "Drug discovery, clinical trials, resource allocation" },
-    { name: "Supply Chain", icon: "🚚", examples: "Inventory optimization, routing, demand forecasting" },
-    { name: "Manufacturing", icon: "🏭", examples: "Process optimization, quality control, scheduling" },
-    { name: "Energy", icon: "⚡", examples: "Grid optimization, trading, renewable integration" },
-    { name: "AI/ML Research", icon: "🔬", examples: "Hyperparameter tuning, architecture search, experiment design" }
+    { 
+      name: "Financial Services", 
+      icon: "💼", 
+      problems: ["Portfolio optimization", "Trading strategies", "Risk management", "Regulatory compliance"]
+    },
+    { 
+      name: "Healthcare", 
+      icon: "🏥", 
+      problems: ["Drug discovery", "Clinical trial design", "Resource allocation", "Treatment protocols"]
+    },
+    { 
+      name: "Supply Chain", 
+      icon: "🚚", 
+      problems: ["Inventory optimization", "Vehicle routing", "Demand forecasting", "Supplier risk"]
+    },
+    { 
+      name: "Manufacturing", 
+      icon: "🏭", 
+      problems: ["Process optimization", "Quality control", "Production scheduling", "Predictive maintenance"]
+    },
+    { 
+      name: "Energy", 
+      icon: "⚡", 
+      problems: ["Grid optimization", "Energy trading", "Renewable integration", "Demand response"]
+    },
+    { 
+      name: "AI/ML Research", 
+      icon: "🔬", 
+      problems: ["Hyperparameter tuning", "Architecture search", "Feature selection", "Experiment design"]
+    }
   ]
 
   return (
@@ -98,17 +122,26 @@ export default function Features() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {domains.map((domain, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-orange-50 to-white p-4 rounded-xl border border-orange-200 hover:shadow-md hover:border-orange-300 transition-all duration-200 text-center group">
-                <span className="text-3xl block mb-2">{domain.icon}</span>
-                <h3 className="text-sm font-bold text-gray-900 mb-1">{domain.name}</h3>
-                <p className="text-xs text-gray-500 leading-tight">{domain.examples}</p>
+              <div key={idx} className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl border border-orange-200 hover:shadow-md hover:border-orange-300 transition-all duration-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-4xl">{domain.icon}</span>
+                  <h3 className="text-xl font-bold text-gray-900">{domain.name}</h3>
+                </div>
+                <ul className="space-y-1">
+                  {domain.problems.map((problem, pidx) => (
+                    <li key={pidx} className="text-sm text-gray-600 flex items-center">
+                      <span className="text-orange-400 mr-2 text-xs">•</span>
+                      {problem}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-10 text-center">
             <p className="text-gray-600">
               <span className="font-semibold text-gray-900">All domains include:</span>{' '}
               Production-ready frameworks • Automatic code generation • Industry-specific constraints • FastAPI deployment
