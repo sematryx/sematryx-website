@@ -1,5 +1,5 @@
 export default function Features() {
-  // The core optimization engine - 3 pillars with distinct colors
+  // The core optimization engine - 3 pillars with distinct colors (blue, yellow, pink)
   const enginePillars = [
     {
       title: "Agentic",
@@ -13,13 +13,13 @@ export default function Features() {
         "Autonomous decision-making"
       ],
       colors: {
-        bg: "bg-blue-950/50",
-        border: "border-blue-700",
+        bg: "bg-[#1a1f2e]",
+        border: "border-gray-700",
         title: "text-blue-400",
         subtitle: "text-blue-400",
-        text: "text-blue-200/80",
+        text: "text-gray-400",
         bullet: "text-blue-400",
-        feature: "text-blue-300/70"
+        feature: "text-blue-400"
       }
     },
     {
@@ -34,13 +34,13 @@ export default function Features() {
         "Interactive visualizations"
       ],
       colors: {
-        bg: "bg-green-950/50",
-        border: "border-green-700",
-        title: "text-green-400",
-        subtitle: "text-green-400",
-        text: "text-green-200/80",
-        bullet: "text-green-400",
-        feature: "text-green-300/70"
+        bg: "bg-[#1a1f2e]",
+        border: "border-gray-700",
+        title: "text-yellow-400",
+        subtitle: "text-yellow-400",
+        text: "text-gray-400",
+        bullet: "text-yellow-400",
+        feature: "text-yellow-400"
       }
     },
     {
@@ -55,13 +55,13 @@ export default function Features() {
         "Performance memory"
       ],
       colors: {
-        bg: "bg-purple-950/50",
-        border: "border-purple-700",
-        title: "text-purple-400",
-        subtitle: "text-purple-400",
-        text: "text-purple-200/80",
-        bullet: "text-purple-400",
-        feature: "text-purple-300/70"
+        bg: "bg-[#1a1f2e]",
+        border: "border-gray-700",
+        title: "text-pink-400",
+        subtitle: "text-pink-400",
+        text: "text-gray-400",
+        bullet: "text-pink-400",
+        feature: "text-pink-400"
       }
     }
   ]
