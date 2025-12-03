@@ -1,7 +1,7 @@
 export default function Features() {
   const tetradPillars = [
     {
-      title: "Agentic Intelligence",
+      title: "Agentic",
       subtitle: "Multi-Agent Coordination",
       description: "Research agents, validation engineers, and performance analysts collaborate to provide consensus-based optimization strategies and real-time performance analysis.",
       icon: "🤖",
@@ -14,7 +14,7 @@ export default function Features() {
       ]
     },
     {
-      title: "Expository Intelligence",
+      title: "Expository",
       subtitle: "Explainability & Transparency",
       description: "Comprehensive explanation of all optimization decisions with configurable explanation levels (0-5) for compute cost control. Natural language summaries, technical logs, and interactive visualizations.",
       icon: "📖",
@@ -27,7 +27,7 @@ export default function Features() {
       ]
     },
     {
-      title: "Autodidactic Intelligence",
+      title: "Autodidactic",
       subtitle: "Self-Improvement & Learning",
       description: "Self-improvement and continuous learning from optimization experience. Problem signature detection, strategy variation, and cross-problem learning enable continuous performance improvement.",
       icon: "🧠",

@@ -15,7 +15,7 @@ export default function WhyAEAOPage() {
       title: "15 AI Systems Coordinated",
       description: "Unlike single-algorithm optimizers, AEAO coordinates 15 specialized AI systems working together: research agents analyze problems, validation engineers ensure safety, performance analysts track metrics, and learning systems adapt strategies.",
       icon: "🤖",
-      comparison: "Traditional optimizers: Single algorithm | AEAO: 15-system Intelligence Hub"
+      comparison: "Traditional optimizers: Single algorithm | AEAO: 15-system coordination"
     },
     {
       title: "Enterprise-Grade Compliance",
@@ -31,7 +31,7 @@ export default function WhyAEAOPage() {
     },
   ]
 
-  // Advanced AI Intelligence Systems - What makes AEAO intelligent
+  // Advanced AI Capabilities - What makes AEAO intelligent
   const intelligenceSystems = [
     {
       title: "Continuous Learning",
@@ -40,7 +40,7 @@ export default function WhyAEAOPage() {
       comparison: "Traditional optimizers: Static, no learning | AEAO: Learns from every optimization"
     },
     {
-      title: "Temporal Intelligence",
+      title: "Temporal Awareness",
       description: "Unified temporal context manager that fuses historical patterns with real-time data for predictive optimization. Domain-specific temporal engines adapt to changing conditions in finance, healthcare, supply chain, and manufacturing.",
       icon: "⏱️",
       comparison: "Traditional optimizers: Static snapshots | AEAO: Real-time + historical fusion with predictive modeling"
@@ -58,10 +58,10 @@ export default function WhyAEAOPage() {
       comparison: "Traditional optimizers: Single library | AEAO: Unified registry across 5+ libraries"
     },
     {
-      title: "Visual Intelligence",
+      title: "Visual Analysis",
       description: "Computer vision-based optimization landscape analysis. Understand your problem space visually and make better decisions. See patterns humans can't detect in mathematical representations alone.",
       icon: "👁️",
-      comparison: "Traditional optimizers: Mathematical only | AEAO: Visual + mathematical intelligence"
+      comparison: "Traditional optimizers: Mathematical only | AEAO: Visual + mathematical analysis"
     },
   ]
 
@@ -179,15 +179,15 @@ export default function WhyAEAOPage() {
         </div>
       </div>
 
-      {/* Advanced Intelligence Systems */}
+      {/* Advanced AI Capabilities */}
       <div className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Advanced Intelligence Systems
+              Advanced AI Capabilities
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              AI-powered intelligence that makes AEAO smarter with every optimization
+              AI-powered systems that make AEAO smarter with every optimization
             </p>
           </div>
 
@@ -307,12 +307,12 @@ export default function WhyAEAOPage() {
                     <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ 13+ Business Domains</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td className="py-4 px-6 font-medium text-gray-900">Visual Intelligence</td>
+                    <td className="py-4 px-6 font-medium text-gray-900">Visual Analysis</td>
                     <td className="py-4 px-6 text-center text-gray-700">❌ Mathematical Only</td>
                     <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Visual + Mathematical</td>
                   </tr>
                   <tr>
-                    <td className="py-4 px-6 font-medium text-gray-900">Temporal Intelligence</td>
+                    <td className="py-4 px-6 font-medium text-gray-900">Temporal Awareness</td>
                     <td className="py-4 px-6 text-center text-gray-700">❌ Static Snapshots</td>
                     <td className="py-4 px-6 text-center text-primary-600 font-semibold">✅ Real-Time + Historical</td>
                   </tr>
