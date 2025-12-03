@@ -152,6 +152,92 @@ export default function WhyAEAOPage() {
         </div>
       </div>
 
+      {/* The AEAO Tetrad */}
+      <div className="py-20 bg-[#1a1f2e]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              The <span className="text-primary-400">AEAO</span> Tetrad
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Four core pillars that power enterprise-grade optimization
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Agentic - Sky Blue */}
+            <div className="bg-sky-950/40 p-8 rounded-xl border border-sky-800/50">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-4xl">🤖</span>
+                <h3 className="text-2xl font-bold text-sky-400">Agentic Intelligence</h3>
+              </div>
+              <p className="text-sky-200/80 mb-4">
+                Research agents, validation engineers, and performance analysts collaborate to provide consensus-based optimization strategies and real-time performance analysis.
+              </p>
+              <ul className="space-y-2 text-sm text-sky-400">
+                <li>• Multi-agent collaboration</li>
+                <li>• Consensus-based strategy selection</li>
+                <li>• Real-time performance analysis</li>
+                <li>• Autonomous decision-making</li>
+              </ul>
+            </div>
+
+            {/* Expository - Green */}
+            <div className="bg-green-950/40 p-8 rounded-xl border border-green-800/50">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-4xl">📖</span>
+                <h3 className="text-2xl font-bold text-green-400">Expository Intelligence</h3>
+              </div>
+              <p className="text-green-200/80 mb-4">
+                Comprehensive explanation of all optimization decisions with configurable explanation levels (0-5) for compute cost control. Natural language summaries, technical logs, and interactive visualizations.
+              </p>
+              <ul className="space-y-2 text-sm text-green-400">
+                <li>• Configurable explanation levels (0-5)</li>
+                <li>• Natural language summaries</li>
+                <li>• Technical decision logs</li>
+                <li>• Interactive visualizations</li>
+              </ul>
+            </div>
+
+            {/* Autodidactic - Pink */}
+            <div className="bg-pink-950/40 p-8 rounded-xl border border-pink-800/50">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-4xl">🧠</span>
+                <h3 className="text-2xl font-bold text-pink-400">Autodidactic Intelligence</h3>
+              </div>
+              <p className="text-pink-200/80 mb-4">
+                Self-improvement and continuous learning from optimization experience. Problem signature detection, strategy variation, and cross-problem learning enable continuous performance improvement.
+              </p>
+              <ul className="space-y-2 text-sm text-pink-400">
+                <li>• Problem signature detection</li>
+                <li>• Strategy variation</li>
+                <li>• Cross-problem learning</li>
+                <li>• Performance memory</li>
+                <li>• Meta-learning capabilities</li>
+              </ul>
+            </div>
+
+            {/* Domain Extension - Orange */}
+            <div className="bg-orange-950/40 p-8 rounded-xl border border-orange-800/50">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-4xl">🏗️</span>
+                <h3 className="text-2xl font-bold text-orange-400">Domain Extension</h3>
+              </div>
+              <p className="text-orange-200/80 mb-4">
+                Business domain libraries for rapid enterprise adoption. Engine-domain separation enables core optimization algorithms across 13+ business domains with automatic code generation.
+              </p>
+              <ul className="space-y-2 text-sm text-orange-400">
+                <li>• 13+ business domains</li>
+                <li>• Automatic code generation</li>
+                <li>• FastAPI deployment</li>
+                <li>• Pattern recommendations</li>
+                <li>• Production-ready templates</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Enterprise Features */}
       <div className="py-20 bg-[#0f1419]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

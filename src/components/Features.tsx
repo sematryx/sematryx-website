@@ -1,42 +1,9 @@
 export default function Features() {
-  // The core optimization engine - 3 pillars
+  // The core optimization engine - 3 pillars (simplified for landing page)
   const enginePillars = [
-    {
-      title: "Agentic",
-      subtitle: "Multi-Agent Coordination",
-      description: "Research agents, validation engineers, and performance analysts collaborate to provide consensus-based optimization strategies and real-time performance analysis.",
-      icon: "🤖",
-      features: [
-        "Multi-agent collaboration",
-        "Consensus-based strategy selection",
-        "Real-time performance analysis",
-        "Autonomous decision-making"
-      ]
-    },
-    {
-      title: "Expository",
-      subtitle: "Explainability & Transparency",
-      description: "Comprehensive explanation of all optimization decisions with configurable explanation levels (0-5) for compute cost control. Natural language summaries, technical logs, and interactive visualizations.",
-      icon: "📖",
-      features: [
-        "Configurable explanation levels",
-        "Natural language summaries",
-        "Technical decision logs",
-        "Interactive visualizations"
-      ]
-    },
-    {
-      title: "Autodidactic",
-      subtitle: "Self-Improvement & Learning",
-      description: "Self-improvement and continuous learning from optimization experience. Problem signature detection, strategy variation, and cross-problem learning enable continuous performance improvement.",
-      icon: "🧠",
-      features: [
-        "Problem signature detection",
-        "Strategy variation",
-        "Cross-problem learning",
-        "Performance memory"
-      ]
-    }
+    { title: "Agentic", subtitle: "Multi-Agent Coordination", icon: "🤖" },
+    { title: "Expository", subtitle: "Explainability & Transparency", icon: "📖" },
+    { title: "Autodidactic", subtitle: "Self-Improvement & Learning", icon: "🧠" }
   ]
 
   // Domain solution libraries - application layer
@@ -64,44 +31,26 @@ export default function Features() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-3 gap-4">
             {/* Agentic - Sky Blue */}
-            <div className="bg-sky-950/40 p-8 rounded-xl border border-sky-800/50">
-              <div className="text-5xl mb-4">{enginePillars[0].icon}</div>
-              <h3 className="text-2xl font-bold text-sky-400 mb-1">{enginePillars[0].title}</h3>
-              <p className="text-sm font-medium text-sky-400 mb-3">{enginePillars[0].subtitle}</p>
-              <p className="text-sky-200/80 mb-4">{enginePillars[0].description}</p>
-              <ul className="space-y-2 text-sm text-sky-400">
-                {enginePillars[0].features.map((feature, idx) => (
-                  <li key={idx}>✓ {feature}</li>
-                ))}
-              </ul>
+            <div className="bg-sky-950/40 p-6 rounded-xl border border-sky-800/50 text-center">
+              <span className="text-4xl block mb-3">{enginePillars[0].icon}</span>
+              <h3 className="text-xl font-bold text-sky-400 mb-1">{enginePillars[0].title}</h3>
+              <p className="text-sm text-sky-300/70">{enginePillars[0].subtitle}</p>
             </div>
 
             {/* Expository - Green */}
-            <div className="bg-green-950/40 p-8 rounded-xl border border-green-800/50">
-              <div className="text-5xl mb-4">{enginePillars[1].icon}</div>
-              <h3 className="text-2xl font-bold text-green-400 mb-1">{enginePillars[1].title}</h3>
-              <p className="text-sm font-medium text-green-400 mb-3">{enginePillars[1].subtitle}</p>
-              <p className="text-green-200/80 mb-4">{enginePillars[1].description}</p>
-              <ul className="space-y-2 text-sm text-green-400">
-                {enginePillars[1].features.map((feature, idx) => (
-                  <li key={idx}>✓ {feature}</li>
-                ))}
-              </ul>
+            <div className="bg-green-950/40 p-6 rounded-xl border border-green-800/50 text-center">
+              <span className="text-4xl block mb-3">{enginePillars[1].icon}</span>
+              <h3 className="text-xl font-bold text-green-400 mb-1">{enginePillars[1].title}</h3>
+              <p className="text-sm text-green-300/70">{enginePillars[1].subtitle}</p>
             </div>
 
             {/* Autodidactic - Pink */}
-            <div className="bg-pink-950/40 p-8 rounded-xl border border-pink-800/50">
-              <div className="text-5xl mb-4">{enginePillars[2].icon}</div>
-              <h3 className="text-2xl font-bold text-pink-400 mb-1">{enginePillars[2].title}</h3>
-              <p className="text-sm font-medium text-pink-400 mb-3">{enginePillars[2].subtitle}</p>
-              <p className="text-pink-200/80 mb-4">{enginePillars[2].description}</p>
-              <ul className="space-y-2 text-sm text-pink-400">
-                {enginePillars[2].features.map((feature, idx) => (
-                  <li key={idx}>✓ {feature}</li>
-                ))}
-              </ul>
+            <div className="bg-pink-950/40 p-6 rounded-xl border border-pink-800/50 text-center">
+              <span className="text-4xl block mb-3">{enginePillars[2].icon}</span>
+              <h3 className="text-xl font-bold text-pink-400 mb-1">{enginePillars[2].title}</h3>
+              <p className="text-sm text-pink-300/70">{enginePillars[2].subtitle}</p>
             </div>
           </div>
         </div>
