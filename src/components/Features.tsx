@@ -165,10 +165,7 @@ export default function Features() {
                 </div>
                 
                 {/* Connected Real-World Problems Panel */}
-                <div className="bg-gray-50 p-4 rounded-b-xl border border-orange-200 border-t-0 relative">
-                  {/* Connector line */}
-                  <div className="absolute -top-px left-6 right-6 h-px bg-orange-200"></div>
-                  <p className="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-2">Real-world problems solved</p>
+                <div className="bg-gray-50 p-4 rounded-b-xl border border-orange-200 border-t-0">
                   <ul className="space-y-2">
                     {domain.realWorldProblems.map((problem, pidx) => (
                       <li key={pidx} className="text-xs text-gray-600 flex items-start">
