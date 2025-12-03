@@ -112,15 +112,15 @@ const result = await aeao.optimize({
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6">
+            <div className="bg-blue-950/50 border border-blue-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🤖</span>
-                <h3 className="text-xl font-bold text-primary-400">Agentic</h3>
+                <h3 className="text-xl font-bold text-blue-400">Agentic</h3>
               </div>
-              <p className="text-gray-400 mb-3">
+              <p className="text-blue-200/80 mb-3">
                 Multi-agent coordination for strategy selection. Research agents, validation engineers, and performance analysts collaborate to provide consensus-based optimization strategies.
               </p>
-              <ul className="space-y-1 text-sm text-gray-500">
+              <ul className="space-y-1 text-sm text-blue-300/70">
                 <li>• Multi-agent collaboration</li>
                 <li>• Consensus-based strategy selection</li>
                 <li>• Real-time performance analysis</li>
@@ -128,15 +128,15 @@ const result = await aeao.optimize({
               </ul>
             </div>
 
-            <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6">
+            <div className="bg-green-950/50 border border-green-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">📖</span>
-                <h3 className="text-xl font-bold text-primary-400">Expository</h3>
+                <h3 className="text-xl font-bold text-green-400">Expository</h3>
               </div>
-              <p className="text-gray-400 mb-3">
+              <p className="text-green-200/80 mb-3">
                 Comprehensive explanation of all optimization decisions with configurable explanation levels (0-5) for compute cost control.
               </p>
-              <ul className="space-y-1 text-sm text-gray-500">
+              <ul className="space-y-1 text-sm text-green-300/70">
                 <li>• Configurable explanation levels (0-5)</li>
                 <li>• Natural language summaries</li>
                 <li>• Technical decision logs</li>
@@ -144,15 +144,15 @@ const result = await aeao.optimize({
               </ul>
             </div>
 
-            <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6">
+            <div className="bg-purple-950/50 border border-purple-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🧠</span>
-                <h3 className="text-xl font-bold text-primary-400">Autodidactic</h3>
+                <h3 className="text-xl font-bold text-purple-400">Autodidactic</h3>
               </div>
-              <p className="text-gray-400 mb-3">
+              <p className="text-purple-200/80 mb-3">
                 Self-improvement and continuous learning from optimization experience. Problem signature detection, strategy variation, and cross-problem learning.
               </p>
-              <ul className="space-y-1 text-sm text-gray-500">
+              <ul className="space-y-1 text-sm text-purple-300/70">
                 <li>• Problem signature detection</li>
                 <li>• Strategy variation</li>
                 <li>• Cross-problem learning</li>
@@ -161,15 +161,15 @@ const result = await aeao.optimize({
               </ul>
             </div>
 
-            <div className="bg-[#1a1f2e] border border-orange-700 rounded-lg p-6">
+            <div className="bg-orange-950/50 border border-orange-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🏗️</span>
                 <h3 className="text-xl font-bold text-orange-400">Domain Extension</h3>
               </div>
-              <p className="text-gray-400 mb-3">
+              <p className="text-orange-200/80 mb-3">
                 Business domain libraries for rapid enterprise adoption. Engine-domain separation enables core optimization algorithms across 13+ business domains.
               </p>
-              <ul className="space-y-1 text-sm text-gray-500">
+              <ul className="space-y-1 text-sm text-orange-300/70">
                 <li>• 13+ business domains</li>
                 <li>• Automatic code generation</li>
                 <li>• FastAPI deployment</li>

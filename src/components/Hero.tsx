@@ -16,13 +16,13 @@ export default function Hero() {
           </p>
           {/* The AEAO Tetrad */}
           <div className="flex flex-wrap justify-center gap-3 mb-4 text-sm md:text-base">
-            <span className="bg-primary-900/40 text-primary-300 px-4 py-2 rounded-full font-medium border border-primary-700">
+            <span className="bg-blue-900/40 text-blue-300 px-4 py-2 rounded-full font-medium border border-blue-700">
               🤖 Agentic
             </span>
-            <span className="bg-primary-900/40 text-primary-300 px-4 py-2 rounded-full font-medium border border-primary-700">
+            <span className="bg-green-900/40 text-green-300 px-4 py-2 rounded-full font-medium border border-green-700">
               📖 Expository
             </span>
-            <span className="bg-primary-900/40 text-primary-300 px-4 py-2 rounded-full font-medium border border-primary-700">
+            <span className="bg-purple-900/40 text-purple-300 px-4 py-2 rounded-full font-medium border border-purple-700">
               🧠 Autodidactic
             </span>
             <span className="bg-orange-900/40 text-orange-300 px-4 py-2 rounded-full font-medium border border-orange-700">

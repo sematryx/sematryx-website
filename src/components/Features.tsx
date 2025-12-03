@@ -1,5 +1,5 @@
 export default function Features() {
-  // The core optimization engine - 3 pillars
+  // The core optimization engine - 3 pillars with distinct colors
   const enginePillars = [
     {
       title: "Agentic",
@@ -11,7 +11,16 @@ export default function Features() {
         "Consensus-based strategy selection",
         "Real-time performance analysis",
         "Autonomous decision-making"
-      ]
+      ],
+      colors: {
+        bg: "bg-blue-950/50",
+        border: "border-blue-700",
+        title: "text-blue-400",
+        subtitle: "text-blue-400",
+        text: "text-blue-200/80",
+        bullet: "text-blue-400",
+        feature: "text-blue-300/70"
+      }
     },
     {
       title: "Expository",
@@ -23,7 +32,16 @@ export default function Features() {
         "Natural language summaries",
         "Technical decision logs",
         "Interactive visualizations"
-      ]
+      ],
+      colors: {
+        bg: "bg-green-950/50",
+        border: "border-green-700",
+        title: "text-green-400",
+        subtitle: "text-green-400",
+        text: "text-green-200/80",
+        bullet: "text-green-400",
+        feature: "text-green-300/70"
+      }
     },
     {
       title: "Autodidactic",
@@ -35,7 +53,16 @@ export default function Features() {
         "Strategy variation",
         "Cross-problem learning",
         "Performance memory"
-      ]
+      ],
+      colors: {
+        bg: "bg-purple-950/50",
+        border: "border-purple-700",
+        title: "text-purple-400",
+        subtitle: "text-purple-400",
+        text: "text-purple-200/80",
+        bullet: "text-purple-400",
+        feature: "text-purple-300/70"
+      }
     }
   ]
 
@@ -120,15 +147,15 @@ export default function Features() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {enginePillars.map((pillar, index) => (
-              <div key={index} className="bg-[#242b3d] p-8 rounded-xl hover:bg-[#2a3347] transition-all duration-200 border-t-4 border-primary-500">
+              <div key={index} className={`${pillar.colors.bg} p-8 rounded-xl transition-all duration-200 border ${pillar.colors.border}`}>
                 <div className="text-5xl mb-4">{pillar.icon}</div>
-                <h3 className="text-2xl font-bold text-white mb-1">{pillar.title}</h3>
-                <p className="text-sm font-medium text-primary-400 mb-3">{pillar.subtitle}</p>
-                <p className="text-gray-400 mb-4">{pillar.description}</p>
+                <h3 className={`text-2xl font-bold ${pillar.colors.title} mb-1`}>{pillar.title}</h3>
+                <p className={`text-sm font-medium ${pillar.colors.subtitle} mb-3`}>{pillar.subtitle}</p>
+                <p className={`${pillar.colors.text} mb-4`}>{pillar.description}</p>
                 <ul className="space-y-2">
                   {pillar.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-400">
-                      <span className="text-primary-400 mr-2">✓</span>
+                    <li key={idx} className={`flex items-center text-sm ${pillar.colors.feature}`}>
+                      <span className={`${pillar.colors.bullet} mr-2`}>✓</span>
                       {feature}
                     </li>
                   ))}
