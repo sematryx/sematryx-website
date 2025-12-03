@@ -7,17 +7,17 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   metadataBase: new URL('https://aeao-website.vercel.app'),
   title: 'AEAO - Enterprise Optimization Framework',
-  description: 'Enterprise-grade optimization with 15 coordinated AI systems, continuous learning, and full explainability. 22-26% performance boost over traditional optimizers. Financial, healthcare, supply chain, and more.',
+  description: 'The world\'s most advanced optimization framework. Where traditional optimizers solve mathematical problems, AEAO solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.',
   openGraph: {
     title: 'AEAO - Enterprise Optimization Framework',
-    description: 'Enterprise-grade optimization with 15 coordinated AI systems, continuous learning, and full explainability. 22-26% performance boost over traditional optimizers.',
+    description: 'The world\'s most advanced optimization framework. Where traditional optimizers solve mathematical problems, AEAO solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.',
     type: 'website',
     siteName: 'AEAO',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AEAO - Enterprise Optimization Framework',
-    description: 'Enterprise-grade optimization with 15 coordinated AI systems, continuous learning, and full explainability.',
+    description: 'The world\'s most advanced optimization framework. Where traditional optimizers solve mathematical problems, AEAO solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.',
   },
 }
 
