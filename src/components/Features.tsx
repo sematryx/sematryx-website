@@ -98,14 +98,12 @@ export default function Features() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {domains.map((domain, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl border border-orange-200 hover:shadow-md transition-all duration-200">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-3xl">{domain.icon}</span>
-                  <h3 className="text-lg font-bold text-gray-900">{domain.name}</h3>
-                </div>
-                <p className="text-sm text-gray-600">{domain.examples}</p>
+              <div key={idx} className="bg-gradient-to-br from-orange-50 to-white p-4 rounded-xl border border-orange-200 hover:shadow-md hover:border-orange-300 transition-all duration-200 text-center group">
+                <span className="text-3xl block mb-2">{domain.icon}</span>
+                <h3 className="text-sm font-bold text-gray-900 mb-1">{domain.name}</h3>
+                <p className="text-xs text-gray-500 leading-tight">{domain.examples}</p>
               </div>
             ))}
           </div>
