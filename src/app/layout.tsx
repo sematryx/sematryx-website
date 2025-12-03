@@ -5,8 +5,20 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'AEAO - Agentic Expository Audidactic Optimizer',
-  description: 'The world\'s most advanced AI-powered optimization framework. Coordinate multiple AI systems, leverage domain expertise, and solve complex problems across industries.',
+  metadataBase: new URL('https://aeao-website.vercel.app'),
+  title: 'AEAO - Enterprise Optimization Framework',
+  description: 'Enterprise-grade optimization with 15 coordinated AI systems, continuous learning, and full explainability. 22-26% performance boost over traditional optimizers. Financial, healthcare, supply chain, and more.',
+  openGraph: {
+    title: 'AEAO - Enterprise Optimization Framework',
+    description: 'Enterprise-grade optimization with 15 coordinated AI systems, continuous learning, and full explainability. 22-26% performance boost over traditional optimizers.',
+    type: 'website',
+    siteName: 'AEAO',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AEAO - Enterprise Optimization Framework',
+    description: 'Enterprise-grade optimization with 15 coordinated AI systems, continuous learning, and full explainability.',
+  },
 }
 
 export default function RootLayout({
