@@ -14,24 +14,34 @@ export default function Hero() {
             The world's most advanced optimization framework. Where traditional optimizers solve mathematical problems, 
             AEAO solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 mb-8 text-sm md:text-base">
-            <span className="bg-[#242b3d] text-gray-300 px-4 py-2 rounded-full font-medium border border-gray-700">
-              15 AI Systems Coordinated
+          {/* The AEAO Tetrad */}
+          <div className="flex flex-wrap justify-center gap-3 mb-4 text-sm md:text-base">
+            <span className="bg-primary-900/40 text-primary-300 px-4 py-2 rounded-full font-medium border border-primary-700">
+              🤖 Agentic
             </span>
-            <span className="bg-[#242b3d] text-gray-300 px-4 py-2 rounded-full font-medium border border-gray-700">
-              Enterprise Compliance Built-In
+            <span className="bg-primary-900/40 text-primary-300 px-4 py-2 rounded-full font-medium border border-primary-700">
+              📖 Expository
             </span>
-            <span className="bg-[#242b3d] text-gray-300 px-4 py-2 rounded-full font-medium border border-gray-700">
-              22-26% Performance Boost
+            <span className="bg-primary-900/40 text-primary-300 px-4 py-2 rounded-full font-medium border border-primary-700">
+              🧠 Autodidactic
             </span>
-            <span className="bg-[#242b3d] text-gray-300 px-4 py-2 rounded-full font-medium border border-gray-700">
-              Temporal Awareness
+            <span className="bg-orange-900/40 text-orange-300 px-4 py-2 rounded-full font-medium border border-orange-700">
+              🏗️ Domain Libraries
             </span>
-            <span className="bg-[#242b3d] text-gray-300 px-4 py-2 rounded-full font-medium border border-gray-700">
-              Knowledge Graphs + RAG
+          </div>
+          {/* Key capabilities */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8 text-xs md:text-sm">
+            <span className="bg-[#242b3d] text-gray-400 px-3 py-1.5 rounded-full border border-gray-700">
+              Multi-Agent Coordination
             </span>
-            <span className="bg-[#242b3d] text-gray-300 px-4 py-2 rounded-full font-medium border border-gray-700">
-              Multi-Library Integration
+            <span className="bg-[#242b3d] text-gray-400 px-3 py-1.5 rounded-full border border-gray-700">
+              Full Explainability
+            </span>
+            <span className="bg-[#242b3d] text-gray-400 px-3 py-1.5 rounded-full border border-gray-700">
+              Continuous Learning
+            </span>
+            <span className="bg-[#242b3d] text-gray-400 px-3 py-1.5 rounded-full border border-gray-700">
+              13+ Industry Verticals
             </span>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
