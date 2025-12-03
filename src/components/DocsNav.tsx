@@ -43,7 +43,7 @@ export default function DocsNav() {
   const pathname = usePathname()
 
   return (
-    <nav className="w-64 bg-[#1a1f2e] h-full overflow-y-auto border-r border-gray-800">
+    <nav className="h-full">
       <div className="p-6">
         <h2 className="text-lg font-semibold text-white mb-4">Documentation</h2>
         
