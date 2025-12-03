@@ -5,8 +5,8 @@ export default function Hero() {
     <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            <span className="text-primary-400">Agentic Expository Autodidactic</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-primary-400 mb-6">
+            Agentic Expository Autodidactic
             <br className="hidden sm:block" />
             Optimizer
           </h1>
