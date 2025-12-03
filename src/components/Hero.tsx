@@ -5,14 +5,13 @@ export default function Hero() {
     <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-primary-400 mb-6">
-            Agentic Expository Autodidactic
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <span className="text-primary-400">A</span>gentic <span className="text-primary-400">E</span>xpository <span className="text-primary-400">A</span>utodidactic
             <br className="hidden sm:block" />
-            Optimizer
+            <span className="text-primary-400">O</span>ptimizer
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 mb-6 max-w-3xl mx-auto">
-            The world's most advanced optimization framework. Where traditional optimizers solve mathematical problems, 
-            <span className="text-primary-400">AEAO</span> solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.
+            The world's most advanced optimization framework. Where traditional optimizers solve mathematical problems, <span className="text-primary-400">AEAO</span> solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.
           </p>
           {/* The AEAO Tetrad */}
           <div className="flex flex-wrap justify-center gap-3 mb-4 text-sm md:text-base">
