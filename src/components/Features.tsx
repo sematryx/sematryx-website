@@ -40,25 +40,14 @@ export default function Features() {
   ]
 
   // Domain solution libraries - application layer
-  const domainLibrary = {
-    title: "Domain Solution Libraries",
-    description: "Pre-built, production-ready frameworks for 13+ business domains. Leverage the AEAO engine immediately for real-world problems in your industry—financial services, healthcare, supply chain, manufacturing, energy, and more.",
-    icon: "🏗️",
-    features: [
-      "Financial Services & Trading",
-      "Healthcare & Life Sciences",
-      "Supply Chain & Logistics",
-      "Manufacturing & Process",
-      "Energy & Utilities",
-      "AI/ML & Research"
-    ],
-    capabilities: [
-      "Production-ready frameworks",
-      "Automatic code generation",
-      "Industry-specific constraints",
-      "FastAPI deployment"
-    ]
-  }
+  const domains = [
+    { name: "Financial Services", icon: "💼", examples: "Portfolio optimization, trading strategies, risk management" },
+    { name: "Healthcare", icon: "🏥", examples: "Drug discovery, clinical trials, resource allocation" },
+    { name: "Supply Chain", icon: "🚚", examples: "Inventory optimization, routing, demand forecasting" },
+    { name: "Manufacturing", icon: "🏭", examples: "Process optimization, quality control, scheduling" },
+    { name: "Energy", icon: "⚡", examples: "Grid optimization, trading, renewable integration" },
+    { name: "AI/ML Research", icon: "🔬", examples: "Hyperparameter tuning, architecture search, experiment design" }
+  ]
 
   return (
     <>
@@ -105,40 +94,27 @@ export default function Features() {
               Vertical Intelligence
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Apply the AEAO engine to your industry with pre-built, production-ready solutions
+              Pre-built, production-ready solution libraries for your industry
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-orange-50 to-white p-8 rounded-xl shadow-sm border border-orange-200">
-            <div className="flex flex-col lg:flex-row gap-8">
-              <div className="lg:w-1/2">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="text-5xl">{domainLibrary.icon}</div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900">{domainLibrary.title}</h3>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {domains.map((domain, idx) => (
+              <div key={idx} className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl border border-orange-200 hover:shadow-md transition-all duration-200">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">{domain.icon}</span>
+                  <h3 className="text-lg font-bold text-gray-900">{domain.name}</h3>
                 </div>
-                <p className="text-gray-700 mb-6">{domainLibrary.description}</p>
-                <ul className="grid grid-cols-2 gap-2">
-                  {domainLibrary.capabilities.map((cap, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-600">
-                      <span className="text-orange-500 mr-2">✓</span>
-                      {cap}
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-sm text-gray-600">{domain.examples}</p>
               </div>
-              <div className="lg:w-1/2">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Supported Industries</h4>
-                <div className="grid grid-cols-2 gap-3">
-                  {domainLibrary.features.map((domain, idx) => (
-                    <div key={idx} className="bg-white px-4 py-3 rounded-lg text-sm font-medium text-gray-800 border border-orange-200 shadow-sm">
-                      {domain}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-gray-600">
+              <span className="font-semibold text-gray-900">All domains include:</span>{' '}
+              Production-ready frameworks • Automatic code generation • Industry-specific constraints • FastAPI deployment
+            </p>
           </div>
         </div>
       </div>
