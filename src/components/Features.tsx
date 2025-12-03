@@ -1,5 +1,5 @@
 export default function Features() {
-  // The core optimization engine - 3 pillars with distinct colors (blue, yellow, pink)
+  // The core optimization engine - 3 pillars
   const enginePillars = [
     {
       title: "Agentic",
@@ -11,16 +11,7 @@ export default function Features() {
         "Consensus-based strategy selection",
         "Real-time performance analysis",
         "Autonomous decision-making"
-      ],
-      colors: {
-        bg: "bg-[#1a1f2e]",
-        border: "border-gray-700",
-        title: "text-blue-400",
-        subtitle: "text-blue-400",
-        text: "text-gray-400",
-        bullet: "text-blue-400",
-        feature: "text-blue-400"
-      }
+      ]
     },
     {
       title: "Expository",
@@ -32,16 +23,7 @@ export default function Features() {
         "Natural language summaries",
         "Technical decision logs",
         "Interactive visualizations"
-      ],
-      colors: {
-        bg: "bg-[#1a1f2e]",
-        border: "border-gray-700",
-        title: "text-yellow-400",
-        subtitle: "text-yellow-400",
-        text: "text-gray-400",
-        bullet: "text-yellow-400",
-        feature: "text-yellow-400"
-      }
+      ]
     },
     {
       title: "Autodidactic",
@@ -53,16 +35,7 @@ export default function Features() {
         "Strategy variation",
         "Cross-problem learning",
         "Performance memory"
-      ],
-      colors: {
-        bg: "bg-[#1a1f2e]",
-        border: "border-gray-700",
-        title: "text-pink-400",
-        subtitle: "text-pink-400",
-        text: "text-gray-400",
-        bullet: "text-pink-400",
-        feature: "text-pink-400"
-      }
+      ]
     }
   ]
 
@@ -146,22 +119,53 @@ export default function Features() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {enginePillars.map((pillar, index) => (
-              <div key={index} className={`${pillar.colors.bg} p-8 rounded-xl transition-all duration-200 border ${pillar.colors.border}`}>
-                <div className="text-5xl mb-4">{pillar.icon}</div>
-                <h3 className={`text-2xl font-bold ${pillar.colors.title} mb-1`}>{pillar.title}</h3>
-                <p className={`text-sm font-medium ${pillar.colors.subtitle} mb-3`}>{pillar.subtitle}</p>
-                <p className={`${pillar.colors.text} mb-4`}>{pillar.description}</p>
-                <ul className="space-y-2">
-                  {pillar.features.map((feature, idx) => (
-                    <li key={idx} className={`flex items-center text-sm ${pillar.colors.feature}`}>
-                      <span className={`${pillar.colors.bullet} mr-2`}>✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {/* Agentic - Blue */}
+            <div className="bg-[#242b3d] p-8 rounded-xl border border-gray-700">
+              <div className="text-5xl mb-4">{enginePillars[0].icon}</div>
+              <h3 className="text-2xl font-bold text-blue-400 mb-1">{enginePillars[0].title}</h3>
+              <p className="text-sm font-medium text-blue-400 mb-3">{enginePillars[0].subtitle}</p>
+              <p className="text-gray-400 mb-4">{enginePillars[0].description}</p>
+              <ul className="space-y-2">
+                {enginePillars[0].features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center text-sm text-gray-400">
+                    <span className="text-blue-400 mr-2">✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Expository - Yellow */}
+            <div className="bg-[#242b3d] p-8 rounded-xl border border-gray-700">
+              <div className="text-5xl mb-4">{enginePillars[1].icon}</div>
+              <h3 className="text-2xl font-bold text-yellow-400 mb-1">{enginePillars[1].title}</h3>
+              <p className="text-sm font-medium text-yellow-400 mb-3">{enginePillars[1].subtitle}</p>
+              <p className="text-gray-400 mb-4">{enginePillars[1].description}</p>
+              <ul className="space-y-2">
+                {enginePillars[1].features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center text-sm text-gray-400">
+                    <span className="text-yellow-400 mr-2">✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Autodidactic - Pink */}
+            <div className="bg-[#242b3d] p-8 rounded-xl border border-gray-700">
+              <div className="text-5xl mb-4">{enginePillars[2].icon}</div>
+              <h3 className="text-2xl font-bold text-pink-400 mb-1">{enginePillars[2].title}</h3>
+              <p className="text-sm font-medium text-pink-400 mb-3">{enginePillars[2].subtitle}</p>
+              <p className="text-gray-400 mb-4">{enginePillars[2].description}</p>
+              <ul className="space-y-2">
+                {enginePillars[2].features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center text-sm text-gray-400">
+                    <span className="text-pink-400 mr-2">✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

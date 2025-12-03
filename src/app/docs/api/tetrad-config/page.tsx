@@ -112,7 +112,7 @@ const result = await aeao.optimize({
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <div className="bg-[#242b3d] border border-gray-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🤖</span>
                 <h3 className="text-xl font-bold text-blue-400">Agentic</h3>
@@ -120,15 +120,15 @@ const result = await aeao.optimize({
               <p className="text-gray-400 mb-3">
                 Multi-agent coordination for strategy selection. Research agents, validation engineers, and performance analysts collaborate to provide consensus-based optimization strategies.
               </p>
-              <ul className="space-y-1 text-sm text-gray-500">
-                <li className="text-blue-400">• Multi-agent collaboration</li>
-                <li className="text-blue-400">• Consensus-based strategy selection</li>
-                <li className="text-blue-400">• Real-time performance analysis</li>
-                <li className="text-blue-400">• Autonomous decision-making</li>
+              <ul className="space-y-1 text-sm">
+                <li className="text-gray-400"><span className="text-blue-400">•</span> Multi-agent collaboration</li>
+                <li className="text-gray-400"><span className="text-blue-400">•</span> Consensus-based strategy selection</li>
+                <li className="text-gray-400"><span className="text-blue-400">•</span> Real-time performance analysis</li>
+                <li className="text-gray-400"><span className="text-blue-400">•</span> Autonomous decision-making</li>
               </ul>
             </div>
 
-            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <div className="bg-[#242b3d] border border-gray-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">📖</span>
                 <h3 className="text-xl font-bold text-yellow-400">Expository</h3>
@@ -136,15 +136,15 @@ const result = await aeao.optimize({
               <p className="text-gray-400 mb-3">
                 Comprehensive explanation of all optimization decisions with configurable explanation levels (0-5) for compute cost control.
               </p>
-              <ul className="space-y-1 text-sm text-gray-500">
-                <li className="text-yellow-400">• Configurable explanation levels (0-5)</li>
-                <li className="text-yellow-400">• Natural language summaries</li>
-                <li className="text-yellow-400">• Technical decision logs</li>
-                <li className="text-yellow-400">• Interactive visualizations</li>
+              <ul className="space-y-1 text-sm">
+                <li className="text-gray-400"><span className="text-yellow-400">•</span> Configurable explanation levels (0-5)</li>
+                <li className="text-gray-400"><span className="text-yellow-400">•</span> Natural language summaries</li>
+                <li className="text-gray-400"><span className="text-yellow-400">•</span> Technical decision logs</li>
+                <li className="text-gray-400"><span className="text-yellow-400">•</span> Interactive visualizations</li>
               </ul>
             </div>
 
-            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <div className="bg-[#242b3d] border border-gray-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🧠</span>
                 <h3 className="text-xl font-bold text-pink-400">Autodidactic</h3>
@@ -152,16 +152,16 @@ const result = await aeao.optimize({
               <p className="text-gray-400 mb-3">
                 Self-improvement and continuous learning from optimization experience. Problem signature detection, strategy variation, and cross-problem learning.
               </p>
-              <ul className="space-y-1 text-sm text-gray-500">
-                <li className="text-pink-400">• Problem signature detection</li>
-                <li className="text-pink-400">• Strategy variation</li>
-                <li className="text-pink-400">• Cross-problem learning</li>
-                <li className="text-pink-400">• Performance memory</li>
-                <li className="text-pink-400">• Meta-learning capabilities</li>
+              <ul className="space-y-1 text-sm">
+                <li className="text-gray-400"><span className="text-pink-400">•</span> Problem signature detection</li>
+                <li className="text-gray-400"><span className="text-pink-400">•</span> Strategy variation</li>
+                <li className="text-gray-400"><span className="text-pink-400">•</span> Cross-problem learning</li>
+                <li className="text-gray-400"><span className="text-pink-400">•</span> Performance memory</li>
+                <li className="text-gray-400"><span className="text-pink-400">•</span> Meta-learning capabilities</li>
               </ul>
             </div>
 
-            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <div className="bg-[#242b3d] border border-gray-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🏗️</span>
                 <h3 className="text-xl font-bold text-orange-400">Domain Extension</h3>
@@ -169,12 +169,12 @@ const result = await aeao.optimize({
               <p className="text-gray-400 mb-3">
                 Business domain libraries for rapid enterprise adoption. Engine-domain separation enables core optimization algorithms across 13+ business domains.
               </p>
-              <ul className="space-y-1 text-sm text-gray-500">
-                <li className="text-orange-400">• 13+ business domains</li>
-                <li className="text-orange-400">• Automatic code generation</li>
-                <li className="text-orange-400">• FastAPI deployment</li>
-                <li className="text-orange-400">• Pattern recommendations</li>
-                <li className="text-orange-400">• Production-ready templates</li>
+              <ul className="space-y-1 text-sm">
+                <li className="text-gray-400"><span className="text-orange-400">•</span> 13+ business domains</li>
+                <li className="text-gray-400"><span className="text-orange-400">•</span> Automatic code generation</li>
+                <li className="text-gray-400"><span className="text-orange-400">•</span> FastAPI deployment</li>
+                <li className="text-gray-400"><span className="text-orange-400">•</span> Pattern recommendations</li>
+                <li className="text-gray-400"><span className="text-orange-400">•</span> Production-ready templates</li>
               </ul>
             </div>
           </div>

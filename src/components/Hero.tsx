@@ -16,16 +16,16 @@ export default function Hero() {
           </p>
           {/* The AEAO Tetrad */}
           <div className="flex flex-wrap justify-center gap-3 mb-4 text-sm md:text-base">
-            <span className="bg-blue-900/40 text-blue-400 px-4 py-2 rounded-full font-medium border border-blue-700">
+            <span className="bg-[#242b3d] text-blue-400 px-4 py-2 rounded-full font-medium border border-gray-700">
               🤖 Agentic
             </span>
-            <span className="bg-yellow-900/40 text-yellow-400 px-4 py-2 rounded-full font-medium border border-yellow-700">
+            <span className="bg-[#242b3d] text-yellow-400 px-4 py-2 rounded-full font-medium border border-gray-700">
               📖 Expository
             </span>
-            <span className="bg-pink-900/40 text-pink-400 px-4 py-2 rounded-full font-medium border border-pink-700">
+            <span className="bg-[#242b3d] text-pink-400 px-4 py-2 rounded-full font-medium border border-gray-700">
               🧠 Autodidactic
             </span>
-            <span className="bg-orange-900/40 text-orange-400 px-4 py-2 rounded-full font-medium border border-orange-700">
+            <span className="bg-[#242b3d] text-orange-400 px-4 py-2 rounded-full font-medium border border-gray-700">
               🏗️ Domain Libraries
             </span>
           </div>
