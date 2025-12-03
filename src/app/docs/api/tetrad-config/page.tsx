@@ -112,15 +112,15 @@ const result = await aeao.optimize({
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-blue-950/40 border border-blue-800/50 rounded-lg p-6">
+            <div className="bg-sky-950/40 border border-sky-800/50 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🤖</span>
-                <h3 className="text-xl font-bold text-blue-400">Agentic Intelligence</h3>
+                <h3 className="text-xl font-bold text-sky-400">Agentic Intelligence</h3>
               </div>
-              <p className="text-blue-200/80 mb-3">
+              <p className="text-sky-200/80 mb-3">
                 Multi-agent coordination for strategy selection. Research agents, validation engineers, and performance analysts collaborate to provide consensus-based optimization strategies.
               </p>
-              <ul className="space-y-1 text-sm text-blue-400">
+              <ul className="space-y-1 text-sm text-sky-400">
                 <li>• Multi-agent collaboration</li>
                 <li>• Consensus-based strategy selection</li>
                 <li>• Real-time performance analysis</li>

@@ -15,7 +15,7 @@ export default function Hero() {
           </p>
           {/* The AEAO Tetrad */}
           <div className="flex flex-wrap justify-center gap-3 mb-4 text-sm md:text-base">
-            <span className="bg-[#242b3d] text-blue-400 px-4 py-2 rounded-full font-medium border border-gray-700">
+            <span className="bg-[#242b3d] text-sky-400 px-4 py-2 rounded-full font-medium border border-gray-700">
               🤖 Agentic
             </span>
             <span className="bg-[#242b3d] text-yellow-400 px-4 py-2 rounded-full font-medium border border-gray-700">

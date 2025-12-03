@@ -119,13 +119,13 @@ export default function Features() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Agentic - Blue */}
-            <div className="bg-blue-950/40 p-8 rounded-xl border border-blue-800/50">
+            {/* Agentic - Sky Blue */}
+            <div className="bg-sky-950/40 p-8 rounded-xl border border-sky-800/50">
               <div className="text-5xl mb-4">{enginePillars[0].icon}</div>
-              <h3 className="text-2xl font-bold text-blue-400 mb-1">{enginePillars[0].title}</h3>
-              <p className="text-sm font-medium text-blue-400 mb-3">{enginePillars[0].subtitle}</p>
-              <p className="text-blue-200/80 mb-4">{enginePillars[0].description}</p>
-              <ul className="space-y-2 text-sm text-blue-400">
+              <h3 className="text-2xl font-bold text-sky-400 mb-1">{enginePillars[0].title}</h3>
+              <p className="text-sm font-medium text-sky-400 mb-3">{enginePillars[0].subtitle}</p>
+              <p className="text-sky-200/80 mb-4">{enginePillars[0].description}</p>
+              <ul className="space-y-2 text-sm text-sky-400">
                 {enginePillars[0].features.map((feature, idx) => (
                   <li key={idx}>✓ {feature}</li>
                 ))}
