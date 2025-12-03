@@ -124,7 +124,7 @@ export default function Features() {
               <div className="text-5xl mb-4">{enginePillars[0].icon}</div>
               <h3 className="text-2xl font-bold text-blue-400 mb-1">{enginePillars[0].title}</h3>
               <p className="text-sm font-medium text-blue-400 mb-3">{enginePillars[0].subtitle}</p>
-              <p className="text-gray-400 mb-4">{enginePillars[0].description}</p>
+              <p className="text-blue-200/80 mb-4">{enginePillars[0].description}</p>
               <ul className="space-y-2 text-sm text-blue-400">
                 {enginePillars[0].features.map((feature, idx) => (
                   <li key={idx}>✓ {feature}</li>
@@ -137,7 +137,7 @@ export default function Features() {
               <div className="text-5xl mb-4">{enginePillars[1].icon}</div>
               <h3 className="text-2xl font-bold text-yellow-400 mb-1">{enginePillars[1].title}</h3>
               <p className="text-sm font-medium text-yellow-400 mb-3">{enginePillars[1].subtitle}</p>
-              <p className="text-gray-400 mb-4">{enginePillars[1].description}</p>
+              <p className="text-yellow-200/80 mb-4">{enginePillars[1].description}</p>
               <ul className="space-y-2 text-sm text-yellow-400">
                 {enginePillars[1].features.map((feature, idx) => (
                   <li key={idx}>✓ {feature}</li>
@@ -150,7 +150,7 @@ export default function Features() {
               <div className="text-5xl mb-4">{enginePillars[2].icon}</div>
               <h3 className="text-2xl font-bold text-pink-400 mb-1">{enginePillars[2].title}</h3>
               <p className="text-sm font-medium text-pink-400 mb-3">{enginePillars[2].subtitle}</p>
-              <p className="text-gray-400 mb-4">{enginePillars[2].description}</p>
+              <p className="text-pink-200/80 mb-4">{enginePillars[2].description}</p>
               <ul className="space-y-2 text-sm text-pink-400">
                 {enginePillars[2].features.map((feature, idx) => (
                   <li key={idx}>✓ {feature}</li>
