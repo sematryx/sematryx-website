@@ -120,7 +120,7 @@ export default function Features() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Agentic - Blue */}
-            <div className="bg-[#1a1f2e] p-8 rounded-xl border border-gray-700">
+            <div className="bg-blue-950/40 p-8 rounded-xl border border-blue-800/50">
               <div className="text-5xl mb-4">{enginePillars[0].icon}</div>
               <h3 className="text-2xl font-bold text-blue-400 mb-1">{enginePillars[0].title}</h3>
               <p className="text-sm font-medium text-blue-400 mb-3">{enginePillars[0].subtitle}</p>
@@ -133,7 +133,7 @@ export default function Features() {
             </div>
 
             {/* Expository - Yellow */}
-            <div className="bg-[#1a1f2e] p-8 rounded-xl border border-gray-700">
+            <div className="bg-yellow-950/40 p-8 rounded-xl border border-yellow-800/50">
               <div className="text-5xl mb-4">{enginePillars[1].icon}</div>
               <h3 className="text-2xl font-bold text-yellow-400 mb-1">{enginePillars[1].title}</h3>
               <p className="text-sm font-medium text-yellow-400 mb-3">{enginePillars[1].subtitle}</p>
@@ -146,7 +146,7 @@ export default function Features() {
             </div>
 
             {/* Autodidactic - Pink */}
-            <div className="bg-[#1a1f2e] p-8 rounded-xl border border-gray-700">
+            <div className="bg-pink-950/40 p-8 rounded-xl border border-pink-800/50">
               <div className="text-5xl mb-4">{enginePillars[2].icon}</div>
               <h3 className="text-2xl font-bold text-pink-400 mb-1">{enginePillars[2].title}</h3>
               <p className="text-sm font-medium text-pink-400 mb-3">{enginePillars[2].subtitle}</p>

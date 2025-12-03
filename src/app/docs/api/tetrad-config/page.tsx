@@ -112,7 +112,7 @@ const result = await aeao.optimize({
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <div className="bg-blue-950/40 border border-blue-800/50 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🤖</span>
                 <h3 className="text-xl font-bold text-blue-400">Agentic Intelligence</h3>
@@ -128,7 +128,7 @@ const result = await aeao.optimize({
               </ul>
             </div>
 
-            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <div className="bg-yellow-950/40 border border-yellow-800/50 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">📖</span>
                 <h3 className="text-xl font-bold text-yellow-400">Expository Intelligence</h3>
@@ -145,7 +145,7 @@ const result = await aeao.optimize({
               </ul>
             </div>
 
-            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <div className="bg-pink-950/40 border border-pink-800/50 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🧠</span>
                 <h3 className="text-xl font-bold text-pink-400">Autodidactic Intelligence</h3>
@@ -162,7 +162,7 @@ const result = await aeao.optimize({
               </ul>
             </div>
 
-            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <div className="bg-orange-950/40 border border-orange-800/50 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🏗️</span>
                 <h3 className="text-xl font-bold text-orange-400">Domain Extension</h3>
