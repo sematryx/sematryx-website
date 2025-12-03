@@ -44,32 +44,62 @@ export default function Features() {
     { 
       name: "Financial Services", 
       icon: "💼", 
-      problems: ["Portfolio optimization", "Trading strategies", "Risk management", "Regulatory compliance"]
+      tagline: "Optimize portfolios while meeting regulatory requirements",
+      realWorldProblems: [
+        "Balance risk-return across 1000+ assets while staying Basel III compliant",
+        "Rebalance portfolios in real-time as market conditions shift",
+        "Optimize trading execution to minimize slippage and market impact"
+      ]
     },
     { 
       name: "Healthcare", 
       icon: "🏥", 
-      problems: ["Drug discovery", "Clinical trial design", "Resource allocation", "Treatment protocols"]
+      tagline: "Accelerate discovery and improve patient outcomes",
+      realWorldProblems: [
+        "Design clinical trials that maximize statistical power with fewer patients",
+        "Optimize drug compound properties across multiple competing objectives",
+        "Allocate hospital resources during demand surges"
+      ]
     },
     { 
       name: "Supply Chain", 
       icon: "🚚", 
-      problems: ["Inventory optimization", "Vehicle routing", "Demand forecasting", "Supplier risk"]
+      tagline: "Reduce costs while improving service levels",
+      realWorldProblems: [
+        "Route 500+ vehicles daily with time windows and capacity constraints",
+        "Set inventory levels across warehouses to minimize stockouts and carrying costs",
+        "Replan dynamically when suppliers fail or demand spikes"
+      ]
     },
     { 
       name: "Manufacturing", 
       icon: "🏭", 
-      problems: ["Process optimization", "Quality control", "Production scheduling", "Predictive maintenance"]
+      tagline: "Maximize throughput while maintaining quality",
+      realWorldProblems: [
+        "Tune 50+ process parameters to hit quality targets with minimal waste",
+        "Schedule production across machines to meet deadlines and reduce changeovers",
+        "Predict and prevent equipment failures before they cause downtime"
+      ]
     },
     { 
       name: "Energy", 
       icon: "⚡", 
-      problems: ["Grid optimization", "Energy trading", "Renewable integration", "Demand response"]
+      tagline: "Balance grid stability with cost and sustainability",
+      realWorldProblems: [
+        "Integrate intermittent renewables while maintaining grid reliability",
+        "Optimize bidding strategies across day-ahead and real-time markets",
+        "Manage demand response programs to reduce peak load"
+      ]
     },
     { 
       name: "AI/ML Research", 
       icon: "🔬", 
-      problems: ["Hyperparameter tuning", "Architecture search", "Feature selection", "Experiment design"]
+      tagline: "Find better models faster with less compute",
+      realWorldProblems: [
+        "Search neural architecture spaces efficiently without exhaustive trials",
+        "Tune hyperparameters across distributed training runs",
+        "Design experiments that maximize learning per compute dollar"
+      ]
     }
   ]
 
@@ -124,24 +154,35 @@ export default function Features() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {domains.map((domain, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl border border-orange-200 hover:shadow-md hover:border-orange-300 transition-all duration-200">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-4xl">{domain.icon}</span>
-                  <h3 className="text-xl font-bold text-gray-900">{domain.name}</h3>
+              <div key={idx} className="group">
+                {/* Domain Header Tile */}
+                <div className="bg-gradient-to-br from-orange-50 to-white p-5 rounded-t-xl border border-orange-200 border-b-0">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-3xl">{domain.icon}</span>
+                    <h3 className="text-lg font-bold text-gray-900">{domain.name}</h3>
+                  </div>
+                  <p className="text-sm text-gray-600">{domain.tagline}</p>
                 </div>
-                <ul className="space-y-1">
-                  {domain.problems.map((problem, pidx) => (
-                    <li key={pidx} className="text-sm text-gray-600 flex items-center">
-                      <span className="text-orange-400 mr-2 text-xs">•</span>
-                      {problem}
-                    </li>
-                  ))}
-                </ul>
+                
+                {/* Connected Real-World Problems Panel */}
+                <div className="bg-gray-50 p-4 rounded-b-xl border border-orange-200 border-t-0 relative">
+                  {/* Connector line */}
+                  <div className="absolute -top-px left-6 right-6 h-px bg-orange-200"></div>
+                  <p className="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-2">Real-world problems solved</p>
+                  <ul className="space-y-2">
+                    {domain.realWorldProblems.map((problem, pidx) => (
+                      <li key={pidx} className="text-xs text-gray-600 flex items-start">
+                        <span className="text-orange-400 mr-2 mt-0.5">→</span>
+                        <span>{problem}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 text-center">
+          <div className="mt-12 text-center">
             <p className="text-gray-600">
               <span className="font-semibold text-gray-900">All domains include:</span>{' '}
               Production-ready frameworks • Automatic code generation • Industry-specific constraints • FastAPI deployment
