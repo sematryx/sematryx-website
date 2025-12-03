@@ -92,11 +92,11 @@ const result = await aeao.optimize({
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          AEAO Tetrad Configuration
+        <h1 className="text-4xl font-bold text-white mb-4">
+          <span className="text-primary-400">AEAO</span> Tetrad Configuration
         </h1>
-        <p className="text-xl text-gray-600">
-          Configure the four pillars of AEAO intelligence: Agentic, Expository, Autodidactic, and Domain Extension. 
+        <p className="text-xl text-gray-400">
+          Configure the four pillars of <span className="text-primary-400">AEAO</span>: Agentic, Expository, Autodidactic, and Domain Extension. 
           Control compute cost vs capability trade-offs with granular configuration options.
         </p>
       </div>
@@ -104,23 +104,23 @@ const result = await aeao.optimize({
       <div className="space-y-12">
         {/* The AEAO Tetrad Overview */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            The AEAO Tetrad
+          <h2 className="text-2xl font-semibold text-white mb-4">
+            The <span className="text-primary-400">AEAO</span> Tetrad
           </h2>
-          <p className="text-gray-700 mb-6">
-            AEAO is built on four central pillars of intelligence that work together to provide enterprise-grade optimization:
+          <p className="text-gray-400 mb-6">
+            <span className="text-primary-400">AEAO</span> is built on four central pillars that work together to provide enterprise-grade optimization:
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🤖</span>
-                <h3 className="text-xl font-bold text-blue-900">Agentic Intelligence</h3>
+                <h3 className="text-xl font-bold text-primary-400">Agentic</h3>
               </div>
-              <p className="text-blue-800 mb-3">
+              <p className="text-gray-400 mb-3">
                 Multi-agent coordination for strategy selection. Research agents, validation engineers, and performance analysts collaborate to provide consensus-based optimization strategies.
               </p>
-              <ul className="space-y-1 text-sm text-blue-700">
+              <ul className="space-y-1 text-sm text-gray-500">
                 <li>• Multi-agent collaboration</li>
                 <li>• Consensus-based strategy selection</li>
                 <li>• Real-time performance analysis</li>
@@ -128,32 +128,31 @@ const result = await aeao.optimize({
               </ul>
             </div>
 
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+            <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">📖</span>
-                <h3 className="text-xl font-bold text-green-900">Expository Intelligence</h3>
+                <h3 className="text-xl font-bold text-primary-400">Expository</h3>
               </div>
-              <p className="text-green-800 mb-3">
+              <p className="text-gray-400 mb-3">
                 Comprehensive explanation of all optimization decisions with configurable explanation levels (0-5) for compute cost control.
               </p>
-              <ul className="space-y-1 text-sm text-green-700">
+              <ul className="space-y-1 text-sm text-gray-500">
                 <li>• Configurable explanation levels (0-5)</li>
                 <li>• Natural language summaries</li>
                 <li>• Technical decision logs</li>
                 <li>• Interactive visualizations</li>
-                <li>• 22-26% performance boost with async processing</li>
               </ul>
             </div>
 
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
+            <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🧠</span>
-                <h3 className="text-xl font-bold text-purple-900">Autodidactic Intelligence</h3>
+                <h3 className="text-xl font-bold text-primary-400">Autodidactic</h3>
               </div>
-              <p className="text-purple-800 mb-3">
+              <p className="text-gray-400 mb-3">
                 Self-improvement and continuous learning from optimization experience. Problem signature detection, strategy variation, and cross-problem learning.
               </p>
-              <ul className="space-y-1 text-sm text-purple-700">
+              <ul className="space-y-1 text-sm text-gray-500">
                 <li>• Problem signature detection</li>
                 <li>• Strategy variation</li>
                 <li>• Cross-problem learning</li>
@@ -162,15 +161,15 @@ const result = await aeao.optimize({
               </ul>
             </div>
 
-            <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
+            <div className="bg-[#1a1f2e] border border-orange-700 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🏗️</span>
-                <h3 className="text-xl font-bold text-orange-900">Domain Extension</h3>
+                <h3 className="text-xl font-bold text-orange-400">Domain Extension</h3>
               </div>
-              <p className="text-orange-800 mb-3">
+              <p className="text-gray-400 mb-3">
                 Business domain libraries for rapid enterprise adoption. Engine-domain separation enables core optimization algorithms across 13+ business domains.
               </p>
-              <ul className="space-y-1 text-sm text-orange-700">
+              <ul className="space-y-1 text-sm text-gray-500">
                 <li>• 13+ business domains</li>
                 <li>• Automatic code generation</li>
                 <li>• FastAPI deployment</li>
@@ -183,10 +182,10 @@ const result = await aeao.optimize({
 
         {/* Preset Configurations */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Preset Configurations
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Quick-start with predefined configurations optimized for different use cases:
           </p>
           <CodeBlock
@@ -194,23 +193,23 @@ const result = await aeao.optimize({
             language="python"
             title="Using Preset Configurations"
           />
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-yellow-900 mb-3">Available Presets</h3>
-            <div className="space-y-3 text-yellow-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-white mb-3">Available Presets</h3>
+            <div className="space-y-3 text-gray-400">
               <div>
-                <strong>development:</strong> Fast iteration, basic explanations, minimal overhead. Best for rapid prototyping and testing.
+                <strong className="text-gray-200">development:</strong> Fast iteration, basic explanations, minimal overhead. Best for rapid prototyping and testing.
               </div>
               <div>
-                <strong>production:</strong> Balanced performance, standard explanations, enterprise monitoring. Recommended for most production deployments.
+                <strong className="text-gray-200">production:</strong> Balanced performance, standard explanations, enterprise monitoring. Recommended for most production deployments.
               </div>
               <div>
-                <strong>research:</strong> Maximum capabilities, comprehensive explanations, full learning enabled. Ideal for research and experimentation.
+                <strong className="text-gray-200">research:</strong> Maximum capabilities, comprehensive explanations, full learning enabled. Ideal for research and experimentation.
               </div>
               <div>
-                <strong>enterprise:</strong> Full features, advanced monitoring, compliance features, audit trails. For regulated industries.
+                <strong className="text-gray-200">enterprise:</strong> Full features, advanced monitoring, compliance features, audit trails. For regulated industries.
               </div>
               <div>
-                <strong>minimal:</strong> Core optimization only, no AI systems, fastest execution. For simple problems where intelligence isn't needed.
+                <strong className="text-gray-200">minimal:</strong> Core optimization only, no AI systems, fastest execution. For simple problems.
               </div>
             </div>
           </div>
@@ -218,10 +217,10 @@ const result = await aeao.optimize({
 
         {/* Simple Configuration */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Simple Configuration
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Enable specific tetrad pillars with simple boolean flags and basic parameters:
           </p>
           <CodeBlock
@@ -229,24 +228,24 @@ const result = await aeao.optimize({
             language="python"
             title="Simple Tetrad Configuration"
           />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Simple Configuration Options</h3>
-            <ul className="space-y-2 text-blue-800">
-              <li><strong>use_agentic_intelligence</strong> (bool): Enable multi-agent coordination</li>
-              <li><strong>use_expository_intelligence</strong> (bool): Enable explainability</li>
-              <li><strong>use_autodidactic_intelligence</strong> (bool): Enable learning system</li>
-              <li><strong>use_domain_extension</strong> (bool): Enable domain libraries (default: True)</li>
-              <li><strong>explanation_level</strong> (int, 0-5): Detail level for explanations (0=off, 5=comprehensive)</li>
+          <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-primary-400 mb-3">Simple Configuration Options</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li><strong className="text-gray-200">use_agentic_intelligence</strong> (bool): Enable multi-agent coordination</li>
+              <li><strong className="text-gray-200">use_expository_intelligence</strong> (bool): Enable explainability</li>
+              <li><strong className="text-gray-200">use_autodidactic_intelligence</strong> (bool): Enable learning system</li>
+              <li><strong className="text-gray-200">use_domain_extension</strong> (bool): Enable domain libraries (default: True)</li>
+              <li><strong className="text-gray-200">explanation_level</strong> (int, 0-5): Detail level for explanations (0=off, 5=comprehensive)</li>
             </ul>
           </div>
         </section>
 
         {/* Advanced Configuration */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Advanced Configuration
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Fine-tune every aspect of the Tetrad with complete configuration objects:
           </p>
           <CodeBlock
@@ -254,11 +253,11 @@ const result = await aeao.optimize({
             language="python"
             title="Advanced Tetrad Configuration"
           />
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-purple-900 mb-3">Advanced Configuration Options</h3>
-            <div className="space-y-4 text-purple-800">
+          <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-primary-400 mb-3">Advanced Configuration Options</h3>
+            <div className="space-y-4 text-gray-400">
               <div>
-                <strong>Agentic Configuration:</strong>
+                <strong className="text-gray-200">Agentic Configuration:</strong>
                 <ul className="ml-4 mt-1 space-y-1 text-sm">
                   <li>• max_agents_per_problem: Maximum number of agents (default: 3)</li>
                   <li>• consensus_threshold: Agreement threshold for strategy selection</li>
@@ -266,7 +265,7 @@ const result = await aeao.optimize({
                 </ul>
               </div>
               <div>
-                <strong>Expository Configuration:</strong>
+                <strong className="text-gray-200">Expository Configuration:</strong>
                 <ul className="ml-4 mt-1 space-y-1 text-sm">
                   <li>• explanation_level: 0-5 detail level</li>
                   <li>• async_explanations: Background processing (default: True)</li>
@@ -275,7 +274,7 @@ const result = await aeao.optimize({
                 </ul>
               </div>
               <div>
-                <strong>Autodidactic Configuration:</strong>
+                <strong className="text-gray-200">Autodidactic Configuration:</strong>
                 <ul className="ml-4 mt-1 space-y-1 text-sm">
                   <li>• learning_enabled: Enable learning system</li>
                   <li>• cross_problem_learning: Learn across different problems</li>
@@ -284,7 +283,7 @@ const result = await aeao.optimize({
                 </ul>
               </div>
               <div>
-                <strong>Domain Extension Configuration:</strong>
+                <strong className="text-gray-200">Domain Extension Configuration:</strong>
                 <ul className="ml-4 mt-1 space-y-1 text-sm">
                   <li>• use_domain_libraries: Enable domain-specific libraries</li>
                   <li>• auto_code_generation: Generate domain code automatically</li>
@@ -297,10 +296,10 @@ const result = await aeao.optimize({
 
         {/* REST API Configuration */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             REST API Configuration
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Configure the Tetrad via REST API requests:
           </p>
           <CodeBlock
@@ -312,10 +311,10 @@ const result = await aeao.optimize({
 
         {/* JavaScript SDK Configuration */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             JavaScript SDK Configuration
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Configure the Tetrad using the JavaScript SDK:
           </p>
           <CodeBlock
@@ -327,27 +326,27 @@ const result = await aeao.optimize({
 
         {/* Cost vs Capability Trade-offs */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Compute Cost vs Capability Trade-offs
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Each Tetrad pillar can be independently enabled or disabled to balance performance and capabilities:
           </p>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Minimal Cost (minimal preset)</h3>
-                <p className="text-gray-700 text-sm mb-2">Fastest execution, no AI overhead:</p>
-                <ul className="text-sm text-gray-600 space-y-1 ml-4">
+                <h3 className="font-semibold text-white mb-2">Minimal Cost (minimal preset)</h3>
+                <p className="text-gray-400 text-sm mb-2">Fastest execution, no AI overhead:</p>
+                <ul className="text-sm text-gray-500 space-y-1 ml-4">
                   <li>• All Tetrad pillars disabled</li>
                   <li>• Core optimization only</li>
                   <li>• ~10-20% faster than full Tetrad</li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Balanced (production preset)</h3>
-                <p className="text-gray-700 text-sm mb-2">Good performance with essential intelligence:</p>
-                <ul className="text-sm text-gray-600 space-y-1 ml-4">
+                <h3 className="font-semibold text-white mb-2">Balanced (production preset)</h3>
+                <p className="text-gray-400 text-sm mb-2">Good performance with essential capabilities:</p>
+                <ul className="text-sm text-gray-500 space-y-1 ml-4">
                   <li>• Agentic + Expository enabled</li>
                   <li>• Autodidactic disabled (no learning overhead)</li>
                   <li>• Domain Extension enabled</li>
@@ -355,9 +354,9 @@ const result = await aeao.optimize({
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Maximum Capability (research/enterprise preset)</h3>
-                <p className="text-gray-700 text-sm mb-2">Full intelligence, comprehensive explanations:</p>
-                <ul className="text-sm text-gray-600 space-y-1 ml-4">
+                <h3 className="font-semibold text-white mb-2">Maximum Capability (research/enterprise preset)</h3>
+                <p className="text-gray-400 text-sm mb-2">Full capabilities, comprehensive explanations:</p>
+                <ul className="text-sm text-gray-500 space-y-1 ml-4">
                   <li>• All Tetrad pillars enabled</li>
                   <li>• Maximum agents, full learning</li>
                   <li>• Explanation level 4-5</li>
