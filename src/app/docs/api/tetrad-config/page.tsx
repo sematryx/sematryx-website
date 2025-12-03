@@ -128,15 +128,15 @@ const result = await aeao.optimize({
               </ul>
             </div>
 
-            <div className="bg-yellow-950/40 border border-yellow-800/50 rounded-lg p-6">
+            <div className="bg-green-950/40 border border-green-800/50 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">📖</span>
-                <h3 className="text-xl font-bold text-yellow-400">Expository Intelligence</h3>
+                <h3 className="text-xl font-bold text-green-400">Expository Intelligence</h3>
               </div>
-              <p className="text-yellow-200/80 mb-3">
+              <p className="text-green-200/80 mb-3">
                 Comprehensive explanation of all optimization decisions with configurable explanation levels (0-5) for compute cost control.
               </p>
-              <ul className="space-y-1 text-sm text-yellow-400">
+              <ul className="space-y-1 text-sm text-green-400">
                 <li>• Configurable explanation levels (0-5)</li>
                 <li>• Natural language summaries</li>
                 <li>• Technical decision logs</li>

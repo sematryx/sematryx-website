@@ -132,13 +132,13 @@ export default function Features() {
               </ul>
             </div>
 
-            {/* Expository - Yellow */}
-            <div className="bg-yellow-950/40 p-8 rounded-xl border border-yellow-800/50">
+            {/* Expository - Green */}
+            <div className="bg-green-950/40 p-8 rounded-xl border border-green-800/50">
               <div className="text-5xl mb-4">{enginePillars[1].icon}</div>
-              <h3 className="text-2xl font-bold text-yellow-400 mb-1">{enginePillars[1].title}</h3>
-              <p className="text-sm font-medium text-yellow-400 mb-3">{enginePillars[1].subtitle}</p>
-              <p className="text-yellow-200/80 mb-4">{enginePillars[1].description}</p>
-              <ul className="space-y-2 text-sm text-yellow-400">
+              <h3 className="text-2xl font-bold text-green-400 mb-1">{enginePillars[1].title}</h3>
+              <p className="text-sm font-medium text-green-400 mb-3">{enginePillars[1].subtitle}</p>
+              <p className="text-green-200/80 mb-4">{enginePillars[1].description}</p>
+              <ul className="space-y-2 text-sm text-green-400">
                 {enginePillars[1].features.map((feature, idx) => (
                   <li key={idx}>✓ {feature}</li>
                 ))}

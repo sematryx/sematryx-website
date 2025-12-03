@@ -18,7 +18,7 @@ export default function Hero() {
             <span className="bg-[#242b3d] text-sky-400 px-4 py-2 rounded-full font-medium border border-gray-700">
               🤖 Agentic
             </span>
-            <span className="bg-[#242b3d] text-yellow-400 px-4 py-2 rounded-full font-medium border border-gray-700">
+            <span className="bg-[#242b3d] text-green-400 px-4 py-2 rounded-full font-medium border border-gray-700">
               📖 Expository
             </span>
             <span className="bg-[#242b3d] text-pink-400 px-4 py-2 rounded-full font-medium border border-gray-700">
