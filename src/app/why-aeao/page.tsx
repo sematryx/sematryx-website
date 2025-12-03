@@ -6,10 +6,10 @@ export default function WhyAEAOPage() {
   // Core Enterprise Differentiators - What makes AEAO enterprise-ready
   const enterpriseFeatures = [
     {
-      title: "Async Explainability (22-26% Performance Boost)",
-      description: "Revolutionary background-processed explanations that improve performance while maintaining full transparency. Natural language summaries, technical logs, and visualizations. The only optimizer that makes explainability faster, not slower.",
+      title: "Async Explainability",
+      description: "Background-processed explanations minimize the performance overhead of transparency. Natural language summaries, technical logs, and visualizations run asynchronously so optimization doesn't wait for explanations to complete.",
       icon: "📖",
-      comparison: "Traditional optimizers: Black box | AEAO: Full explainability + performance boost"
+      comparison: "Traditional optimizers: Black box or slow sync explanations | AEAO: Full explainability with minimal overhead"
     },
     {
       title: "15 AI Systems Coordinated",
