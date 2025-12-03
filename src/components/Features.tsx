@@ -120,49 +120,40 @@ export default function Features() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Agentic - Blue */}
-            <div className="bg-[#242b3d] p-8 rounded-xl border border-gray-700">
+            <div className="bg-[#1a1f2e] p-8 rounded-xl border border-gray-700">
               <div className="text-5xl mb-4">{enginePillars[0].icon}</div>
               <h3 className="text-2xl font-bold text-blue-400 mb-1">{enginePillars[0].title}</h3>
               <p className="text-sm font-medium text-blue-400 mb-3">{enginePillars[0].subtitle}</p>
               <p className="text-gray-400 mb-4">{enginePillars[0].description}</p>
-              <ul className="space-y-2">
+              <ul className="space-y-2 text-sm text-blue-400">
                 {enginePillars[0].features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-sm text-gray-400">
-                    <span className="text-blue-400 mr-2">✓</span>
-                    {feature}
-                  </li>
+                  <li key={idx}>✓ {feature}</li>
                 ))}
               </ul>
             </div>
 
             {/* Expository - Yellow */}
-            <div className="bg-[#242b3d] p-8 rounded-xl border border-gray-700">
+            <div className="bg-[#1a1f2e] p-8 rounded-xl border border-gray-700">
               <div className="text-5xl mb-4">{enginePillars[1].icon}</div>
               <h3 className="text-2xl font-bold text-yellow-400 mb-1">{enginePillars[1].title}</h3>
               <p className="text-sm font-medium text-yellow-400 mb-3">{enginePillars[1].subtitle}</p>
               <p className="text-gray-400 mb-4">{enginePillars[1].description}</p>
-              <ul className="space-y-2">
+              <ul className="space-y-2 text-sm text-yellow-400">
                 {enginePillars[1].features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-sm text-gray-400">
-                    <span className="text-yellow-400 mr-2">✓</span>
-                    {feature}
-                  </li>
+                  <li key={idx}>✓ {feature}</li>
                 ))}
               </ul>
             </div>
 
             {/* Autodidactic - Pink */}
-            <div className="bg-[#242b3d] p-8 rounded-xl border border-gray-700">
+            <div className="bg-[#1a1f2e] p-8 rounded-xl border border-gray-700">
               <div className="text-5xl mb-4">{enginePillars[2].icon}</div>
               <h3 className="text-2xl font-bold text-pink-400 mb-1">{enginePillars[2].title}</h3>
               <p className="text-sm font-medium text-pink-400 mb-3">{enginePillars[2].subtitle}</p>
               <p className="text-gray-400 mb-4">{enginePillars[2].description}</p>
-              <ul className="space-y-2">
+              <ul className="space-y-2 text-sm text-pink-400">
                 {enginePillars[2].features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-sm text-gray-400">
-                    <span className="text-pink-400 mr-2">✓</span>
-                    {feature}
-                  </li>
+                  <li key={idx}>✓ {feature}</li>
                 ))}
               </ul>
             </div>
