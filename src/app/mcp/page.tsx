@@ -172,7 +172,7 @@ const mcpTools = [
                   1. Initialize MCP Connection
                 </h3>
                 <p className="text-gray-400 mb-6">
-                  Connect AEAO to the Model Context Protocol to enable AI model integration:
+                  Connect <span className="text-primary-400">AEAO</span> to the Model Context Protocol to enable AI model integration:
                 </p>
                 <CodeBlock
                   code={mcpIntegrationCode}
@@ -269,7 +269,7 @@ const mcpTools = [
                 MCP Version Support
               </h3>
               <p className="text-blue-300 mb-3">
-                AEAO supports MCP version 2024-11-05 and maintains backward compatibility with earlier versions.
+                <span className="text-primary-400">AEAO</span> supports MCP version 2024-11-05 and maintains backward compatibility with earlier versions.
               </p>
               <div className="text-sm text-blue-400">
                 <strong>Current Version:</strong> 2024-11-05 | 

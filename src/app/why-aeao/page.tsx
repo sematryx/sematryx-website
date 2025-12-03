@@ -142,11 +142,11 @@ export default function WhyAEAOPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Why Choose AEAO?
+              Why Choose <span className="text-primary-400">AEAO</span>?
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               The world's most advanced optimization framework. Where traditional optimizers solve mathematical problems, 
-              AEAO solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.
+              <span className="text-primary-400">AEAO</span> solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.
             </p>
           </div>
         </div>
@@ -160,7 +160,7 @@ export default function WhyAEAOPage() {
               Enterprise-Grade Optimization
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Production-ready features that make AEAO the only enterprise-grade optimization platform
+              Production-ready features that make <span className="text-primary-400">AEAO</span> the only enterprise-grade optimization platform
             </p>
           </div>
 
@@ -187,7 +187,7 @@ export default function WhyAEAOPage() {
               Advanced AI Capabilities
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              AI-powered systems that make AEAO smarter with every optimization
+              AI-powered systems that make <span className="text-primary-400">AEAO</span> smarter with every optimization
             </p>
           </div>
 
@@ -211,10 +211,10 @@ export default function WhyAEAOPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Real-World Problems AEAO Solves
+              Real-World Problems <span className="text-primary-400">AEAO</span> Solves
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Industry-specific optimization challenges where AEAO's enterprise intelligence makes the difference
+              Industry-specific optimization challenges where <span className="text-primary-400">AEAO</span>'s enterprise intelligence makes the difference
             </p>
           </div>
 
@@ -239,7 +239,7 @@ export default function WhyAEAOPage() {
                 </div>
 
                 <div className="bg-primary-900/30 rounded-lg p-4 border-l-4 border-primary-500">
-                  <h4 className="text-sm font-semibold text-primary-300 mb-2">AEAO Advantage:</h4>
+                  <h4 className="text-sm font-semibold text-primary-300 mb-2"><span className="text-primary-400">AEAO</span> Advantage:</h4>
                   <p className="text-primary-200 text-sm">{useCase.advantage}</p>
                 </div>
               </div>
@@ -253,10 +253,10 @@ export default function WhyAEAOPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              AEAO vs Traditional Optimizers
+              <span className="text-primary-400">AEAO</span> vs Traditional Optimizers
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              See how AEAO compares to solutions like SciPy, Optuna, and other optimization libraries
+              See how <span className="text-primary-400">AEAO</span> compares to solutions like SciPy, Optuna, and other optimization libraries
             </p>
           </div>
 
@@ -341,10 +341,10 @@ export default function WhyAEAOPage() {
             </div>
             <div className="mt-8 text-center">
               <p className="text-lg font-semibold text-white mb-4">
-                AEAO Wins: 13/13 Categories ⭐⭐⭐⭐⭐
+                <span className="text-primary-400">AEAO</span> Wins: 13/13 Categories ⭐⭐⭐⭐⭐
               </p>
               <p className="text-gray-400">
-                Traditional optimizers are great for academic problems. AEAO solves enterprise problems with intelligence, compliance, and learning.
+                Traditional optimizers are great for academic problems. <span className="text-primary-400">AEAO</span> solves enterprise problems with intelligence, compliance, and learning.
               </p>
             </div>
           </div>
@@ -358,7 +358,7 @@ export default function WhyAEAOPage() {
             Ready to Experience Enterprise-Grade Optimization?
           </h2>
           <p className="text-xl text-primary-100 mb-8">
-            Get started with AEAO today. No credit card required for the free tier.
+            Get started with <span className="font-semibold">AEAO</span> today. No credit card required for the free tier.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 

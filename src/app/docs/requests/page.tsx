@@ -117,7 +117,7 @@ console.log(result)`
             Request Format
           </h2>
           <p className="text-gray-400 mb-4">
-            AEAO uses JSON for request and response bodies. All requests should include the <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">Content-Type: application/json</code> header.
+            <span className="text-primary-400">AEAO</span> uses JSON for request and response bodies. All requests should include the <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">Content-Type: application/json</code> header.
           </p>
           
           <h3 className="text-xl font-semibold text-white mb-3 mt-6">

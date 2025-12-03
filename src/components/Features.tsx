@@ -111,7 +111,7 @@ export default function Features() {
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-primary-400 uppercase tracking-wide mb-2">Core Engine</p>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              The AEAO Engine
+              The <span className="text-primary-400">AEAO</span> Engine
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Three core pillars that power enterprise-grade optimization

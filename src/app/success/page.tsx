@@ -44,7 +44,7 @@ export default function SuccessPage() {
           </div>
 
           <h1 className="text-4xl font-bold text-white mb-4">
-            Welcome to AEAO!
+            Welcome to <span className="text-primary-400">AEAO</span>!
           </h1>
           <p className="text-xl text-gray-400 mb-8">
             Your payment was successful. Here's your API key to get started.

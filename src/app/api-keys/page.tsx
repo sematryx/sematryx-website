@@ -62,7 +62,7 @@ export default function ApiKeysPage() {
               Get Your API Key
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Start optimizing with AEAO today. Choose the plan that fits your optimization needs.
+              Start optimizing with <span className="text-primary-400">AEAO</span> today. Choose the plan that fits your optimization needs.
             </p>
           </div>
 

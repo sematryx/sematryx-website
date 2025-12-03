@@ -28,7 +28,7 @@ const result = await aeao.optimize({
           Authentication
         </h1>
         <p className="text-xl text-gray-400">
-          Learn how to authenticate your requests to the AEAO API using API keys.
+          Learn how to authenticate your requests to the <span className="text-primary-400">AEAO</span> API using API keys.
         </p>
       </div>
 
@@ -38,7 +38,7 @@ const result = await aeao.optimize({
             API Key Authentication
           </h2>
           <p className="text-gray-400 mb-4">
-            AEAO uses API keys for authentication. Include your API key in the Authorization header 
+            <span className="text-primary-400">AEAO</span> uses API keys for authentication. Include your API key in the Authorization header 
             of every request using the Bearer token format.
           </p>
           <CodeBlock

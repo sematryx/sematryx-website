@@ -78,7 +78,7 @@ export default function TutorialsPage() {
               Tutorials
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Step-by-step guides to help you master AEAO optimization. 
+              Step-by-step guides to help you master <span className="text-primary-400">AEAO</span> optimization. 
               From basic problem setup to advanced domain-specific optimization.
             </p>
           </div>
@@ -123,8 +123,8 @@ export default function TutorialsPage() {
                 Need Help Getting Started?
               </h2>
               <p className="text-gray-400 mb-6">
-                If you're new to AEAO, we recommend starting with our Quick Start guide 
-                in the documentation to get familiar with optimization concepts and the AEAO Tetrad.
+                If you're new to <span className="text-primary-400">AEAO</span>, we recommend starting with our Quick Start guide 
+                in the documentation to get familiar with optimization concepts and the <span className="text-primary-400">AEAO</span> Tetrad.
               </p>
               <Link
                 href="/docs"
