@@ -41,66 +41,12 @@ export default function Features() {
 
   // Domain solution libraries - application layer
   const domains = [
-    { 
-      name: "Financial Services", 
-      icon: "💼", 
-      tagline: "Optimize portfolios while meeting regulatory requirements",
-      realWorldProblems: [
-        "Balance risk-return across 1000+ assets while staying Basel III compliant",
-        "Rebalance portfolios in real-time as market conditions shift",
-        "Optimize trading execution to minimize slippage and market impact"
-      ]
-    },
-    { 
-      name: "Healthcare", 
-      icon: "🏥", 
-      tagline: "Accelerate discovery and improve patient outcomes",
-      realWorldProblems: [
-        "Design clinical trials that maximize statistical power with fewer patients",
-        "Optimize drug compound properties across multiple competing objectives",
-        "Allocate hospital resources during demand surges"
-      ]
-    },
-    { 
-      name: "Supply Chain", 
-      icon: "🚚", 
-      tagline: "Reduce costs while improving service levels",
-      realWorldProblems: [
-        "Route 500+ vehicles daily with time windows and capacity constraints",
-        "Set inventory levels across warehouses to minimize stockouts and carrying costs",
-        "Replan dynamically when suppliers fail or demand spikes"
-      ]
-    },
-    { 
-      name: "Manufacturing", 
-      icon: "🏭", 
-      tagline: "Maximize throughput while maintaining quality",
-      realWorldProblems: [
-        "Tune 50+ process parameters to hit quality targets with minimal waste",
-        "Schedule production across machines to meet deadlines and reduce changeovers",
-        "Predict and prevent equipment failures before they cause downtime"
-      ]
-    },
-    { 
-      name: "Energy", 
-      icon: "⚡", 
-      tagline: "Balance grid stability with cost and sustainability",
-      realWorldProblems: [
-        "Integrate intermittent renewables while maintaining grid reliability",
-        "Optimize bidding strategies across day-ahead and real-time markets",
-        "Manage demand response programs to reduce peak load"
-      ]
-    },
-    { 
-      name: "AI/ML Research", 
-      icon: "🔬", 
-      tagline: "Find better models faster with less compute",
-      realWorldProblems: [
-        "Search neural architecture spaces efficiently without exhaustive trials",
-        "Tune hyperparameters across distributed training runs",
-        "Design experiments that maximize learning per compute dollar"
-      ]
-    }
+    { name: "Financial Services", icon: "💼", tagline: "Portfolio optimization & regulatory compliance" },
+    { name: "Healthcare", icon: "🏥", tagline: "Clinical trials & resource allocation" },
+    { name: "Supply Chain", icon: "🚚", tagline: "Logistics & inventory optimization" },
+    { name: "Manufacturing", icon: "🏭", tagline: "Process tuning & production scheduling" },
+    { name: "Energy", icon: "⚡", tagline: "Grid management & market optimization" },
+    { name: "AI/ML Research", icon: "🔬", tagline: "Hyperparameter & architecture search" }
   ]
 
   return (
@@ -174,29 +120,12 @@ export default function Features() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {domains.map((domain, idx) => (
-              <div key={idx} className="group">
-                {/* Domain Header Tile */}
-                <div className="bg-[#242b3d] p-5 rounded-t-xl border border-gray-700 border-b-0">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-3xl">{domain.icon}</span>
-                    <h3 className="text-lg font-bold text-white">{domain.name}</h3>
-                  </div>
-                  <p className="text-sm text-gray-400">{domain.tagline}</p>
-                </div>
-                
-                {/* Connected Real-World Problems Panel */}
-                <div className="bg-[#1a1f2e] p-4 rounded-b-xl border border-gray-700 border-t-0">
-                  <ul className="space-y-2">
-                    {domain.realWorldProblems.map((problem, pidx) => (
-                      <li key={pidx} className="text-xs text-gray-500 flex items-start">
-                        <span className="text-orange-400 mr-2 mt-0.5">→</span>
-                        <span>{problem}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div key={idx} className="bg-[#242b3d] p-4 rounded-xl border border-gray-700 hover:border-orange-600/50 transition-colors text-center">
+                <span className="text-4xl block mb-2">{domain.icon}</span>
+                <h3 className="text-sm font-bold text-white mb-1">{domain.name}</h3>
+                <p className="text-xs text-gray-500">{domain.tagline}</p>
               </div>
             ))}
           </div>
