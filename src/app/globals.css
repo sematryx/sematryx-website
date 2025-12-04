@@ -3,21 +3,53 @@
 @tailwind utilities;
 
 :root {
-  --background-dark: #0f1419;
-  --background-card: #1a1f2e;
-  --background-elevated: #242b3d;
-  --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
-  --accent-blue: #6366f1;
-  --accent-blue-light: #818cf8;
+  /* Background System */
+  --bg-base: #0A0A0F;
+  --bg-elevated: #12121A;
+  --bg-elevated-2: #1A1A24;
+  --bg-elevated-3: #22222E;
+  
+  /* Brand Primary */
+  --brand-primary: #3B82F6;
+  --brand-primary-hover: #60A5FA;
+  --brand-primary-muted: #1E3A5F;
+  
+  /* Semantic Accents (Option A - Monochromatic) */
+  --accent-agentic: #3B82F6;
+  --accent-expository: #6366F1;
+  --accent-autodidactic: #8B5CF6;
+  
+  /* Text Hierarchy */
+  --text-primary: #EAEAEA;
+  --text-secondary: #9CA3AF;
+  --text-tertiary: #6B7280;
+  
+  /* CTA Colors */
+  --cta-primary: #3B82F6;
+  --cta-primary-hover: #60A5FA;
+  --cta-secondary-bg: #1E293B;
+  --cta-secondary-border: #334155;
+  
+  /* Status Colors */
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #3B82F6;
+  
+  /* Legacy (for backward compatibility during migration) */
+  --background-dark: var(--bg-base);
+  --background-card: var(--bg-elevated);
+  --background-elevated: var(--bg-elevated-2);
+  --accent-blue: var(--brand-primary);
+  --accent-blue-light: var(--brand-primary-hover);
 }
 
 body {
   color: var(--text-primary);
-  background: var(--background-dark);
+  background: var(--bg-base);
 }
 
 /* Ensure all backgrounds are dark by default */
 html {
-  background: var(--background-dark);
+  background: var(--bg-base);
 }

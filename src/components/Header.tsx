@@ -1,39 +1,48 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="bg-[#0f1419] border-b border-gray-800 sticky top-0 z-50">
+    <header className={`${isScrolled ? 'bg-base/80 backdrop-blur-md border-b border-elevated-3' : 'bg-base border-b border-elevated-3'} sticky top-0 z-50 transition-all`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-primary-400">
+            <Link href="/" className="text-2xl font-bold text-brand-primary">
               AEAO
             </Link>
           </div>
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <Link href="/why-aeao" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              <Link href="/why-aeao" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Why AEAO
               </Link>
-              <Link href="/docs" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              <Link href="/docs" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Documentation
               </Link>
-              <Link href="/tutorials" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              <Link href="/tutorials" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Tutorials
               </Link>
-              <Link href="/benchmarks" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              <Link href="/benchmarks" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Benchmarks
               </Link>
-              <Link href="/mcp" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              <Link href="/mcp" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 MCP
               </Link>
-              <Link href="/api-keys" className="bg-primary-600 text-white hover:bg-primary-500 px-4 py-2 rounded-md text-sm font-medium">
+              <Link href="/api-keys" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
                 Get API Key
               </Link>
             </div>
@@ -54,23 +63,23 @@ export default function Header() {
 
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#1a1f2e] rounded-lg mt-2">
-              <Link href="/why-aeao" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-elevated rounded-lg mt-2">
+              <Link href="/why-aeao" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Why AEAO
               </Link>
-              <Link href="/docs" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/docs" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Documentation
               </Link>
-              <Link href="/tutorials" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/tutorials" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Tutorials
               </Link>
-              <Link href="/benchmarks" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/benchmarks" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Benchmarks
               </Link>
-              <Link href="/mcp" className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/mcp" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 MCP
               </Link>
-              <Link href="/api-keys" className="bg-primary-600 text-white hover:bg-primary-500 block px-3 py-2 rounded-md text-base font-medium">
+              <Link href="/api-keys" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium">
                 Get API Key
               </Link>
             </div>

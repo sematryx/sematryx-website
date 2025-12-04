@@ -221,8 +221,8 @@ const batchJob = await aeao.batch.submit({
     {
       job_name: 'portfolio_2',
       objective_function: 'rosenbrock',
-      bounds: [[-5, 5], [-5, 5]],
-      max_evaluations: 1000
+  bounds: [[-5, 5], [-5, 5]],
+  max_evaluations: 1000
     }
   ],
   parallel_workers: 2
