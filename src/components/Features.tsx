@@ -22,7 +22,7 @@ export default function Features() {
       <div className="py-24 bg-base">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <p className="text-sm font-semibold text-accent-expository uppercase tracking-wide mb-2">Core Engine</p>
+            <p className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-2">Core Engine</p>
             <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
               The <span className="text-brand-primary">AEAO</span> Engine
             </h2>

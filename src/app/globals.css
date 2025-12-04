@@ -14,10 +14,10 @@
   --brand-primary-hover: #60A5FA;
   --brand-primary-muted: #1E3A5F;
   
-  /* Semantic Accents (Option A - Monochromatic) */
-  --accent-agentic: #3B82F6;
-  --accent-expository: #6366F1;
-  --accent-autodidactic: #8B5CF6;
+  /* Semantic Accents - Differentiated but harmonious */
+  --accent-agentic: #3B82F6;        /* Blue - same as logo/brand */
+  --accent-expository: #10B981;     /* Emerald - distinct from others */
+  --accent-autodidactic: #A78BFA;   /* Lavender - distinct purple */
   
   /* Text Hierarchy */
   --text-primary: #EAEAEA;
