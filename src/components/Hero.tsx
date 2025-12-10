@@ -90,7 +90,7 @@ export default function Hero() {
             </div>
 
             {/* Floating Badges */}
-            <div className="absolute -top-24 -right-6 bg-elevated border border-elevated-3 rounded-lg px-4 py-2.5 flex items-center gap-2 text-sm shadow-xl shadow-black/30 animate-bounce-slow z-20">
+            <div className="absolute -top-20 -right-6 bg-elevated border border-elevated-3 rounded-lg px-4 py-2.5 flex items-center gap-2 text-sm shadow-xl shadow-black/30 animate-bounce-slow z-20">
               <span className="text-amber-400">⚡</span>
               <span className="text-text-tertiary">Latency:</span>
               <span className="font-semibold text-emerald-400">142ms</span>
