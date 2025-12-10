@@ -17,10 +17,10 @@ export default function Hero() {
             </h1>
             
             <div className="mb-8 max-w-xl">
-              <p className="text-xl text-text-primary font-medium mb-3 leading-snug">
+              <p className="text-xl text-brand-primary/90 font-medium mb-3 leading-snug font-mono">
                 One API call. Landscape mapped. Strategy selected. Logic explained. Lessons learned.
               </p>
-              <p className="text-lg text-gray-200 leading-relaxed">
+              <p className="text-lg text-gray-300 leading-relaxed">
                 Sematryx handles the optimization problems that break conventional tools—with full audit trails for regulated industries.
               </p>
             </div>
