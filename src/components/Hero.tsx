@@ -21,7 +21,7 @@ export default function Hero() {
             </h1>
             
             <p className="text-lg text-text-secondary mb-8 max-w-xl leading-relaxed">
-              One API call. Constraints respected. Decisions explained. Sematryx handles the optimization problems that break conventional tools—with full audit trails for regulated industries.
+              One API call. Landscape mapped. Strategy selected. Logic explained. Lessons learned. Sematryx handles the optimization problems that break conventional tools—with full audit trails for regulated industries.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
