@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Logo from './Logo'
 
 export default function Footer() {
   return (
@@ -6,8 +7,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="text-2xl font-bold text-primary-400 mb-4 block">
-              Sematryx
+            <Link href="/" className="mb-4 block">
+              <Logo size="small" />
             </Link>
             <p className="text-gray-400 mb-4 max-w-md">
               Sematryx solves optimization problems that traditional optimizers can't handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning—powered by the AEAO Engine.
