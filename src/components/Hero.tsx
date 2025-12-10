@@ -47,16 +47,16 @@ export default function Hero() {
                   <span className="font-mono text-sm text-text-secondary">Python SDK</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">📘</span>
-                  <span className="font-mono text-sm text-text-secondary">TypeScript SDK</span>
-                </div>
-                <div className="flex items-center gap-3">
                   <span className="text-2xl">🔌</span>
                   <span className="font-mono text-sm text-text-secondary">REST API</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">🐳</span>
-                  <span className="font-mono text-sm text-text-secondary">Docker Ready</span>
+                  <span className="text-2xl">💻</span>
+                  <span className="font-mono text-sm text-text-secondary">CLI Tool</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">🤖</span>
+                  <span className="font-mono text-sm text-text-secondary">MCP Server</span>
                 </div>
               </div>
             </div>
@@ -113,3 +113,4 @@ export default function Hero() {
     </div>
   )
 }
+
