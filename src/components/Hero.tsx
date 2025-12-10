@@ -89,13 +89,13 @@ export default function Hero() {
             </div>
 
             {/* Floating Badges */}
-            <div className="absolute -top-5 -right-5 bg-elevated border border-elevated-3 rounded-lg px-4 py-2.5 flex items-center gap-2 text-sm shadow-xl shadow-black/30 animate-bounce-slow z-20">
+            <div className="absolute -top-10 -right-4 bg-elevated border border-elevated-3 rounded-lg px-4 py-2.5 flex items-center gap-2 text-sm shadow-xl shadow-black/30 animate-bounce-slow z-20">
               <span className="text-amber-400">⚡</span>
               <span className="text-text-tertiary">Latency:</span>
               <span className="font-semibold text-emerald-400">142ms</span>
             </div>
 
-            <div className="absolute -bottom-8 -left-8 bg-elevated border border-elevated-3 rounded-lg px-4 py-2.5 flex items-center gap-2 text-sm shadow-xl shadow-black/30 animate-bounce-slow delay-700 z-20">
+            <div className="absolute -bottom-12 -left-6 bg-elevated border border-elevated-3 rounded-lg px-4 py-2.5 flex items-center gap-2 text-sm shadow-xl shadow-black/30 animate-bounce-slow delay-700 z-20">
               <span className="text-brand-primary">🛡️</span>
               <span className="text-text-tertiary">Audit:</span>
               <span className="font-semibold text-brand-primary">Logged</span>
