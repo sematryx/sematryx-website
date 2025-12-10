@@ -40,18 +40,24 @@ export default function Hero() {
               </Link>
             </div>
 
-            <div className="flex flex-wrap gap-8 sm:gap-12 border-t border-elevated-3 pt-8">
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-text-primary">13+</span>
-                <span className="text-sm text-text-tertiary">Industry verticals</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-text-primary">98.4%</span>
-                <span className="text-sm text-text-tertiary">Explainability score</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-text-primary">&lt;200ms</span>
-                <span className="text-sm text-text-tertiary">Avg response time</span>
+            <div className="border-t border-elevated-3 pt-8">
+              <div className="flex flex-wrap items-center justify-between gap-6 opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">🐍</span>
+                  <span className="font-mono text-sm text-text-secondary">Python SDK</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">📘</span>
+                  <span className="font-mono text-sm text-text-secondary">TypeScript SDK</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">🔌</span>
+                  <span className="font-mono text-sm text-text-secondary">REST API</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">🐳</span>
+                  <span className="font-mono text-sm text-text-secondary">Docker Ready</span>
+                </div>
               </div>
             </div>
           </div>
