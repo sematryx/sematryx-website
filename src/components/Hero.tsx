@@ -8,12 +8,8 @@ export default function Hero() {
           
           {/* Left Column: Text Content */}
           <div className="text-left z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-elevated border border-elevated-3 text-brand-primary text-sm font-medium mb-6 animate-fade-in">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-primary"></span>
-              </span>
-              Now in Public Beta
+            <div className="text-brand-primary font-mono text-sm tracking-[0.2em] uppercase mb-6 animate-fade-in font-semibold">
+              Logic • Math • Language • Learning
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6 leading-tight tracking-tight">
