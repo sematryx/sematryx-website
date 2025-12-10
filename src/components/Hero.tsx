@@ -20,9 +20,14 @@ export default function Hero() {
               Optimization problems <span className="text-brand-primary">traditional solvers can't touch</span>
             </h1>
             
-            <p className="text-lg text-text-secondary mb-8 max-w-xl leading-relaxed">
-              One API call. Landscape mapped. Strategy selected. Logic explained. Lessons learned. Sematryx handles the optimization problems that break conventional tools—with full audit trails for regulated industries.
-            </p>
+            <div className="mb-8 max-w-xl">
+              <p className="text-xl text-text-primary font-medium mb-3 leading-snug">
+                One API call. Landscape mapped. Strategy selected. Logic explained. Lessons learned.
+              </p>
+              <p className="text-lg text-text-secondary leading-relaxed">
+                Sematryx handles the optimization problems that break conventional tools—with full audit trails for regulated industries.
+              </p>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Link 
