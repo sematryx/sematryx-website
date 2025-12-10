@@ -6,18 +6,18 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sematryx.com'),
-  title: 'Sematryx - Enterprise Optimization Framework',
-  description: 'Sematryx solves optimization problems that traditional optimizers can\'t handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning—powered by the AEAO Engine.',
+  title: 'Sematryx - Logic, Math, Language, Learning',
+  description: 'Sematryx solves optimization problems traditional tools can\'t. Our Intelligence Hub orchestrates AI strategies with built-in compliance and full explainability for regulated industries.',
   openGraph: {
-    title: 'Sematryx - Enterprise Optimization Framework',
-    description: 'Sematryx solves optimization problems that traditional optimizers can\'t handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning—powered by the AEAO Engine.',
+    title: 'Sematryx - Logic, Math, Language, Learning',
+    description: 'Sematryx solves optimization problems traditional tools can\'t. Our Intelligence Hub orchestrates AI strategies with built-in compliance and full explainability for regulated industries.',
     type: 'website',
     siteName: 'Sematryx',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sematryx - Enterprise Optimization Framework',
-    description: 'Sematryx solves optimization problems that traditional optimizers can\'t handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning—powered by the AEAO Engine.',
+    title: 'Sematryx - Logic, Math, Language, Learning',
+    description: 'Sematryx solves optimization problems traditional tools can\'t. Our Intelligence Hub orchestrates AI strategies with built-in compliance and full explainability for regulated industries.',
   },
 }
 

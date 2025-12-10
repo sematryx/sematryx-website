@@ -17,7 +17,7 @@ export default function Hero() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6 leading-tight tracking-tight">
-              Optimization problems <span className="text-brand-primary">traditional solvers can't touch</span>
+              Optimize problems that <span className="text-brand-primary">break traditional solvers</span>—and explain how
             </h1>
             
             <div className="mb-8 max-w-xl">
