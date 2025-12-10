@@ -24,7 +24,7 @@ export default function Hero() {
               <p className="text-xl text-text-primary font-medium mb-3 leading-snug">
                 One API call. Landscape mapped. Strategy selected. Logic explained. Lessons learned.
               </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-lg text-gray-200 leading-relaxed">
                 Sematryx handles the optimization problems that break conventional tools—with full audit trails for regulated industries.
               </p>
             </div>
