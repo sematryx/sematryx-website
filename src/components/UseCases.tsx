@@ -1,75 +1,50 @@
-import Link from 'next/link'
-
 export default function UseCases() {
   const useCases = [
     {
-      title: "Financial Portfolio Optimization",
-      description: "Multi-objective risk-return optimization with real-time regulatory compliance (Basel III, MiFID II). Dynamic rebalancing that learns from market patterns.",
-      icon: "💼",
-      industry: "Financial Services"
+      title: "Portfolio Optimization",
+      description: "Balance risk, return, and regulatory limits with explainable allocation decisions that satisfy compliance teams.",
+      icon: "📊"
     },
     {
-      title: "Smart Factory Optimization",
-      description: "Process parameter tuning with safety constraints, quality requirements, and energy optimization. Handles noisy sensor data and real-world uncertainty.",
-      icon: "🏭",
-      industry: "Manufacturing"
+      title: "Supply Chain & Logistics",
+      description: "Route optimization, inventory allocation, and demand planning with real-world constraints like driver hours and weather.",
+      icon: "🚚"
     },
     {
-      title: "Supply Chain Optimization",
-      description: "Multi-supplier risk management, dynamic inventory optimization, and vehicle routing with time windows. Adapts to changing demand forecasts.",
-      icon: "🚚",
-      industry: "Supply Chain"
+      title: "Healthcare Resource Allocation",
+      description: "Staff scheduling, bed management, and treatment planning with patient safety constraints and audit requirements.",
+      icon: "⚕️"
     },
     {
-      title: "Drug Discovery",
-      description: "Optimize molecular structures for drug discovery with toxicity and solubility constraints. Regulatory compliance built-in for clinical trials.",
-      icon: "🧪",
-      industry: "Healthcare"
-    },
-    {
-      title: "Energy Grid Optimization",
-      description: "Grid optimization with renewable integration, energy trading strategies, and demand response. Real-time adaptation to grid conditions.",
-      icon: "⚡",
-      industry: "Energy & Utilities"
-    },
-    {
-      title: "Neural Architecture Search",
-      description: "Hyperparameter tuning and neural architecture search with cross-problem learning. Visual intelligence for understanding model landscapes.",
-      icon: "🤖",
-      industry: "AI/ML Research"
+      title: "Manufacturing & Operations",
+      description: "Production scheduling, quality optimization, and maintenance planning across complex multi-site operations.",
+      icon: "🏭"
     }
   ]
 
   return (
-    <div className="py-24 bg-white">
+    <div className="py-20 md:py-24 bg-base">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Real-World Problems AEAO Solves
+        <div className="mb-16">
+          <p className="text-sm font-semibold text-brand-primary uppercase tracking-wide mb-2">What You Can Solve</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+            Problems that need more than math
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
-            Industry-specific optimization challenges where AEAO's enterprise intelligence makes the difference
+          <p className="text-xl text-text-secondary max-w-2xl">
+            When constraints are fuzzy, objectives conflict, or regulators want to know why—Sematryx delivers.
           </p>
-          <Link 
-            href="/why-aeao" 
-            className="text-primary-600 hover:text-primary-700 font-semibold inline-flex items-center gap-2"
-          >
-            Learn more about AEAO's advantages
-            <span>→</span>
-          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {useCases.map((useCase, index) => (
-            <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-200">
-              <div className="text-4xl mb-4">{useCase.icon}</div>
-              <div className="text-sm font-semibold text-primary-600 mb-2 uppercase tracking-wide">
-                {useCase.industry}
+            <div key={index} className="bg-elevated p-8 rounded-xl border border-elevated-3 hover:border-elevated-4 hover:bg-elevated-2 transition-all duration-200 group cursor-default">
+              <div className="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-200">
+                {useCase.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-text-primary mb-3">
                 {useCase.title}
               </h3>
-              <p className="text-gray-700">
+              <p className="text-text-secondary leading-relaxed">
                 {useCase.description}
               </p>
             </div>
@@ -79,4 +54,3 @@ export default function UseCases() {
     </div>
   )
 }
-

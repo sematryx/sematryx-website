@@ -66,7 +66,7 @@ for attempt in range(max_retries):
           Rate Limiting
         </h1>
         <p className="text-xl text-gray-600">
-          Understand AEAO's rate limits and learn how to handle them gracefully in your applications.
+          Understand Sematryx's rate limits and learn how to handle them gracefully in your applications.
         </p>
       </div>
 
@@ -76,7 +76,7 @@ for attempt in range(max_retries):
             Overview
           </h2>
           <p className="text-gray-700 mb-4">
-            AEAO implements rate limiting to ensure fair usage and system stability. Rate limits vary by plan:
+            Sematryx implements rate limiting to ensure fair usage and system stability. Rate limits vary by plan:
           </p>
           <div className="bg-gray-50 rounded-lg p-6">
             <ul className="space-y-3 text-gray-700">

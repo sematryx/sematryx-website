@@ -108,7 +108,7 @@ export default function BenchmarksPage() {
               Performance Benchmarks
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Real-world performance metrics and benchmarks demonstrating AEAO's 
+              Real-world performance metrics and benchmarks demonstrating Sematryx's 
               speed, reliability, and scalability.
             </p>
           </div>

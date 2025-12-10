@@ -1,7 +1,7 @@
 import CodeBlock from '@/components/CodeBlock'
 
 export default function AuthenticationPage() {
-  const authExample = `curl -X POST https://api.aeao.com/v1/optimize \\
+  const authExample = `curl -X POST https://api.sematryx.com/v1/optimize \\
   -H "Authorization: Bearer aeao_1234567890abcdef" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -9,10 +9,10 @@ export default function AuthenticationPage() {
     "bounds": [[-5, 5], [-5, 5]]
   }'`
 
-  const jsAuthExample = `import { AEAO } from '@aeao/javascript-sdk'
+  const jsAuthExample = `import { Sematryx } from '@sematryx/javascript-sdk'
 
 // Initialize with your API key
-const aeao = new AEAO('aeao_1234567890abcdef')
+const sematryx = new Sematryx('sematryx_1234567890abcdef')
 
 // All requests will automatically include authentication
 const result = await aeao.optimize({
@@ -28,7 +28,7 @@ const result = await aeao.optimize({
           Authentication
         </h1>
         <p className="text-xl text-gray-400">
-          Learn how to authenticate your requests to the <span className="text-primary-400">AEAO</span> API using API keys.
+          Learn how to authenticate your requests to the <span className="text-primary-400">Sematryx</span> API using API keys.
         </p>
       </div>
 
@@ -38,7 +38,7 @@ const result = await aeao.optimize({
             API Key Authentication
           </h2>
           <p className="text-gray-400 mb-4">
-            <span className="text-primary-400">AEAO</span> uses API keys for authentication. Include your API key in the Authorization header 
+            <span className="text-primary-400">Sematryx</span> uses API keys for authentication. Include your API key in the Authorization header 
             of every request using the Bearer token format.
           </p>
           <CodeBlock

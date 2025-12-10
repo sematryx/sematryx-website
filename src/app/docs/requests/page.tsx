@@ -1,7 +1,7 @@
 import CodeBlock from '@/components/CodeBlock'
 
 export default function MakingRequestsPage() {
-  const basicRequest = `curl -X POST https://api.aeao.com/v1/optimize \\
+  const basicRequest = `curl -X POST https://api.sematryx.com/v1/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -12,7 +12,7 @@ export default function MakingRequestsPage() {
 
   const pythonRequest = `import requests
 
-url = "https://api.aeao.com/v1/optimize"
+url = "https://api.sematryx.com/v1/optimize"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
@@ -27,7 +27,7 @@ response = requests.post(url, json=data, headers=headers)
 result = response.json()
 print(result)`
 
-  const javascriptRequest = `const response = await fetch('https://api.aeao.com/v1/optimize', {
+  const javascriptRequest = `const response = await fetch('https://api.sematryx.com/v1/optimize', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer YOUR_API_KEY',
@@ -70,7 +70,7 @@ console.log(result)`
           Making Requests
         </h1>
         <p className="text-xl text-gray-400">
-          Learn how to make API requests to AEAO, handle responses, and work with errors.
+          Learn how to make API requests to Sematryx, handle responses, and work with errors.
         </p>
       </div>
 
@@ -84,7 +84,7 @@ console.log(result)`
           </p>
           <div className="bg-[#1a1f2e] rounded-lg p-4 mb-4 border border-gray-700">
             <code className="text-lg font-mono text-primary-400">
-              https://api.aeao.com
+              https://api.sematryx.com
             </code>
           </div>
           <p className="text-gray-400">
@@ -117,7 +117,7 @@ console.log(result)`
             Request Format
           </h2>
           <p className="text-gray-400 mb-4">
-            <span className="text-primary-400">AEAO</span> uses JSON for request and response bodies. All requests should include the <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">Content-Type: application/json</code> header.
+            <span className="text-primary-400">Sematryx</span> uses JSON for request and response bodies. All requests should include the <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">Content-Type: application/json</code> header.
           </p>
           
           <h3 className="text-xl font-semibold text-white mb-3 mt-6">

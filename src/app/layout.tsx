@@ -5,19 +5,19 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aeao-website.vercel.app'),
-  title: 'AEAO - Enterprise Optimization Framework',
-  description: 'The world\'s most advanced optimization framework. Where traditional optimizers solve mathematical problems, AEAO solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.',
+  metadataBase: new URL('https://sematryx.com'),
+  title: 'Sematryx - Enterprise Optimization Framework',
+  description: 'Sematryx solves optimization problems that traditional optimizers can\'t handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning—powered by the AEAO Engine.',
   openGraph: {
-    title: 'AEAO - Enterprise Optimization Framework',
-    description: 'The world\'s most advanced optimization framework. Where traditional optimizers solve mathematical problems, AEAO solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.',
+    title: 'Sematryx - Enterprise Optimization Framework',
+    description: 'Sematryx solves optimization problems that traditional optimizers can\'t handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning—powered by the AEAO Engine.',
     type: 'website',
-    siteName: 'AEAO',
+    siteName: 'Sematryx',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AEAO - Enterprise Optimization Framework',
-    description: 'The world\'s most advanced optimization framework. Where traditional optimizers solve mathematical problems, AEAO solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.',
+    title: 'Sematryx - Enterprise Optimization Framework',
+    description: 'Sematryx solves optimization problems that traditional optimizers can\'t handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning—powered by the AEAO Engine.',
   },
 }
 

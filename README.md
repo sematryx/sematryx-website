@@ -1,6 +1,6 @@
-# AEAO Website
+# Sematryx Website
 
-The official website for AEAO (Agentic Expository Audidactic Optimizer) - the world's most advanced AI-powered optimization framework.
+The official website for Sematryx - Enterprise Optimization Framework powered by the AEAO Engine (Agentic Expository Autodidactic Optimizer).
 
 ## Features
 

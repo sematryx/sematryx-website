@@ -21,14 +21,14 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="text-2xl font-bold text-brand-primary">
-              AEAO
+              Sematryx
             </Link>
           </div>
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <Link href="/why-aeao" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
-                Why AEAO
+              <Link href="/why-sematryx" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
+                Why Sematryx
               </Link>
               <Link href="/docs" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Documentation
@@ -64,8 +64,8 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-elevated rounded-lg mt-2">
-              <Link href="/why-aeao" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
-                Why AEAO
+              <Link href="/why-sematryx" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
+                Why Sematryx
               </Link>
               <Link href="/docs" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Documentation

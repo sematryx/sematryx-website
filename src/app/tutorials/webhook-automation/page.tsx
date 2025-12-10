@@ -4,7 +4,7 @@ import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
 
 export default function WebhookAutomationTutorial() {
-  const createWebhook = `curl -X POST https://api.aeao.com/v1/automations \\
+  const createWebhook = `curl -X POST https://api.sematryx.com/v1/automations \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -33,9 +33,9 @@ export default function WebhookAutomationTutorial() {
     ]
   }'`
 
-  const webhookUrl = `https://api.aeao.com/webhook/process?token=YOUR_WEBHOOK_TOKEN`
+  const webhookUrl = `https://api.sematryx.com/webhook/process?token=YOUR_WEBHOOK_TOKEN`
 
-  const sendWebhook = `curl -X POST https://api.aeao.com/webhook/process?token=YOUR_WEBHOOK_TOKEN \\
+  const sendWebhook = `curl -X POST https://api.sematryx.com/webhook/process?token=YOUR_WEBHOOK_TOKEN \\
   -H "Content-Type: application/json" \\
   -d '{
     "event": "user_signup",
@@ -44,9 +44,9 @@ export default function WebhookAutomationTutorial() {
     "timestamp": "2024-01-01T00:00:00Z"
   }'`
 
-  const pythonExample = `from aeao import AEAO
+  const pythonExample = `from sematryx import SematryxClient
 
-client = AEAO(api_key='your-api-key')
+client = SematryxClient(api_key='your-api-key')
 
 # Create webhook-triggered automation
 automation = client.automations.create(
@@ -131,7 +131,7 @@ def verify_webhook_signature(payload, signature, secret):
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-3">Before You Start</h3>
               <ul className="space-y-2 text-blue-800">
-                <li>✅ An AEAO account with an active API key</li>
+                <li>✅ A Sematryx account with an active API key</li>
                 <li>✅ Understanding of HTTP webhooks</li>
                 <li>✅ Ability to send HTTP POST requests (curl, Postman, or similar)</li>
               </ul>

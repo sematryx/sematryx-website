@@ -3,11 +3,11 @@ import Footer from '@/components/Footer'
 import CodeBlock from '@/components/CodeBlock'
 
 export default function MCPPage() {
-  const mcpIntegrationCode = `import { MCPClient } from '@aeao/mcp-client'
-import { AEAO } from '@aeao/javascript-sdk'
+  const mcpIntegrationCode = `import { MCPClient } from '@sematryx/mcp-client'
+import { Sematryx } from '@sematryx/javascript-sdk'
 
-// Initialize AEAO with MCP support
-const aeao = new AEAO('your-api-key', {
+// Initialize Sematryx with MCP support
+const sematryx = new Sematryx('your-api-key', {
   mcp: {
     enabled: true,
     version: '2024-11-05'
@@ -16,13 +16,13 @@ const aeao = new AEAO('your-api-key', {
 
 // Connect to MCP server
 const mcpClient = new MCPClient({
-  serverUrl: 'https://api.aeao.com/mcp',
+  serverUrl: 'https://api.sematryx.com/mcp',
   transport: 'stdio'
 })
 
 await mcpClient.connect()`
 
-  const contextSharingCode = `// Share context between AEAO and AI models
+  const contextSharingCode = `// Share context between Sematryx and AI models
 const automation = await aeao.automations.create({
   name: 'ai-enhanced-processor',
   trigger: {
@@ -44,7 +44,7 @@ const automation = await aeao.automations.create({
   ]
 })`
 
-  const toolsCode = `// MCP Tools available in AEAO
+  const toolsCode = `// MCP Tools available in Sematryx
 const mcpTools = [
   {
     name: 'web_search',
@@ -147,7 +147,7 @@ const mcpTools = [
           {/* Features Grid */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              MCP Features in AEAO
+              MCP Features in Sematryx
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
@@ -172,12 +172,12 @@ const mcpTools = [
                   1. Initialize MCP Connection
                 </h3>
                 <p className="text-gray-400 mb-6">
-                  Connect <span className="text-primary-400">AEAO</span> to the Model Context Protocol to enable AI model integration:
+                  Connect <span className="text-primary-400">Sematryx</span> to the Model Context Protocol to enable AI model integration:
                 </p>
                 <CodeBlock
                   code={mcpIntegrationCode}
                   language="javascript"
-                  title="Initialize MCP with AEAO"
+                  title="Initialize MCP with Sematryx"
                 />
               </div>
 
@@ -269,7 +269,7 @@ const mcpTools = [
                 MCP Version Support
               </h3>
               <p className="text-blue-300 mb-3">
-                <span className="text-primary-400">AEAO</span> supports MCP version 2024-11-05 and maintains backward compatibility with earlier versions.
+                <span className="text-primary-400">Sematryx</span> supports MCP version 2024-11-05 and maintains backward compatibility with earlier versions.
               </p>
               <div className="text-sm text-blue-400">
                 <strong>Current Version:</strong> 2024-11-05 | 

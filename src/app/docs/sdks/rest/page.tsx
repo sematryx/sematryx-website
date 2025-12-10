@@ -6,7 +6,7 @@ import ExpandableEndpoint from '@/components/ExpandableEndpoint'
 
 export default function RESTAPIPage() {
   const [expandedEndpoints, setExpandedEndpoints] = useState<Set<string>>(new Set())
-  const baseUrl = `https://api.aeao.com/v1`
+  const baseUrl = `https://api.sematryx.com/v1`
   
   const toggleEndpoint = (endpointKey: string) => {
     setExpandedEndpoints(prev => {
@@ -22,7 +22,7 @@ export default function RESTAPIPage() {
 
   const authentication = `Authorization: Bearer YOUR_API_KEY`
 
-  const optimizeExample = `curl -X POST https://api.aeao.com/v1/optimize \\
+  const optimizeExample = `curl -X POST https://api.sematryx.com/v1/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -32,7 +32,7 @@ export default function RESTAPIPage() {
     "preset": "production"
   }'`
 
-  const tetradConfigExample = `curl -X POST https://api.aeao.com/v1/optimize \\
+  const tetradConfigExample = `curl -X POST https://api.sematryx.com/v1/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -47,7 +47,7 @@ export default function RESTAPIPage() {
     }
   }'`
 
-  const uploadFunction = `curl -X POST https://api.aeao.com/v1/functions \\
+  const uploadFunction = `curl -X POST https://api.sematryx.com/v1/functions \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -56,13 +56,13 @@ export default function RESTAPIPage() {
     "language": "python"
   }'`
 
-  const getOptimization = `curl -X GET https://api.aeao.com/v1/optimize/opt_1234567890 \\
+  const getOptimization = `curl -X GET https://api.sematryx.com/v1/optimize/opt_1234567890 \\
   -H "Authorization: Bearer YOUR_API_KEY"`
 
-  const listOptimizations = `curl -X GET "https://api.aeao.com/v1/optimize?limit=20&offset=0" \\
+  const listOptimizations = `curl -X GET "https://api.sematryx.com/v1/optimize?limit=20&offset=0" \\
   -H "Authorization: Bearer YOUR_API_KEY"`
 
-  const domainOptimization = `curl -X POST https://api.aeao.com/v1/domains/financial/optimize \\
+  const domainOptimization = `curl -X POST https://api.sematryx.com/v1/domains/financial/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -228,7 +228,7 @@ export default function RESTAPIPage() {
           REST API
         </h1>
         <p className="text-xl text-gray-600">
-          Complete REST API reference for AEAO. Use HTTP requests to interact with all optimization features and configure the AEAO Tetrad.
+          Complete REST API reference for Sematryx. Use HTTP requests to interact with all optimization features and configure the AEAO Tetrad.
         </p>
       </div>
 
@@ -371,7 +371,7 @@ export default function RESTAPIPage() {
           </p>
           {(() => {
             const getEndpointDetails = (endpoint: typeof endpoints[0]): any => {
-              const baseUrl = 'https://api.aeao.com/v1'
+              const baseUrl = 'https://api.sematryx.com/v1'
               
               // Extract path parameters
               const pathParams: any[] = []

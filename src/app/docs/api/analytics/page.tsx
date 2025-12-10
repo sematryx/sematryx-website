@@ -1,13 +1,13 @@
 import CodeBlock from '@/components/CodeBlock'
 
 export default function AnalyticsEndpointsPage() {
-  const getMetrics = `curl -X GET "https://api.aeao.com/v1/analytics/metrics?start_date=2024-01-01&end_date=2024-01-31" \\
+  const getMetrics = `curl -X GET "https://api.sematryx.com/v1/analytics/metrics?start_date=2024-01-01&end_date=2024-01-31" \\
   -H "Authorization: Bearer YOUR_API_KEY"`
 
-  const getExecutionStats = `curl -X GET https://api.aeao.com/v1/analytics/executions \\
+  const getExecutionStats = `curl -X GET https://api.sematryx.com/v1/analytics/executions \\
   -H "Authorization: Bearer YOUR_API_KEY"`
 
-  const getPerformanceData = `curl -X GET "https://api.aeao.com/v1/analytics/performance?optimization_id=opt_1234567890" \\
+  const getPerformanceData = `curl -X GET "https://api.sematryx.com/v1/analytics/performance?optimization_id=opt_1234567890" \\
   -H "Authorization: Bearer YOUR_API_KEY"`
 
   const metricsResponse = `{

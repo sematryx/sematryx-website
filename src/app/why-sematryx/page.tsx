@@ -2,66 +2,66 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 
-export default function WhyAEAOPage() {
-  // Core Enterprise Differentiators - What makes AEAO enterprise-ready
+export default function WhySematryxPage() {
+  // Core Enterprise Differentiators - What makes Sematryx enterprise-ready
   const enterpriseFeatures = [
     {
       title: "Async Explainability",
       description: "Background-processed explanations minimize the performance overhead of transparency. Natural language summaries, technical logs, and visualizations run asynchronously so optimization doesn't wait for explanations to complete.",
       icon: "📖",
-      comparison: "Traditional optimizers: Black box or slow sync explanations | AEAO: Full explainability with minimal overhead"
+      comparison: "Traditional optimizers: Black box or slow sync explanations | Sematryx: Full explainability with minimal overhead"
     },
     {
       title: "15 AI Systems Coordinated",
-      description: "Unlike single-algorithm optimizers, AEAO coordinates 15 specialized AI systems working together: research agents analyze problems, validation engineers ensure safety, performance analysts track metrics, and learning systems adapt strategies.",
+      description: "Unlike single-algorithm optimizers, Sematryx coordinates 15 specialized AI systems working together: research agents analyze problems, validation engineers ensure safety, performance analysts track metrics, and learning systems adapt strategies.",
       icon: "🤖",
-      comparison: "Traditional optimizers: Single algorithm | AEAO: 15-system coordination"
+      comparison: "Traditional optimizers: Single algorithm | Sematryx: 15-system coordination"
     },
     {
       title: "Enterprise-Grade Compliance",
       description: "Built-in regulatory compliance, safety constraints, and audit trails. Essential for financial services, healthcare, and manufacturing where regulations matter. Production-ready from day one.",
       icon: "🛡️",
-      comparison: "Traditional optimizers: No compliance features | AEAO: Built-in regulatory compliance"
+      comparison: "Traditional optimizers: No compliance features | Sematryx: Built-in regulatory compliance"
     },
     {
       title: "Domain-Specific Solutions",
       description: "13+ business domain libraries with automatic code generation. Financial, healthcare, supply chain, manufacturing, and more - all production-ready with industry-specific constraints and best practices.",
       icon: "🏗️",
-      comparison: "Traditional optimizers: Generic only | AEAO: 13+ specialized domain libraries"
+      comparison: "Traditional optimizers: Generic only | Sematryx: 13+ specialized domain libraries"
     },
   ]
 
-  // Advanced AI Capabilities - What makes AEAO intelligent
+  // Advanced AI Capabilities - What makes Sematryx intelligent
   const intelligenceSystems = [
     {
       title: "Continuous Learning",
-      description: "AEAO becomes more effective with every new problem it sees. Cross-problem meta-learning means what works for portfolio optimization informs supply chain decisions. Professional tier: private learning. Enterprise tier: bring your own database.",
+      description: "Sematryx becomes more effective with every new problem it sees. Cross-problem meta-learning means what works for portfolio optimization informs supply chain decisions. Professional tier: private learning. Enterprise tier: bring your own database.",
       icon: "🌐",
-      comparison: "Traditional optimizers: Static, no learning | AEAO: Learns from every optimization"
+      comparison: "Traditional optimizers: Static, no learning | Sematryx: Learns from every optimization"
     },
     {
       title: "Temporal Awareness",
       description: "Unified temporal context manager that fuses historical patterns with real-time data for predictive optimization. Domain-specific temporal engines adapt to changing conditions in finance, healthcare, supply chain, and manufacturing.",
       icon: "⏱️",
-      comparison: "Traditional optimizers: Static snapshots | AEAO: Real-time + historical fusion with predictive modeling"
+      comparison: "Traditional optimizers: Static snapshots | Sematryx: Real-time + historical fusion with predictive modeling"
     },
     {
       title: "Advanced Knowledge Systems",
-      description: "60-80% vector memory compression, Neo4j knowledge graphs, RAG retrieval, and causal discovery. AEAO builds and maintains comprehensive optimization knowledge that improves over time.",
+      description: "60-80% vector memory compression, Neo4j knowledge graphs, RAG retrieval, and causal discovery. Sematryx builds and maintains comprehensive optimization knowledge that improves over time.",
       icon: "🧬",
-      comparison: "Traditional optimizers: No memory | AEAO: Knowledge graphs + RAG + causal discovery"
+      comparison: "Traditional optimizers: No memory | Sematryx: Knowledge graphs + RAG + causal discovery"
     },
     {
       title: "Multi-Library Integration",
       description: "Unified strategy registry seamlessly integrates SCIPY, CMA-ES, SKOPT, AX, and custom optimizers. One interface, multiple optimization libraries working together intelligently.",
       icon: "🔗",
-      comparison: "Traditional optimizers: Single library | AEAO: Unified registry across 5+ libraries"
+      comparison: "Traditional optimizers: Single library | Sematryx: Unified registry across 5+ libraries"
     },
     {
       title: "Visual Analysis",
       description: "Computer vision-based optimization landscape analysis. Understand your problem space visually and make better decisions. See patterns humans can't detect in mathematical representations alone.",
       icon: "👁️",
-      comparison: "Traditional optimizers: Mathematical only | AEAO: Visual + mathematical analysis"
+      comparison: "Traditional optimizers: Mathematical only | Sematryx: Visual + mathematical analysis"
     },
   ]
 
@@ -142,11 +142,11 @@ export default function WhyAEAOPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Why Choose <span className="text-primary-400">AEAO</span>?
+              Why Choose <span className="text-primary-400">Sematryx</span>?
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               The world's most advanced optimization framework. Where traditional optimizers solve mathematical problems, 
-              <span className="text-primary-400">AEAO</span> solves enterprise problems with AI-powered intelligence, compliance, and continuous learning.
+              <span className="text-primary-400">Sematryx</span> solves enterprise problems with AI-powered intelligence, compliance, and continuous learning, powered by the AEAO Engine.
             </p>
           </div>
         </div>
@@ -246,7 +246,7 @@ export default function WhyAEAOPage() {
               Enterprise-Grade Optimization
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Production-ready features that make <span className="text-primary-400">AEAO</span> the only enterprise-grade optimization platform
+              Production-ready features that make <span className="text-primary-400">Sematryx</span> the only enterprise-grade optimization platform
             </p>
           </div>
 
@@ -273,7 +273,7 @@ export default function WhyAEAOPage() {
               Advanced AI Capabilities
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              AI-powered systems that make <span className="text-primary-400">AEAO</span> smarter with every optimization
+              AI-powered systems that make <span className="text-primary-400">Sematryx</span> smarter with every optimization
             </p>
           </div>
 
@@ -297,10 +297,10 @@ export default function WhyAEAOPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Real-World Problems <span className="text-primary-400">AEAO</span> Solves
+              Real-World Problems <span className="text-primary-400">Sematryx</span> Solves
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Industry-specific optimization challenges where <span className="text-primary-400">AEAO</span>'s enterprise intelligence makes the difference
+              Industry-specific optimization challenges where <span className="text-primary-400">Sematryx</span>'s enterprise intelligence makes the difference
             </p>
           </div>
 
@@ -325,7 +325,7 @@ export default function WhyAEAOPage() {
                 </div>
 
                 <div className="bg-primary-900/30 rounded-lg p-4 border-l-4 border-primary-500">
-                  <h4 className="text-sm font-semibold text-primary-300 mb-2"><span className="text-primary-400">AEAO</span> Advantage:</h4>
+                  <h4 className="text-sm font-semibold text-primary-300 mb-2"><span className="text-primary-400">Sematryx</span> Advantage:</h4>
                   <p className="text-primary-200 text-sm">{useCase.advantage}</p>
                 </div>
               </div>
@@ -339,10 +339,10 @@ export default function WhyAEAOPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              <span className="text-primary-400">AEAO</span> vs Traditional Optimizers
+              <span className="text-primary-400">Sematryx</span> vs Traditional Optimizers
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              See how <span className="text-primary-400">AEAO</span> compares to solutions like SciPy, Optuna, and other optimization libraries
+              See how <span className="text-primary-400">Sematryx</span> compares to solutions like SciPy, Optuna, and other optimization libraries
             </p>
           </div>
 
@@ -353,7 +353,7 @@ export default function WhyAEAOPage() {
                   <tr className="border-b-2 border-gray-600">
                     <th className="text-left py-4 px-6 font-semibold text-white">Feature</th>
                     <th className="text-center py-4 px-6 font-semibold text-gray-400">Traditional Optimizers</th>
-                    <th className="text-center py-4 px-6 font-semibold text-primary-400">AEAO</th>
+                    <th className="text-center py-4 px-6 font-semibold text-primary-400">Sematryx</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-700">
@@ -427,10 +427,10 @@ export default function WhyAEAOPage() {
             </div>
             <div className="mt-8 text-center">
               <p className="text-lg font-semibold text-white mb-4">
-                <span className="text-primary-400">AEAO</span> Wins: 13/13 Categories ⭐⭐⭐⭐⭐
+                <span className="text-primary-400">Sematryx</span> Wins: 13/13 Categories ⭐⭐⭐⭐⭐
               </p>
               <p className="text-gray-400">
-                Traditional optimizers are great for academic problems. <span className="text-primary-400">AEAO</span> solves enterprise problems with intelligence, compliance, and learning.
+                Traditional optimizers are great for academic problems. <span className="text-primary-400">Sematryx</span> solves enterprise problems with intelligence, compliance, and learning.
               </p>
             </div>
           </div>
@@ -444,7 +444,7 @@ export default function WhyAEAOPage() {
             Ready to Experience Enterprise-Grade Optimization?
           </h2>
           <p className="text-xl text-primary-100 mb-8">
-            Get started with <span className="font-semibold">AEAO</span> today. No credit card required for the free tier.
+            Get started with <span className="font-semibold">Sematryx</span> today. No credit card required for the free tier.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 

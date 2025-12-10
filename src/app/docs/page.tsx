@@ -53,7 +53,7 @@ result = financial_optimize(
           Quick Start Guide
         </h1>
         <p className="text-xl text-gray-400">
-          Get started with <span className="text-primary-400">AEAO</span> in minutes. This guide will walk you through your first optimization problem.
+          Get started with <span className="text-primary-400">Sematryx</span> in minutes. This guide will walk you through your first optimization problem.
         </p>
       </div>
 
@@ -63,12 +63,12 @@ result = financial_optimize(
             1. Installation
           </h2>
           <p className="text-gray-400 mb-4">
-            Install <span className="text-primary-400">AEAO</span> using pip:
+            Install <span className="text-primary-400">Sematryx</span> using pip:
           </p>
           <CodeBlock
             code="pip install aeao"
             language="bash"
-            title="Install AEAO"
+            title="Install Sematryx"
           />
         </section>
 
@@ -90,7 +90,7 @@ result = financial_optimize(
             3. Your First Optimization
           </h2>
           <p className="text-gray-400 mb-4">
-            Define your objective function and bounds, then let <span className="text-primary-400">AEAO</span> find the optimal solution:
+            Define your objective function and bounds, then let <span className="text-primary-400">Sematryx</span> find the optimal solution:
           </p>
           <CodeBlock
             code={quickStartCode}
@@ -100,7 +100,7 @@ result = financial_optimize(
           <div className="bg-green-900/30 border border-green-700 rounded-lg p-6 mt-4">
             <h3 className="text-lg font-semibold text-green-400 mb-3">What happened?</h3>
             <ul className="space-y-2 text-green-300">
-              <li><span className="text-primary-400">AEAO</span> analyzed your problem and selected the best optimization strategy</li>
+              <li><span className="text-primary-400">Sematryx</span> analyzed your problem and selected the best optimization strategy</li>
               <li>It evaluated your function 1000 times to find the optimal solution</li>
               <li>The result includes the best parameters and objective value found</li>
             </ul>
@@ -112,7 +112,7 @@ result = financial_optimize(
             4. Configure the <span className="text-primary-400">AEAO</span> Tetrad
           </h2>
           <p className="text-gray-400 mb-4">
-            <span className="text-primary-400">AEAO</span> is built on four pillars of intelligence. Configure them to match your needs:
+            Sematryx's <span className="text-primary-400">AEAO Engine</span> is built on four pillars of intelligence. Configure them to match your needs:
           </p>
           <CodeBlock
             code={tetradExample}
@@ -163,9 +163,9 @@ result = financial_optimize(
             <ul className="space-y-2 text-blue-300">
               <li><strong className="text-blue-200">Objective Function:</strong> The function you want to minimize or maximize</li>
               <li><strong className="text-blue-200">Bounds:</strong> Search space constraints for each variable</li>
-              <li><strong className="text-blue-200">Strategy Selection:</strong> <span className="text-primary-400">AEAO</span> automatically chooses the best optimization algorithm</li>
+              <li><strong className="text-blue-200">Strategy Selection:</strong> <span className="text-primary-400">Sematryx</span> automatically chooses the best optimization algorithm</li>
               <li><strong className="text-blue-200">Explainability:</strong> Get detailed explanations of optimization decisions</li>
-              <li><strong className="text-blue-200">Learning:</strong> <span className="text-primary-400">AEAO</span> improves performance on repeated problems</li>
+              <li><strong className="text-blue-200">Learning:</strong> <span className="text-primary-400">Sematryx</span> improves performance on repeated problems</li>
             </ul>
           </div>
         </section>
@@ -208,7 +208,7 @@ result = financial_optimize(
                 Tetrad Configuration
               </h3>
               <p className="text-gray-400 mb-4">
-                Learn how to configure the four pillars of <span className="text-primary-400">AEAO</span> intelligence.
+                Learn how to configure the four pillars of Sematryx's <span className="text-primary-400">AEAO Engine</span> intelligence.
               </p>
               <a 
                 href="/docs/advanced/best-practices" 

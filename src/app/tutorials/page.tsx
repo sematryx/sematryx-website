@@ -6,8 +6,8 @@ export default function TutorialsPage() {
   const tutorials = [
     {
       id: 'getting-started',
-      title: 'Getting Started with AEAO',
-      description: 'Learn the basics of solving your first optimization problem with AEAO',
+      title: 'Getting Started with Sematryx',
+      description: 'Learn the basics of solving your first optimization problem with Sematryx',
       difficulty: 'Beginner',
       duration: '15 min',
       category: 'Fundamentals'
@@ -78,7 +78,7 @@ export default function TutorialsPage() {
               Tutorials
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Step-by-step guides to help you master <span className="text-primary-400">AEAO</span> optimization. 
+              Step-by-step guides to help you master <span className="text-primary-400">Sematryx</span> optimization. 
               From basic problem setup to advanced domain-specific optimization.
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function TutorialsPage() {
                 Need Help Getting Started?
               </h2>
               <p className="text-gray-400 mb-6">
-                If you're new to <span className="text-primary-400">AEAO</span>, we recommend starting with our Quick Start guide 
+                If you're new to <span className="text-primary-400">Sematryx</span>, we recommend starting with our Quick Start guide 
                 in the documentation to get familiar with optimization concepts and the <span className="text-primary-400">AEAO</span> Tetrad.
               </p>
               <Link

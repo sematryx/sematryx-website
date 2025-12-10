@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function GettingStartedTutorial() {
   const installCode = `pip install aeao`
 
-  const basicExample = `from aeao import aeao
+  const basicExample = `from sematryx import sematryx
 
 # Define your objective function
 def sphere(x):
@@ -39,7 +39,7 @@ print(f"Evaluations used: {result['evaluations']}")`
   }
 }`
 
-  const tetradExample = `from aeao import aeao
+  const tetradExample = `from sematryx import sematryx
 
 # Enable specific tetrad pillars
 result = aeao(
@@ -50,7 +50,7 @@ result = aeao(
     explanation_level=3                  # Detailed explanations
 )`
 
-  const realWorldExample = `from aeao import aeao
+  const realWorldExample = `from sematryx import sematryx
 import numpy as np
 
 # Real-world example: Portfolio optimization
@@ -102,10 +102,10 @@ print(f"Risk-adjusted return: {-result['best_fitness']}")`
             <span className="text-gray-500">• 15 minutes</span>
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Getting Started with AEAO
+            Getting Started with Sematryx
           </h1>
           <p className="text-xl text-gray-600">
-            In this tutorial, you'll solve your first optimization problem and learn the core concepts of AEAO.
+            In this tutorial, you'll solve your first optimization problem and learn the core concepts of Sematryx.
           </p>
         </div>
 
@@ -120,7 +120,7 @@ print(f"Risk-adjusted return: {-result['best_fitness']}")`
             <ul className="list-disc list-inside space-y-2 text-gray-700">
               <li>Defining objective functions</li>
               <li>Setting search bounds</li>
-              <li>Running optimization with AEAO</li>
+              <li>Running optimization with Sematryx</li>
               <li>Understanding optimization results</li>
               <li>Configuring the AEAO Tetrad</li>
             </ul>
@@ -149,12 +149,12 @@ print(f"Risk-adjusted return: {-result['best_fitness']}")`
               Step 1: Install AEAO
             </h2>
             <p className="text-gray-700 mb-4">
-              Install AEAO using pip:
+              Install Sematryx using pip:
             </p>
             <CodeBlock
               code={installCode}
               language="bash"
-              title="Install AEAO"
+              title="Install Sematryx"
             />
           </section>
 
@@ -176,7 +176,7 @@ print(f"Risk-adjusted return: {-result['best_fitness']}")`
               <ul className="space-y-2 text-green-800">
                 <li><strong>Objective Function:</strong> <code>sphere(x)</code> calculates sum of squares</li>
                 <li><strong>Bounds:</strong> Search space is [-5, 5] for each dimension</li>
-                <li><strong>Max Evaluations:</strong> AEAO will evaluate the function up to 1000 times</li>
+                <li><strong>Max Evaluations:</strong> Sematryx will evaluate the function up to 1000 times</li>
                 <li><strong>Result:</strong> Best solution found and its objective value</li>
               </ul>
             </div>
@@ -187,7 +187,7 @@ print(f"Risk-adjusted return: {-result['best_fitness']}")`
               Step 3: Understanding the Results
             </h2>
             <p className="text-gray-700 mb-4">
-              AEAO returns a dictionary with optimization results:
+              Sematryx returns a dictionary with optimization results:
             </p>
             <CodeBlock
               code={resultExample}
@@ -200,7 +200,7 @@ print(f"Risk-adjusted return: {-result['best_fitness']}")`
                 <li><strong>best_solution:</strong> Optimal parameter values found (should be near [0, 0] for sphere)</li>
                 <li><strong>best_fitness:</strong> Best objective value (should be near 0)</li>
                 <li><strong>evaluations:</strong> Number of function evaluations used</li>
-                <li><strong>strategy_used:</strong> Optimization algorithm AEAO selected</li>
+                <li><strong>strategy_used:</strong> Optimization algorithm Sematryx selected</li>
                 <li><strong>tetrad_config:</strong> Which AEAO Tetrad features were active</li>
               </ul>
             </div>
@@ -211,7 +211,7 @@ print(f"Risk-adjusted return: {-result['best_fitness']}")`
               Step 4: Configure the AEAO Tetrad
             </h2>
             <p className="text-gray-700 mb-4">
-              AEAO is built on four pillars of intelligence. Enable them to enhance your optimization:
+              Sematryx's AEAO Engine is built on four pillars of intelligence. Enable them to enhance your optimization:
             </p>
             <CodeBlock
               code={tetradExample}
@@ -252,7 +252,7 @@ print(f"Risk-adjusted return: {-result['best_fitness']}")`
             </h2>
             <div className="bg-green-50 border border-green-200 rounded-lg p-6">
               <p className="text-green-800 mb-4">
-                You've successfully solved your first optimization problem with AEAO! 
+                You've successfully solved your first optimization problem with Sematryx! 
                 You now understand how to define problems, run optimization, and configure the AEAO Tetrad.
               </p>
               <h3 className="text-lg font-semibold text-green-900 mb-3">What's Next?</h3>

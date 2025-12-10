@@ -4,7 +4,7 @@ import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
 
 export default function DataTransformationTutorial() {
-  const createPipeline = `curl -X POST https://api.aeao.com/v1/automations \\
+  const createPipeline = `curl -X POST https://api.sematryx.com/v1/automations \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -46,9 +46,9 @@ export default function DataTransformationTutorial() {
     ]
   }'`
 
-  const pythonExample = `from aeao import AEAO
+  const pythonExample = `from sematryx import SematryxClient
 
-client = AEAO(api_key='your-api-key')
+client = SematryxClient(api_key='your-api-key')
 
 # Create data transformation pipeline
 pipeline = client.automations.create(
@@ -87,7 +87,7 @@ pipeline = client.automations.create(
 
 print(f'Pipeline created: {pipeline.id}')`
 
-  const triggerPipeline = `curl -X POST https://api.aeao.com/v1/automations/auto_1234567890/trigger \\
+  const triggerPipeline = `curl -X POST https://api.sematryx.com/v1/automations/auto_1234567890/trigger \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -150,7 +150,7 @@ print(f'Pipeline created: {pipeline.id}')`
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-3">Before You Start</h3>
               <ul className="space-y-2 text-blue-800">
-                <li>✅ An AEAO account with an active API key</li>
+                <li>✅ A Sematryx account with an active API key</li>
                 <li>✅ Basic understanding of data transformation concepts</li>
                 <li>✅ Familiarity with JSON and CSV formats</li>
                 <li>✅ Access to cloud storage (S3, Azure, GCS) for output</li>

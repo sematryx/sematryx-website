@@ -21,7 +21,7 @@ result = aeao(
     explanation_level=3
 )`
 
-  const advancedConfig = `from aeao import aeao, AEAOTetradCompleteConfig
+  const advancedConfig = `from sematryx import sematryx, AEAOTetradCompleteConfig
 
 # Complete custom configuration
 config = AEAOTetradCompleteConfig.enterprise()
@@ -36,7 +36,7 @@ result = aeao(
     config=config
 )`
 
-  const restAPIConfig = `curl -X POST https://api.aeao.com/v1/optimize \\
+  const restAPIConfig = `curl -X POST https://api.sematryx.com/v1/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -60,9 +60,9 @@ result = aeao(
     }
   }'`
 
-  const javascriptConfig = `import { AEAO } from '@aeao/javascript-sdk'
+  const javascriptConfig = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Option 1: Use preset
 const result = await aeao.optimize({
@@ -96,7 +96,7 @@ const result = await aeao.optimize({
           <span className="text-primary-400">AEAO</span> Tetrad Configuration
         </h1>
         <p className="text-xl text-gray-400">
-          Configure the four pillars of <span className="text-primary-400">AEAO</span>: Agentic, Expository, Autodidactic, and Domain Extension. 
+          Configure the four pillars of Sematryx's <span className="text-primary-400">AEAO Engine</span>: Agentic, Expository, Autodidactic, and Domain Extension. 
           Control compute cost vs capability trade-offs with granular configuration options.
         </p>
       </div>
@@ -108,7 +108,7 @@ const result = await aeao.optimize({
             The <span className="text-primary-400">AEAO</span> Tetrad
           </h2>
           <p className="text-gray-400 mb-6">
-            <span className="text-primary-400">AEAO</span> is built on four central pillars that work together to provide enterprise-grade optimization:
+            Sematryx's <span className="text-primary-400">AEAO Engine</span> is built on four central pillars that work together to provide enterprise-grade optimization:
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

@@ -3,12 +3,12 @@ import CodeBlock from '@/components/CodeBlock'
 export default function BestPracticesPage() {
   const apiKeySecurity = `# ✅ Good: Use environment variables
 import os
-from aeao import AEAO
+from sematryx import SematryxClient
 
-client = AEAO(api_key=os.getenv('AEAO_API_KEY'))
+client = SematryxClient(api_key=os.getenv('SEMATRYX_API_KEY'))
 
 # ❌ Bad: Hardcoded API key
-client = AEAO(api_key='sk_live_1234567890')`
+client = SematryxClient(api_key='sk_live_1234567890')`
 
   const errorHandling = `# ✅ Good: Comprehensive error handling
 try:
@@ -21,7 +21,7 @@ except ValidationError as e:
     # Fix validation issues
     logger.error(f"Validation error: {e.message}")
     raise
-except AEAOError as e:
+except SematryxError as e:
     # Log and handle other errors
     logger.error(f"Error: {e.message}")
     raise
@@ -34,10 +34,10 @@ except:
 
   const asyncPatterns = `# ✅ Good: Use async for concurrent operations
 import asyncio
-from aeao import AsyncAEAO
+from sematryx import AsyncSematryx
 
 async def optimize_multiple(objectives):
-    client = AsyncAEAO(api_key=api_key)
+    client = AsyncSematryx(api_key=api_key)
     results = await asyncio.gather(*[
         client.optimize(obj, bounds) for obj in objectives
     ])
@@ -80,7 +80,7 @@ while True:
           Best Practices
         </h1>
         <p className="text-xl text-gray-600">
-          Learn best practices for building robust, efficient, and secure applications with AEAO.
+          Learn best practices for building robust, efficient, and secure applications with Sematryx.
         </p>
       </div>
 

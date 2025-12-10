@@ -11,7 +11,7 @@ export default function ErrorHandlingPage() {
 }`
 
   const pythonHandling = `from aeao.exceptions import (
-    AEAOError,
+    SematryxError,
     AuthenticationError,
     RateLimitError,
     ValidationError,
@@ -35,7 +35,7 @@ except NotFoundError:
     print("Resource not found.")
 except ServerError:
     print("Server error. Please try again later.")
-except AEAOError as e:
+except SematryxError as e:
     print(f"Error: {e.message}")`
 
   const javascriptHandling = `try {
@@ -103,7 +103,7 @@ def make_request_with_retry(func, max_retries=3):
           Error Handling
         </h1>
         <p className="text-xl text-gray-600">
-          Learn how to handle errors gracefully and build robust applications with AEAO.
+          Learn how to handle errors gracefully and build robust applications with Sematryx.
         </p>
       </div>
 

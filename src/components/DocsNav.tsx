@@ -7,7 +7,7 @@ const docsSections = [
   {
     title: 'Getting Started',
     items: [
-      { title: 'Why AEAO', href: '/why-aeao' },
+      { title: 'Why Sematryx', href: '/why-sematryx' },
       { title: 'Quick Start', href: '/docs' },
       { title: 'Authentication', href: '/docs/authentication' },
       { title: 'Making Requests', href: '/docs/requests' },

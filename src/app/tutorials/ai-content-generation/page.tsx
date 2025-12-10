@@ -4,7 +4,7 @@ import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
 
 export default function AIContentGenerationTutorial() {
-  const createAIAutomation = `curl -X POST https://api.aeao.com/v1/automations \\
+  const createAIAutomation = `curl -X POST https://api.sematryx.com/v1/automations \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -32,9 +32,9 @@ export default function AIContentGenerationTutorial() {
     ]
   }'`
 
-  const pythonExample = `from aeao import AEAO
+  const pythonExample = `from sematryx import SematryxClient
 
-client = AEAO(api_key='your-api-key')
+client = SematryxClient(api_key='your-api-key')
 
 # Create AI content generation automation
 automation = client.automations.create(
@@ -112,7 +112,7 @@ for product in products:
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-3">Before You Start</h3>
               <ul className="space-y-2 text-blue-800">
-                <li>✅ An AEAO account with AI features enabled</li>
+                <li>✅ A Sematryx account with AI features enabled</li>
                 <li>✅ Understanding of AI model concepts</li>
                 <li>✅ Familiarity with prompt engineering</li>
               </ul>

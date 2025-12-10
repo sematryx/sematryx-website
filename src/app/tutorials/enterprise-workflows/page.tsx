@@ -4,7 +4,7 @@ import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
 
 export default function EnterpriseWorkflowsTutorial() {
-  const multiStepWorkflow = `curl -X POST https://api.aeao.com/v1/automations \\
+  const multiStepWorkflow = `curl -X POST https://api.sematryx.com/v1/automations \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -51,9 +51,9 @@ export default function EnterpriseWorkflowsTutorial() {
     ]
   }'`
 
-  const pythonExample = `from aeao import AEAO
+  const pythonExample = `from sematryx import SematryxClient
 
-client = AEAO(api_key='your-api-key')
+client = SematryxClient(api_key='your-api-key')
 
 # Create enterprise workflow
 workflow = client.automations.create(
@@ -133,7 +133,7 @@ except ExecutionError as e:
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-3">Before You Start</h3>
               <ul className="space-y-2 text-blue-800">
-                <li>✅ Enterprise AEAO account</li>
+                <li>✅ Enterprise Sematryx account</li>
                 <li>✅ Understanding of workflow design patterns</li>
                 <li>✅ Familiarity with enterprise system integration</li>
                 <li>✅ Access to enterprise systems (CRM, ERP, etc.)</li>

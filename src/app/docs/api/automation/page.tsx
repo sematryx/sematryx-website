@@ -1,7 +1,7 @@
 import CodeBlock from '@/components/CodeBlock'
 
 export default function OptimizationAPIPage() {
-  const basicOptimization = `curl -X POST https://api.aeao.com/v1/optimize \\
+  const basicOptimization = `curl -X POST https://api.sematryx.com/v1/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -27,10 +27,10 @@ result = aeao(
 print(f"Best solution: {result['best_solution']}")
 print(f"Best fitness: {result['best_fitness']}")`
 
-  const tetradConfig = `from aeao import aeao, AEAOTetradCompleteConfig
+  const tetradConfig = `from sematryx import sematryx, AEAOTetradCompleteConfig
 
 # Use preset configuration
-result = aeao(
+result = sematryx(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
     preset="production"  # development, production, research, enterprise, minimal
@@ -101,7 +101,7 @@ result = supply_chain_optimize(
   }
 }`
 
-  const restAPIExample = `curl -X POST https://api.aeao.com/v1/optimize \\
+  const restAPIExample = `curl -X POST https://api.sematryx.com/v1/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -123,7 +123,7 @@ result = supply_chain_optimize(
           Optimization API
         </h1>
         <p className="text-xl text-gray-600">
-          Solve optimization problems using the AEAO framework with configurable AI intelligence through the AEAO Tetrad.
+          Solve optimization problems using Sematryx with configurable AI intelligence through the AEAO Tetrad.
         </p>
       </div>
 
@@ -133,7 +133,7 @@ result = supply_chain_optimize(
             Basic Optimization
           </h2>
           <p className="text-gray-700 mb-4">
-            The simplest way to optimize a function. Define your objective function and bounds, then let AEAO find the optimal solution.
+            The simplest way to optimize a function. Define your objective function and bounds, then let Sematryx find the optimal solution.
           </p>
           <CodeBlock
             code={pythonExample}
@@ -156,7 +156,7 @@ result = supply_chain_optimize(
             AEAO Tetrad Configuration
           </h2>
           <p className="text-gray-700 mb-4">
-            Configure the four pillars of AEAO intelligence: Agentic, Expository, Autodidactic, and Domain Extension.
+            Configure the four pillars of Sematryx's AEAO Engine intelligence: Agentic, Expository, Autodidactic, and Domain Extension.
           </p>
           <CodeBlock
             code={tetradConfig}

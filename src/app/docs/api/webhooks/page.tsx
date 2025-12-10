@@ -1,7 +1,7 @@
 import CodeBlock from '@/components/CodeBlock'
 
 export default function WebhooksPage() {
-  const createWebhook = `curl -X POST https://api.aeao.com/v1/webhooks \\
+  const createWebhook = `curl -X POST https://api.sematryx.com/v1/webhooks \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -64,7 +64,7 @@ def verify_webhook_signature(payload, signature, secret):
           Webhooks
         </h1>
         <p className="text-xl text-gray-600">
-          Receive real-time notifications about events in your AEAO account via webhooks.
+          Receive real-time notifications about events in your Sematryx account via webhooks.
         </p>
       </div>
 
@@ -74,8 +74,8 @@ def verify_webhook_signature(payload, signature, secret):
             Overview
           </h2>
           <p className="text-gray-700 mb-4">
-            Webhooks allow you to receive real-time notifications when events occur in your AEAO account. 
-            Instead of polling the API, AEAO will send HTTP POST requests to your specified URL when events happen.
+            Webhooks allow you to receive real-time notifications when events occur in your Sematryx account. 
+            Instead of polling the API, Sematryx will send HTTP POST requests to your specified URL when events happen.
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
             <h3 className="text-lg font-semibold text-blue-900 mb-3">Benefits</h3>
@@ -139,7 +139,7 @@ def verify_webhook_signature(payload, signature, secret):
             Verifying Webhook Signatures
           </h2>
           <p className="text-gray-700 mb-4">
-            Always verify webhook signatures to ensure requests are from AEAO. The signature is sent in the <code className="bg-gray-100 px-2 py-1 rounded">X-AEAO-Signature</code> header.
+            Always verify webhook signatures to ensure requests are from Sematryx. The signature is sent in the <code className="bg-gray-100 px-2 py-1 rounded">X-Sematryx-Signature</code> header.
           </p>
           <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
             Node.js Example
@@ -180,7 +180,7 @@ def verify_webhook_signature(payload, signature, secret):
             Webhook Retries
           </h2>
           <p className="text-gray-700 mb-4">
-            If your webhook endpoint returns a non-2xx status code, AEAO will retry the delivery:
+            If your webhook endpoint returns a non-2xx status code, Sematryx will retry the delivery:
           </p>
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
             <ul className="space-y-2 text-yellow-800">

@@ -4,16 +4,16 @@ import CodeBlock from '@/components/CodeBlock'
 import CollapsibleSection from '@/components/CollapsibleSection'
 
 export default function PythonSDKPage() {
-  const installCode = `pip install aeao`
+  const installCode = `pip install sematryx`
 
-  const basicUsage = `from aeao import aeao
+  const basicUsage = `from sematryx import sematryx
 
 # Define your objective function
 def sphere(x):
     return sum(xi**2 for xi in x)
 
 # Run optimization
-result = aeao(
+result = sematryx(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
     max_evaluations=1000
@@ -22,17 +22,17 @@ result = aeao(
 print(f"Best solution: {result['best_solution']}")
 print(f"Best fitness: {result['best_fitness']}")`
 
-  const tetradConfig = `from aeao import aeao, AEAOTetradCompleteConfig
+  const tetradConfig = `from sematryx import sematryx, AEAOTetradCompleteConfig
 
 # Option 1: Use preset configuration
-result = aeao(
+result = sematryx(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
     preset="production"  # development, production, research, enterprise, minimal
 )
 
 # Option 2: Enable specific tetrad pillars
-result = aeao(
+result = sematryx(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
     use_agentic_intelligence=True,      # Multi-agent coordination
@@ -44,9 +44,9 @@ result = aeao(
 config = AEAOTetradCompleteConfig.enterprise()
 config.expository.explanation_level = 4
 config.agentic.max_agents_per_problem = 5
-result = aeao(objective_function=sphere, bounds=[[-5, 5], [-5, 5]], config=config)`
+result = sematryx(objective_function=sphere, bounds=[[-5, 5], [-5, 5]], config=config)`
 
-  const domainOptimization = `from aeao import financial_optimize, healthcare_optimize, supply_chain_optimize
+  const domainOptimization = `from sematryx import financial_optimize, healthcare_optimize, supply_chain_optimize
 
 # Financial portfolio optimization
 result = financial_optimize(
@@ -78,11 +78,11 @@ result = supply_chain_optimize(
     }
 )`
 
-  const apiClient = `from aeao import AEAOClient
+  const apiClient = `from sematryx import SematryxClient
 
 # Initialize API client
-client = AEAOClient(
-    api_url="https://api.aeao.com",
+client = SematryxClient(
+    api_url="https://api.sematryx.com",
     api_key="your-api-key"
 )
 
@@ -96,15 +96,15 @@ result = client.optimize(
     max_evaluations=1000
 )`
 
-  const errorHandling = `from aeao.exceptions import (
-    AEAOError, 
+  const errorHandling = `from sematryx.exceptions import (
+    SematryxError, 
     AuthenticationError, 
     RateLimitError,
     OptimizationError
 )
 
 try:
-    result = aeao(
+    result = sematryx(
         objective_function=sphere,
         bounds=[[-5, 5], [-5, 5]],
         max_evaluations=1000
@@ -115,14 +115,14 @@ except RateLimitError:
     print('Rate limit exceeded. Please wait and retry.')
 except OptimizationError as e:
     print(f'Optimization failed: {e.message}')
-except AEAOError as e:
+except SematryxError as e:
     print(f'Error: {e.message}')`
 
   const asyncCode = `import asyncio
-from aeao import AsyncAEAO
+from sematryx import AsyncSematryx
 
 async def main():
-    client = AsyncAEAO(api_key='your-api-key')
+    client = AsyncSematryx(api_key='your-api-key')
     
     # Run multiple optimizations concurrently
     results = await asyncio.gather(
@@ -135,17 +135,17 @@ async def main():
 
 asyncio.run(main())`
 
-  const advancedFeatures = `from aeao import aeao
+  const advancedFeatures = `from sematryx import sematryx
 
 # GPU acceleration
-result = aeao(
+result = sematryx(
     objective_function=complex_function,
     bounds=[[-10, 10]] * 100,  # High-dimensional
     use_gpu_acceleration=True
 )
 
 # Visual intelligence
-result = aeao(
+result = sematryx(
     objective_function=landscape_function,
     bounds=[[-5, 5], [-5, 5]],
     use_visual_intelligence=True,
@@ -153,15 +153,15 @@ result = aeao(
 )
 
 # Neural-symbolic reasoning
-result = aeao(
+result = sematryx(
     objective_function=hybrid_function,
     bounds=[[-5, 5], [-5, 5]],
     use_neural_symbolic=True
 )`
 
-  const identityManagement = `from aeao import AEAOClient
+  const identityManagement = `from sematryx import SematryxClient
 
-client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
 
 # Create client identity
 identity = client.register_with_identity(
@@ -187,9 +187,9 @@ client.configure_data_sharing({
     'problem_signatures': False
 })`
 
-  const batchOperations = `from aeao import AEAOClient
+  const batchOperations = `from sematryx import SematryxClient
 
-client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
 
 # Submit batch optimization job
 batch_job = client.submit_batch_optimization(
@@ -220,9 +220,9 @@ results = client.get_batch_results(batch_job['batch_id'])
 for job_result in results['job_results']:
     print(f"{job_result['job_name']}: {job_result['optimal_value']}")`
 
-  const learningSystem = `from aeao import AEAOClient
+  const learningSystem = `from sematryx import SematryxClient
 
-client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
 
 # Train learning model
 training_data = [
@@ -246,9 +246,9 @@ insights = client.get_learning_insights()
 print(f"Total models: {insights['total_models']}")
 print(f"Learning enabled: {insights['learning_enabled']}")`
 
-  const advancedOptimization = `from aeao import AEAOClient
+  const advancedOptimization = `from sematryx import SematryxClient
 
-client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
 
 # Multi-objective optimization
 multi_obj_result = client.multi_objective_optimize(
@@ -273,9 +273,9 @@ sensitivity_result = client.sensitivity_analysis(
 
 print(f"Sensitivity scores: {sensitivity_result['sensitivity_scores']}")`
 
-  const contextIntelligence = `from aeao import AEAOClient
+  const contextIntelligence = `from sematryx import SematryxClient
 
-client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
 
 # Analyze problem context
 context = {
@@ -300,9 +300,9 @@ for similar in analysis['similar_problems']:
 for recommendation in analysis['optimization_recommendations']:
     print(f"Recommendation: {recommendation}")`
 
-  const dataLake = `from aeao import AEAOClient
+  const dataLake = `from sematryx import SematryxClient
 
-client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
 
 # Create data connection
 connection = client.create_data_connection(
@@ -334,9 +334,9 @@ query_result = client.query_data_lake(
     filters={"experiment_id": "exp_123"}
 )`
 
-  const analytics = `from aeao import AEAOClient
+  const analytics = `from sematryx import SematryxClient
 
-client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
 
 # Submit performance metrics
 client.submit_metrics(
@@ -372,9 +372,9 @@ summary = client.get_metrics_summary()
 print(f"Average duration: {summary['average_duration']}")
 print(f"Success rate: {summary['success_rate']}")`
 
-  const configuration = `from aeao import AEAOClient
+  const configuration = `from sematryx import SematryxClient
 
-client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
 
 # Get API configuration
 config = client.get_api_config()
@@ -391,9 +391,9 @@ limits = client.get_limits()
 print(f"Max evaluations: {limits['optimization']['max_evaluations']}")
 print(f"Max variables: {limits['optimization']['max_variables']}")`
 
-  const healthChecks = `from aeao import AEAOClient
+  const healthChecks = `from sematryx import SematryxClient
 
-client = AEAOClient(api_url="https://api.aeao.com", api_key="your-api-key")
+client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
 
 # Basic health check
 health = client.get_system_status()
@@ -413,7 +413,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
           Python SDK
         </h1>
         <p className="text-xl text-gray-600">
-          Official Python SDK for AEAO. Full-featured client library with support for optimization, 
+          Official Python SDK for Sematryx. Full-featured client library with support for optimization, 
           AEAO Tetrad configuration, and domain-specific libraries.
         </p>
       </div>
@@ -429,7 +429,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             The SDK requires Python 3.8 or higher. For domain-specific optimizations, install with extras:
           </p>
           <CodeBlock
-            code="pip install aeao[financial,healthcare,supply_chain]"
+            code="pip install sematryx[financial,healthcare,supply_chain]"
             language="bash"
             title="Install with domain libraries"
           />
@@ -437,7 +437,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
 
         <CollapsibleSection title="Quick Start" defaultOpen={true}>
           <p className="text-gray-700 mb-4">
-            The simplest way to use AEAO is with the main <code className="bg-gray-100 px-2 py-1 rounded">aeao()</code> function:
+            The simplest way to use Sematryx is with the main <code className="bg-gray-100 px-2 py-1 rounded">sematryx()</code> function:
           </p>
           <CodeBlock
             code={basicUsage}
@@ -660,7 +660,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">API Client</h3>
               <ul className="space-y-2 text-gray-700">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOClient(api_url, api_key)</code> - Initialize API client</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxClient(api_url, api_key)</code> - Initialize API client</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.authenticate()</code> - Authenticate with API</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.optimize(objective, bounds, **kwargs)</code> - Run optimization via API</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.register_with_identity()</code> - Create client identity</li>
@@ -672,7 +672,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.upload_dataset()</code> - Upload to data lake</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.submit_metrics()</code> - Submit performance metrics</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.get_system_status()</code> - Get system health</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">AsyncAEAO</code> - Async version of API client</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">AsyncSematryx</code> - Async version of API client</li>
               </ul>
             </div>
           </div>

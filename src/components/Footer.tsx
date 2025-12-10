@@ -7,11 +7,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="text-2xl font-bold text-primary-400 mb-4 block">
-              AEAO
+              Sematryx
             </Link>
             <p className="text-gray-400 mb-4 max-w-md">
-              Agentic Expository Autodidactic Optimizer - The world's most advanced optimization framework 
-              with AI-powered intelligence, enterprise compliance, and continuous learning.
+              Sematryx solves optimization problems that traditional optimizers can't handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning—powered by the AEAO Engine.
             </p>
           </div>
 
@@ -36,7 +35,8 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 <span className="text-primary-400">AEAO</span>. All rights reserved.</p>
+          <p>&copy; 2024 <span className="text-primary-400">Sematryx</span>. All rights reserved.</p>
+          <p className="text-sm mt-2">Pronounced "se" "matrix"</p>
         </div>
       </div>
     </footer>

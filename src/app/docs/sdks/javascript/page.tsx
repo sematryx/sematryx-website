@@ -4,11 +4,11 @@ import CodeBlock from '@/components/CodeBlock'
 import CollapsibleSection from '@/components/CollapsibleSection'
 
 export default function JavaScriptSDKPage() {
-  const installCode = `npm install @aeao/javascript-sdk`
+  const installCode = `npm install @sematryx/javascript-sdk`
 
-  const basicUsage = `import { AEAO } from '@aeao/javascript-sdk'
+  const basicUsage = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Define objective function
 const sphere = (x) => {
@@ -16,7 +16,7 @@ const sphere = (x) => {
 }
 
 // Run optimization
-const result = await aeao.optimize({
+const result = await sematryx.optimize({
   objective_function: sphere,
   bounds: [[-5, 5], [-5, 5]],
   max_evaluations: 1000
@@ -25,19 +25,19 @@ const result = await aeao.optimize({
 console.log('Best solution:', result.best_solution)
 console.log('Best fitness:', result.best_fitness)`
 
-  const tetradConfig = `import { AEAO } from '@aeao/javascript-sdk'
+  const tetradConfig = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Option 1: Use preset configuration
-const result = await aeao.optimize({
+const result = await sematryx.optimize({
   objective_function: sphere,
   bounds: [[-5, 5], [-5, 5]],
   preset: 'production'  // development, production, research, enterprise, minimal
 })
 
 // Option 2: Enable specific tetrad pillars
-const result = await aeao.optimize({
+const result = await sematryx.optimize({
   objective_function: sphere,
   bounds: [[-5, 5], [-5, 5]],
   use_agentic_intelligence: true,      // Multi-agent coordination
@@ -60,18 +60,18 @@ const config = {
     max_agents_per_problem: 5
   }
 }
-const result = await aeao.optimize({
+const result = await sematryx.optimize({
   objective_function: sphere,
   bounds: [[-5, 5], [-5, 5]],
   config: config
 })`
 
-  const domainOptimization = `import { AEAO } from '@aeao/javascript-sdk'
+  const domainOptimization = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Financial portfolio optimization
-const portfolioResult = await aeao.financial.optimize({
+const portfolioResult = await sematryx.financial.optimize({
   problem_type: 'portfolio',
   config: {
     assets: ['AAPL', 'GOOGL', 'MSFT', 'TSLA'],
@@ -82,7 +82,7 @@ const portfolioResult = await aeao.financial.optimize({
 })
 
 // Healthcare drug discovery
-const drugResult = await aeao.healthcare.optimize({
+const drugResult = await sematryx.healthcare.optimize({
   problem_type: 'drug_discovery',
   config: {
     target_protein: 'protein_id_123',
@@ -91,7 +91,7 @@ const drugResult = await aeao.healthcare.optimize({
 })`
 
   const errorHandling = `try {
-  const result = await aeao.optimize({
+  const result = await sematryx.optimize({
     objective_function: sphere,
     bounds: [[-5, 5], [-5, 5]],
     max_evaluations: 1000
@@ -108,11 +108,11 @@ const drugResult = await aeao.healthcare.optimize({
   }
 }`
 
-  const typescriptCode = `import { AEAO, OptimizationResult, TetradConfig } from '@aeao/javascript-sdk'
+  const typescriptCode = `import { Sematryx, OptimizationResult, TetradConfig } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO(process.env.AEAO_API_KEY!)
+const sematryx = new Sematryx(process.env.SEMATRYX_API_KEY!)
 
-const result: OptimizationResult = await aeao.optimize({
+const result: OptimizationResult = await sematryx.optimize({
   objective_function: (x: number[]) => x.reduce((s, v) => s + v * v, 0),
   bounds: [[-5, 5], [-5, 5]],
   max_evaluations: 1000,
@@ -129,19 +129,19 @@ const config: TetradConfig = {
   }
 }`
 
-  const advancedFeatures = `import { AEAO } from '@aeao/javascript-sdk'
+  const advancedFeatures = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // GPU acceleration
-const gpuResult = await aeao.optimize({
+const gpuResult = await sematryx.optimize({
   objective_function: complexFunction,
   bounds: Array(100).fill([-10, 10]),  // High-dimensional
   use_gpu_acceleration: true
 })
 
 // Visual intelligence
-const visualResult = await aeao.optimize({
+const visualResult = await sematryx.optimize({
   objective_function: landscapeFunction,
   bounds: [[-5, 5], [-5, 5]],
   use_visual_intelligence: true,
@@ -149,15 +149,15 @@ const visualResult = await aeao.optimize({
 })
 
 // Neural-symbolic reasoning
-const neuralResult = await aeao.optimize({
+const neuralResult = await sematryx.optimize({
   objective_function: hybridFunction,
   bounds: [[-5, 5], [-5, 5]],
   use_neural_symbolic: true
 })`
 
-  const batchOptimization = `import { AEAO } from '@aeao/javascript-sdk'
+  const batchOptimization = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Run multiple optimizations in parallel
 const problems = [
@@ -168,7 +168,7 @@ const problems = [
 
 const results = await Promise.all(
   problems.map(p => 
-    aeao.optimize({
+    sematryx.optimize({
       objective_function: p.objective,
       bounds: p.bounds,
       max_evaluations: 1000
@@ -176,12 +176,12 @@ const results = await Promise.all(
   )
 )`
 
-  const identityManagement = `import { AEAO } from '@aeao/javascript-sdk'
+  const identityManagement = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Create client identity
-const identity = await aeao.identity.create({
+const identity = await sematryx.identity.create({
   email: 'user@example.com',
   organization_id: 'org_123',
   privacy_level: 'aggregated',
@@ -189,27 +189,27 @@ const identity = await aeao.identity.create({
 })
 
 // Get privacy status
-const privacyStatus = await aeao.identity.getPrivacyStatus(identity.client_id)
+const privacyStatus = await sematryx.identity.getPrivacyStatus(identity.client_id)
 console.log('Privacy level:', privacyStatus.privacy_level)
 
 // Get usage quotas
-const quotas = await aeao.identity.getQuotas(identity.client_id)
+const quotas = await sematryx.identity.getQuotas(identity.client_id)
 console.log('Optimizations used:', quotas.current_usage.optimizations_per_day)
 console.log('Quota:', quotas.api_quotas.optimizations_per_day)
 
 // Configure data sharing
-await aeao.identity.configureSharing(identity.client_id, {
+await sematryx.identity.configureSharing(identity.client_id, {
   optimization_results: true,
   performance_metrics: true,
   problem_signatures: false
 })`
 
-  const batchOperations = `import { AEAO } from '@aeao/javascript-sdk'
+  const batchOperations = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Submit batch optimization job
-const batchJob = await aeao.batch.submit({
+const batchJob = await sematryx.batch.submit({
   batch_name: 'portfolio_analysis',
   optimizations: [
     {
@@ -229,18 +229,18 @@ const batchJob = await aeao.batch.submit({
 })
 
 // Check batch status
-const status = await aeao.batch.getStatus(batchJob.batch_id)
+const status = await sematryx.batch.getStatus(batchJob.batch_id)
 console.log('Progress:', status.progress_percentage + '%')
 
 // Get batch results
-const results = await aeao.batch.getResults(batchJob.batch_id)
+const results = await sematryx.batch.getResults(batchJob.batch_id)
 results.job_results.forEach(job => {
   console.log(job.job_name + ':', job.optimal_value)
 })`
 
-  const learningSystem = `import { AEAO } from '@aeao/javascript-sdk'
+  const learningSystem = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Train learning model
 const trainingData = [
@@ -248,29 +248,29 @@ const trainingData = [
   { problem_type: 'rosenbrock', strategy: 'shgo', success: true }
 ]
 
-const trainingResult = await aeao.learning.train({
+const trainingResult = await sematryx.learning.train({
   training_data: trainingData,
   model_type: 'cross_problem',
   max_epochs: 100
 })
 
 // List trained models
-const models = await aeao.learning.listModels()
+const models = await sematryx.learning.listModels()
 models.forEach(model => {
   console.log('Model:', model.model_name, 'Type:', model.model_type)
 })
 
 // Get learning insights
-const insights = await aeao.learning.getInsights()
+const insights = await sematryx.learning.getInsights()
 console.log('Total models:', insights.total_models)
 console.log('Learning enabled:', insights.learning_enabled)`
 
-  const advancedOptimization = `import { AEAO } from '@aeao/javascript-sdk'
+  const advancedOptimization = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Multi-objective optimization
-const multiObjResult = await aeao.advanced.multiObjective({
+const multiObjResult = await sematryx.advanced.multiObjective({
   objectives: ['sphere', 'rosenbrock'],
   bounds: [[-5, 5], [-5, 5]],
   method: 'nsga2',
@@ -283,7 +283,7 @@ multiObjResult.pareto_frontier.forEach(point => {
 })
 
 // Sensitivity analysis
-const sensitivityResult = await aeao.advanced.sensitivityAnalysis({
+const sensitivityResult = await sematryx.advanced.sensitivityAnalysis({
   objective_function: 'sphere',
   bounds: [[-5, 5], [-5, 5]],
   reference_point: [0.0, 0.0],
@@ -292,9 +292,9 @@ const sensitivityResult = await aeao.advanced.sensitivityAnalysis({
 
 console.log('Sensitivity scores:', sensitivityResult.sensitivity_scores)`
 
-  const contextIntelligence = `import { AEAO } from '@aeao/javascript-sdk'
+  const contextIntelligence = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Analyze problem context
 const context = {
@@ -305,7 +305,7 @@ const context = {
   parameters: { risk_tolerance: 0.15 }
 }
 
-const analysis = await aeao.context.analyze({
+const analysis = await sematryx.context.analyze({
   target_context: context,
   similarity_threshold: 0.7,
   include_recommendations: true
@@ -321,19 +321,19 @@ analysis.optimization_recommendations.forEach(rec => {
   console.log('Recommendation:', rec)
 })`
 
-  const dataLake = `import { AEAO } from '@aeao/javascript-sdk'
+  const dataLake = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Create data connection
-const connection = await aeao.dataLake.createConnection({
+const connection = await sematryx.dataLake.createConnection({
   connection_type: 's3',
   endpoint_url: 'https://s3.amazonaws.com/bucket',
   credentials: { access_key: '...', secret_key: '...' }
 })
 
 // Upload dataset
-const dataset = await aeao.dataLake.uploadDataset({
+const dataset = await sematryx.dataLake.uploadDataset({
   dataset_name: 'optimization_results',
   data_type: 'optimization_results',
   data: [...],  // Your data
@@ -341,7 +341,7 @@ const dataset = await aeao.dataLake.uploadDataset({
 })
 
 // Store optimization data
-await aeao.dataLake.storeOptimizationData({
+await sematryx.dataLake.storeOptimizationData({
   experiment_id: 'exp_123',
   problem_definition: { bounds: [[-5, 5], [-5, 5]] },
   optimization_results: [...],
@@ -349,18 +349,18 @@ await aeao.dataLake.storeOptimizationData({
 })
 
 // Query data lake
-const queryResult = await aeao.dataLake.query({
+const queryResult = await sematryx.dataLake.query({
   query_type: 'filter',
   dataset_ids: [dataset.dataset_id],
   filters: { experiment_id: 'exp_123' }
 })`
 
-  const analytics = `import { AEAO } from '@aeao/javascript-sdk'
+  const analytics = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Submit performance metrics
-await aeao.analytics.submitMetrics({
+await sematryx.analytics.submitMetrics({
   metrics: [
     {
       metric_name: 'optimization_duration',
@@ -377,53 +377,53 @@ await aeao.analytics.submitMetrics({
 })
 
 // Generate performance report
-const report = await aeao.analytics.generateReport({
+const report = await sematryx.analytics.generateReport({
   report_type: 'comprehensive',
   metric_categories: ['time', 'quality', 'efficiency'],
   time_range: { start: '2024-01-01', end: '2024-01-31' }
 })
 
 // Get performance insights
-const insights = await aeao.analytics.getInsights()
+const insights = await sematryx.analytics.getInsights()
 insights.forEach(insight => {
   console.log(insight.insight_type + ':', insight.description)
 })
 
 // Get metrics summary
-const summary = await aeao.analytics.getMetricsSummary()
+const summary = await sematryx.analytics.getMetricsSummary()
 console.log('Average duration:', summary.average_duration)
 console.log('Success rate:', summary.success_rate)`
 
-  const configuration = `import { AEAO } from '@aeao/javascript-sdk'
+  const configuration = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Get API configuration
-const config = await aeao.config.get()
+const config = await sematryx.config.get()
 console.log('API Version:', config.version)
 console.log('Environment:', config.environment)
 
 // Get available features
-const features = await aeao.config.getFeatures()
+const features = await sematryx.config.getFeatures()
 console.log('Optimization available:', features.optimization.available)
 console.log('Learning system:', features.ai_capabilities.learning_system)
 
 // Get operational limits
-const limits = await aeao.config.getLimits()
+const limits = await sematryx.config.getLimits()
 console.log('Max evaluations:', limits.optimization.max_evaluations)
 console.log('Max variables:', limits.optimization.max_variables)`
 
-  const healthChecks = `import { AEAO } from '@aeao/javascript-sdk'
+  const healthChecks = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const aeao = new AEAO('your-api-key')
+const sematryx = new Sematryx('your-api-key')
 
 // Basic health check
-const health = await aeao.health.check()
+const health = await sematryx.health.check()
 console.log('Status:', health.status)
 console.log('Uptime:', health.uptime, 'seconds')
 
 // Detailed health check
-const detailedHealth = await aeao.health.detailed()
+const detailedHealth = await sematryx.health.detailed()
 console.log('Memory usage:', detailedHealth.memory_usage + '%')
 console.log('CPU usage:', detailedHealth.cpu_usage + '%')
 console.log('Components:', detailedHealth.components)`
@@ -435,7 +435,7 @@ console.log('Components:', detailedHealth.components)`
           JavaScript SDK
         </h1>
         <p className="text-xl text-gray-600">
-          Official JavaScript/TypeScript SDK for AEAO. Works in Node.js, browsers, and modern JavaScript environments.
+          Official JavaScript/TypeScript SDK for Sematryx. Works in Node.js, browsers, and modern JavaScript environments.
         </p>
       </div>
 
@@ -633,22 +633,22 @@ console.log('Components:', detailedHealth.components)`
         <CollapsibleSection title="API Reference">
           <div className="space-y-6">
             <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">AEAO Class</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Sematryx Class</h3>
               <ul className="space-y-2 text-gray-700">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">new AEAO(apiKey, options?)</code> - Initialize the SDK</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.optimize(config)</code> - Run an optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.financial</code> - Financial domain optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.healthcare</code> - Healthcare domain optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.supplyChain</code> - Supply chain optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.identity</code> - Identity management</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.batch</code> - Batch operations</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.learning</code> - Learning system</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.advanced</code> - Advanced optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.context</code> - Context intelligence</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.dataLake</code> - Data lake operations</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.analytics</code> - Analytics and metrics</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.config</code> - Configuration</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao.health</code> - Health checks</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">new Sematryx(apiKey, options?)</code> - Initialize the SDK</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.optimize(config)</code> - Run an optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.financial</code> - Financial domain optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.healthcare</code> - Healthcare domain optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.supplyChain</code> - Supply chain optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.identity</code> - Identity management</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.batch</code> - Batch operations</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.learning</code> - Learning system</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.advanced</code> - Advanced optimization</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.context</code> - Context intelligence</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.dataLake</code> - Data lake operations</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.analytics</code> - Analytics and metrics</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.config</code> - Configuration</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.health</code> - Health checks</li>
               </ul>
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
@@ -669,7 +669,7 @@ console.log('Components:', detailedHealth.components)`
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Configuration Options</h3>
               <ul className="space-y-2 text-gray-700">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">apiUrl</code> - Custom API base URL (default: https://api.aeao.com)</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">apiUrl</code> - Custom API base URL (default: https://api.sematryx.com)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">timeout</code> - Request timeout in milliseconds (default: 30000)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">retries</code> - Number of retry attempts (default: 3)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">retryDelay</code> - Delay between retries in milliseconds (default: 1000)</li>
