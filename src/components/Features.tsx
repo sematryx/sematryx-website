@@ -2,22 +2,22 @@ export default function Features() {
   // The core optimization engine - 3 pillars
   const enginePillars = [
     { 
-      title: "Agentic", 
-      description: "Decomposes complex problems into sub-tasks, coordinates multiple solution strategies, and navigates constraint spaces that break linear solvers.",
+      title: "Agentic Core", 
+      description: "Uses Meta-Policy Learning to dynamically select and coordinate solvers (CMA-ES, Bayesian, Differential Evolution) based on problem topology.",
       icon: "🤖",
-      features: ["Multi-strategy coordination", "Dynamic constraints", "Autonomous refinement"]
+      features: ["Meta-Strategy Selection", "Multi-Agent Coordination", "Dynamic Constraint Handling"]
     },
     { 
-      title: "Expository", 
-      description: "Every solution comes with structured explanations—why this answer, what alternatives were rejected, how constraints shaped the outcome.",
+      title: "Expository Layer", 
+      description: "Delivers transparency via a dedicated Explainability Engine that generates audit trails, decision rationales, and visual diagnostics.",
       icon: "📖",
-      features: ["Decision rationale", "Compliance audit trails", "Alternative analysis"]
+      features: ["Decision Rationale", "Full Audit Trails", "Visual Diagnostics"]
     },
     { 
-      title: "Autodidactic", 
-      description: "Learns from each optimization run. Performance improves over time without manual tuning or retraining.",
+      title: "Autodidactic Memory", 
+      description: "Leverages Vector Memory (Qdrant) and Knowledge Graphs (Neo4j) to recall past optimizations and improve continuously.",
       icon: "🧠",
-      features: ["Continuous improvement", "Domain adaptation", "Pattern recognition"]
+      features: ["Vector Context Retrieval", "Knowledge Graph Mapping", "Transfer Learning"]
     }
   ]
 

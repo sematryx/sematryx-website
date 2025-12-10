@@ -8,6 +8,7 @@ const docsSections = [
     title: 'Getting Started',
     items: [
       { title: 'Why Sematryx', href: '/why-sematryx' },
+      { title: 'System Architecture', href: '/docs/architecture' },
       { title: 'Quick Start', href: '/docs' },
       { title: 'Authentication', href: '/docs/authentication' },
       { title: 'Making Requests', href: '/docs/requests' },
