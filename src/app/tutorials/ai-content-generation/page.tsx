@@ -2,235 +2,424 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
+import { Metadata } from 'next'
 
-export default function AIContentGenerationTutorial() {
-  const createAIAutomation = `curl -X POST https://api.sematryx.com/v1/automations \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "name": "ai-content-generator",
-    "trigger": {
-      "type": "webhook"
+export const metadata: Metadata = {
+  title: 'Configuring the AEAO Tetrad - Sematryx Tutorials',
+  description: 'Master the four pillars of the AEAO Engine: Agentic, Expository, Autodidactic, and Domain Extension.',
+}
+
+export default function TetradConfigTutorial() {
+  const agenticExample = `from sematryx import optimize
+
+# Enable Agentic Intelligence
+# Multiple AI agents collaborate to select optimization strategy
+result = optimize(
+    objective_function=complex_function,
+    bounds=bounds,
+    
+    # Agentic configuration
+    use_agentic=True,
+    agentic_config={
+        'strategy_selection': 'consensus',  # Agents vote on strategy
+        'exploration_weight': 0.3,          # Balance exploration vs exploitation
+        'agent_timeout': 30                 # Max seconds for agent deliberation
+    }
+)
+
+# The result includes agent reasoning
+print(f"Strategy selected: {result['strategy_used']}")
+print(f"Agent rationale: {result['explanation']['agent_reasoning']}")`
+
+  const expositoryLevels = `from sematryx import optimize
+
+# Explanation levels control detail and compute cost
+# Level 0: No explanations (fastest)
+# Level 1: Basic summary
+# Level 2: Strategy rationale
+# Level 3: Detailed analysis (default)
+# Level 4: Full audit trail
+# Level 5: Research-grade analysis
+
+# Minimal explanations (production speed)
+result = optimize(
+    objective_function=my_function,
+    bounds=bounds,
+    explanation_level=1
+)
+print(result['explanation']['summary'])
+# "Optimization converged in 234 evaluations using CMA-ES"
+
+# Full audit trail (compliance/debugging)
+result = optimize(
+    objective_function=my_function,
+    bounds=bounds,
+    explanation_level=4
+)
+print(result['explanation']['audit_trail'])
+# Detailed log of every decision made`
+
+  const expositoryOutput = `{
+  "explanation": {
+    "summary": "CMA-ES selected for smooth continuous landscape",
+    "rationale": "Problem analysis detected: smooth, unimodal, 
+                  moderate dimensionality (10D). CMA-ES optimal 
+                  for this profile.",
+    "alternatives_considered": [
+      {"strategy": "differential_evolution", "score": 0.72},
+      {"strategy": "bayesian", "score": 0.68},
+      {"strategy": "shgo", "score": 0.45}
+    ],
+    "convergence_analysis": {
+      "iterations": 234,
+      "improvement_rate": "exponential",
+      "final_gradient_norm": 1.2e-8
     },
-    "actions": [
-      {
-        "type": "ai_generate",
-        "config": {
-          "model": "claude-3-sonnet",
-          "prompt": "Generate a product description for: {{trigger.body.product_name}}",
-          "max_tokens": 500,
-          "temperature": 0.7
-        }
-      },
-      {
-        "type": "store",
-        "config": {
-          "destination": "database",
-          "table": "product_descriptions"
-        }
-      }
-    ]
-  }'`
+    "audit_id": "aud_7x9k2m..."
+  }
+}`
 
-  const pythonExample = `from sematryx import SematryxClient
+  const autodidacticExample = `from sematryx import optimize
 
-client = SematryxClient(api_key='your-api-key')
+# Enable Autodidactic Intelligence
+# System learns from this optimization for future problems
+result = optimize(
+    objective_function=my_function,
+    bounds=bounds,
+    
+    # Autodidactic configuration
+    use_learning=True,
+    learning_config={
+        'store_result': True,              # Save to learning store
+        'problem_signature': 'portfolio',   # Tag for retrieval
+        'learning_weight': 0.5              # How much to trust past experience
+    }
+)
 
-# Create AI content generation automation
-automation = client.automations.create(
-    name='ai-content-generator',
-    trigger={'type': 'webhook'},
-    actions=[
-        {
-            'type': 'ai_generate',
-            'config': {
-                'model': 'claude-3-sonnet',
-                'prompt': 'Generate a product description',
-                'max_tokens': 500
-            }
-        }
-    ]
-)`
+# Check if past experience was used
+if result['learning_context']['prior_experience_used']:
+    print(f"Leveraged {result['learning_context']['similar_problems_found']} similar problems")
+    print(f"Estimated speedup: {result['learning_context']['speedup_factor']}x")`
 
-  const batchGeneration = `# Generate content for multiple products
-products = ['Product A', 'Product B', 'Product C']
+  const privateLearning = `from sematryx import optimize, configure_learning
 
-for product in products:
-    result = client.automations.trigger(
-        automation_id='auto_1234567890',
-        input_data={'product_name': product}
-    )
-    print(f'Generated content for {product}')`
+# Configure Private Learning Store
+# Your optimization knowledge stays private to your organization
+configure_learning(
+    api_key='your-api-key',
+    private_store=True,       # Use private store (not shared)
+    read_from_public=True,    # Still benefit from public patterns
+    write_to_public=False     # Don't share your patterns
+)
+
+# Optimizations now use your private learning store
+result = optimize(
+    objective_function=proprietary_function,
+    bounds=bounds,
+    use_learning=True
+)
+
+# Your competitive insights stay private
+print(f"Private patterns used: {result['learning_context']['private_patterns_matched']}")`
+
+  const domainExtension = `from sematryx import optimize
+from sematryx.domains import finance
+
+# Use domain-specific optimization
+# Pre-configured for financial constraints and best practices
+result = finance.optimize_portfolio(
+    returns=expected_returns,
+    covariance=cov_matrix,
+    
+    # Financial-specific constraints
+    constraints={
+        'max_position': 0.30,           # Max 30% in single asset
+        'min_position': 0.02,           # Min 2% if included
+        'sector_limits': sector_caps,    # Sector concentration limits
+        'regulatory': 'basel_iii'        # Regulatory framework
+    },
+    
+    # Built-in risk measures
+    risk_measure='cvar',                 # Conditional Value at Risk
+    confidence_level=0.95
+)
+
+# Domain-aware explanations
+print(result['explanation']['compliance_check'])
+# "Portfolio satisfies Basel III capital requirements"`
+
+  const domainList = `# Available domain libraries
+from sematryx.domains import finance      # Portfolio, trading, risk
+from sematryx.domains import healthcare   # Resource allocation, scheduling
+from sematryx.domains import supply_chain # Logistics, inventory, routing
+from sematryx.domains import manufacturing # Production, quality, energy
+from sematryx.domains import energy       # Grid, trading, demand response
+from sematryx.domains import ml           # Hyperparameters, NAS, features`
+
+  const fullConfig = `from sematryx import optimize
+
+# Full AEAO Tetrad configuration
+result = optimize(
+    objective_function=enterprise_function,
+    bounds=bounds,
+    
+    # === AGENTIC ===
+    use_agentic=True,
+    agentic_config={
+        'strategy_selection': 'consensus',
+        'exploration_weight': 0.3
+    },
+    
+    # === EXPOSITORY ===
+    explanation_level=4,  # Full audit trail
+    
+    # === AUTODIDACTIC ===
+    use_learning=True,
+    learning_config={
+        'store_result': True,
+        'problem_signature': 'production_scheduling'
+    },
+    
+    # === DOMAIN EXTENSION ===
+    domain='manufacturing',
+    domain_config={
+        'safety_constraints': True,
+        'quality_requirements': quality_spec
+    }
+)
+
+# Rich, explainable results
+print(f"Strategy: {result['strategy_used']}")
+print(f"Agent reasoning: {result['explanation']['agent_reasoning']}")
+print(f"Audit ID: {result['explanation']['audit_id']}")
+print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
 
   return (
-    <main>
+    <main className="bg-base min-h-screen">
       <Header />
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
           <Link 
             href="/tutorials" 
-            className="text-primary-600 hover:text-primary-700 font-medium mb-4 inline-flex items-center"
+            className="text-brand-primary hover:text-brand-primary/80 font-medium mb-4 inline-flex items-center"
           >
             ← Back to Tutorials
           </Link>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="bg-red-100 text-red-800 text-xs font-medium px-2 py-1 rounded-full">
-              Advanced
+          <div className="flex items-center gap-4 mb-6 mt-4">
+            <span className="bg-amber-500/15 text-amber-400 text-xs font-medium px-3 py-1 rounded-full border border-amber-500/30">
+              Intermediate
             </span>
-            <span className="text-gray-500">• 45 minutes</span>
+            <span className="text-text-tertiary">• 30 minutes</span>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            AI-Powered Content Generation
+          <h1 className="text-4xl font-bold text-text-primary mb-4">
+            Configuring the AEAO Tetrad
           </h1>
-          <p className="text-xl text-gray-600">
-            Use AI models to automatically generate and process content with AEAO automations.
+          <p className="text-xl text-text-secondary">
+            Master the four pillars that make Sematryx different: Agentic, Expository, Autodidactic, and Domain Extension.
           </p>
         </div>
 
         <div className="space-y-12">
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              What You'll Build
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              The Four Pillars
             </h2>
-            <p className="text-gray-700 mb-4">
-              In this tutorial, you'll learn how to:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-gray-700">
-              <li>Create automations that use AI models for content generation</li>
-              <li>Configure AI model parameters and prompts</li>
-              <li>Process and store AI-generated content</li>
-              <li>Batch generate content for multiple items</li>
-              <li>Integrate AI content generation into your workflows</li>
-            </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-accent-agentic">
+                <h3 className="font-semibold text-accent-agentic mb-2">🤖 Agentic</h3>
+                <p className="text-sm text-text-secondary">Multiple AI agents collaborate to select the best optimization strategy</p>
+              </div>
+              <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-accent-expository">
+                <h3 className="font-semibold text-accent-expository mb-2">📖 Expository</h3>
+                <p className="text-sm text-text-secondary">Detailed explanations of every optimization decision for audits and understanding</p>
+              </div>
+              <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-accent-autodidactic">
+                <h3 className="font-semibold text-accent-autodidactic mb-2">🧠 Autodidactic</h3>
+                <p className="text-sm text-text-secondary">System learns from optimizations to improve continuously over time</p>
+              </div>
+              <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-orange-400">
+                <h3 className="font-semibold text-orange-400 mb-2">🏗️ Domain Extension</h3>
+                <p className="text-sm text-text-secondary">Pre-built libraries for finance, healthcare, manufacturing, and more</p>
+              </div>
+            </div>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Prerequisites
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              <span className="text-accent-agentic">Agentic Intelligence</span>
             </h2>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-900 mb-3">Before You Start</h3>
-              <ul className="space-y-2 text-blue-800">
-                <li>✅ A Sematryx account with AI features enabled</li>
-                <li>✅ Understanding of AI model concepts</li>
-                <li>✅ Familiarity with prompt engineering</li>
+            <p className="text-text-secondary mb-4">
+              When enabled, multiple AI agents analyze your problem and vote on the best optimization strategy. 
+              This is especially powerful for complex, multi-modal landscapes.
+            </p>
+            <CodeBlock
+              code={agenticExample}
+              language="python"
+              title="Agentic configuration"
+            />
+            <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
+              <h3 className="text-lg font-semibold text-text-primary mb-3">When to Use Agentic</h3>
+              <ul className="space-y-2 text-text-secondary">
+                <li className="flex items-start gap-2">
+                  <span className="text-accent-agentic">✓</span>
+                  <span>Complex problems with unknown landscape topology</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent-agentic">✓</span>
+                  <span>When you're unsure which optimization strategy to use</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent-agentic">✓</span>
+                  <span>High-stakes decisions where strategy selection matters</span>
+                </li>
               </ul>
             </div>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Step 1: Create AI Content Generation Automation
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              <span className="text-accent-expository">Expository Intelligence</span>
             </h2>
-            <p className="text-gray-700 mb-4">
-              Create an automation that uses AI models to generate content:
+            <p className="text-text-secondary mb-4">
+              Control how much explanation Sematryx generates. Higher levels provide more detail 
+              but use more compute. Level 4+ is recommended for compliance-sensitive applications.
             </p>
             <CodeBlock
-              code={createAIAutomation}
-              language="bash"
-              title="Create AI content generation automation"
+              code={expositoryLevels}
+              language="python"
+              title="Explanation levels"
             />
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-              <h3 className="text-lg font-semibold text-blue-900 mb-3">AI Configuration Options</h3>
-              <ul className="space-y-2 text-blue-800">
-                <li><strong>model:</strong> AI model to use (claude-3-sonnet, gpt-4, etc.)</li>
-                <li><strong>prompt:</strong> The prompt template for content generation</li>
-                <li><strong>max_tokens:</strong> Maximum length of generated content</li>
-                <li><strong>temperature:</strong> Creativity level (0.0-1.0)</li>
-              </ul>
+            <p className="text-text-secondary mt-6 mb-4">
+              Here's what a detailed explanation looks like:
+            </p>
+            <CodeBlock
+              code={expositoryOutput}
+              language="json"
+              title="Explanation output example"
+            />
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              <span className="text-accent-autodidactic">Autodidactic Intelligence</span>
+            </h2>
+            <p className="text-text-secondary mb-4">
+              Enable learning to let Sematryx improve over time. It remembers successful strategies 
+              and applies them to similar problems, accelerating convergence.
+            </p>
+            <CodeBlock
+              code={autodidacticExample}
+              language="python"
+              title="Autodidactic configuration"
+            />
+            
+            <h3 className="text-xl font-semibold text-text-primary mb-4 mt-8">
+              Private Learning Store
+            </h3>
+            <p className="text-text-secondary mb-4">
+              For enterprise users, the Private Learning Store keeps your optimization knowledge 
+              isolated. Your competitive insights never leave your store.
+            </p>
+            <CodeBlock
+              code={privateLearning}
+              language="python"
+              title="Private Learning Store"
+            />
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              <span className="text-orange-400">Domain Extension</span>
+            </h2>
+            <p className="text-text-secondary mb-4">
+              Domain libraries provide pre-built optimization patterns for specific industries, 
+              with built-in constraints, compliance checks, and domain-aware explanations.
+            </p>
+            <CodeBlock
+              code={domainExtension}
+              language="python"
+              title="Domain-specific optimization"
+            />
+            <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
+              <h3 className="text-lg font-semibold text-text-primary mb-3">Available Domains</h3>
+              <CodeBlock
+                code={domainList}
+                language="python"
+                title="Domain libraries"
+              />
             </div>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Step 2: Using the Python SDK
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              Full Tetrad Configuration
             </h2>
-            <p className="text-gray-700 mb-4">
-              Create AI automations programmatically:
+            <p className="text-text-secondary mb-4">
+              Here's how to combine all four pillars for maximum capability:
             </p>
             <CodeBlock
-              code={pythonExample}
+              code={fullConfig}
               language="python"
-              title="Create AI automation with Python"
+              title="Complete AEAO Tetrad"
             />
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Step 3: Batch Content Generation
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              Configuration Guidelines
             </h2>
-            <p className="text-gray-700 mb-4">
-              Generate content for multiple items efficiently:
-            </p>
-            <CodeBlock
-              code={batchGeneration}
-              language="python"
-              title="Batch content generation"
-            />
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Use Cases
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Product Descriptions
-                </h3>
-                <p className="text-gray-700">
-                  Automatically generate SEO-optimized product descriptions for e-commerce catalogs.
-                </p>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Content Summarization
-                </h3>
-                <p className="text-gray-700">
-                  Summarize long-form content into concise summaries for newsletters or reports.
-                </p>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Email Personalization
-                </h3>
-                <p className="text-gray-700">
-                  Generate personalized email content based on user data and preferences.
-                </p>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  Social Media Posts
-                </h3>
-                <p className="text-gray-700">
-                  Create engaging social media content tailored to different platforms and audiences.
-                </p>
+            <div className="bg-elevated border border-elevated-3 rounded-xl p-6">
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-text-primary mb-2">🚀 Speed-Optimized (Production)</h4>
+                  <p className="text-text-secondary text-sm">
+                    <code className="text-brand-primary">use_agentic=False, explanation_level=1, use_learning=True</code>
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-text-primary mb-2">📋 Compliance-Ready (Regulated Industries)</h4>
+                  <p className="text-text-secondary text-sm">
+                    <code className="text-brand-primary">use_agentic=True, explanation_level=4, use_learning=True</code>
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-text-primary mb-2">🔬 Research/Debug</h4>
+                  <p className="text-text-secondary text-sm">
+                    <code className="text-brand-primary">use_agentic=True, explanation_level=5, use_learning=False</code>
+                  </p>
+                </div>
               </div>
             </div>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
               🎉 Next Steps
             </h2>
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <p className="text-green-800 mb-4">
-                You've learned how to use AI for content generation! 
-                Explore more:
+            <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+              <p className="text-text-secondary mb-4">
+                You now understand how to configure the AEAO Tetrad. 
+                Next, learn how to interpret the rich results Sematryx returns.
               </p>
               <div className="space-y-2">
                 <Link 
-                  href="/tutorials/enterprise-workflows" 
-                  className="block text-green-700 hover:text-green-800 underline"
+                  href="/tutorials/monitoring-alerts" 
+                  className="block text-brand-primary hover:underline"
                 >
-                  → Learn enterprise workflow patterns
+                  → Understanding optimization results
                 </Link>
                 <Link 
-                  href="/docs/api/automation" 
-                  className="block text-green-700 hover:text-green-800 underline"
+                  href="/tutorials/enterprise-workflows" 
+                  className="block text-brand-primary hover:underline"
                 >
-                  → Explore the full API documentation
+                  → Domain-specific optimization
+                </Link>
+                <Link 
+                  href="/docs" 
+                  className="block text-brand-primary hover:underline"
+                >
+                  → Full API reference
                 </Link>
               </div>
             </div>
@@ -242,4 +431,3 @@ for product in products:
     </main>
   )
 }
-

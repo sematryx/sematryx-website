@@ -1,23 +1,29 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Tutorials - Sematryx',
+  description: 'Step-by-step guides to master Sematryx optimization. From basic problem setup to advanced domain-specific optimization.',
+}
 
 export default function TutorialsPage() {
   const tutorials = [
     {
       id: 'getting-started',
       title: 'Getting Started with Sematryx',
-      description: 'Learn the basics of solving your first optimization problem with Sematryx',
+      description: 'Solve your first optimization problem and learn core concepts',
       difficulty: 'Beginner',
       duration: '15 min',
       category: 'Fundamentals'
     },
     {
       id: 'data-transformation',
-      title: 'Optimization Problem Setup',
-      description: 'Learn how to define objective functions, bounds, and constraints for optimization',
+      title: 'Problem Setup: Objectives & Constraints',
+      description: 'Define objective functions, bounds, and constraints for complex optimization problems',
       difficulty: 'Intermediate',
-      duration: '30 min',
+      duration: '25 min',
       category: 'Problem Setup'
     },
     {
@@ -25,13 +31,13 @@ export default function TutorialsPage() {
       title: 'Configuring the AEAO Tetrad',
       description: 'Master the four pillars: Agentic, Expository, Autodidactic, and Domain Extension',
       difficulty: 'Intermediate',
-      duration: '45 min',
-      category: 'Tetrad Configuration'
+      duration: '30 min',
+      category: 'Engine Configuration'
     },
     {
       id: 'monitoring-alerts',
       title: 'Understanding Optimization Results',
-      description: 'Learn to interpret results, explanations, and performance metrics',
+      description: 'Interpret results, explanations, convergence metrics, and audit trails',
       difficulty: 'Intermediate',
       duration: '20 min',
       category: 'Results Analysis'
@@ -39,76 +45,77 @@ export default function TutorialsPage() {
     {
       id: 'enterprise-workflows',
       title: 'Domain-Specific Optimization',
-      description: 'Use specialized libraries for Financial, Healthcare, Supply Chain, and other domains',
+      description: 'Use specialized libraries for finance, healthcare, supply chain, and manufacturing',
       difficulty: 'Advanced',
-      duration: '60 min',
+      duration: '45 min',
       category: 'Domain Libraries'
     },
     {
       id: 'webhook-automation',
       title: 'Advanced Optimization Strategies',
-      description: 'Explore multi-strategy optimization, GPU acceleration, and performance tuning',
+      description: 'Multi-strategy optimization, Private Learning Store, and performance tuning',
       difficulty: 'Advanced',
-      duration: '45 min',
-      category: 'Advanced Features'
+      duration: '40 min',
+      category: 'Advanced'
     }
   ]
 
-  const getDifficultyColor = (difficulty: string) => {
+  const getDifficultyStyles = (difficulty: string) => {
     switch (difficulty) {
       case 'Beginner':
-        return 'bg-green-900/50 text-green-400'
+        return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
       case 'Intermediate':
-        return 'bg-yellow-900/50 text-yellow-400'
+        return 'bg-amber-500/15 text-amber-400 border-amber-500/30'
       case 'Advanced':
-        return 'bg-red-900/50 text-red-400'
+        return 'bg-rose-500/15 text-rose-400 border-rose-500/30'
       default:
-        return 'bg-gray-700 text-gray-400'
+        return 'bg-elevated-3 text-text-secondary border-elevated-3'
     }
   }
 
   return (
-    <main>
+    <main className="bg-base min-h-screen">
       <Header />
       
-      <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-24">
+      <div className="bg-gradient-to-b from-base to-elevated pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <p className="text-sm font-semibold text-brand-primary uppercase tracking-wide mb-3">Learn by Doing</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
               Tutorials
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Step-by-step guides to help you master <span className="text-primary-400">Sematryx</span> optimization. 
-              From basic problem setup to advanced domain-specific optimization.
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+              Step-by-step guides to master Sematryx optimization. 
+              From your first optimization to advanced domain-specific solutions.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {tutorials.map((tutorial) => (
               <Link
                 key={tutorial.id}
                 href={`/tutorials/${tutorial.id}`}
-                className="bg-[#1a1f2e] rounded-xl hover:bg-[#242b3d] transition-all duration-200 p-6 border border-gray-700 hover:border-primary-500"
+                className="bg-elevated rounded-xl hover:bg-elevated-2 transition-all duration-200 p-6 border border-elevated-3 hover:border-brand-primary/50 group"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm font-medium text-primary-400 bg-primary-900/30 px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-brand-primary bg-brand-primary/10 px-3 py-1 rounded-full border border-brand-primary/20">
                     {tutorial.category}
                   </span>
-                  <span className={`text-xs font-medium px-2 py-1 rounded-full ${getDifficultyColor(tutorial.difficulty)}`}>
+                  <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${getDifficultyStyles(tutorial.difficulty)}`}>
                     {tutorial.difficulty}
                   </span>
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-lg font-semibold text-text-primary mb-3 group-hover:text-brand-primary transition-colors">
                   {tutorial.title}
                 </h3>
                 
-                <p className="text-gray-400 mb-4 line-clamp-3">
+                <p className="text-text-secondary text-sm mb-4 leading-relaxed">
                   {tutorial.description}
                 </p>
                 
-                <div className="flex items-center text-sm text-gray-500">
-                  <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex items-center text-xs text-text-tertiary">
+                  <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                   </svg>
                   {tutorial.duration}
@@ -118,20 +125,28 @@ export default function TutorialsPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <div className="bg-[#242b3d] rounded-lg p-8 max-w-2xl mx-auto border border-gray-700">
-              <h2 className="text-2xl font-semibold text-white mb-4">
-                Need Help Getting Started?
+            <div className="bg-elevated rounded-xl p-8 max-w-2xl mx-auto border border-elevated-3">
+              <h2 className="text-2xl font-semibold text-text-primary mb-4">
+                New to Optimization?
               </h2>
-              <p className="text-gray-400 mb-6">
-                If you're new to <span className="text-primary-400">Sematryx</span>, we recommend starting with our Quick Start guide 
-                in the documentation to get familiar with optimization concepts and the <span className="text-primary-400">AEAO</span> Tetrad.
+              <p className="text-text-secondary mb-6">
+                Start with our Getting Started tutorial to understand the basics, 
+                then explore the documentation for API reference and advanced concepts.
               </p>
-              <Link
-                href="/docs"
-                className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-500 transition-colors inline-block"
-              >
-                View Quick Start Guide
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/tutorials/getting-started"
+                  className="bg-cta-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-cta-primary-hover transition-colors"
+                >
+                  Start Tutorial →
+                </Link>
+                <Link
+                  href="/docs"
+                  className="border border-elevated-3 text-text-primary px-6 py-3 rounded-lg font-semibold hover:bg-elevated-2 transition-colors"
+                >
+                  View Documentation
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -2,283 +2,365 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
+import { Metadata } from 'next'
 
-export default function DataTransformationTutorial() {
-  const createPipeline = `curl -X POST https://api.sematryx.com/v1/automations \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "name": "data-transformation-pipeline",
-    "trigger": {
-      "type": "webhook",
-      "config": {
-        "path": "/webhook/data-pipeline"
-      }
-    },
-    "actions": [
-      {
-        "type": "transform",
-        "config": {
-          "input_format": "json",
-          "output_format": "csv",
-          "transformations": [
-            {
-              "operation": "filter",
-              "condition": "price > 100"
-            },
-            {
-              "operation": "aggregate",
-              "group_by": "category",
-              "aggregations": {
-                "total": "sum(price)",
-                "count": "count()"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "type": "store",
-        "config": {
-          "destination": "s3://bucket/transformed-data.csv"
-        }
-      }
-    ]
-  }'`
+export const metadata: Metadata = {
+  title: 'Problem Setup: Objectives & Constraints - Sematryx Tutorials',
+  description: 'Learn how to define objective functions, bounds, and constraints for complex optimization problems.',
+}
 
-  const pythonExample = `from sematryx import SematryxClient
+export default function ProblemSetupTutorial() {
+  const objectiveTypes = `from sematryx import optimize
 
-client = SematryxClient(api_key='your-api-key')
-
-# Create data transformation pipeline
-pipeline = client.automations.create(
-    name='data-transformation-pipeline',
-    trigger={
-        'type': 'webhook',
-        'config': {'path': '/webhook/data-pipeline'}
-    },
-    actions=[
-        {
-            'type': 'transform',
-            'config': {
-                'input_format': 'json',
-                'output_format': 'csv',
-                'transformations': [
-                    {'operation': 'filter', 'condition': 'price > 100'},
-                    {
-                        'operation': 'aggregate',
-                        'group_by': 'category',
-                        'aggregations': {
-                            'total': 'sum(price)',
-                            'count': 'count()'
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            'type': 'store',
-            'config': {
-                'destination': 's3://bucket/transformed-data.csv'
-            }
-        }
-    ]
+# MINIMIZATION (default)
+# Find the lowest value of the objective function
+result = optimize(
+    objective_function=cost_function,
+    bounds=bounds,
+    minimize=True  # default
 )
 
-print(f'Pipeline created: {pipeline.id}')`
+# MAXIMIZATION
+# Find the highest value of the objective function
+result = optimize(
+    objective_function=profit_function,
+    bounds=bounds,
+    minimize=False  # maximize instead
+)`
 
-  const triggerPipeline = `curl -X POST https://api.sematryx.com/v1/automations/auto_1234567890/trigger \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "input_data": {
-      "records": [
-        {"id": 1, "name": "Product A", "price": 150, "category": "Electronics"},
-        {"id": 2, "name": "Product B", "price": 80, "category": "Electronics"},
-        {"id": 3, "name": "Product C", "price": 200, "category": "Clothing"}
-      ]
-    }
-  }'`
+  const boundsExample = `from sematryx import optimize
+
+# Define bounds for each dimension
+# Each element is [lower_bound, upper_bound]
+bounds = [
+    [0, 100],      # x1: between 0 and 100
+    [-50, 50],     # x2: between -50 and 50
+    [0.001, 10],   # x3: between 0.001 and 10
+    [1, 1000],     # x4: between 1 and 1000
+]
+
+# Integer bounds (for discrete optimization)
+integer_dims = [0, 3]  # x1 and x4 must be integers
+
+result = optimize(
+    objective_function=my_function,
+    bounds=bounds,
+    integer_dimensions=integer_dims
+)`
+
+  const constraintExample = `from sematryx import optimize
+
+def production_cost(x):
+    """Objective: Minimize production cost"""
+    labor, materials, energy = x
+    return 50*labor + 30*materials + 20*energy
+
+def constraint_output(x):
+    """Constraint: Must produce at least 1000 units"""
+    labor, materials, energy = x
+    output = 10*labor + 5*materials + 2*energy
+    return output - 1000  # >= 0 means satisfied
+
+def constraint_budget(x):
+    """Constraint: Budget cannot exceed $50,000"""
+    labor, materials, energy = x
+    total = 50*labor + 30*materials + 20*energy
+    return 50000 - total  # >= 0 means satisfied
+
+result = optimize(
+    objective_function=production_cost,
+    bounds=[[0, 100], [0, 200], [0, 500]],
+    constraints=[
+        {'type': 'inequality', 'fun': constraint_output},
+        {'type': 'inequality', 'fun': constraint_budget},
+    ]
+)`
+
+  const equalityConstraint = `from sematryx import optimize
+import numpy as np
+
+def portfolio_variance(weights):
+    """Minimize portfolio risk"""
+    cov_matrix = np.array([
+        [0.04, 0.01, 0.02],
+        [0.01, 0.03, 0.01],
+        [0.02, 0.01, 0.05]
+    ])
+    return np.dot(weights, np.dot(cov_matrix, weights))
+
+def weights_sum_to_one(weights):
+    """Equality constraint: weights must sum to 1"""
+    return sum(weights) - 1  # == 0 means satisfied
+
+result = optimize(
+    objective_function=portfolio_variance,
+    bounds=[[0, 1], [0, 1], [0, 1]],  # Each weight 0-100%
+    constraints=[
+        {'type': 'equality', 'fun': weights_sum_to_one}
+    ]
+)`
+
+  const multiObjective = `from sematryx import optimize
+
+def multi_objective(x):
+    """
+    Multi-objective: Balance cost vs quality
+    Returns weighted combination of objectives
+    """
+    cost = calculate_cost(x)
+    quality = calculate_quality(x)
+    
+    # Scalarization: combine objectives with weights
+    # Lower cost is better, higher quality is better
+    # So we minimize cost and minimize negative quality
+    return 0.6 * cost - 0.4 * quality
+
+# Or use Pareto optimization for true multi-objective
+result = optimize(
+    objective_function=my_function,
+    bounds=bounds,
+    multi_objective=True,
+    objectives=['minimize_cost', 'maximize_quality']
+)`
+
+  const penaltyMethod = `from sematryx import optimize
+
+def objective_with_penalties(x):
+    """
+    Soft constraints via penalty functions
+    Useful when hard constraints are too restrictive
+    """
+    # Base objective
+    base_cost = sum(xi**2 for xi in x)
+    
+    # Soft constraint: prefer solutions where x[0] > x[1]
+    penalty = 0
+    if x[0] <= x[1]:
+        penalty = 1000 * (x[1] - x[0] + 0.1)  # Quadratic penalty
+    
+    # Soft constraint: prefer solutions near integer values
+    integer_penalty = sum(min(xi % 1, 1 - xi % 1)**2 for xi in x)
+    
+    return base_cost + penalty + 100 * integer_penalty
+
+result = optimize(
+    objective_function=objective_with_penalties,
+    bounds=[[-10, 10], [-10, 10], [-10, 10]]
+)`
 
   return (
-    <main>
+    <main className="bg-base min-h-screen">
       <Header />
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
           <Link 
             href="/tutorials" 
-            className="text-primary-600 hover:text-primary-700 font-medium mb-4 inline-flex items-center"
+            className="text-brand-primary hover:text-brand-primary/80 font-medium mb-4 inline-flex items-center"
           >
             ← Back to Tutorials
           </Link>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded-full">
+          <div className="flex items-center gap-4 mb-6 mt-4">
+            <span className="bg-amber-500/15 text-amber-400 text-xs font-medium px-3 py-1 rounded-full border border-amber-500/30">
               Intermediate
             </span>
-            <span className="text-gray-500">• 30 minutes</span>
+            <span className="text-text-tertiary">• 25 minutes</span>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Data Transformation Pipeline
+          <h1 className="text-4xl font-bold text-text-primary mb-4">
+            Problem Setup: Objectives & Constraints
           </h1>
-          <p className="text-xl text-gray-600">
-            Build a complete data transformation pipeline with real-time processing, filtering, aggregation, and storage.
+          <p className="text-xl text-text-secondary">
+            Define complex optimization problems with multiple objectives, bounds, and constraints.
           </p>
         </div>
 
         <div className="space-y-12">
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              What You'll Build
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              What You'll Learn
             </h2>
-            <p className="text-gray-700 mb-4">
-              In this tutorial, you'll create a data transformation pipeline that:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-gray-700">
-              <li>Receives JSON data via webhook</li>
-              <li>Filters records based on conditions</li>
-              <li>Aggregates data by categories</li>
-              <li>Transforms the output to CSV format</li>
-              <li>Stores the transformed data to cloud storage</li>
+            <ul className="space-y-2 text-text-secondary">
+              <li className="flex items-start gap-2">
+                <span className="text-brand-primary mt-1">•</span>
+                <span>Minimization vs maximization problems</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-brand-primary mt-1">•</span>
+                <span>Defining bounds for continuous and integer variables</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-brand-primary mt-1">•</span>
+                <span>Inequality and equality constraints</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-brand-primary mt-1">•</span>
+                <span>Multi-objective optimization approaches</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-brand-primary mt-1">•</span>
+                <span>Penalty methods for soft constraints</span>
+              </li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Prerequisites
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              Minimization vs Maximization
             </h2>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-900 mb-3">Before You Start</h3>
-              <ul className="space-y-2 text-blue-800">
-                <li>✅ A Sematryx account with an active API key</li>
-                <li>✅ Basic understanding of data transformation concepts</li>
-                <li>✅ Familiarity with JSON and CSV formats</li>
-                <li>✅ Access to cloud storage (S3, Azure, GCS) for output</li>
-              </ul>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Step 1: Create the Pipeline
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Create a new automation with transformation actions:
+            <p className="text-text-secondary mb-4">
+              By default, Sematryx minimizes the objective function. For maximization problems, 
+              set <code className="text-brand-primary bg-elevated-2 px-1.5 py-0.5 rounded text-sm">minimize=False</code>:
             </p>
             <CodeBlock
-              code={createPipeline}
-              language="bash"
-              title="Create data transformation pipeline"
-            />
-            <p className="text-gray-700 mt-4">
-              This pipeline includes:
-            </p>
-            <ul className="list-disc list-inside space-y-1 text-gray-700 mt-2">
-              <li><strong>Webhook trigger:</strong> Receives data via HTTP POST</li>
-              <li><strong>Transform action:</strong> Filters and aggregates the data</li>
-              <li><strong>Store action:</strong> Saves the result to cloud storage</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Step 2: Using the Python SDK
-            </h2>
-            <p className="text-gray-700 mb-4">
-              You can also create the pipeline using the Python SDK:
-            </p>
-            <CodeBlock
-              code={pythonExample}
+              code={objectiveTypes}
               language="python"
-              title="Create pipeline with Python SDK"
+              title="Minimization vs maximization"
             />
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Step 3: Trigger the Pipeline
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              Defining Bounds
             </h2>
-            <p className="text-gray-700 mb-4">
-              Send data to your pipeline via webhook or manual trigger:
+            <p className="text-text-secondary mb-4">
+              Bounds define the search space for each variable. You can also specify which 
+              dimensions should be integers for mixed-integer optimization:
             </p>
             <CodeBlock
-              code={triggerPipeline}
-              language="bash"
-              title="Trigger the pipeline with data"
+              code={boundsExample}
+              language="python"
+              title="Bounds and integer dimensions"
             />
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Step 4: Monitor Execution
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Check the execution status and view results:
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Check Execution Status
-                </h3>
-                <code className="text-sm bg-gray-100 p-2 rounded block">
-                  GET /v1/automations/auto_1234567890/executions
-                </code>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  View Transformed Data
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Access the transformed CSV file from your configured storage destination.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Advanced Transformations
-            </h2>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Available Operations</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li><strong>Filter:</strong> Filter records based on conditions</li>
-                <li><strong>Map:</strong> Transform individual fields</li>
-                <li><strong>Aggregate:</strong> Group and aggregate data</li>
-                <li><strong>Join:</strong> Combine multiple data sources</li>
-                <li><strong>Sort:</strong> Order records by fields</li>
-                <li><strong>Deduplicate:</strong> Remove duplicate records</li>
+            <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
+              <h3 className="text-lg font-semibold text-text-primary mb-3">Bounds Tips</h3>
+              <ul className="space-y-2 text-text-secondary">
+                <li><strong className="text-text-primary">Tight bounds:</strong> Narrower bounds help the optimizer converge faster</li>
+                <li><strong className="text-text-primary">Scaling:</strong> Keep variables on similar scales (e.g., 0-1 or 0-100)</li>
+                <li><strong className="text-text-primary">Integer variables:</strong> Use <code className="text-brand-primary bg-elevated-2 px-1 rounded text-sm">integer_dimensions</code> for discrete choices</li>
               </ul>
             </div>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              Inequality Constraints
+            </h2>
+            <p className="text-text-secondary mb-4">
+              Inequality constraints define regions where solutions must satisfy <code className="text-brand-primary bg-elevated-2 px-1.5 py-0.5 rounded text-sm">g(x) ≥ 0</code>:
+            </p>
+            <CodeBlock
+              code={constraintExample}
+              language="python"
+              title="Inequality constraints"
+            />
+            <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
+              <h3 className="text-lg font-semibold text-text-primary mb-3">Constraint Convention</h3>
+              <p className="text-text-secondary">
+                Inequality constraints should return a value where <strong className="text-text-primary">positive = satisfied</strong>. 
+                For example, "budget ≤ 50,000" becomes <code className="text-brand-primary bg-elevated-2 px-1 rounded text-sm">50000 - budget</code> (positive when under budget).
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              Equality Constraints
+            </h2>
+            <p className="text-text-secondary mb-4">
+              Equality constraints require <code className="text-brand-primary bg-elevated-2 px-1.5 py-0.5 rounded text-sm">h(x) = 0</code>. 
+              Common in portfolio optimization where weights must sum to 1:
+            </p>
+            <CodeBlock
+              code={equalityConstraint}
+              language="python"
+              title="Equality constraints"
+            />
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              Multi-Objective Optimization
+            </h2>
+            <p className="text-text-secondary mb-4">
+              When you have competing objectives (e.g., minimize cost AND maximize quality), 
+              you can use scalarization or Pareto optimization:
+            </p>
+            <CodeBlock
+              code={multiObjective}
+              language="python"
+              title="Multi-objective optimization"
+            />
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              Soft Constraints with Penalties
+            </h2>
+            <p className="text-text-secondary mb-4">
+              Sometimes hard constraints are too restrictive. Penalty functions let you 
+              express preferences without strict requirements:
+            </p>
+            <CodeBlock
+              code={penaltyMethod}
+              language="python"
+              title="Penalty methods for soft constraints"
+            />
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              Best Practices
+            </h2>
+            <div className="bg-elevated border border-elevated-3 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-text-primary mb-3">Problem Setup Tips</h3>
+              <ul className="space-y-3 text-text-secondary">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400">✓</span>
+                  <span><strong className="text-text-primary">Start simple:</strong> Begin with minimal constraints, add complexity gradually</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400">✓</span>
+                  <span><strong className="text-text-primary">Scale variables:</strong> Normalize inputs to similar ranges for better convergence</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400">✓</span>
+                  <span><strong className="text-text-primary">Test constraints:</strong> Verify constraints are satisfiable before running optimization</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-400">✓</span>
+                  <span><strong className="text-text-primary">Use explanations:</strong> Enable explanation_level to understand why constraints fail</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-text-primary mb-4">
               🎉 Next Steps
             </h2>
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <p className="text-green-800 mb-4">
-                You've successfully created a data transformation pipeline! 
-                Explore more advanced features:
+            <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+              <p className="text-text-secondary mb-4">
+                You now know how to set up complex optimization problems. 
+                Next, learn how to configure the AEAO Tetrad for enhanced optimization.
               </p>
               <div className="space-y-2">
                 <Link 
-                  href="/tutorials/webhook-automation" 
-                  className="block text-green-700 hover:text-green-800 underline"
+                  href="/tutorials/ai-content-generation" 
+                  className="block text-brand-primary hover:underline"
                 >
-                  → Learn about webhook triggers
+                  → Configure the AEAO Tetrad
                 </Link>
                 <Link 
                   href="/tutorials/monitoring-alerts" 
-                  className="block text-green-700 hover:text-green-800 underline"
+                  className="block text-brand-primary hover:underline"
                 >
-                  → Set up monitoring and alerts
+                  → Understand optimization results
                 </Link>
                 <Link 
-                  href="/docs/api/automation" 
-                  className="block text-green-700 hover:text-green-800 underline"
+                  href="/docs" 
+                  className="block text-brand-primary hover:underline"
                 >
-                  → Explore the full API documentation
+                  → Full API reference
                 </Link>
               </div>
             </div>
@@ -290,4 +372,3 @@ print(f'Pipeline created: {pipeline.id}')`
     </main>
   )
 }
-
