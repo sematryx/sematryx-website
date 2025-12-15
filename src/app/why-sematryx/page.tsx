@@ -1,470 +1,483 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Why Sematryx - Enterprise Optimization with Explainability',
+  description: 'Traditional solvers break. Sematryx explains why it doesn\'t. Complex optimization with full audit trails for regulated industries.',
+}
 
 export default function WhySematryxPage() {
-  // Core Enterprise Differentiators - What makes Sematryx enterprise-ready
+  // Streamlined enterprise features (removed "15 AI systems")
   const enterpriseFeatures = [
     {
       title: "Async Explainability",
-      description: "Background-processed explanations minimize the performance overhead of transparency. Natural language summaries, technical logs, and visualizations run asynchronously so optimization doesn't wait for explanations to complete.",
-      icon: "📖",
-      comparison: "Traditional optimizers: Black box or slow sync explanations | Sematryx: Full explainability with minimal overhead"
+      description: "Background-processed explanations minimize performance overhead. Natural language summaries, technical logs, and visualizations run asynchronously so optimization doesn't wait.",
+      icon: "📖"
     },
     {
-      title: "15 AI Systems Coordinated",
-      description: "Unlike single-algorithm optimizers, Sematryx coordinates 15 specialized AI systems working together: research agents analyze problems, validation engineers ensure safety, performance analysts track metrics, and learning systems adapt strategies.",
-      icon: "🤖",
-      comparison: "Traditional optimizers: Single algorithm | Sematryx: 15-system coordination"
+      title: "Enterprise Compliance",
+      description: "Built-in regulatory compliance, safety constraints, and audit trails. Essential for financial services, healthcare, and manufacturing where regulations matter.",
+      icon: "🛡️"
     },
     {
-      title: "Enterprise-Grade Compliance",
-      description: "Built-in regulatory compliance, safety constraints, and audit trails. Essential for financial services, healthcare, and manufacturing where regulations matter. Production-ready from day one.",
-      icon: "🛡️",
-      comparison: "Traditional optimizers: No compliance features | Sematryx: Built-in regulatory compliance"
+      title: "Domain Libraries",
+      description: "Pre-built solutions for finance, healthcare, supply chain, manufacturing, and more—all production-ready with industry-specific constraints and best practices.",
+      icon: "🏗️"
     },
     {
-      title: "Domain-Specific Solutions",
-      description: "13+ business domain libraries with automatic code generation. Financial, healthcare, supply chain, manufacturing, and more - all production-ready with industry-specific constraints and best practices.",
-      icon: "🏗️",
-      comparison: "Traditional optimizers: Generic only | Sematryx: 13+ specialized domain libraries"
-    },
+      title: "Visual Intelligence",
+      description: "CV-based optimization landscape analysis detects multimodal landscapes, identifies local optima clusters, and informs which optimizer gets selected for your problem.",
+      icon: "👁️"
+    }
   ]
 
-  // Advanced AI Capabilities - What makes Sematryx intelligent
-  const intelligenceSystems = [
-    {
-      title: "Continuous Learning",
-      description: "Sematryx becomes more effective with every new problem it sees. Cross-problem meta-learning means what works for portfolio optimization informs supply chain decisions. Professional tier: private learning. Enterprise tier: bring your own database.",
-      icon: "🌐",
-      comparison: "Traditional optimizers: Static, no learning | Sematryx: Learns from every optimization"
-    },
-    {
-      title: "Temporal Awareness",
-      description: "Unified temporal context manager that fuses historical patterns with real-time data for predictive optimization. Domain-specific temporal engines adapt to changing conditions in finance, healthcare, supply chain, and manufacturing.",
-      icon: "⏱️",
-      comparison: "Traditional optimizers: Static snapshots | Sematryx: Real-time + historical fusion with predictive modeling"
-    },
-    {
-      title: "Advanced Knowledge Systems",
-      description: "60-80% vector memory compression, Neo4j knowledge graphs, RAG retrieval, and causal discovery. Sematryx builds and maintains comprehensive optimization knowledge that improves over time.",
-      icon: "🧬",
-      comparison: "Traditional optimizers: No memory | Sematryx: Knowledge graphs + RAG + causal discovery"
-    },
-    {
-      title: "Multi-Library Integration",
-      description: "Unified strategy registry seamlessly integrates SCIPY, CMA-ES, SKOPT, AX, and custom optimizers. One interface, multiple optimization libraries working together intelligently.",
-      icon: "🔗",
-      comparison: "Traditional optimizers: Single library | Sematryx: Unified registry across 5+ libraries"
-    },
-    {
-      title: "Visual Analysis",
-      description: "Computer vision-based optimization landscape analysis. Understand your problem space visually and make better decisions. See patterns humans can't detect in mathematical representations alone.",
-      icon: "👁️",
-      comparison: "Traditional optimizers: Mathematical only | Sematryx: Visual + mathematical analysis"
-    },
-  ]
-
-  const useCases = [
+  // Tightened industry sections - advantage only, no problem lists
+  const industries = [
     {
       industry: "Financial Services",
-      problems: [
-        "Portfolio optimization with regulatory constraints (Basel III, MiFID II, Solvency II)",
-        "Algorithmic trading strategy optimization with risk management",
-        "Dynamic rebalancing with market condition adaptation"
-      ],
-      advantage: "15 AI systems coordinate for regulatory compliance + performance. Learning from historical market patterns. Explainable decisions for audit trails.",
-      icon: "💼"
+      icon: "💼",
+      advantages: [
+        "Regulatory compliance built-in (Basel III, MiFID II, Solvency II)",
+        "Explainable decisions for audit trails",
+        "Learning from historical market patterns"
+      ]
     },
     {
-      industry: "Manufacturing & Process Optimization",
-      problems: [
-        "Smart factory optimization with safety constraints",
-        "Process parameter tuning with quality requirements",
-        "Energy optimization with environmental limits",
-        "Predictive maintenance scheduling"
-      ],
-      advantage: "Handles noisy sensor data and real-world uncertainty. Safety-first optimization with hard constraints. Continuous learning from production data.",
-      icon: "🏭"
+      industry: "Manufacturing",
+      icon: "🏭",
+      advantages: [
+        "Safety-first optimization with hard constraints",
+        "Handles noisy sensor data and real-world uncertainty",
+        "Continuous learning from production data"
+      ]
     },
     {
-      industry: "Supply Chain & Logistics",
-      problems: [
-        "Multi-supplier risk management",
-        "Dynamic inventory optimization",
-        "Vehicle routing with time windows",
-        "Demand forecast adaptation"
-      ],
-      advantage: "Optimizes under uncertainty and changing conditions. Learns from historical patterns. Handles complex multi-objective trade-offs.",
-      icon: "🚚"
+      industry: "Supply Chain",
+      icon: "🚚",
+      advantages: [
+        "Optimizes under uncertainty and changing conditions",
+        "Multi-objective trade-off handling",
+        "Learns from historical demand patterns"
+      ]
     },
     {
-      industry: "Healthcare & Life Sciences",
-      problems: [
-        "Drug discovery optimization",
-        "Clinical trial design optimization",
-        "Treatment protocol optimization",
-        "Resource allocation in hospitals"
-      ],
-      advantage: "Regulatory compliance built-in. Safety constraints for patient care. Explainable decisions for medical review boards.",
-      icon: "🏥"
+      industry: "Healthcare",
+      icon: "🏥",
+      advantages: [
+        "Patient safety constraints enforced",
+        "Explainable decisions for review boards",
+        "HIPAA-aware data handling"
+      ]
     },
     {
       industry: "Energy & Utilities",
-      problems: [
-        "Grid optimization with renewable integration",
-        "Energy trading strategy optimization",
-        "Demand response optimization",
-        "Infrastructure maintenance scheduling"
-      ],
-      advantage: "Handles intermittent renewable sources. Real-time adaptation to grid conditions. Multi-objective optimization (cost, reliability, sustainability).",
-      icon: "⚡"
+      icon: "⚡",
+      advantages: [
+        "Real-time grid adaptation",
+        "Renewable intermittency handling",
+        "Multi-objective: cost, reliability, sustainability"
+      ]
     },
     {
-      industry: "AI/ML & Research",
-      problems: [
-        "Neural architecture search",
-        "Hyperparameter tuning",
-        "Feature selection optimization",
-        "Research experiment design"
-      ],
-      advantage: "Cross-problem learning accelerates research. Visual intelligence for understanding model landscapes. Full explainability for research publications.",
-      icon: "🔬"
+      industry: "AI/ML Research",
+      icon: "🔬",
+      advantages: [
+        "Cross-problem learning accelerates experiments",
+        "Full explainability for publications",
+        "Hyperparameter and architecture search"
+      ]
+    }
+  ]
+
+  // Streamlined comparison - 6 key rows only
+  const comparisonRows = [
+    {
+      feature: "Problem Complexity",
+      others: "Simple constraints, single objectives",
+      sematryx: "Complex multi-objective with fuzzy constraints"
+    },
+    {
+      feature: "Explainability",
+      others: "Black box results",
+      sematryx: "Full audit trails with decision rationale"
+    },
+    {
+      feature: "Learning",
+      others: "Static—starts fresh every time",
+      sematryx: "Private Learning Store improves with every run"
+    },
+    {
+      feature: "Visual Intelligence",
+      others: "Mathematical analysis only",
+      sematryx: "CV-based landscape analysis informs optimizer selection"
+    },
+    {
+      feature: "Compliance",
+      others: "Build it yourself",
+      sematryx: "Built-in for regulated industries"
+    },
+    {
+      feature: "Integration",
+      others: "Manage multiple libraries",
+      sematryx: "One API call, unified interface"
     }
   ]
 
   return (
-    <main>
+    <main className="bg-base">
       <Header />
       
-      {/* Hero Section */}
-      <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-20">
+      {/* Hero Section - Outcome-focused */}
+      <section className="bg-gradient-to-b from-base to-elevated pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Why Choose <span className="text-primary-400">Sematryx</span>?
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6 leading-tight">
+              Traditional solvers <span className="text-brand-primary">break</span>.
+              <br />Sematryx explains why it doesn't.
             </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              The world's most advanced optimization framework. Where traditional optimizers solve mathematical problems, 
-              <span className="text-primary-400">Sematryx</span> solves enterprise problems with AI-powered intelligence, compliance, and continuous learning, powered by the AEAO Engine.
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto mb-10">
+              When constraints are fuzzy, objectives conflict, or regulators ask "why"—Sematryx 
+              delivers optimized solutions with full audit trails for regulated industries.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/api-keys" 
+                className="bg-cta-primary text-white hover:bg-cta-primary-hover px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg shadow-brand-primary/20"
+              >
+                Get Started Free →
+              </Link>
+              <Link 
+                href="/pricing" 
+                className="border-2 border-elevated-3 bg-elevated text-text-primary hover:bg-elevated-2 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+              >
+                View Pricing
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* The AEAO Tetrad */}
-      <div className="py-20 bg-[#1a1f2e]">
+      {/* Private Learning Store - KEY DIFFERENTIATOR */}
+      <section className="py-20 bg-elevated border-t border-elevated-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-sm font-semibold text-brand-primary uppercase tracking-wide mb-3">Key Differentiator</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+                Your Optimization Knowledge, Owned by You
+              </h2>
+              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
+                Unlike generic optimizers that start from scratch every time, Sematryx learns from 
+                your problems. The <span className="text-brand-primary font-semibold">Private Learning Store</span> ensures 
+                your optimization patterns, domain knowledge, and performance insights stay private 
+                to your organization—while accelerating every future optimization.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Isolated learning environment per organization",
+                  "Cross-problem knowledge transfer within your domain",
+                  "Performance improves with every optimization you run",
+                  "Your competitive insights never leave your store"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-brand-primary mt-1">✓</span>
+                    <span className="text-text-secondary">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-base rounded-xl border border-elevated-3 p-8">
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 p-4 bg-elevated rounded-lg border border-elevated-3">
+                  <div className="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center text-2xl">🔒</div>
+                  <div>
+                    <h4 className="font-semibold text-text-primary">Private Store</h4>
+                    <p className="text-sm text-text-secondary">Your data, your insights, your advantage</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-4 bg-elevated rounded-lg border border-elevated-3">
+                  <div className="w-12 h-12 rounded-lg bg-accent-autodidactic/10 flex items-center justify-center text-2xl">🧠</div>
+                  <div>
+                    <h4 className="font-semibold text-text-primary">Continuous Learning</h4>
+                    <p className="text-sm text-text-secondary">Gets smarter with every run</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-4 bg-elevated rounded-lg border border-elevated-3">
+                  <div className="w-12 h-12 rounded-lg bg-accent-expository/10 flex items-center justify-center text-2xl">📊</div>
+                  <div>
+                    <h4 className="font-semibold text-text-primary">Cross-Problem Transfer</h4>
+                    <p className="text-sm text-text-secondary">Portfolio insights inform supply chain decisions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-Native Integration */}
+      <section className="py-20 bg-base border-t border-elevated-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="bg-elevated border border-elevated-3 rounded-xl overflow-hidden">
+                <div className="px-4 py-3 bg-elevated-2 border-b border-elevated-3 flex items-center gap-2">
+                  <span className="font-mono text-xs px-2 py-1 rounded bg-brand-primary/15 text-brand-primary">MCP</span>
+                  <span className="font-mono text-sm text-text-secondary">Agent → Sematryx</span>
+                </div>
+                <div className="p-5 font-mono text-sm leading-relaxed text-text-secondary">
+                  <div className="text-text-tertiary">{"// Your AI agent calls Sematryx"}</div>
+                  <div><span className="text-accent-agentic">optimize</span>({`{`}</div>
+                  <div>  <span className="text-sky-300">problem</span>: <span className="text-emerald-300">"portfolio_allocation"</span>,</div>
+                  <div>  <span className="text-sky-300">constraints</span>: user_requirements,</div>
+                  <div>  <span className="text-sky-300">explain</span>: <span className="text-violet-300">true</span></div>
+                  <div>{`})`}</div>
+                  <div className="mt-4 text-text-tertiary">{"// Returns solution + rationale"}</div>
+                  <div><span className="text-sky-300">"rationale"</span>: <span className="text-emerald-300">"Balanced risk-adjusted</span></div>
+                  <div><span className="text-emerald-300">  return while satisfying the 30%</span></div>
+                  <div><span className="text-emerald-300">  maximum single-asset constraint..."</span></div>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <p className="text-sm font-semibold text-accent-agentic uppercase tracking-wide mb-3">AI-Native</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+                Your Agents' Optimization Backend
+              </h2>
+              <p className="text-lg text-text-secondary mb-8 leading-relaxed">
+                Your AI agents shouldn't struggle with complex optimization math. Sematryx works as a 
+                tool your agents can call—send a problem, get back an optimized solution with full 
+                explanation the agent can reason about and present to users.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  "Claude, GPT, Cursor, and other AI tools can invoke Sematryx directly",
+                  "Results include natural language rationale, not just numbers",
+                  "Audit trails flow back to the orchestrating agent",
+                  "Offload compute-heavy optimization to hosted infrastructure"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-accent-agentic mt-1">✓</span>
+                    <span className="text-text-secondary">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-sm text-text-tertiary">
+                Available via MCP protocol, REST API, or Python SDK—however your agents prefer to work.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AEAO Engine - Simplified */}
+      <section className="py-20 bg-elevated border-t border-elevated-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              The <span className="text-primary-400">AEAO</span> Tetrad
+            <p className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-2">Under the Hood</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              The <span className="text-brand-primary">AEAO</span> Engine
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Four core pillars that power enterprise-grade optimization
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+              Agentic, Expository, Autodidactic optimization—three capabilities that make 
+              Sematryx different from traditional tools.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Agentic - Sky Blue */}
-            <div className="bg-sky-950/40 p-8 rounded-xl border border-sky-800/50">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-4xl">🤖</span>
-                <h3 className="text-2xl font-bold text-sky-400">Agentic Intelligence</h3>
-              </div>
-              <p className="text-sky-200/80 mb-4">
-                Research agents, validation engineers, and performance analysts collaborate to provide consensus-based optimization strategies and real-time performance analysis.
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-base p-6 rounded-xl border border-elevated-3 border-l-4 border-l-accent-agentic">
+              <h3 className="text-lg font-bold text-accent-agentic mb-2">Agentic</h3>
+              <p className="text-text-secondary text-sm">
+                Meta-policy learning dynamically selects and coordinates solvers based on problem topology.
               </p>
-              <ul className="space-y-2 text-sm text-sky-400">
-                <li>• Multi-agent collaboration</li>
-                <li>• Consensus-based strategy selection</li>
-                <li>• Real-time performance analysis</li>
-                <li>• Autonomous decision-making</li>
-              </ul>
             </div>
+            <div className="bg-base p-6 rounded-xl border border-elevated-3 border-l-4 border-l-accent-expository">
+              <h3 className="text-lg font-bold text-accent-expository mb-2">Expository</h3>
+              <p className="text-text-secondary text-sm">
+                Dedicated explainability engine generates audit trails, decision rationales, and diagnostics.
+              </p>
+            </div>
+            <div className="bg-base p-6 rounded-xl border border-elevated-3 border-l-4 border-l-accent-autodidactic">
+              <h3 className="text-lg font-bold text-accent-autodidactic mb-2">Autodidactic</h3>
+              <p className="text-text-secondary text-sm">
+                Vector memory and knowledge graphs recall past optimizations to improve continuously.
+              </p>
+            </div>
+          </div>
 
-            {/* Expository - Green */}
-            <div className="bg-green-950/40 p-8 rounded-xl border border-green-800/50">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-4xl">📖</span>
-                <h3 className="text-2xl font-bold text-green-400">Expository Intelligence</h3>
-              </div>
-              <p className="text-green-200/80 mb-4">
-                Comprehensive explanation of all optimization decisions with configurable explanation levels (0-5) for compute cost control. Natural language summaries, technical logs, and interactive visualizations.
-              </p>
-              <ul className="space-y-2 text-sm text-green-400">
-                <li>• Configurable explanation levels (0-5)</li>
-                <li>• Natural language summaries</li>
-                <li>• Technical decision logs</li>
-                <li>• Interactive visualizations</li>
-              </ul>
-            </div>
-
-            {/* Autodidactic - Pink */}
-            <div className="bg-pink-950/40 p-8 rounded-xl border border-pink-800/50">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-4xl">🧠</span>
-                <h3 className="text-2xl font-bold text-pink-400">Autodidactic Intelligence</h3>
-              </div>
-              <p className="text-pink-200/80 mb-4">
-                Self-improvement and continuous learning from optimization experience. Problem signature detection, strategy variation, and cross-problem learning enable continuous performance improvement.
-              </p>
-              <ul className="space-y-2 text-sm text-pink-400">
-                <li>• Problem signature detection</li>
-                <li>• Strategy variation</li>
-                <li>• Cross-problem learning</li>
-                <li>• Performance memory</li>
-                <li>• Meta-learning capabilities</li>
-              </ul>
-            </div>
-
-            {/* Domain Extension - Orange */}
-            <div className="bg-orange-950/40 p-8 rounded-xl border border-orange-800/50">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-4xl">🏗️</span>
-                <h3 className="text-2xl font-bold text-orange-400">Domain Extension</h3>
-              </div>
-              <p className="text-orange-200/80 mb-4">
-                Business domain libraries for rapid enterprise adoption. Engine-domain separation enables core optimization algorithms across 13+ business domains with automatic code generation.
-              </p>
-              <ul className="space-y-2 text-sm text-orange-400">
-                <li>• 13+ business domains</li>
-                <li>• Automatic code generation</li>
-                <li>• FastAPI deployment</li>
-                <li>• Pattern recommendations</li>
-                <li>• Production-ready templates</li>
-              </ul>
-            </div>
+          <div className="text-center">
+            <Link href="/#features" className="text-brand-primary hover:underline font-medium">
+              See how it works →
+            </Link>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Enterprise Features */}
-      <div className="py-20 bg-[#0f1419]">
+      {/* Enterprise Features - Streamlined */}
+      <section className="py-20 bg-base border-t border-elevated-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Enterprise-Grade Optimization
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              Enterprise-Grade Features
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Production-ready features that make <span className="text-primary-400">Sematryx</span> the only enterprise-grade optimization platform
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+              Production-ready capabilities for regulated industries
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {enterpriseFeatures.map((feature, index) => (
-              <div key={index} className="bg-[#1a1f2e] rounded-xl p-8 border-l-4 border-primary-500">
-                <div className="text-5xl mb-4">{feature.icon}</div>
-                <h3 className="text-2xl font-bold text-white mb-3">{feature.title}</h3>
-                <p className="text-gray-400 mb-4 text-lg">{feature.description}</p>
-                <div className="bg-[#242b3d] rounded-lg p-4 text-sm text-gray-400 border border-gray-700">
-                  <strong className="text-primary-400">Comparison:</strong> {feature.comparison}
-                </div>
+              <div key={index} className="bg-elevated rounded-xl p-8 border border-elevated-3 border-l-4 border-l-brand-primary">
+                <div className="text-3xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-bold text-text-primary mb-3">{feature.title}</h3>
+                <p className="text-text-secondary leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Advanced AI Capabilities */}
-      <div className="py-20 bg-[#1a1f2e]">
+      {/* Industry Applications - Tightened */}
+      <section className="py-20 bg-elevated border-t border-elevated-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Advanced AI Capabilities
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              Built for Your Industry
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              AI-powered systems that make <span className="text-primary-400">Sematryx</span> smarter with every optimization
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+              Domain-specific advantages, not generic optimization
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {intelligenceSystems.map((system, index) => (
-              <div key={index} className="bg-[#242b3d] rounded-xl p-6 border-l-4 border-primary-500">
-                <div className="text-4xl mb-4">{system.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-3">{system.title}</h3>
-                <p className="text-gray-400 mb-4">{system.description}</p>
-                <div className="bg-[#1a1f2e] rounded-lg p-3 text-sm text-gray-400 border border-gray-700">
-                  <strong className="text-primary-400">Comparison:</strong> {system.comparison}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {industries.map((item, index) => (
+              <div key={index} className="bg-base rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/30 transition-colors">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-3xl">{item.icon}</span>
+                  <h3 className="text-lg font-bold text-text-primary">{item.industry}</h3>
                 </div>
+                <ul className="space-y-2">
+                  {item.advantages.map((advantage, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-text-secondary">
+                      <span className="text-brand-primary mt-0.5">•</span>
+                      <span>{advantage}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Real-World Use Cases */}
-      <div className="py-20 bg-[#0f1419]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Real-World Problems <span className="text-primary-400">Sematryx</span> Solves
+      {/* Comparison Table - 6 Rows */}
+      <section className="py-20 bg-base border-t border-elevated-3">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              How Sematryx Compares
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Industry-specific optimization challenges where <span className="text-primary-400">Sematryx</span>'s enterprise intelligence makes the difference
+            <p className="text-xl text-text-secondary">
+              Key differentiators vs. traditional optimization tools
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {useCases.map((useCase, index) => (
-              <div key={index} className="bg-[#1a1f2e] rounded-xl p-8 border border-gray-700 hover:border-gray-600 transition-colors">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="text-5xl">{useCase.icon}</div>
-                  <h3 className="text-2xl font-bold text-white">{useCase.industry}</h3>
-                </div>
-                
-                <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-500 uppercase mb-3">Common Problems:</h4>
-                  <ul className="space-y-2">
-                    {useCase.problems.map((problem, idx) => (
-                      <li key={idx} className="flex items-start text-gray-400">
-                        <span className="text-primary-400 mr-2 mt-1">•</span>
-                        <span>{problem}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="bg-primary-900/30 rounded-lg p-4 border-l-4 border-primary-500">
-                  <h4 className="text-sm font-semibold text-primary-300 mb-2"><span className="text-primary-400">Sematryx</span> Advantage:</h4>
-                  <p className="text-primary-200 text-sm">{useCase.advantage}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Competitive Comparison */}
-      <div className="py-20 bg-[#1a1f2e]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              <span className="text-primary-400">Sematryx</span> vs Traditional Optimizers
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              See how <span className="text-primary-400">Sematryx</span> compares to solutions like SciPy, Optuna, and other optimization libraries
-            </p>
-          </div>
-
-          <div className="bg-[#242b3d] rounded-xl p-8 border border-gray-700">
+          <div className="bg-elevated rounded-xl border border-elevated-3 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b-2 border-gray-600">
-                    <th className="text-left py-4 px-6 font-semibold text-white">Feature</th>
-                    <th className="text-center py-4 px-6 font-semibold text-gray-400">Traditional Optimizers</th>
-                    <th className="text-center py-4 px-6 font-semibold text-primary-400">Sematryx</th>
+                  <tr className="border-b border-elevated-3 bg-elevated-2">
+                    <th className="text-left py-4 px-6 font-semibold text-text-primary">Feature</th>
+                    <th className="text-left py-4 px-6 font-semibold text-text-secondary">Other Tools</th>
+                    <th className="text-left py-4 px-6 font-semibold text-brand-primary">Sematryx</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-700">
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-white">Basic Optimization Performance</td>
-                    <td className="py-4 px-6 text-center text-gray-400">✅ Good</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Equivalent</td>
-                  </tr>
-                  <tr className="bg-[#1a1f2e]">
-                    <td className="py-4 px-6 font-medium text-white">AI System Coordination</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ Single Algorithm</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ 15 AI Systems</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-white">Enterprise Architecture</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ No Enterprise Features</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ 2,379 LOC Explainability</td>
-                  </tr>
-                  <tr className="bg-[#1a1f2e]">
-                    <td className="py-4 px-6 font-medium text-white">Constraint Handling</td>
-                    <td className="py-4 px-6 text-center text-gray-400">⚠️ Basic Constraints</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Built-in Compliance</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-white">Learning & Adaptation</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ No Learning</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Cross-Problem Learning</td>
-                  </tr>
-                  <tr className="bg-[#1a1f2e]">
-                    <td className="py-4 px-6 font-medium text-white">Explainability</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ Black Box</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Full Audit Trails</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-white">Domain-Specific Libraries</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ Generic Only</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ 13+ Business Domains</td>
-                  </tr>
-                  <tr className="bg-[#1a1f2e]">
-                    <td className="py-4 px-6 font-medium text-white">Visual Analysis</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ Mathematical Only</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Visual + Mathematical</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-white">Temporal Awareness</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ Static Snapshots</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Real-Time + Historical</td>
-                  </tr>
-                  <tr className="bg-[#1a1f2e]">
-                    <td className="py-4 px-6 font-medium text-white">Knowledge Systems</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ No Memory</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Knowledge Graphs + RAG</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-white">Multi-Library Integration</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ Single Library</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Unified Registry</td>
-                  </tr>
-                  <tr className="bg-[#1a1f2e]">
-                    <td className="py-4 px-6 font-medium text-white">Continuous Learning</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ Static, No Learning</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Learns From Every Optimization</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-6 font-medium text-white">Causal Discovery</td>
-                    <td className="py-4 px-6 text-center text-gray-400">❌ Not Available</td>
-                    <td className="py-4 px-6 text-center text-primary-400 font-semibold">✅ Full Implementation</td>
-                  </tr>
+                <tbody className="divide-y divide-elevated-3">
+                  {comparisonRows.map((row, index) => (
+                    <tr key={index} className={index % 2 === 1 ? 'bg-elevated-2/50' : ''}>
+                      <td className="py-4 px-6 font-medium text-text-primary">{row.feature}</td>
+                      <td className="py-4 px-6 text-text-secondary">{row.others}</td>
+                      <td className="py-4 px-6 text-brand-primary font-medium">{row.sematryx}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
-            <div className="mt-8 text-center">
-              <p className="text-lg font-semibold text-white mb-4">
-                <span className="text-primary-400">Sematryx</span> Wins: 13/13 Categories ⭐⭐⭐⭐⭐
-              </p>
-              <p className="text-gray-400">
-                Traditional optimizers are great for academic problems. <span className="text-primary-400">Sematryx</span> solves enterprise problems with intelligence, compliance, and learning.
-              </p>
-            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-br from-primary-600 to-primary-700">
+      {/* Pricing CTA */}
+      <section className="py-16 bg-elevated border-t border-elevated-3">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Experience Enterprise-Grade Optimization?
+          <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-4">
+            Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-primary-100 mb-8">
-            Get started with <span className="font-semibold">Sematryx</span> today. No credit card required for the free tier.
+          <p className="text-lg text-text-secondary mb-8">
+            Start free. Scale as you grow. Private Learning Store included in all paid plans.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/pricing" 
+              className="border-2 border-elevated-3 bg-base text-text-primary hover:bg-elevated-2 px-8 py-3 rounded-lg font-semibold transition-colors"
+            >
+              View Pricing →
+            </Link>
+            <Link 
+              href="/api-keys" 
+              className="bg-cta-primary text-white hover:bg-cta-primary-hover px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg shadow-brand-primary/20"
+            >
+              Get Started Free
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Placeholder */}
+      <section className="py-12 bg-base border-t border-elevated-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-text-tertiary text-sm">
+            Trusted by optimization teams at innovative companies
+          </p>
+          {/* Placeholder for future logos/testimonials */}
+          <div className="mt-6 flex justify-center gap-12 opacity-30">
+            <div className="w-24 h-8 bg-elevated-3 rounded"></div>
+            <div className="w-24 h-8 bg-elevated-3 rounded"></div>
+            <div className="w-24 h-8 bg-elevated-3 rounded"></div>
+            <div className="w-24 h-8 bg-elevated-3 rounded"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 bg-gradient-to-br from-brand-primary/20 to-base border-t border-elevated-3">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+            Ready to optimize smarter?
+          </h2>
+          <p className="text-xl text-text-secondary mb-8">
+            Start with 10 free optimizations. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/api-keys" 
-              className="bg-white text-primary-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200"
+              className="bg-cta-primary text-white hover:bg-cta-primary-hover px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg shadow-brand-primary/20"
             >
-              Get Started Free
+              Get Started Free →
             </Link>
             <Link 
               href="/docs" 
-              className="border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-200"
+              className="border-2 border-elevated-3 bg-elevated text-text-primary hover:bg-elevated-2 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
             >
               View Documentation
             </Link>
           </div>
         </div>
-      </div>
+      </section>
 
       <Footer />
     </main>
   )
 }
-
