@@ -40,6 +40,9 @@ export default function Header() {
               <Link href="/benchmarks" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Benchmarks
               </Link>
+              <Link href="/pricing" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
+                Pricing
+              </Link>
               <Link href="/mcp" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 MCP
               </Link>
@@ -76,6 +79,9 @@ export default function Header() {
               </Link>
               <Link href="/benchmarks" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Benchmarks
+              </Link>
+              <Link href="/pricing" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
+                Pricing
               </Link>
               <Link href="/mcp" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 MCP

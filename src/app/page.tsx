@@ -3,6 +3,7 @@ import Hero from '@/components/Hero'
 import Features from '@/components/Features'
 import UseCases from '@/components/UseCases'
 import Differentiators from '@/components/Differentiators'
+import Pricing from '@/components/Pricing'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <UseCases />
       <Features />
       <Differentiators />
+      <Pricing />
       <Footer />
     </main>
   )
