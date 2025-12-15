@@ -5,6 +5,7 @@ import UseCases from '@/components/UseCases'
 import AgentReady from '@/components/AgentReady'
 import Differentiators from '@/components/Differentiators'
 import Pricing from '@/components/Pricing'
+import EmailSignup from '@/components/EmailSignup'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <Features />
       <Differentiators />
       <Pricing />
+      <EmailSignup />
       <Footer />
     </main>
   )

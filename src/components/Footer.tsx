@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a0d12] text-white border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="mb-4 block">
               <Logo size="small" />
@@ -30,7 +30,32 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/api-keys" className="text-gray-400 hover:text-white transition-colors">Get API Key</Link></li>
               <li><Link href="/pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</Link></li>
-              <li><Link href="/support" className="text-gray-400 hover:text-white transition-colors">Support</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Connect</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="mailto:feedback@sematryx.com" className="text-gray-400 hover:text-white transition-colors">
+                  Send Feedback
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@sematryx.com" className="text-gray-400 hover:text-white transition-colors">
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/sematryx" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                  Twitter / X
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/sematryx" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                  GitHub
+                </a>
+              </li>
             </ul>
           </div>
         </div>
