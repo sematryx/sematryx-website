@@ -167,6 +167,7 @@ export default function WhySematryxPage() {
               <p className="text-sm font-semibold text-brand-primary uppercase tracking-wide mb-3">Key Differentiator</p>
               <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-6">
                 Your Optimization Knowledge, Owned by You
+                <span className="block text-xs font-normal text-text-tertiary mt-2">Private Learning Store — Patent Pending</span>
               </h2>
               <p className="text-lg text-text-secondary mb-8 leading-relaxed">
                 Unlike generic optimizers that start from scratch every time, Sematryx learns from 

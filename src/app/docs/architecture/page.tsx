@@ -7,9 +7,13 @@ export default function ArchitecturePage() {
         <h1 className="text-4xl font-bold text-white mb-6">
           System Architecture
         </h1>
-        <p className="text-xl text-gray-400 leading-relaxed">
+        <p className="text-xl text-gray-400 leading-relaxed mb-4">
           Sematryx is built on a modular, service-oriented architecture designed for high-performance optimization, 
           explainability, and continuous learning.
+        </p>
+        <p className="text-sm text-gray-500">
+          The Sematryx architecture is protected by multiple pending patents covering adaptive optimization, 
+          temporal intelligence, knowledge systems, and explainability frameworks.
         </p>
       </div>
 

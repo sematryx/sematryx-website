@@ -30,6 +30,7 @@ export default function Features() {
             <p className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-2">Under the Hood</p>
             <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
               The <span className="text-brand-primary">AEAO</span> Engine
+              <span className="text-xs font-normal text-text-tertiary ml-2 align-middle">Patent Pending</span>
             </h2>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto">
               Three capabilities that make Sematryx different from traditional optimization tools.

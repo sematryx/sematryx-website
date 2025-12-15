@@ -36,8 +36,8 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 <span className="text-primary-400">Sematryx</span>. All rights reserved.</p>
-          <p className="text-sm mt-2">Pronounced "se" "matrix"</p>
+          <p>&copy; 2025 <span className="text-primary-400">Sematryx</span>. All rights reserved.</p>
+          <p className="text-sm mt-2">Technology Patent Pending</p>
         </div>
       </div>
     </footer>
