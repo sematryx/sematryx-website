@@ -31,9 +31,15 @@ const docsSections = [
     ]
   },
   {
+    title: 'Account',
+    items: [
+      { title: 'Billing & Usage', href: '/docs/billing' },
+      { title: 'Rate Limiting', href: '/docs/advanced/rate-limiting' },
+    ]
+  },
+  {
     title: 'Advanced',
     items: [
-      { title: 'Rate Limiting', href: '/docs/advanced/rate-limiting' },
       { title: 'Error Handling', href: '/docs/advanced/errors' },
       { title: 'Best Practices', href: '/docs/advanced/best-practices' },
     ]

@@ -1,9 +1,17 @@
 import CodeBlock from '@/components/CodeBlock'
+import Link from 'next/link'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Rate Limiting - Sematryx Documentation',
+  description: 'Understand Sematryx rate limits by tier and learn how to handle them gracefully.',
+}
 
 export default function RateLimitingPage() {
-  const rateLimitHeaders = `X-RateLimit-Limit: 1000
-X-RateLimit-Remaining: 950
-X-RateLimit-Reset: 1640995200`
+  const rateLimitHeaders = `X-RateLimit-Limit: 300
+X-RateLimit-Remaining: 287
+X-RateLimit-Reset: 1640995200
+X-RateLimit-Window: 60`
 
   const pythonExample = `import time
 import requests
@@ -62,42 +70,65 @@ for attempt in range(max_retries):
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-text-primary mb-4">
           Rate Limiting
         </h1>
-        <p className="text-xl text-gray-600">
-          Understand Sematryx's rate limits and learn how to handle them gracefully in your applications.
+        <p className="text-xl text-text-secondary">
+          Understand Sematryx rate limits and learn how to handle them gracefully in your applications.
         </p>
       </div>
 
       <div className="space-y-12">
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Overview
+          <h2 className="text-2xl font-semibold text-text-primary mb-4">
+            Rate Limits by Tier
           </h2>
-          <p className="text-gray-700 mb-4">
-            Sematryx implements rate limiting to ensure fair usage and system stability. Rate limits vary by plan:
+          <p className="text-text-secondary mb-4">
+            Rate limits are applied per minute and vary by subscription tier:
           </p>
-          <div className="bg-gray-50 rounded-lg p-6">
-            <ul className="space-y-3 text-gray-700">
-              <li>
-                <strong className="text-gray-900">Free Plan:</strong> 100 requests per hour
-              </li>
-              <li>
-                <strong className="text-gray-900">Pro Plan:</strong> 1,000 requests per hour
-              </li>
-              <li>
-                <strong className="text-gray-900">Enterprise Plan:</strong> 10,000+ requests per hour (custom limits available)
-              </li>
-            </ul>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b border-elevated-3">
+                  <th className="text-left py-3 px-4 text-text-primary font-semibold">Tier</th>
+                  <th className="text-center py-3 px-4 text-text-secondary font-semibold">Requests/Minute</th>
+                  <th className="text-center py-3 px-4 text-text-secondary font-semibold">Burst Limit</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-elevated-3">
+                <tr>
+                  <td className="py-3 px-4 text-text-primary">Free</td>
+                  <td className="py-3 px-4 text-center text-text-secondary">10</td>
+                  <td className="py-3 px-4 text-center text-text-secondary">15</td>
+                </tr>
+                <tr className="bg-elevated/50">
+                  <td className="py-3 px-4 text-text-primary">Starter</td>
+                  <td className="py-3 px-4 text-center text-text-secondary">60</td>
+                  <td className="py-3 px-4 text-center text-text-secondary">90</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 text-brand-primary font-medium">Pro</td>
+                  <td className="py-3 px-4 text-center text-brand-primary font-medium">300</td>
+                  <td className="py-3 px-4 text-center text-brand-primary font-medium">450</td>
+                </tr>
+                <tr className="bg-elevated/50">
+                  <td className="py-3 px-4 text-text-primary">Enterprise</td>
+                  <td className="py-3 px-4 text-center text-text-secondary">Custom</td>
+                  <td className="py-3 px-4 text-center text-text-secondary">Custom</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          <p className="mt-4 text-sm text-text-tertiary">
+            Burst limits allow temporary spikes above the sustained rate. See <Link href="/docs/billing" className="text-brand-primary hover:underline">Billing & Usage</Link> for monthly optimization limits.
+          </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-text-primary mb-4">
             Rate Limit Headers
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-text-secondary mb-4">
             Every API response includes rate limit information in the headers:
           </p>
           <CodeBlock
@@ -105,26 +136,27 @@ for attempt in range(max_retries):
             language="bash"
             title="Rate limit response headers"
           />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Header Fields</h3>
-            <ul className="space-y-2 text-blue-800">
-              <li><strong>X-RateLimit-Limit:</strong> Maximum number of requests allowed in the current window</li>
-              <li><strong>X-RateLimit-Remaining:</strong> Number of requests remaining in the current window</li>
-              <li><strong>X-RateLimit-Reset:</strong> Unix timestamp when the rate limit window resets</li>
+          <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
+            <h3 className="text-lg font-semibold text-text-primary mb-3">Header Fields</h3>
+            <ul className="space-y-2 text-text-secondary">
+              <li><strong className="text-text-primary">X-RateLimit-Limit:</strong> Maximum requests allowed in the window</li>
+              <li><strong className="text-text-primary">X-RateLimit-Remaining:</strong> Requests remaining in current window</li>
+              <li><strong className="text-text-primary">X-RateLimit-Reset:</strong> Unix timestamp when the window resets</li>
+              <li><strong className="text-text-primary">X-RateLimit-Window:</strong> Window duration in seconds</li>
             </ul>
           </div>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-text-primary mb-4">
             Handling Rate Limits
           </h2>
-          <p className="text-gray-700 mb-4">
-            When you exceed the rate limit, you'll receive a <code className="bg-gray-100 px-2 py-1 rounded">429 Too Many Requests</code> status code. 
-            Always check rate limit headers and implement retry logic with appropriate backoff.
+          <p className="text-text-secondary mb-4">
+            When you exceed the rate limit, you'll receive a <code className="bg-elevated-2 text-brand-primary px-2 py-1 rounded">429 Too Many Requests</code> response. 
+            Always check rate limit headers and implement retry logic:
           </p>
           
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
             Python Example
           </h3>
           <CodeBlock
@@ -133,7 +165,7 @@ for attempt in range(max_retries):
             title="Rate limit handling in Python"
           />
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-text-primary mb-3 mt-6">
             JavaScript Example
           </h3>
           <CodeBlock
@@ -144,10 +176,10 @@ for attempt in range(max_retries):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-text-primary mb-4">
             Exponential Backoff
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-text-secondary mb-4">
             For more robust rate limit handling, implement exponential backoff with jitter:
           </p>
           <CodeBlock
@@ -155,87 +187,66 @@ for attempt in range(max_retries):
             language="python"
             title="Exponential backoff implementation"
           />
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-green-900 mb-3">Benefits</h3>
-            <ul className="space-y-2 text-green-800">
-              <li>Prevents thundering herd problems</li>
-              <li>Reduces server load during high traffic</li>
-              <li>More efficient use of available rate limit</li>
-              <li>Jitter prevents synchronized retries</li>
+          <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6 mt-6">
+            <h3 className="text-lg font-semibold text-text-primary mb-3">Benefits</h3>
+            <ul className="space-y-2 text-text-secondary">
+              <li>• Prevents thundering herd problems</li>
+              <li>• Reduces server load during high traffic</li>
+              <li>• More efficient use of available rate limit</li>
+              <li>• Jitter prevents synchronized retries</li>
             </ul>
           </div>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-text-primary mb-4">
             Best Practices
           </h2>
-          <div className="space-y-4">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-green-900 mb-3">✅ Do</h3>
-              <ul className="space-y-2 text-green-800">
-                <li>Monitor rate limit headers on every request</li>
-                <li>Implement retry logic with exponential backoff</li>
-                <li>Cache responses when possible to reduce API calls</li>
-                <li>Use webhooks instead of polling when available</li>
-                <li>Batch requests when possible</li>
-                <li>Respect the reset time from X-RateLimit-Reset header</li>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-emerald-400 mb-3">✓ Do</h3>
+              <ul className="space-y-2 text-text-secondary text-sm">
+                <li>• Monitor rate limit headers</li>
+                <li>• Implement exponential backoff</li>
+                <li>• Cache results when possible</li>
+                <li>• Batch requests when available</li>
+                <li>• Respect the reset time</li>
               </ul>
             </div>
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-red-900 mb-3">❌ Don't</h3>
-              <ul className="space-y-2 text-red-800">
-                <li>Ignore 429 status codes</li>
-                <li>Retry immediately without waiting</li>
-                <li>Make unnecessary requests</li>
-                <li>Poll endpoints when webhooks are available</li>
-                <li>Exceed rate limits intentionally</li>
+            <div className="bg-rose-500/10 border border-rose-500/30 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-rose-400 mb-3">✗ Don't</h3>
+              <ul className="space-y-2 text-text-secondary text-sm">
+                <li>• Ignore 429 status codes</li>
+                <li>• Retry immediately without waiting</li>
+                <li>• Make unnecessary requests</li>
+                <li>• Exceed limits intentionally</li>
+                <li>• Spin in tight retry loops</li>
               </ul>
             </div>
           </div>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-            Rate Limit Windows
-          </h2>
-          <p className="text-gray-700 mb-4">
-            Rate limits are calculated on a rolling window basis. The window resets at the time specified in 
-            <code className="bg-gray-100 px-2 py-1 rounded">X-RateLimit-Reset</code>.
-          </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Example</h3>
-            <p className="text-blue-800 mb-3">
-              If you have a limit of 1,000 requests per hour and make 50 requests at 10:00 AM, 
-              you'll have 950 requests remaining. At 11:00 AM, your limit resets to 1,000 requests.
-            </p>
-            <p className="text-blue-800">
-              The reset time is always provided in the response headers, so you can plan your requests accordingly.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-text-primary mb-4">
             Increasing Rate Limits
           </h2>
-          <p className="text-gray-700 mb-4">
-            If you need higher rate limits, consider:
+          <p className="text-text-secondary mb-4">
+            Need higher rate limits? You have options:
           </p>
           <div className="space-y-4">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Upgrade Your Plan</h3>
-              <p className="text-gray-700">
-                Pro and Enterprise plans offer significantly higher rate limits. 
-                <a href="/api-keys" className="text-primary-600 hover:text-primary-700 underline ml-1">
-                  View plans
-                </a>
+            <div className="bg-elevated border border-elevated-3 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-text-primary mb-2">Upgrade Your Plan</h3>
+              <p className="text-text-secondary text-sm mb-3">
+                Pro tier offers 30x the rate limit of Free tier. Enterprise offers custom limits.
               </p>
+              <Link href="/pricing" className="text-brand-primary hover:underline text-sm">
+                View plans →
+              </Link>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Contact Support</h3>
-              <p className="text-gray-700">
-                Enterprise customers can request custom rate limits based on their usage patterns and requirements.
+            <div className="bg-elevated border border-elevated-3 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-text-primary mb-2">Enterprise Custom Limits</h3>
+              <p className="text-text-secondary text-sm">
+                Enterprise customers can request custom rate limits based on usage patterns and requirements.
               </p>
             </div>
           </div>
@@ -244,4 +255,3 @@ for attempt in range(max_retries):
     </div>
   )
 }
-
