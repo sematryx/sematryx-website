@@ -1,50 +1,66 @@
 import CodeBlock from '@/components/CodeBlock'
 
 export default function DocsPage() {
-  const quickStartCode = `from aeao import aeao
+  const quickStartCode = `from sematryx import Sematryx
+
+# Initialize the client
+client = Sematryx(api_key="sk-your-api-key")
 
 # Define your objective function
 def sphere(x):
     return sum(xi**2 for xi in x)
 
 # Run optimization
-result = aeao(
+result = client.optimize(
+    objective="minimize",
+    variables=[
+        {"name": "x", "bounds": (-5, 5)},
+        {"name": "y", "bounds": (-5, 5)},
+    ],
     objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    max_evaluations=1000
 )
 
-print(f"Best solution: {result['best_solution']}")
-print(f"Best fitness: {result['best_fitness']}")`
+print(f"Solution: {result.solution}")
+print(f"Value: {result.value}")`
 
-  const tetradExample = `from aeao import aeao
+  const tetradExample = `from sematryx import Sematryx
 
-# Use preset configuration
-result = aeao(
+client = Sematryx(api_key="sk-your-api-key")
+
+# Use optimization modes
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
     objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    preset="production"  # development, production, research, enterprise
+    mode="balanced"  # speed, balanced, quality
 )
 
-# Or enable specific tetrad pillars
-result = aeao(
+# Get explainable results
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
     objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    use_agentic_intelligence=True,
-    use_autodidactic_intelligence=True,
-    explanation_level=3
-)`
+    explanation_level=2  # 0=none, 1=basic, 2=detailed, 3=comprehensive
+)
 
-  const domainExample = `from aeao import financial_optimize
+print(result.explanation)`
 
-# Financial portfolio optimization
-result = financial_optimize(
-    problem_type="portfolio",
-    config={
-        "assets": ["AAPL", "GOOGL", "MSFT"],
-        "risk_tolerance": 0.3
-    }
-)`
+  const domainExample = `from sematryx import Sematryx
+
+client = Sematryx(api_key="sk-your-api-key")
+
+# Portfolio optimization
+result = client.optimize_portfolio(
+    assets=["AAPL", "GOOGL", "MSFT", "AMZN"],
+    returns=[0.12, 0.10, 0.08, 0.15],
+    covariance=[...],  # 4x4 covariance matrix
+    target_return=0.10,
+    max_position=0.4,
+    explanation_level=2  # Get audit trail
+)
+
+print(f"Allocation: {result.solution}")
+print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
@@ -66,7 +82,7 @@ result = financial_optimize(
             Install <span className="text-primary-400">Sematryx</span> using pip:
           </p>
           <CodeBlock
-            code="pip install aeao"
+            code="pip install sematryx"
             language="bash"
             title="Install Sematryx"
           />
@@ -101,31 +117,30 @@ result = financial_optimize(
             <h3 className="text-lg font-semibold text-green-400 mb-3">What happened?</h3>
             <ul className="space-y-2 text-green-300">
               <li><span className="text-primary-400">Sematryx</span> analyzed your problem and selected the best optimization strategy</li>
-              <li>It evaluated your function 1000 times to find the optimal solution</li>
-              <li>The result includes the best parameters and objective value found</li>
+              <li>The optimizer evaluated your function to find the optimal solution</li>
+              <li>The result includes the best parameters, objective value, and explanation</li>
             </ul>
           </div>
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold text-white mb-4">
-            4. Configure the <span className="text-primary-400">AEAO</span> Tetrad
+            4. Configure the Optimization Engine
           </h2>
           <p className="text-gray-400 mb-4">
-            Sematryx's <span className="text-primary-400">AEAO Engine</span> is built on four pillars of intelligence. Configure them to match your needs:
+            Sematryx's optimization engine is built on three pillars of intelligence. Configure them to match your needs:
           </p>
           <CodeBlock
             code={tetradExample}
             language="python"
-            title="Tetrad configuration"
+            title="Engine configuration"
           />
           <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-400 mb-3">The <span className="text-primary-400">AEAO</span> Tetrad</h3>
+            <h3 className="text-lg font-semibold text-blue-400 mb-3">The Engine's Three Pillars</h3>
             <ul className="space-y-2 text-blue-300">
               <li><strong>🤖 Agentic:</strong> Multi-agent coordination for strategy selection</li>
               <li><strong>📖 Expository:</strong> Explainable results with configurable detail levels</li>
               <li><strong>🧠 Autodidactic:</strong> Self-improvement through learning from experience</li>
-              <li><strong>🏗️ Domain Extension:</strong> Specialized libraries for business domains</li>
             </ul>
           </div>
         </section>

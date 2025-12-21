@@ -46,7 +46,7 @@ print(f"Evaluations used: {result['evaluations']}")`
 
   const tetradExample = `from sematryx import optimize
 
-# Enable AEAO Tetrad features
+# Configure the engine's three pillars
 result = optimize(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
@@ -245,18 +245,18 @@ print(f"Explanation: {result['explanation']['rationale']}")`
 
           <section>
             <h2 className="text-2xl font-semibold text-text-primary mb-4">
-              Step 4: Enable the AEAO Tetrad
+              Step 4: Configure the Optimization Engine
             </h2>
             <p className="text-text-secondary mb-4">
-              Sematryx's AEAO Engine has three pillars you can enable for enhanced optimization:
+              Sematryx's optimization engine has three pillars you can enable for enhanced optimization:
             </p>
             <CodeBlock
               code={tetradExample}
               language="python"
-              title="Tetrad configuration"
+              title="Engine configuration"
             />
             <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
-              <h3 className="text-lg font-semibold text-text-primary mb-3">The AEAO Tetrad</h3>
+              <h3 className="text-lg font-semibold text-text-primary mb-3">The Engine's Three Pillars</h3>
               <ul className="space-y-3 text-text-secondary">
                 <li>
                   <strong className="text-accent-agentic">Agentic Intelligence:</strong>{' '}
