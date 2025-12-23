@@ -10,74 +10,85 @@ export default function OptimizationAPIPage() {
     "max_evaluations": 1000
   }'`
 
-  const pythonExample = `from aeao import aeao
+  const pythonExample = `from sematryx import Sematryx
 import numpy as np
+
+# Initialize client
+client = Sematryx(api_key="sk-your-api-key")
 
 # Define your objective function
 def sphere(x):
     return sum(xi**2 for xi in x)
 
 # Run optimization
-result = aeao(
+result = client.optimize(
+    objective="minimize",
+    variables=[
+        {"name": "x", "bounds": (-5, 5)},
+        {"name": "y", "bounds": (-5, 5)},
+    ],
     objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    max_evaluations=1000
 )
 
-print(f"Best solution: {result['best_solution']}")
-print(f"Best fitness: {result['best_fitness']}")`
+print(f"Solution: {result.solution}")
+print(f"Value: {result.value}")`
 
-  const tetradConfig = `from sematryx import sematryx, AEAOTetradCompleteConfig
+  const tetradConfig = `from sematryx import Sematryx
 
-# Use preset configuration
-result = sematryx(
+client = Sematryx(api_key="sk-your-api-key")
+
+# Use optimization modes for speed vs quality tradeoff
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
     objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    preset="production"  # development, production, research, enterprise, minimal
+    mode="balanced"  # speed, balanced, quality
 )
 
-# Or enable specific tetrad pillars
-result = aeao(
+# Enable explainability with different levels
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
     objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    use_agentic_intelligence=True,
-    use_autodidactic_intelligence=True,
-    explanation_level=3
+    explanation_level=2,  # 0=none, 1=basic, 2=detailed, 3=comprehensive
 )
 
-# Or complete custom configuration
-config = AEAOTetradCompleteConfig.enterprise()
-config.expository.explanation_level = 4
-result = aeao(objective_function=sphere, bounds=[[-5, 5], [-5, 5]], config=config)`
+# Enable private learning for better performance over time
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
+    objective_function=sphere,
+    learning={"read_from_private": True, "write_to_private": True}
+)`
 
-  const domainOptimization = `from aeao import financial_optimize, healthcare_optimize, supply_chain_optimize
+  const domainOptimization = `from sematryx import Sematryx
+
+client = Sematryx(api_key="sk-your-api-key")
 
 # Financial portfolio optimization
-result = financial_optimize(
-    problem_type="portfolio",
-    config={
-        "assets": ["AAPL", "GOOGL", "MSFT"],
-        "risk_tolerance": 0.3
-    },
-    max_evaluations=2000
+result = client.optimize_portfolio(
+    assets=["AAPL", "GOOGL", "MSFT", "AMZN"],
+    returns=[0.12, 0.10, 0.08, 0.15],
+    covariance=[...],  # 4x4 covariance matrix
+    target_return=0.10,
+    max_position=0.4,
+    explanation_level=2,
 )
 
-# Healthcare drug discovery
-result = healthcare_optimize(
-    problem_type="drug_discovery",
-    config={
-        "target_protein": "protein_id_123",
-        "constraints": {"toxicity": "< 0.1"}
-    }
-)
+# General optimization with custom function
+def inventory_cost(params):
+    reorder_point, order_qty, safety_stock = params
+    # Custom cost calculation
+    return total_cost
 
-# Supply chain routing
-result = supply_chain_optimize(
-    problem_type="vehicle_routing",
-    config={
-        "locations": [...],
-        "vehicle_capacity": 1000
-    }
+result = client.optimize(
+    objective="minimize",
+    variables=[
+        {"name": "reorder_point", "bounds": (100, 1000)},
+        {"name": "order_qty", "bounds": (200, 2000)},
+        {"name": "safety_stock", "bounds": (0, 500)},
+    ],
+    objective_function=inventory_cost,
 )`
 
   const optimizationResponse = `{
@@ -256,46 +267,46 @@ result = supply_chain_optimize(
                 Explainability
               </h3>
               <p className="text-gray-700 mb-3">
-                Get detailed explanations of optimization decisions with configurable explanation levels (0-5).
+                Get detailed explanations of optimization decisions with configurable levels (0-3).
               </p>
               <CodeBlock
-                code={`result = aeao(objective, bounds, explanation_level=4)`}
+                code={`result = client.optimize(..., explanation_level=2)`}
                 language="python"
               />
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Self-Improvement
+                Private Learning
               </h3>
               <p className="text-gray-700 mb-3">
-                Enable learning from optimization experience to improve performance on repeated problems.
+                Learn from your optimizations to improve performance on similar problems.
               </p>
               <CodeBlock
-                code={`result = aeao(objective, bounds, use_autodidactic_intelligence=True)`}
+                code={`result = client.optimize(..., learning={"read_from_private": True, "write_to_private": True})`}
                 language="python"
               />
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Multi-Agent Coordination
+                Optimization Modes
               </h3>
               <p className="text-gray-700 mb-3">
-                Use multiple AI agents to collaboratively select the best optimization strategy.
+                Balance speed vs quality with preset modes.
               </p>
               <CodeBlock
-                code={`result = aeao(objective, bounds, use_agentic_intelligence=True)`}
+                code={`result = client.optimize(..., mode="quality")  # speed, balanced, quality`}
                 language="python"
               />
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                GPU Acceleration
+                Integer Variables
               </h3>
               <p className="text-gray-700 mb-3">
-                Accelerate optimization with GPU/CUDA support for large-scale problems.
+                Support for mixed-integer optimization problems.
               </p>
               <CodeBlock
-                code={`result = aeao(objective, bounds, use_gpu_acceleration=True)`}
+                code={`variables=[{"name": "count", "bounds": (1, 100), "type": "integer"}]`}
                 language="python"
               />
             </div>

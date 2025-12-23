@@ -10,7 +10,8 @@ export default function ErrorHandlingPage() {
   }
 }`
 
-  const pythonHandling = `from aeao.exceptions import (
+  const pythonHandling = `from sematryx import Sematryx
+from sematryx.exceptions import (
     SematryxError,
     AuthenticationError,
     RateLimitError,
@@ -19,10 +20,13 @@ export default function ErrorHandlingPage() {
     ServerError
 )
 
+client = Sematryx(api_key="sk-your-api-key")
+
 try:
     result = client.optimize(
-        objective_function=objective,
-        bounds=bounds
+        objective="minimize",
+        variables=[{"name": "x", "bounds": (-5, 5)}],
+        objective_function=objective
     )
 except AuthenticationError:
     print("Invalid API key. Please check your credentials.")
@@ -38,10 +42,15 @@ except ServerError:
 except SematryxError as e:
     print(f"Error: {e.message}")`
 
-  const javascriptHandling = `try {
-  const result = await aeao.optimize({
-    objective_function: objective,
-    bounds: bounds
+  const javascriptHandling = `import { Sematryx } from '@sematryx/javascript-sdk'
+
+const client = new Sematryx('sk-your-api-key')
+
+try {
+  const result = await client.optimize({
+    objective: 'minimize',
+    variables: [{ name: 'x', bounds: [-5, 5] }],
+    objectiveFunction: objective
   })
 } catch (error) {
   switch (error.code) {
@@ -67,7 +76,7 @@ except SematryxError as e:
 }`
 
   const retryLogic = `import time
-from aeao.exceptions import RateLimitError, ServerError
+from sematryx.exceptions import RateLimitError, ServerError
 
 def make_request_with_retry(func, max_retries=3):
     for attempt in range(max_retries):

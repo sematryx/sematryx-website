@@ -31,4 +31,4 @@ Visit `http://localhost:3000` to view the application.
 
 ## Live Website
 
-[https://aeao-website.vercel.app](https://aeao-website.vercel.app)
+[https://sematryx.com](https://sematryx.com)

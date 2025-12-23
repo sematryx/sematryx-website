@@ -1,39 +1,47 @@
 import CodeBlock from '@/components/CodeBlock'
 
 export default function TetradConfigPage() {
-  const presetConfig = `from aeao import aeao
+  const presetConfig = `from sematryx import Sematryx
 
-# Use preset configuration
-result = aeao(
+client = Sematryx(api_key="sk-your-api-key")
+
+# Use optimization modes for speed vs quality tradeoffs
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
     objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    preset="production"  # development, production, research, enterprise, minimal
+    mode="balanced"  # speed, balanced, quality
 )`
 
-  const simpleConfig = `from aeao import aeao
+  const simpleConfig = `from sematryx import Sematryx
 
-# Enable specific tetrad pillars
-result = aeao(
+client = Sematryx(api_key="sk-your-api-key")
+
+# Enable explainability
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
     objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    use_agentic_intelligence=True,
-    use_autodidactic_intelligence=True,
-    explanation_level=3
-)`
+    explanation_level=2  # 0=none, 1=basic, 2=detailed, 3=comprehensive
+)
 
-  const advancedConfig = `from sematryx import sematryx, AEAOTetradCompleteConfig
+print(result.explanation)  # Human-readable explanation of the solution`
 
-# Complete custom configuration
-config = AEAOTetradCompleteConfig.enterprise()
-config.expository.explanation_level = 4
-config.agentic.max_agents_per_problem = 5
-config.autodidactic.learning_enabled = True
-config.domain_extension.use_domain_libraries = True
+  const advancedConfig = `from sematryx import Sematryx
 
-result = aeao(
+client = Sematryx(api_key="sk-your-api-key")
+
+# Enable private learning for improved performance over time
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
     objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    config=config
+    mode="quality",
+    explanation_level=3,
+    learning={
+        "read_from_private": True,   # Learn from your past optimizations
+        "write_to_private": True,    # Store result for future learning
+    }
 )`
 
   const restAPIConfig = `curl -X POST https://api.sematryx.com/v1/optimize \\
@@ -62,32 +70,31 @@ result = aeao(
 
   const javascriptConfig = `import { Sematryx } from '@sematryx/javascript-sdk'
 
-const sematryx = new Sematryx('your-api-key')
+const client = new Sematryx('sk-your-api-key')
 
-// Option 1: Use preset
-const result = await aeao.optimize({
-  objective_function: sphere,
-  bounds: [[-5, 5], [-5, 5]],
-  preset: 'production'
+// Basic optimization
+const result = await client.optimize({
+  objective: 'minimize',
+  variables: [
+    { name: 'x', bounds: [-5, 5] },
+    { name: 'y', bounds: [-5, 5] }
+  ],
+  objectiveFunction: sphere,
+  mode: 'balanced'
 })
 
-// Option 2: Custom tetrad config
-const result = await aeao.optimize({
-  objective_function: sphere,
-  bounds: [[-5, 5], [-5, 5]],
-  tetrad: {
-    use_agentic_intelligence: true,
-    use_expository_intelligence: true,
-    use_autodidactic_intelligence: true,
-    use_domain_extension: true
-  },
-  expository: {
-    explanation_level: 4
-  },
-  agentic: {
-    max_agents_per_problem: 5
-  }
-})`
+// With explainability
+const result = await client.optimize({
+  objective: 'minimize',
+  variables: [
+    { name: 'x', bounds: [-5, 5] },
+    { name: 'y', bounds: [-5, 5] }
+  ],
+  objectiveFunction: sphere,
+  explanationLevel: 2
+})
+
+console.log(result.explanation)`
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">

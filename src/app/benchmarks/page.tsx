@@ -451,6 +451,65 @@ export default function BenchmarksPage() {
             </div>
           </div>
 
+          {/* Run Your Own Benchmarks */}
+          <div className="bg-brand-primary/5 border border-brand-primary/20 rounded-2xl p-6 md:p-8 mb-8">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-text-primary mb-3">
+                📓 Run Your Own Benchmarks
+              </h2>
+              <p className="text-text-secondary max-w-2xl mx-auto">
+                Download our Jupyter notebooks to reproduce these benchmarks and test on your own problems.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+              <a
+                href="https://github.com/sematryx/aeao/blob/main/notebooks/benchmarks/01_sematryx_vs_scipy.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-elevated rounded-xl p-4 border border-elevated-3 hover:border-brand-primary/50 transition-all group flex items-center gap-4"
+              >
+                <span className="text-3xl">🏆</span>
+                <div>
+                  <h3 className="font-semibold text-text-primary group-hover:text-brand-primary transition-colors">
+                    Sematryx vs SciPy
+                  </h3>
+                  <p className="text-xs text-text-secondary">Quick comparison on 4 test functions</p>
+                </div>
+              </a>
+              
+              <a
+                href="https://github.com/sematryx/aeao/blob/main/notebooks/benchmarks/02_comprehensive_competitive_benchmark.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-elevated rounded-xl p-4 border border-elevated-3 hover:border-brand-primary/50 transition-all group flex items-center gap-4"
+              >
+                <span className="text-3xl">📊</span>
+                <div>
+                  <h3 className="font-semibold text-text-primary group-hover:text-brand-primary transition-colors">
+                    Comprehensive Benchmark
+                  </h3>
+                  <p className="text-xs text-text-secondary">12 problems, 6 optimizers, learning demo</p>
+                </div>
+              </a>
+              
+              <a
+                href="https://github.com/sematryx/aeao/blob/main/notebooks/benchmarks/03_batch_optimization_benchmark.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-elevated rounded-xl p-4 border border-elevated-3 hover:border-brand-primary/50 transition-all group flex items-center gap-4"
+              >
+                <span className="text-3xl">🚀</span>
+                <div>
+                  <h3 className="font-semibold text-text-primary group-hover:text-brand-primary transition-colors">
+                    Batch Processing
+                  </h3>
+                  <p className="text-xs text-text-secondary">REST API overhead amortization</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
           {/* Methodology */}
           <div className="bg-elevated rounded-2xl border border-elevated-3 p-6 md:p-8">
             <h2 className="text-2xl font-bold text-text-primary mb-6 text-center">

@@ -105,15 +105,18 @@ export default function RESTAPIPage() {
   }
 }`
 
+  // Categories marked as 'coming_soon' are planned for future releases
+  const comingSoonCategories = ['Context', 'Data Lake', 'Examples', 'Webhooks']
+  
   const endpoints = [
-    // Optimization
+    // Optimization - CORE (Available)
     { method: 'POST', path: '/optimization/', description: 'Start an optimization operation', category: 'Optimization' },
     { method: 'GET', path: '/optimization/status/{operation_id}', description: 'Get optimization status', category: 'Optimization' },
     { method: 'GET', path: '/optimization/result/{operation_id}', description: 'Get optimization result', category: 'Optimization' },
     { method: 'POST', path: '/optimization/cancel/{operation_id}', description: 'Cancel running optimization', category: 'Optimization' },
     { method: 'GET', path: '/optimization/', description: 'List all optimization operations', category: 'Optimization' },
     
-    // Identity Management
+    // Identity Management (Available)
     { method: 'POST', path: '/identity/', description: 'Create client identity', category: 'Identity' },
     { method: 'GET', path: '/identity/{client_id}', description: 'Get client identity', category: 'Identity' },
     { method: 'GET', path: '/identity/', description: 'List client identities', category: 'Identity' },
@@ -128,14 +131,14 @@ export default function RESTAPIPage() {
     { method: 'GET', path: '/identity/stats/hub', description: 'Get identity hub statistics', category: 'Identity' },
     { method: 'POST', path: '/identity/{client_id}/validate', description: 'Validate client identity', category: 'Identity' },
     
-    // Batch Operations
+    // Batch Operations (Available)
     { method: 'POST', path: '/batch/submit', description: 'Submit batch optimization job', category: 'Batch' },
     { method: 'GET', path: '/batch/status/{batch_id}', description: 'Get batch job status', category: 'Batch' },
     { method: 'GET', path: '/batch/results/{batch_id}', description: 'Get batch results', category: 'Batch' },
     { method: 'POST', path: '/batch/cancel/{batch_id}', description: 'Cancel batch job', category: 'Batch' },
     { method: 'GET', path: '/batch/', description: 'List batch jobs', category: 'Batch' },
     
-    // Learning System
+    // Learning System (Available)
     { method: 'POST', path: '/learning/train', description: 'Train learning model', category: 'Learning' },
     { method: 'GET', path: '/learning/status/{operation_id}', description: 'Get training status', category: 'Learning' },
     { method: 'GET', path: '/learning/models', description: 'List trained models', category: 'Learning' },
@@ -145,14 +148,14 @@ export default function RESTAPIPage() {
     { method: 'GET', path: '/learning/insights', description: 'Get learning insights', category: 'Learning' },
     { method: 'POST', path: '/learning/cancel/{operation_id}', description: 'Cancel training', category: 'Learning' },
     
-    // Advanced Optimization
+    // Advanced Optimization (Available)
     { method: 'POST', path: '/advanced/multi-objective', description: 'Multi-objective optimization', category: 'Advanced' },
     { method: 'POST', path: '/advanced/sensitivity-analysis', description: 'Sensitivity analysis', category: 'Advanced' },
     { method: 'GET', path: '/advanced/status/{operation_id}', description: 'Get advanced operation status', category: 'Advanced' },
     { method: 'GET', path: '/advanced/result/{operation_id}', description: 'Get advanced operation result', category: 'Advanced' },
     { method: 'GET', path: '/advanced/', description: 'List advanced operations', category: 'Advanced' },
     
-    // Context Intelligence
+    // Context Intelligence - COMING SOON
     { method: 'POST', path: '/context/analyze', description: 'Analyze problem context', category: 'Context' },
     { method: 'POST', path: '/context/similarity', description: 'Compute context similarity', category: 'Context' },
     { method: 'POST', path: '/context/synthesize', description: 'Synthesize contexts', category: 'Context' },
@@ -161,7 +164,7 @@ export default function RESTAPIPage() {
     { method: 'GET', path: '/context/insights', description: 'Get context insights', category: 'Context' },
     { method: 'GET', path: '/context/', description: 'List context operations', category: 'Context' },
     
-    // Data Lake
+    // Data Lake - COMING SOON
     { method: 'POST', path: '/data-lake/connections', description: 'Create data connection', category: 'Data Lake' },
     { method: 'POST', path: '/data-lake/datasets/upload', description: 'Upload dataset', category: 'Data Lake' },
     { method: 'POST', path: '/data-lake/optimization-data', description: 'Store optimization data', category: 'Data Lake' },
@@ -174,7 +177,7 @@ export default function RESTAPIPage() {
     { method: 'GET', path: '/data-lake/analytics/summary', description: 'Get analytics summary', category: 'Data Lake' },
     { method: 'GET', path: '/data-lake/', description: 'List data lake operations', category: 'Data Lake' },
     
-    // Analytics
+    // Analytics (Available)
     { method: 'POST', path: '/analytics/analyze', description: 'Request analytics analysis', category: 'Analytics' },
     { method: 'POST', path: '/analytics/metrics/submit', description: 'Submit performance metrics', category: 'Analytics' },
     { method: 'POST', path: '/analytics/reports/generate', description: 'Generate performance report', category: 'Analytics' },
@@ -187,18 +190,18 @@ export default function RESTAPIPage() {
     { method: 'GET', path: '/analytics/performance', description: 'Get performance analytics', category: 'Analytics' },
     { method: 'GET', path: '/analytics/', description: 'List analytics operations', category: 'Analytics' },
     
-    // Configuration
+    // Configuration (Available)
     { method: 'GET', path: '/config/', description: 'Get API configuration', category: 'Configuration' },
     { method: 'GET', path: '/config/version', description: 'Get API version', category: 'Configuration' },
     { method: 'GET', path: '/config/features', description: 'Get available features', category: 'Configuration' },
     { method: 'GET', path: '/config/limits', description: 'Get operational limits', category: 'Configuration' },
     
-    // Health
+    // Health (Available)
     { method: 'GET', path: '/health/', description: 'Basic health check', category: 'Health' },
     { method: 'GET', path: '/health/detailed', description: 'Detailed health status', category: 'Health' },
     { method: 'GET', path: '/health/ping', description: 'Ping endpoint', category: 'Health' },
     
-    // Federated Learning
+    // Federated Learning (Available)
     { method: 'POST', path: '/federated-learning/nodes/register', description: 'Register federated node', category: 'Federated Learning' },
     { method: 'POST', path: '/federated-learning/sessions/create', description: 'Create federated session', category: 'Federated Learning' },
     { method: 'POST', path: '/federated-learning/sessions/{session_id}/rounds/start', description: 'Start federated round', category: 'Federated Learning' },
@@ -209,7 +212,7 @@ export default function RESTAPIPage() {
     { method: 'GET', path: '/federated-learning/operations/{operation_id}', description: 'Get operation status', category: 'Federated Learning' },
     { method: 'GET', path: '/federated-learning/', description: 'List federated learning operations', category: 'Federated Learning' },
     
-    // Examples
+    // Examples - COMING SOON
     { method: 'GET', path: '/examples/', description: 'List examples', category: 'Examples' },
     { method: 'GET', path: '/examples/categories', description: 'Get example categories', category: 'Examples' },
     { method: 'GET', path: '/examples/{example_id}', description: 'Get example details', category: 'Examples' },
@@ -617,9 +620,22 @@ export default function RESTAPIPage() {
             const categories = Array.from(new Set(endpoints.map(e => e.category))).sort()
             return categories.map(category => {
               const categoryEndpoints = endpoints.filter(e => e.category === category)
+              const isComingSoon = comingSoonCategories.includes(category)
               return (
                 <div key={category} className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{category}</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    {category}
+                    {isComingSoon && (
+                      <span className="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full font-medium">
+                        Coming Soon
+                      </span>
+                    )}
+                  </h3>
+                  {isComingSoon && (
+                    <p className="text-sm text-gray-500 mb-3 italic">
+                      These endpoints are planned for a future release. Contact us if you need early access.
+                    </p>
+                  )}
                   <div className="space-y-2">
                     {categoryEndpoints.map((endpoint, index) => {
                       const endpointKey = `${endpoint.method}-${endpoint.path}-${index}`

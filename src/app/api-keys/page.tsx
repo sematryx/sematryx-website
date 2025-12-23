@@ -1,54 +1,35 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { useUser } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { pricingPlans } from '@/lib/stripe'
+import Link from 'next/link'
+import { Key, Zap, Shield, ArrowRight } from 'lucide-react'
 
 export default function ApiKeysPage() {
-  const [selectedPlan, setSelectedPlan] = useState('pro')
-  const [email, setEmail] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  const { isSignedIn, isLoaded } = useUser()
+  const router = useRouter()
 
-  const handleGetApiKey = async () => {
-    if (!email) {
-      alert('Please enter your email address')
-      return
+  useEffect(() => {
+    // If user is already signed in, redirect to dashboard
+    if (isLoaded && isSignedIn) {
+      router.push('/dashboard/keys')
     }
-    // For free API key generation, redirect to success page
-    window.location.href = `/success?email=${encodeURIComponent(email)}`
-  }
+  }, [isLoaded, isSignedIn, router])
 
-  const handleSubscribe = async (planId: string) => {
-    if (!email) {
-      alert('Please enter your email address')
-      return
-    }
-
-    setIsLoading(true)
-    try {
-      const response = await fetch('/api/stripe/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          planId,
-          email,
-        }),
-      })
-
-      const { url } = await response.json()
-      
-      if (url) {
-        window.location.href = url
-      }
-    } catch (error) {
-      console.error('Error creating checkout session:', error)
-      alert('Something went wrong. Please try again.')
-    } finally {
-      setIsLoading(false)
-    }
+  // Show loading while checking auth
+  if (!isLoaded) {
+    return (
+      <main>
+        <Header />
+        <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] min-h-[calc(100vh-200px)] flex items-center justify-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-500"></div>
+        </div>
+        <Footer />
+      </main>
+    )
   }
 
   return (
@@ -56,86 +37,84 @@ export default function ApiKeysPage() {
       <Header />
       
       <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-500/10 rounded-2xl mb-6">
+              <Key className="h-8 w-8 text-primary-400" />
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Get Your API Key
             </h1>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Start optimizing with <span className="text-primary-400">Sematryx</span> today. Choose the plan that fits your optimization needs.
+              Create an account to access the <span className="text-primary-400">Sematryx</span> API.
+              Manage multiple keys, track usage, and more.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-            {pricingPlans.map((plan) => (
-              <div
-                key={plan.id}
-                className={`relative bg-[#1a1f2e] rounded-2xl p-8 ${
-                  plan.popular ? 'border-2 border-primary-500' : 'border border-gray-700'
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-primary-500 text-white px-4 py-1 rounded-full text-sm font-medium">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                  <div className="text-3xl font-bold text-primary-400 mb-2">
-                    {typeof plan.price === 'number' ? (
-                      <>
-                        ${plan.price}
-                        <span className="text-lg text-gray-500 font-normal">/free</span>
-                      </>
-                    ) : (
-                      plan.price
-                    )}
-                  </div>
-                  <p className="text-gray-400 mb-6">{plan.description}</p>
-                </div>
-
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <svg className="h-5 w-5 text-primary-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  onClick={() => plan.id === 'free' ? handleGetApiKey() : handleSubscribe(plan.id)}
-                  disabled={isLoading}
-                  className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors duration-200 ${
-                    plan.popular
-                      ? 'bg-primary-600 text-white hover:bg-primary-500'
-                      : plan.id === 'free'
-                      ? 'bg-primary-900/30 text-primary-400 hover:bg-primary-900/50'
-                      : 'bg-primary-900/30 text-primary-400 hover:bg-primary-900/50'
-                  }`}
-                >
-                  {plan.id === 'free' ? 'Get API Key' : 'Setup Billing'}
-                </button>
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6 text-center">
+              <div className="bg-blue-500/10 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Key className="h-6 w-6 text-blue-400" />
               </div>
-            ))}
+              <h3 className="text-lg font-semibold text-white mb-2">Multiple Keys</h3>
+              <p className="text-gray-500 text-sm">
+                Create separate keys for development, staging, and production
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6 text-center">
+              <div className="bg-green-500/10 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-6 w-6 text-green-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">Usage Analytics</h3>
+              <p className="text-gray-500 text-sm">
+                Track API calls, monitor performance, and optimize usage
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6 text-center">
+              <div className="bg-purple-500/10 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Shield className="h-6 w-6 text-purple-400" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">Secure Access</h3>
+              <p className="text-gray-500 text-sm">
+                Revoke keys instantly, rotate credentials safely
+              </p>
+            </div>
           </div>
 
-          <div className="max-w-md mx-auto">
-            <div className="bg-[#242b3d] rounded-lg p-6 border border-gray-700">
-              <h3 className="text-lg font-semibold text-white mb-4">Enter your email to continue</h3>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="w-full px-4 py-2 bg-[#1a1f2e] border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
+          {/* CTA Buttons */}
+          <div className="bg-[#1a1f2e] rounded-2xl border border-gray-800 p-8 text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Ready to get started?
+            </h2>
+            <p className="text-gray-400 mb-8">
+              Create a free account to generate your API key instantly
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/sign-up"
+                className="inline-flex items-center justify-center gap-2 bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-500 transition-colors"
+              >
+                Create Free Account
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link
+                href="/sign-in"
+                className="inline-flex items-center justify-center gap-2 border border-gray-700 text-gray-300 px-8 py-3 rounded-lg font-semibold hover:bg-[#242b3d] hover:text-white transition-colors"
+              >
+                Sign In
+              </Link>
             </div>
+          </div>
+
+          {/* Pricing Link */}
+          <div className="text-center mt-8">
+            <p className="text-gray-500">
+              Looking for pricing information?{' '}
+              <Link href="/pricing" className="text-primary-400 hover:text-primary-300">
+                View our plans →
+              </Link>
+            </p>
           </div>
         </div>
       </div>

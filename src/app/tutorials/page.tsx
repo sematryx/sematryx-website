@@ -124,6 +124,74 @@ export default function TutorialsPage() {
             ))}
           </div>
 
+          {/* Jupyter Notebooks Section */}
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-text-primary mb-3">
+                📓 Interactive Jupyter Notebooks
+              </h2>
+              <p className="text-text-secondary max-w-2xl mx-auto">
+                Run these notebooks locally or in Google Colab. Perfect for hands-on learning with the Sematryx SDK.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <a
+                href="https://github.com/sematryx/aeao/blob/main/notebooks/tutorials/01_sematryx_quick_start.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-2xl">🚀</span>
+                  <span className="text-xs font-medium text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full">Beginner</span>
+                </div>
+                <h3 className="font-semibold text-text-primary group-hover:text-brand-primary transition-colors mb-2">
+                  Quick Start
+                </h3>
+                <p className="text-sm text-text-secondary">
+                  Your first optimization in 5 lines of code. Install, initialize, optimize.
+                </p>
+              </a>
+              
+              <a
+                href="https://github.com/sematryx/aeao/blob/main/notebooks/tutorials/02_portfolio_optimization.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-2xl">📊</span>
+                  <span className="text-xs font-medium text-amber-400 bg-amber-400/10 px-2 py-1 rounded-full">Intermediate</span>
+                </div>
+                <h3 className="font-semibold text-text-primary group-hover:text-brand-primary transition-colors mb-2">
+                  Portfolio Optimization
+                </h3>
+                <p className="text-sm text-text-secondary">
+                  Financial optimization with constraints, risk parity, and audit trails.
+                </p>
+              </a>
+              
+              <a
+                href="https://github.com/sematryx/aeao/blob/main/notebooks/tutorials/03_domain_examples.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-2xl">🏭</span>
+                  <span className="text-xs font-medium text-rose-400 bg-rose-400/10 px-2 py-1 rounded-full">Advanced</span>
+                </div>
+                <h3 className="font-semibold text-text-primary group-hover:text-brand-primary transition-colors mb-2">
+                  Domain Examples
+                </h3>
+                <p className="text-sm text-text-secondary">
+                  Healthcare, supply chain, marketing, and ML hyperparameter tuning.
+                </p>
+              </a>
+            </div>
+          </div>
+
           <div className="mt-16 text-center">
             <div className="bg-elevated rounded-xl p-8 max-w-2xl mx-auto border border-elevated-3">
               <h2 className="text-2xl font-semibold text-text-primary mb-4">

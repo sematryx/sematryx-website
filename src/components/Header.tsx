@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import Logo from './Logo'
 
 export default function Header() {
@@ -27,7 +28,7 @@ export default function Header() {
           </div>
 
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-center space-x-8">
               <Link href="/why-sematryx" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Why Sematryx
               </Link>
@@ -46,13 +47,45 @@ export default function Header() {
               <Link href="/mcp" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 MCP
               </Link>
-              <Link href="/api-keys" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
-                Get API Key
-              </Link>
+              
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
+                    Sign In
+                  </button>
+                </SignInButton>
+                <Link href="/sign-up" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
+                  Get Started
+                </Link>
+              </SignedOut>
+              
+              <SignedIn>
+                <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
+                  Dashboard
+                </Link>
+                <UserButton 
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: 'h-8 w-8',
+                    }
+                  }}
+                />
+              </SignedIn>
             </div>
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <SignedIn>
+              <UserButton 
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    avatarBox: 'h-8 w-8',
+                  }
+                }}
+              />
+            </SignedIn>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 p-2 rounded-md"
@@ -86,9 +119,23 @@ export default function Header() {
               <Link href="/mcp" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 MCP
               </Link>
-              <Link href="/api-keys" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium">
-                Get API Key
-              </Link>
+              
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium w-full text-left">
+                    Sign In
+                  </button>
+                </SignInButton>
+                <Link href="/sign-up" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium">
+                  Get Started
+                </Link>
+              </SignedOut>
+              
+              <SignedIn>
+                <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium">
+                  Dashboard
+                </Link>
+              </SignedIn>
             </div>
           </div>
         )}
