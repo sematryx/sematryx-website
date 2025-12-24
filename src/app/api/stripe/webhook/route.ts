@@ -6,9 +6,10 @@ import { supabaseAdmin, isSupabaseConfigured } from '@/lib/supabase'
 export const maxDuration = 30
 
 // Map Stripe price IDs back to plan names
-const getPlanFromPriceId = (priceId: string): 'starter' | 'pro' | 'enterprise' | 'free' => {
-  const priceIdMap: Record<string, 'starter' | 'pro' | 'enterprise'> = {
+const getPlanFromPriceId = (priceId: string): 'starter' | 'growth' | 'pro' | 'enterprise' | 'free' => {
+  const priceIdMap: Record<string, 'starter' | 'growth' | 'pro' | 'enterprise'> = {
     [process.env.STRIPE_STARTER_PRICE_ID || '']: 'starter',
+    [process.env.STRIPE_GROWTH_PRICE_ID || '']: 'growth',
     [process.env.STRIPE_PRO_PRICE_ID || '']: 'pro',
     [process.env.STRIPE_ENTERPRISE_PRICE_ID || '']: 'enterprise',
   }

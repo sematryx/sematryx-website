@@ -6,7 +6,7 @@ import { CreditCard, Receipt, TrendingUp, Zap, Database, Check, HardDrive } from
 import { Suspense } from 'react'
 
 interface SubscriptionData {
-  plan: 'free' | 'starter' | 'pro' | 'enterprise'
+  plan: 'free' | 'starter' | 'growth' | 'pro' | 'enterprise'
   limits: {
     optimizations: number
     apiCalls: number
@@ -34,13 +34,15 @@ interface SubscriptionData {
 const planDisplayNames: Record<string, string> = {
   free: 'Free',
   starter: 'Starter',
+  growth: 'Growth',
   pro: 'Pro',
   enterprise: 'Enterprise',
 }
 
 const planPrices: Record<string, string> = {
   free: '$0',
-  starter: '$79/mo',
+  starter: '$29/mo',
+  growth: '$79/mo',
   pro: '$299/mo',
   enterprise: '$999+/mo',
 }
@@ -252,8 +254,8 @@ function BillingContent() {
         </div>
       </div>
 
-      {/* Private Learning Store Info */}
-      {plan !== 'free' && (
+      {/* Private Learning Store Info - only for Growth+ plans */}
+      {(plan === 'growth' || plan === 'pro' || plan === 'enterprise') && (
         <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-purple-500/10 p-2 rounded-lg">

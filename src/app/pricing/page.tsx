@@ -28,9 +28,9 @@ export default function PricingPage() {
                   What happens when I hit my optimization limit?
                 </h3>
                 <p className="text-text-secondary">
-                  On paid plans (Starter+), you can continue optimizing with overage billing. 
-                  STARTER users pay $0.10 per additional optimization, PRO users pay $0.05, 
-                  and Enterprise users pay $0.02. Free tier users need to upgrade to continue.
+                  On paid plans, you can continue optimizing with overage billing. 
+                  Starter users pay $0.25, Growth users pay $0.10, Pro users pay $0.05, 
+                  and Enterprise users pay $0.02 per additional optimization. Free tier users need to upgrade to continue.
                 </p>
               </div>
               
@@ -51,10 +51,10 @@ export default function PricingPage() {
                   How does billing work for private learning?
                 </h3>
                 <p className="text-text-secondary">
-                  Each plan includes a quota of private learning operations per month. 
-                  STARTER includes 2,000 operations and 500MB storage. 
-                  PRO includes 10,000 operations and 2GB storage. 
-                  Beyond your included quota, you pay per-operation overage rates.
+                  Private Learning Store is available on Growth plans and above. 
+                  Growth includes 2,000 operations and 500MB storage. 
+                  Pro includes 10,000 operations and 2GB storage. 
+                  Beyond your included quota, you pay per-operation overage rates. Storage is billed monthly.
                 </p>
               </div>
               

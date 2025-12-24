@@ -1,6 +1,6 @@
 -- Add subscription tracking fields to users table
 ALTER TABLE users 
-ADD COLUMN IF NOT EXISTS subscription_status TEXT DEFAULT 'free' CHECK (subscription_status IN ('free', 'starter', 'pro', 'enterprise')),
+ADD COLUMN IF NOT EXISTS subscription_status TEXT DEFAULT 'free' CHECK (subscription_status IN ('free', 'starter', 'growth', 'pro', 'enterprise')),
 ADD COLUMN IF NOT EXISTS stripe_subscription_id TEXT,
 ADD COLUMN IF NOT EXISTS subscription_ends_at TIMESTAMPTZ;
 

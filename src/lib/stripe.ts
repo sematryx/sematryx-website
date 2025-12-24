@@ -15,6 +15,18 @@ export const planLimits = {
     overageRate: null, // No overage on free
   },
   starter: {
+    optimizations: 100,
+    apiCalls: 1000,
+    concurrent: 1,
+    privateStorage: 0, // No private storage on starter
+    privateAccess: 0,
+    overageRate: {
+      optimization: 0.25,
+      privateAccess: null,
+      storage: null,
+    },
+  },
+  growth: {
     optimizations: 1000,
     apiCalls: 10000,
     concurrent: 3,
@@ -69,15 +81,29 @@ export const pricingPlans = [
   {
     id: 'starter',
     name: 'Starter',
+    price: 29,
+    period: '/month',
+    description: 'For individual developers',
+    features: [
+      '100 optimizations/month',
+      '1,000 API calls/day',
+      'Public learning pool access',
+      'Email support',
+      '$0.25/optimization overage'
+    ]
+  },
+  {
+    id: 'growth',
+    name: 'Growth',
     price: 79,
     period: '/month',
-    description: 'For individuals and small teams',
+    description: 'For small teams',
     popular: true,
     features: [
       '1,000 optimizations/month',
       '10,000 API calls/day',
       'Private Learning Store (500MB)',
-      'Email support',
+      'Priority email support',
       '$0.10/optimization overage'
     ]
   },

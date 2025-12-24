@@ -7,6 +7,7 @@ import { getOrCreateUser } from '@/lib/api-keys'
 // Map plan IDs to Stripe price IDs from environment
 const getPriceIdMap = () => ({
   starter: process.env.STRIPE_STARTER_PRICE_ID,
+  growth: process.env.STRIPE_GROWTH_PRICE_ID,
   pro: process.env.STRIPE_PRO_PRICE_ID,
   enterprise: process.env.STRIPE_ENTERPRISE_PRICE_ID,
 })
