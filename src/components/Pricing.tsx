@@ -19,7 +19,6 @@ interface PricingTier {
   }
   cta: string
   ctaLink: string
-  highlighted?: boolean
 }
 
 const tiers: PricingTier[] = [
@@ -88,8 +87,7 @@ const tiers: PricingTier[] = [
       storageOverage: '$1.00/GB'
     },
     cta: 'Start Free Trial',
-    ctaLink: '/api/stripe/checkout?plan=growth',
-    highlighted: true
+    ctaLink: '/api/stripe/checkout?plan=growth'
   },
   {
     name: 'Pro',
@@ -196,22 +194,11 @@ export default function Pricing() {
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className={`relative rounded-2xl p-5 ${
-                tier.highlighted
-                  ? 'bg-bg-secondary/80 border-2 border-primary-500 ring-1 ring-primary-500/20'
-                  : 'bg-bg-secondary/50 border border-gray-700'
-              }`}
+              className="relative rounded-2xl p-5 bg-bg-secondary/50 border border-gray-700 hover:border-gray-600 transition-colors"
             >
 
               <div className="mb-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-lg font-bold text-white">{tier.name}</h3>
-                  {tier.highlighted && (
-                    <span className="bg-primary-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
-                      Popular
-                    </span>
-                  )}
-                </div>
+                <h3 className="text-lg font-bold text-white mb-2">{tier.name}</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-3xl font-bold text-white">{tier.price}</span>
                   <span className="text-text-secondary text-sm">{tier.period}</span>
@@ -242,11 +229,7 @@ export default function Pricing() {
 
               <a
                 href={tier.ctaLink}
-                className={`block w-full py-3 px-4 rounded-lg text-center text-sm font-semibold transition-all ${
-                  tier.highlighted
-                    ? 'bg-primary-600 text-white hover:bg-primary-500'
-                    : 'bg-[#374151] text-white hover:bg-[#4B5563] border border-gray-600'
-                }`}
+                className="block w-full py-3 px-4 rounded-lg text-center text-sm font-semibold transition-all bg-[#374151] text-white hover:bg-[#4B5563] border border-gray-600"
               >
                 {tier.cta}
               </a>
