@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { CreditCard, Receipt, TrendingUp, AlertCircle } from 'lucide-react'
+import { CreditCard, Receipt, TrendingUp, Zap } from 'lucide-react'
 
 export default function BillingPage() {
   const [loading] = useState(false)
@@ -12,6 +12,7 @@ export default function BillingPage() {
     usage: 0,
     limit: 100,
     nextBillingDate: null,
+    hasPaymentMethod: false,
   }
 
   const handleManageBilling = async () => {
@@ -70,8 +71,12 @@ export default function BillingPage() {
               <CreditCard className="h-5 w-5 text-purple-400" />
               <span className="text-gray-400 text-sm">Payment Method</span>
             </div>
-            <div className="text-2xl font-bold text-white">None</div>
-            <div className="text-sm text-gray-500">no card on file</div>
+            <div className="text-2xl font-bold text-white">
+              {billingData.hasPaymentMethod ? 'Active' : 'None'}
+            </div>
+            <div className="text-sm text-gray-500">
+              {billingData.hasPaymentMethod ? 'card on file' : 'no card on file'}
+            </div>
           </div>
         </div>
 
@@ -92,29 +97,31 @@ export default function BillingPage() {
         </div>
       </div>
 
-      {/* Upgrade Banner */}
-      <div className="bg-gradient-to-r from-primary-900/50 to-purple-900/50 rounded-xl border border-primary-700/50 p-6">
-        <div className="flex items-start gap-4">
-          <div className="bg-primary-500/20 p-3 rounded-lg">
-            <AlertCircle className="h-6 w-6 text-primary-400" />
-          </div>
-          <div className="flex-1">
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Upgrade to Pay-Per-Execution
-            </h3>
-            <p className="text-gray-400 mb-4">
-              Only pay for what you use. No monthly commitments, just $0.01 per API execution.
-              Perfect for scaling your usage without worrying about limits.
-            </p>
-            <a
-              href="/pricing"
-              className="inline-block bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-500 transition-colors"
-            >
-              Upgrade Now
-            </a>
+      {/* Add Payment Method Banner - only show if no payment method */}
+      {!billingData.hasPaymentMethod && (
+        <div className="bg-gradient-to-r from-primary-900/50 to-purple-900/50 rounded-xl border border-primary-700/50 p-6">
+          <div className="flex items-start gap-4">
+            <div className="bg-primary-500/20 p-3 rounded-lg">
+              <Zap className="h-6 w-6 text-primary-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-white mb-2">
+                Add a Payment Method
+              </h3>
+              <p className="text-gray-400 mb-4">
+                Add a card to continue using the API beyond the free tier. 
+                You'll only be charged for what you use at $0.01 per request.
+              </p>
+              <button
+                onClick={handleManageBilling}
+                className="inline-block bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-500 transition-colors"
+              >
+                Add Payment Method
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Billing History */}
       <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6">
@@ -130,4 +137,3 @@ export default function BillingPage() {
     </div>
   )
 }
-
