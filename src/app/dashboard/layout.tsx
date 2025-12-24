@@ -26,12 +26,11 @@ export default function DashboardLayout({
       {/* Top Navigation */}
       <header className="bg-[#1a1f2e] border-b border-gray-800">
         <div className="flex items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2">
-              <Logo className="h-8 w-8" />
-              <span className="text-xl font-bold text-white">Sematryx</span>
+          <div className="flex items-center gap-6">
+            <Link href="/" className="flex items-center shrink-0">
+              <Logo size="small" />
             </Link>
-            <nav className="hidden md:flex items-center gap-1">
+            <nav className="hidden md:flex items-center gap-1 ml-4">
               {navigation.map((item) => {
                 const isActive = pathname === item.href || 
                   (item.href !== '/dashboard' && pathname.startsWith(item.href))
