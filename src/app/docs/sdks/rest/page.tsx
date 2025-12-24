@@ -227,37 +227,37 @@ export default function RESTAPIPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-white mb-4">
           REST API
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-400">
           Complete REST API reference for Sematryx. Use HTTP requests to interact with all optimization features and configure the AEAO Tetrad.
         </p>
       </div>
 
       <div className="space-y-12">
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Base URL
           </h2>
-          <div className="bg-gray-50 rounded-lg p-4 mb-4">
-            <code className="text-lg font-mono text-primary-600">
+          <div className="bg-[#1a1f2e] rounded-lg p-4 mb-4 border border-gray-700">
+            <code className="text-lg font-mono text-primary-400">
               {baseUrl}
             </code>
           </div>
-          <p className="text-gray-700">
-            All API endpoints are prefixed with <code className="bg-gray-100 px-2 py-1 rounded">/v1</code>. 
-            Note: Some endpoints use paths like <code className="bg-gray-100 px-2 py-1 rounded">/optimization/</code> 
-            instead of <code className="bg-gray-100 px-2 py-1 rounded">/optimize</code> - refer to the endpoint 
+          <p className="text-gray-400">
+            All API endpoints are prefixed with <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">/v1</code>. 
+            Note: Some endpoints use paths like <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">/optimization/</code> 
+            instead of <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">/optimize</code> - refer to the endpoint 
             table below for exact paths.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Authentication
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Include your API key in the Authorization header for all requests:
           </p>
           <CodeBlock
@@ -265,19 +265,19 @@ export default function RESTAPIPage() {
             language="bash"
             title="Authorization header"
           />
-          <p className="text-gray-700 mt-4">
-            Get your API key from the <a href="/api-keys" className="text-primary-600 hover:text-primary-700 underline">API Keys page</a>.
+          <p className="text-gray-400 mt-4">
+            Get your API key from the <a href="/api-keys" className="text-primary-400 hover:text-primary-300 underline">API Keys page</a>.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Optimization Endpoints
           </h2>
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
             Run Optimization
           </h3>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Upload your objective function first, then run optimization:
           </p>
           <CodeBlock
@@ -290,10 +290,10 @@ export default function RESTAPIPage() {
             language="bash"
             title="POST /v1/optimize - Run optimization"
           />
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
             Configure AEAO Tetrad
           </h3>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Enable tetrad pillars and configure intelligence features:
           </p>
           <CodeBlock
@@ -301,7 +301,7 @@ export default function RESTAPIPage() {
             language="bash"
             title="POST /v1/optimize - With Tetrad configuration"
           />
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
             Get Optimization Status
           </h3>
           <CodeBlock
@@ -309,7 +309,7 @@ export default function RESTAPIPage() {
             language="bash"
             title="GET /v1/optimize/{id}"
           />
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
             List Optimizations
           </h3>
           <CodeBlock
@@ -320,10 +320,10 @@ export default function RESTAPIPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Domain-Specific Optimization
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Use specialized endpoints for domain-specific problems:
           </p>
           <CodeBlock
@@ -344,10 +344,10 @@ export default function RESTAPIPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Response Format
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Successful responses return JSON with optimization results:
           </p>
           <CodeBlock
@@ -355,7 +355,7 @@ export default function RESTAPIPage() {
             language="json"
             title="Success response"
           />
-          <p className="text-gray-700 mt-4 mb-4">
+          <p className="text-gray-400 mt-4 mb-4">
             Error responses include an error object:
           </p>
           <CodeBlock
@@ -366,10 +366,10 @@ export default function RESTAPIPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             API Endpoints Reference
           </h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-gray-400 mb-6">
             Click on any endpoint to view detailed parameter information, request/response examples, and cURL commands.
           </p>
           {(() => {
@@ -623,7 +623,7 @@ export default function RESTAPIPage() {
               const isComingSoon = comingSoonCategories.includes(category)
               return (
                 <div key={category} className="mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                     {category}
                     {isComingSoon && (
                       <span className="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded-full font-medium">
@@ -657,12 +657,12 @@ export default function RESTAPIPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Request Parameters
           </h2>
-          <div className="bg-gray-50 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Optimization Request</h3>
-            <ul className="space-y-2 text-gray-700">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-white mb-3">Optimization Request</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>objective_function_id</strong> (required): ID of uploaded function</li>
               <li><strong>bounds</strong> (required): Search bounds [[min1, max1], [min2, max2], ...]</li>
               <li><strong>max_evaluations</strong> (optional): Maximum function evaluations (default: 1000)</li>
@@ -670,9 +670,9 @@ export default function RESTAPIPage() {
               <li><strong>tetrad_config</strong> (optional): Custom tetrad configuration object</li>
             </ul>
           </div>
-          <div className="bg-gray-50 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Tetrad Configuration</h3>
-            <ul className="space-y-2 text-gray-700">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-white mb-3">Tetrad Configuration</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>use_agentic_intelligence</strong> (boolean): Enable multi-agent coordination</li>
               <li><strong>use_expository_intelligence</strong> (boolean): Enable explainability</li>
               <li><strong>use_autodidactic_intelligence</strong> (boolean): Enable self-improvement</li>
@@ -685,60 +685,60 @@ export default function RESTAPIPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             HTTP Status Codes
           </h2>
           <div className="space-y-3">
-            <div className="flex items-center gap-4 bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center gap-4 bg-[#1a1f2e] border border-gray-700 rounded-lg p-4">
               <span className="px-3 py-1 bg-green-100 text-green-800 rounded font-medium">200</span>
               <div>
-                <strong className="text-gray-900">OK</strong>
-                <p className="text-sm text-gray-600">Request successful</p>
+                <strong className="text-white">OK</strong>
+                <p className="text-sm text-gray-400">Request successful</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center gap-4 bg-[#1a1f2e] border border-gray-700 rounded-lg p-4">
               <span className="px-3 py-1 bg-green-100 text-green-800 rounded font-medium">201</span>
               <div>
-                <strong className="text-gray-900">Created</strong>
-                <p className="text-sm text-gray-600">Resource created successfully</p>
+                <strong className="text-white">Created</strong>
+                <p className="text-sm text-gray-400">Resource created successfully</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center gap-4 bg-[#1a1f2e] border border-gray-700 rounded-lg p-4">
               <span className="px-3 py-1 bg-red-100 text-red-800 rounded font-medium">400</span>
               <div>
-                <strong className="text-gray-900">Bad Request</strong>
-                <p className="text-sm text-gray-600">Invalid request parameters</p>
+                <strong className="text-white">Bad Request</strong>
+                <p className="text-sm text-gray-400">Invalid request parameters</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center gap-4 bg-[#1a1f2e] border border-gray-700 rounded-lg p-4">
               <span className="px-3 py-1 bg-red-100 text-red-800 rounded font-medium">401</span>
               <div>
-                <strong className="text-gray-900">Unauthorized</strong>
-                <p className="text-sm text-gray-600">Invalid or missing API key</p>
+                <strong className="text-white">Unauthorized</strong>
+                <p className="text-sm text-gray-400">Invalid or missing API key</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center gap-4 bg-[#1a1f2e] border border-gray-700 rounded-lg p-4">
               <span className="px-3 py-1 bg-red-100 text-red-800 rounded font-medium">429</span>
               <div>
-                <strong className="text-gray-900">Too Many Requests</strong>
-                <p className="text-sm text-gray-600">Rate limit exceeded</p>
+                <strong className="text-white">Too Many Requests</strong>
+                <p className="text-sm text-gray-400">Rate limit exceeded</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center gap-4 bg-[#1a1f2e] border border-gray-700 rounded-lg p-4">
               <span className="px-3 py-1 bg-red-100 text-red-800 rounded font-medium">500</span>
               <div>
-                <strong className="text-gray-900">Internal Server Error</strong>
-                <p className="text-sm text-gray-600">Server error - contact support</p>
+                <strong className="text-white">Internal Server Error</strong>
+                <p className="text-sm text-gray-400">Server error - contact support</p>
               </div>
             </div>
           </div>
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Rate Limiting
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             API requests are rate-limited. Check response headers for rate limit information:
           </p>
           <CodeBlock
@@ -751,11 +751,11 @@ X-RateLimit-Reset: 1640995200`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Pagination
           </h2>
-          <p className="text-gray-700 mb-4">
-            List endpoints support pagination with <code className="bg-gray-100 px-2 py-1 rounded">limit</code> and <code className="bg-gray-100 px-2 py-1 rounded">offset</code> parameters:
+          <p className="text-gray-400 mb-4">
+            List endpoints support pagination with <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">limit</code> and <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">offset</code> parameters:
           </p>
           <CodeBlock
             code="GET /v1/optimize?limit=20&offset=40"
