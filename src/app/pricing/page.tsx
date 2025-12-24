@@ -40,10 +40,11 @@ export default function PricingPage() {
                 </h3>
                 <p className="text-text-secondary">
                   The Private Learning Store gives you dedicated, isolated storage for your 
-                  optimization strategies and results. With the public learning pool, anonymized 
-                  patterns are shared to benefit all users (your raw data is never exposed). 
-                  With a Private Learning Store, your data stays exclusively yours—never shared, 
-                  never contributed to the pool—giving you a proprietary advantage.
+                  optimization strategies and results. With the public learning pool, solution 
+                  space mappings and model optimization performance data are shared to benefit 
+                  all users (your raw data is never exposed). With a Private Learning Store, 
+                  your data stays exclusively yours—never shared, never contributed to the 
+                  pool—giving you a proprietary advantage.
                 </p>
               </div>
               
