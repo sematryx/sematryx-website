@@ -24,7 +24,7 @@ const result = await aeao.optimize({
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-gray-200 mb-4">
           Authentication
         </h1>
         <p className="text-xl text-gray-400">
@@ -34,7 +34,7 @@ const result = await aeao.optimize({
 
       <div className="space-y-8">
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             API Key Authentication
           </h2>
           <p className="text-gray-400 mb-4">
@@ -49,7 +49,7 @@ const result = await aeao.optimize({
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Getting Your API Key
           </h2>
           <p className="text-gray-400 mb-4">
@@ -64,7 +64,7 @@ const result = await aeao.optimize({
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Using SDKs
           </h2>
           <p className="text-gray-400 mb-4">
@@ -78,7 +78,7 @@ const result = await aeao.optimize({
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Security Best Practices
           </h2>
           <div className="bg-yellow-900/30 border border-yellow-700 rounded-lg p-6">
@@ -94,7 +94,7 @@ const result = await aeao.optimize({
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Error Responses
           </h2>
           <p className="text-gray-400 mb-4">

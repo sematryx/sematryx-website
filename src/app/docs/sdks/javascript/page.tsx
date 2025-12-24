@@ -431,7 +431,7 @@ console.log('Components:', detailedHealth.components)`
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-gray-200 mb-4">
           JavaScript SDK
         </h1>
         <p className="text-xl text-gray-400">
@@ -633,7 +633,7 @@ console.log('Components:', detailedHealth.components)`
         <CollapsibleSection title="API Reference">
           <div className="space-y-6">
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Sematryx Class</h3>
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Sematryx Class</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">new Sematryx(apiKey, options?)</code> - Initialize the SDK</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.optimize(config)</code> - Run an optimization</li>
@@ -652,7 +652,7 @@ console.log('Components:', detailedHealth.components)`
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Optimization Config</h3>
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Optimization Config</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">objective_function</code> - Function to optimize (required)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">bounds</code> - Search bounds (required)</li>
@@ -667,7 +667,7 @@ console.log('Components:', detailedHealth.components)`
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Configuration Options</h3>
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Configuration Options</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">apiUrl</code> - Custom API base URL (default: https://api.sematryx.com)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">timeout</code> - Request timeout in milliseconds (default: 30000)</li>

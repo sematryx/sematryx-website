@@ -130,7 +130,7 @@ result = client.optimize(
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-gray-200 mb-4">
           Optimization API
         </h1>
         <p className="text-xl text-gray-400">
@@ -140,7 +140,7 @@ result = client.optimize(
 
       <div className="space-y-12">
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Basic Optimization
           </h2>
           <p className="text-gray-400 mb-4">
@@ -163,7 +163,7 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             AEAO Tetrad Configuration
           </h2>
           <p className="text-gray-400 mb-4">
@@ -196,7 +196,7 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Domain-Specific Optimization
           </h2>
           <p className="text-gray-400 mb-4">
@@ -220,7 +220,7 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             REST API
           </h2>
           <p className="text-gray-400 mb-4">
@@ -239,11 +239,11 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Response Format
           </h2>
           <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-white mb-3">Optimization Result</h3>
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Optimization Result</h3>
             <ul className="space-y-2 text-gray-400">
               <li><strong>success:</strong> Whether optimization succeeded</li>
               <li><strong>best_solution:</strong> Optimal parameter values found</li>
@@ -258,12 +258,12 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Advanced Features
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">
                 Explainability
               </h3>
               <p className="text-gray-400 mb-3">
@@ -275,7 +275,7 @@ result = client.optimize(
               />
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">
                 Private Learning
               </h3>
               <p className="text-gray-400 mb-3">
@@ -287,7 +287,7 @@ result = client.optimize(
               />
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">
                 Optimization Modes
               </h3>
               <p className="text-gray-400 mb-3">
@@ -299,7 +299,7 @@ result = client.optimize(
               />
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">
                 Integer Variables
               </h3>
               <p className="text-gray-400 mb-3">

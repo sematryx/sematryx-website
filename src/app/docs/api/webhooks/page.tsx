@@ -60,7 +60,7 @@ def verify_webhook_signature(payload, signature, secret):
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-gray-200 mb-4">
           Webhooks
         </h1>
         <p className="text-xl text-gray-400">
@@ -70,7 +70,7 @@ def verify_webhook_signature(payload, signature, secret):
 
       <div className="space-y-12">
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Overview
           </h2>
           <p className="text-gray-400 mb-4">
@@ -89,7 +89,7 @@ def verify_webhook_signature(payload, signature, secret):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Creating a Webhook
           </h2>
           <p className="text-gray-400 mb-4">
@@ -112,7 +112,7 @@ def verify_webhook_signature(payload, signature, secret):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Webhook Payload
           </h2>
           <p className="text-gray-400 mb-4">
@@ -135,13 +135,13 @@ def verify_webhook_signature(payload, signature, secret):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Verifying Webhook Signatures
           </h2>
           <p className="text-gray-400 mb-4">
             Always verify webhook signatures to ensure requests are from Sematryx. The signature is sent in the <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">X-Sematryx-Signature</code> header.
           </p>
-          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
             Node.js Example
           </h3>
           <CodeBlock
@@ -149,7 +149,7 @@ def verify_webhook_signature(payload, signature, secret):
             language="javascript"
             title="Verify webhook signature in Node.js"
           />
-          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
             Python Example
           </h3>
           <CodeBlock
@@ -160,13 +160,13 @@ def verify_webhook_signature(payload, signature, secret):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Available Events
           </h2>
           <div className="space-y-4">
             {events.map((event, index) => (
               <div key={index} className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-lg font-semibold text-gray-200 mb-2">
                   <code className="bg-gray-200 px-2 py-1 rounded text-sm">{event.name}</code>
                 </h3>
                 <p className="text-gray-400">{event.description}</p>
@@ -176,7 +176,7 @@ def verify_webhook_signature(payload, signature, secret):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Webhook Retries
           </h2>
           <p className="text-gray-400 mb-4">
@@ -198,7 +198,7 @@ def verify_webhook_signature(payload, signature, secret):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Best Practices
           </h2>
           <div className="space-y-4">

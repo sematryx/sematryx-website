@@ -66,7 +66,7 @@ console.log(result)`
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-gray-200 mb-4">
           Making Requests
         </h1>
         <p className="text-xl text-gray-400">
@@ -76,7 +76,7 @@ console.log(result)`
 
       <div className="space-y-8">
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Base URL
           </h2>
           <p className="text-gray-400 mb-4">
@@ -93,7 +93,7 @@ console.log(result)`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Authentication
           </h2>
           <p className="text-gray-400 mb-4">
@@ -113,14 +113,14 @@ console.log(result)`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Request Format
           </h2>
           <p className="text-gray-400 mb-4">
             <span className="text-primary-400">Sematryx</span> uses JSON for request and response bodies. All requests should include the <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">Content-Type: application/json</code> header.
           </p>
           
-          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
             Using cURL
           </h3>
           <CodeBlock
@@ -129,7 +129,7 @@ console.log(result)`
             title="Basic optimization request with cURL"
           />
 
-          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
             Using Python
           </h3>
           <CodeBlock
@@ -138,7 +138,7 @@ console.log(result)`
             title="Python request example"
           />
 
-          <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
             Using JavaScript/Node.js
           </h3>
           <CodeBlock
@@ -149,7 +149,7 @@ console.log(result)`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Response Format
           </h2>
           <p className="text-gray-400 mb-4">
@@ -175,7 +175,7 @@ console.log(result)`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Error Handling
           </h2>
           <p className="text-gray-400 mb-4">
@@ -202,7 +202,7 @@ console.log(result)`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Rate Limiting
           </h2>
           <p className="text-gray-400 mb-4">
@@ -210,9 +210,9 @@ console.log(result)`
           </p>
           <div className="bg-[#1a1f2e] rounded-lg p-6 border border-gray-700">
             <ul className="space-y-2 text-gray-300">
-              <li><strong className="text-white">Free Plan:</strong> 100 requests per hour</li>
-              <li><strong className="text-white">Pro Plan:</strong> 1,000 requests per hour</li>
-              <li><strong className="text-white">Enterprise Plan:</strong> 10,000+ requests per hour (custom limits)</li>
+              <li><strong className="text-gray-200">Free Plan:</strong> 100 requests per hour</li>
+              <li><strong className="text-gray-200">Pro Plan:</strong> 1,000 requests per hour</li>
+              <li><strong className="text-gray-200">Enterprise Plan:</strong> 10,000+ requests per hour (custom limits)</li>
             </ul>
           </div>
           <p className="text-gray-400 mt-4">
@@ -228,7 +228,7 @@ X-RateLimit-Reset: 1640995200`}
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Best Practices
           </h2>
           <div className="space-y-4">

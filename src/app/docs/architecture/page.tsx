@@ -4,7 +4,7 @@ export default function ArchitecturePage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:px-8 md:py-16">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-6">
+        <h1 className="text-4xl font-bold text-gray-200 mb-6">
           System Architecture
         </h1>
         <p className="text-xl text-gray-400 leading-relaxed mb-4">
@@ -21,7 +21,7 @@ export default function ArchitecturePage() {
         
         {/* High Level Diagram */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-6">High-Level Overview</h2>
+          <h2 className="text-2xl font-semibold text-gray-200 mb-6">High-Level Overview</h2>
           <div className="bg-[#0a0d12] border border-gray-800 rounded-xl p-6 overflow-x-auto">
             <pre className="font-mono text-xs md:text-sm text-blue-300 leading-relaxed">
 {`┌─────────────────────────────────────────────────────────────┐
@@ -75,14 +75,14 @@ export default function ArchitecturePage() {
 
         {/* Component Breakdown */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-8">Core Components</h2>
+          <h2 className="text-2xl font-semibold text-gray-200 mb-8">Core Components</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Platform Services */}
             <div className="bg-[#161b22] border border-gray-800 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">🔌</span>
-                <h3 className="text-xl font-bold text-white">Platform Services</h3>
+                <h3 className="text-xl font-bold text-gray-200">Platform Services</h3>
               </div>
               <p className="text-gray-400 text-sm mb-4">
                 The gateway to the Sematryx ecosystem, handling request validation, billing, and the translation of raw optimization results into human-readable explanations.
@@ -98,7 +98,7 @@ export default function ArchitecturePage() {
             <div className="bg-[#161b22] border border-gray-800 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">⚙️</span>
-                <h3 className="text-xl font-bold text-white">Optimization Engine</h3>
+                <h3 className="text-xl font-bold text-gray-200">Optimization Engine</h3>
               </div>
               <p className="text-gray-400 text-sm mb-4">
                 The mathematical heart of the system. It uses a Meta-Policy learner to dynamically select the best strategy (CMA-ES, Differential Evolution, Bayesian) for the specific problem topology.
@@ -114,7 +114,7 @@ export default function ArchitecturePage() {
             <div className="bg-[#161b22] border border-gray-800 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">🤖</span>
-                <h3 className="text-xl font-bold text-white">AI/ML Intelligence</h3>
+                <h3 className="text-xl font-bold text-gray-200">AI/ML Intelligence</h3>
               </div>
               <p className="text-gray-400 text-sm mb-4">
                 Advanced neural networks that provide pattern recognition and transfer learning capabilities, allowing the system to apply insights from one domain to another.
@@ -130,7 +130,7 @@ export default function ArchitecturePage() {
             <div className="bg-[#161b22] border border-gray-800 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">🧠</span>
-                <h3 className="text-xl font-bold text-white">Knowledge & Memory</h3>
+                <h3 className="text-xl font-bold text-gray-200">Knowledge & Memory</h3>
               </div>
               <p className="text-gray-400 text-sm mb-4">
                 Long-term persistence layers that store optimization contexts and results. This "Autodidactic" memory allows Sematryx to get smarter over time.

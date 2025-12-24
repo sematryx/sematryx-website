@@ -65,7 +65,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-gray-200 mb-4">
           Quick Start Guide
         </h1>
         <p className="text-xl text-gray-400">
@@ -75,7 +75,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
 
       <div className="space-y-8">
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             1. Installation
           </h2>
           <p className="text-gray-400 mb-4">
@@ -89,7 +89,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             2. Get Your API Key
           </h2>
           <p className="text-gray-400 mb-4">
@@ -102,7 +102,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             3. Your First Optimization
           </h2>
           <p className="text-gray-400 mb-4">
@@ -124,7 +124,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             4. Configure the Optimization Engine
           </h2>
           <p className="text-gray-400 mb-4">
@@ -146,7 +146,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             5. Domain-Specific Optimization
           </h2>
           <p className="text-gray-400 mb-4">
@@ -170,7 +170,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             6. Key Concepts
           </h2>
           <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-6">
@@ -186,12 +186,12 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             7. Next Steps
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-[#1a1f2e] rounded-lg p-6 border border-gray-700">
-              <h3 className="text-lg font-semibold text-white mb-2">
+              <h3 className="text-lg font-semibold text-gray-200 mb-2">
                 Explore Tutorials
               </h3>
               <p className="text-gray-400 mb-4">
@@ -205,7 +205,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
               </a>
             </div>
             <div className="bg-[#1a1f2e] rounded-lg p-6 border border-gray-700">
-              <h3 className="text-lg font-semibold text-white mb-2">
+              <h3 className="text-lg font-semibold text-gray-200 mb-2">
                 API Reference
               </h3>
               <p className="text-gray-400 mb-4">
@@ -219,7 +219,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
               </a>
             </div>
             <div className="bg-[#1a1f2e] rounded-lg p-6 border border-gray-700">
-              <h3 className="text-lg font-semibold text-white mb-2">
+              <h3 className="text-lg font-semibold text-gray-200 mb-2">
                 Tetrad Configuration
               </h3>
               <p className="text-gray-400 mb-4">
@@ -233,7 +233,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
               </a>
             </div>
             <div className="bg-[#1a1f2e] rounded-lg p-6 border border-gray-700">
-              <h3 className="text-lg font-semibold text-white mb-2">
+              <h3 className="text-lg font-semibold text-gray-200 mb-2">
                 Domain Libraries
               </h3>
               <p className="text-gray-400 mb-4">

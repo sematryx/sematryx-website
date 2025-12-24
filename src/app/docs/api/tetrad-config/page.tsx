@@ -99,7 +99,7 @@ console.log(result.explanation)`
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-gray-200 mb-4">
           <span className="text-primary-400">AEAO</span> Tetrad Configuration
         </h1>
         <p className="text-xl text-gray-400">
@@ -111,7 +111,7 @@ console.log(result.explanation)`
       <div className="space-y-12">
         {/* The AEAO Tetrad Overview */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             The <span className="text-primary-400">AEAO</span> Tetrad
           </h2>
           <p className="text-gray-400 mb-6">
@@ -190,7 +190,7 @@ console.log(result.explanation)`
 
         {/* Preset Configurations */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Preset Configurations
           </h2>
           <p className="text-gray-400 mb-4">
@@ -202,7 +202,7 @@ console.log(result.explanation)`
             title="Using Preset Configurations"
           />
           <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-white mb-3">Available Presets</h3>
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Available Presets</h3>
             <div className="space-y-3 text-gray-400">
               <div>
                 <strong className="text-gray-200">development:</strong> Fast iteration, basic explanations, minimal overhead. Best for rapid prototyping and testing.
@@ -225,7 +225,7 @@ console.log(result.explanation)`
 
         {/* Simple Configuration */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Simple Configuration
           </h2>
           <p className="text-gray-400 mb-4">
@@ -250,7 +250,7 @@ console.log(result.explanation)`
 
         {/* Advanced Configuration */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Advanced Configuration
           </h2>
           <p className="text-gray-400 mb-4">
@@ -304,7 +304,7 @@ console.log(result.explanation)`
 
         {/* REST API Configuration */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             REST API Configuration
           </h2>
           <p className="text-gray-400 mb-4">
@@ -319,7 +319,7 @@ console.log(result.explanation)`
 
         {/* JavaScript SDK Configuration */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             JavaScript SDK Configuration
           </h2>
           <p className="text-gray-400 mb-4">
@@ -334,7 +334,7 @@ console.log(result.explanation)`
 
         {/* Cost vs Capability Trade-offs */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Compute Cost vs Capability Trade-offs
           </h2>
           <p className="text-gray-400 mb-4">
@@ -343,7 +343,7 @@ console.log(result.explanation)`
           <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold text-white mb-2">Minimal Cost (minimal preset)</h3>
+                <h3 className="font-semibold text-gray-200 mb-2">Minimal Cost (minimal preset)</h3>
                 <p className="text-gray-400 text-sm mb-2">Fastest execution, no AI overhead:</p>
                 <ul className="text-sm text-gray-500 space-y-1 ml-4">
                   <li>• All Tetrad pillars disabled</li>
@@ -352,7 +352,7 @@ console.log(result.explanation)`
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-white mb-2">Balanced (production preset)</h3>
+                <h3 className="font-semibold text-gray-200 mb-2">Balanced (production preset)</h3>
                 <p className="text-gray-400 text-sm mb-2">Good performance with essential capabilities:</p>
                 <ul className="text-sm text-gray-500 space-y-1 ml-4">
                   <li>• Agentic + Expository enabled</li>
@@ -362,7 +362,7 @@ console.log(result.explanation)`
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-white mb-2">Maximum Capability (research/enterprise preset)</h3>
+                <h3 className="font-semibold text-gray-200 mb-2">Maximum Capability (research/enterprise preset)</h3>
                 <p className="text-gray-400 text-sm mb-2">Full capabilities, comprehensive explanations:</p>
                 <ul className="text-sm text-gray-500 space-y-1 ml-4">
                   <li>• All Tetrad pillars enabled</li>

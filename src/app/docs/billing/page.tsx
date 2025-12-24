@@ -336,7 +336,7 @@ store.cleanup(
           <div className="mt-6 flex gap-4">
             <Link 
               href="/pricing" 
-              className="bg-cta-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-cta-primary-hover transition-colors"
+              className="bg-cta-primary text-gray-200 px-6 py-3 rounded-lg font-semibold hover:bg-cta-primary-hover transition-colors"
             >
               View Plans
             </Link>

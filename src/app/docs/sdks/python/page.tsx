@@ -409,7 +409,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-gray-200 mb-4">
           Python SDK
         </h1>
         <p className="text-xl text-gray-400">
@@ -627,7 +627,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         <CollapsibleSection title="API Reference">
           <div className="space-y-6">
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Main Function</h3>
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Main Function</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">aeao(objective_function, bounds, **kwargs)</code> - Main optimization function</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">preset</code> - Use preset config ("development", "production", "research", "enterprise", "minimal")</li>
@@ -640,7 +640,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Configuration Classes</h3>
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Configuration Classes</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig</code> - Complete tetrad configuration</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig.development()</code> - Development preset</li>
@@ -650,7 +650,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Domain Functions</h3>
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Domain Functions</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">financial_optimize(problem_type, config, **kwargs)</code> - Financial optimization</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">healthcare_optimize(problem_type, config, **kwargs)</code> - Healthcare optimization</li>
@@ -658,7 +658,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">API Client</h3>
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">API Client</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxClient(api_url, api_key)</code> - Initialize API client</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.authenticate()</code> - Authenticate with API</li>

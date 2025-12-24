@@ -76,7 +76,7 @@ while True:
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-gray-200 mb-4">
           Best Practices
         </h1>
         <p className="text-xl text-gray-400">
@@ -86,12 +86,12 @@ while True:
 
       <div className="space-y-12">
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Security
           </h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold text-white mb-3">
+              <h3 className="text-xl font-semibold text-gray-200 mb-3">
                 API Key Management
               </h3>
               <p className="text-gray-400 mb-4">
@@ -118,7 +118,7 @@ while True:
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Error Handling
           </h2>
           <p className="text-gray-400 mb-4">
@@ -142,12 +142,12 @@ while True:
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Performance Optimization
           </h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold text-white mb-3">
+              <h3 className="text-xl font-semibold text-gray-200 mb-3">
                 Async Operations
               </h3>
               <p className="text-gray-400 mb-4">
@@ -160,7 +160,7 @@ while True:
               />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-white mb-3">
+              <h3 className="text-xl font-semibold text-gray-200 mb-3">
                 Caching
               </h3>
               <p className="text-gray-400 mb-4">
@@ -173,7 +173,7 @@ while True:
               />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-white mb-3">
+              <h3 className="text-xl font-semibold text-gray-200 mb-3">
                 Webhooks vs Polling
               </h3>
               <p className="text-gray-400 mb-4">
@@ -189,7 +189,7 @@ while True:
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Rate Limit Management
           </h2>
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
@@ -206,12 +206,12 @@ while True:
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Code Organization
           </h2>
           <div className="space-y-4">
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Modular Design</h3>
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Modular Design</h3>
               <ul className="space-y-2 text-gray-400">
                 <li>Separate API client initialization from business logic</li>
                 <li>Create reusable functions for common operations</li>
@@ -220,7 +220,7 @@ while True:
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-white mb-3">Testing</h3>
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Testing</h3>
               <ul className="space-y-2 text-gray-400">
                 <li>Write unit tests for API integration code</li>
                 <li>Use mock responses for testing</li>
@@ -232,7 +232,7 @@ while True:
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Monitoring and Observability
           </h2>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
@@ -248,7 +248,7 @@ while True:
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-4">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Production Checklist
           </h2>
           <div className="space-y-4">
