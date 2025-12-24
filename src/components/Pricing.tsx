@@ -242,10 +242,10 @@ export default function Pricing() {
 
               <a
                 href={tier.ctaLink}
-                className={`block w-full py-2.5 px-4 rounded-lg text-center text-sm font-semibold transition-all ${
+                className={`block w-full py-3 px-4 rounded-lg text-center text-sm font-semibold transition-all ${
                   tier.highlighted
-                    ? 'bg-accent-primary text-white hover:bg-accent-primary/90'
-                    : 'bg-gray-700 text-white hover:bg-gray-600'
+                    ? 'bg-primary-600 text-white hover:bg-primary-500'
+                    : 'bg-[#374151] text-white hover:bg-[#4B5563] border border-gray-600'
                 }`}
               >
                 {tier.cta}
