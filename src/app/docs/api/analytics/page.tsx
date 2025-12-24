@@ -58,20 +58,20 @@ export default function AnalyticsEndpointsPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-white mb-4">
           Analytics Endpoints
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-400">
           Access performance metrics, execution statistics, and business intelligence data.
         </p>
       </div>
 
       <div className="space-y-12">
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Get Metrics
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Retrieve aggregated metrics for a specified time period.
           </p>
           <CodeBlock
@@ -96,10 +96,10 @@ export default function AnalyticsEndpointsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Get Execution Statistics
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Get detailed statistics about optimization runs.
           </p>
           <CodeBlock
@@ -124,10 +124,10 @@ export default function AnalyticsEndpointsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Get Performance Data
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Retrieve performance metrics for specific optimizations or overall account.
           </p>
           <CodeBlock
@@ -148,13 +148,13 @@ export default function AnalyticsEndpointsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Available Metrics
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Execution Metrics</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Execution Metrics</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>• Total optimizations</li>
                 <li>• Successful optimizations</li>
                 <li>• Failed optimizations</li>
@@ -162,9 +162,9 @@ export default function AnalyticsEndpointsPage() {
                 <li>• Success rate</li>
               </ul>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Business Metrics</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Business Metrics</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>• Function evaluations</li>
                 <li>• Cost analysis</li>
                 <li>• ROI calculations</li>
@@ -172,9 +172,9 @@ export default function AnalyticsEndpointsPage() {
                 <li>• Efficiency gains</li>
               </ul>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Performance Metrics</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Performance Metrics</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>• Response times</li>
                 <li>• Throughput rates</li>
                 <li>• Resource utilization</li>
@@ -182,9 +182,9 @@ export default function AnalyticsEndpointsPage() {
                 <li>• Optimization opportunities</li>
               </ul>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Trend Analysis</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Trend Analysis</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>• Time series data</li>
                 <li>• Growth trends</li>
                 <li>• Seasonal patterns</li>
@@ -196,10 +196,10 @@ export default function AnalyticsEndpointsPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Exporting Data
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Analytics data can be exported in various formats for further analysis:
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">

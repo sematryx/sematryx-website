@@ -108,20 +108,20 @@ def make_request_with_retry(func, max_retries=3):
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-white mb-4">
           Error Handling
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-400">
           Learn how to handle errors gracefully and build robust applications with Sematryx.
         </p>
       </div>
 
       <div className="space-y-12">
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Error Response Format
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             All errors are returned as JSON objects with a consistent structure:
           </p>
           <CodeBlock
@@ -141,24 +141,24 @@ def make_request_with_retry(func, max_retries=3):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Error Codes
           </h2>
           <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50">
+                <thead className="bg-[#1a1f2e] border border-gray-700">
                   <tr>
-                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-900">Code</th>
-                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-900">HTTP Status</th>
-                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-900">Description</th>
+                    <th className="px-6 py-3 text-left text-sm font-medium text-white">Code</th>
+                    <th className="px-6 py-3 text-left text-sm font-medium text-white">HTTP Status</th>
+                    <th className="px-6 py-3 text-left text-sm font-medium text-white">Description</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {errorCodes.map((error, index) => (
                     <tr key={index}>
                       <td className="px-6 py-4">
-                        <code className="text-sm bg-gray-100 px-2 py-1 rounded">
+                        <code className="text-sm bg-gray-800 text-gray-300 px-2 py-1 rounded">
                           {error.code}
                         </code>
                       </td>
@@ -167,7 +167,7 @@ def make_request_with_retry(func, max_retries=3):
                           {error.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-700">
+                      <td className="px-6 py-4 text-sm text-gray-400">
                         {error.description}
                       </td>
                     </tr>
@@ -179,10 +179,10 @@ def make_request_with_retry(func, max_retries=3):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Handling Errors in Python
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             The Python SDK provides specific exception types for different error scenarios:
           </p>
           <CodeBlock
@@ -193,10 +193,10 @@ def make_request_with_retry(func, max_retries=3):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Handling Errors in JavaScript
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             The JavaScript SDK throws errors with consistent structure:
           </p>
           <CodeBlock
@@ -207,10 +207,10 @@ def make_request_with_retry(func, max_retries=3):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Retry Logic
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Implement retry logic for transient errors (rate limits, server errors):
           </p>
           <CodeBlock
@@ -230,7 +230,7 @@ def make_request_with_retry(func, max_retries=3):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Best Practices
           </h2>
           <div className="space-y-4">
@@ -259,10 +259,10 @@ def make_request_with_retry(func, max_retries=3):
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Debugging Errors
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             When debugging errors, use the request ID to get help from support:
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">

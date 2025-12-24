@@ -409,10 +409,10 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-white mb-4">
           Python SDK
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-400">
           Official Python SDK for Sematryx. Full-featured client library with support for optimization, 
           AEAO Tetrad configuration, and domain-specific libraries.
         </p>
@@ -425,7 +425,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="bash"
             title="Install the Python SDK"
           />
-          <p className="text-gray-700 mt-4">
+          <p className="text-gray-400 mt-4">
             The SDK requires Python 3.8 or higher. For domain-specific optimizations, install with extras:
           </p>
           <CodeBlock
@@ -436,8 +436,8 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Quick Start" defaultOpen={true}>
-          <p className="text-gray-700 mb-4">
-            The simplest way to use Sematryx is with the main <code className="bg-gray-100 px-2 py-1 rounded">sematryx()</code> function:
+          <p className="text-gray-400 mb-4">
+            The simplest way to use Sematryx is with the main <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">sematryx()</code> function:
           </p>
           <CodeBlock
             code={basicUsage}
@@ -447,7 +447,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="AEAO Tetrad Configuration">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Configure the four pillars of AEAO intelligence to match your needs:
           </p>
           <CodeBlock
@@ -467,7 +467,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Domain-Specific Optimization">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Use specialized domain libraries for industry-specific problems:
           </p>
           <CodeBlock
@@ -488,7 +488,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="API Client">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             For server-side optimization via the REST API:
           </p>
           <CodeBlock
@@ -499,7 +499,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Advanced Features">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Enable advanced capabilities for complex optimization problems:
           </p>
           <CodeBlock
@@ -510,7 +510,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Error Handling">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             The SDK provides specific exception types for different error scenarios:
           </p>
           <CodeBlock
@@ -521,7 +521,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Async Support">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Use AsyncAEAO for concurrent operations:
           </p>
           <CodeBlock
@@ -532,7 +532,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Identity Management">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Manage client identity, privacy settings, and usage quotas:
           </p>
           <CodeBlock
@@ -543,7 +543,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Batch Operations">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Submit and manage batch optimization jobs:
           </p>
           <CodeBlock
@@ -554,7 +554,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Learning System">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Train models and get learning insights:
           </p>
           <CodeBlock
@@ -565,7 +565,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Advanced Optimization">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Multi-objective optimization and sensitivity analysis:
           </p>
           <CodeBlock
@@ -576,7 +576,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Context Intelligence">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Analyze problem context and get recommendations:
           </p>
           <CodeBlock
@@ -587,7 +587,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Data Lake">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Store and query optimization data:
           </p>
           <CodeBlock
@@ -598,7 +598,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Analytics">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Submit metrics and generate performance reports:
           </p>
           <CodeBlock
@@ -609,7 +609,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </CollapsibleSection>
 
         <CollapsibleSection title="Configuration & Health">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Get API configuration and check system health:
           </p>
           <CodeBlock
@@ -626,9 +626,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
 
         <CollapsibleSection title="API Reference">
           <div className="space-y-6">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Main Function</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Main Function</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">aeao(objective_function, bounds, **kwargs)</code> - Main optimization function</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">preset</code> - Use preset config ("development", "production", "research", "enterprise", "minimal")</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">use_agentic_intelligence</code> - Enable multi-agent coordination</li>
@@ -639,9 +639,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
                 <li><code className="bg-gray-200 px-2 py-1 rounded">use_visual_intelligence</code> - Enable visual analysis</li>
               </ul>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Configuration Classes</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Configuration Classes</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig</code> - Complete tetrad configuration</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig.development()</code> - Development preset</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig.production()</code> - Production preset</li>
@@ -649,17 +649,17 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
                 <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig.enterprise()</code> - Enterprise preset</li>
               </ul>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Domain Functions</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Domain Functions</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">financial_optimize(problem_type, config, **kwargs)</code> - Financial optimization</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">healthcare_optimize(problem_type, config, **kwargs)</code> - Healthcare optimization</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">supply_chain_optimize(problem_type, config, **kwargs)</code> - Supply chain optimization</li>
               </ul>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">API Client</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">API Client</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxClient(api_url, api_key)</code> - Initialize API client</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.authenticate()</code> - Authenticate with API</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">client.optimize(objective, bounds, **kwargs)</code> - Run optimization via API</li>

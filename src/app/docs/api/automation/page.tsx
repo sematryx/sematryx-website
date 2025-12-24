@@ -130,20 +130,20 @@ result = client.optimize(
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-white mb-4">
           Optimization API
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-400">
           Solve optimization problems using Sematryx with configurable AI intelligence through the AEAO Tetrad.
         </p>
       </div>
 
       <div className="space-y-12">
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Basic Optimization
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             The simplest way to optimize a function. Define your objective function and bounds, then let Sematryx find the optimal solution.
           </p>
           <CodeBlock
@@ -163,10 +163,10 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             AEAO Tetrad Configuration
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Configure the four pillars of Sematryx's AEAO Engine intelligence: Agentic, Expository, Autodidactic, and Domain Extension.
           </p>
           <CodeBlock
@@ -196,10 +196,10 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Domain-Specific Optimization
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Use specialized optimization libraries for specific business domains with pre-configured constraints and objectives.
           </p>
           <CodeBlock
@@ -220,10 +220,10 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             REST API
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Use the REST API for server-side optimization requests. Upload your objective function first, then call the optimize endpoint.
           </p>
           <CodeBlock
@@ -239,12 +239,12 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Response Format
           </h2>
-          <div className="bg-gray-50 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Optimization Result</h3>
-            <ul className="space-y-2 text-gray-700">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-white mb-3">Optimization Result</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>success:</strong> Whether optimization succeeded</li>
               <li><strong>best_solution:</strong> Optimal parameter values found</li>
               <li><strong>best_fitness:</strong> Best objective value achieved</li>
@@ -258,15 +258,15 @@ result = client.optimize(
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Advanced Features
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">
                 Explainability
               </h3>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-400 mb-3">
                 Get detailed explanations of optimization decisions with configurable levels (0-3).
               </p>
               <CodeBlock
@@ -274,11 +274,11 @@ result = client.optimize(
                 language="python"
               />
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">
                 Private Learning
               </h3>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-400 mb-3">
                 Learn from your optimizations to improve performance on similar problems.
               </p>
               <CodeBlock
@@ -286,11 +286,11 @@ result = client.optimize(
                 language="python"
               />
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">
                 Optimization Modes
               </h3>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-400 mb-3">
                 Balance speed vs quality with preset modes.
               </p>
               <CodeBlock
@@ -298,11 +298,11 @@ result = client.optimize(
                 language="python"
               />
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">
                 Integer Variables
               </h3>
-              <p className="text-gray-700 mb-3">
+              <p className="text-gray-400 mb-3">
                 Support for mixed-integer optimization problems.
               </p>
               <CodeBlock

@@ -431,10 +431,10 @@ console.log('Components:', detailedHealth.components)`
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-white mb-4">
           JavaScript SDK
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-400">
           Official JavaScript/TypeScript SDK for Sematryx. Works in Node.js, browsers, and modern JavaScript environments.
         </p>
       </div>
@@ -446,13 +446,13 @@ console.log('Components:', detailedHealth.components)`
             language="bash"
             title="Install the JavaScript SDK"
           />
-          <p className="text-gray-700 mt-4">
+          <p className="text-gray-400 mt-4">
             The SDK requires Node.js 16+ or a modern browser with ES6+ support.
           </p>
         </CollapsibleSection>
 
         <CollapsibleSection title="Quick Start" defaultOpen={true}>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Initialize the SDK with your API key and start optimizing:
           </p>
           <CodeBlock
@@ -463,7 +463,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="AEAO Tetrad Configuration">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Configure the four pillars of AEAO intelligence:
           </p>
           <CodeBlock
@@ -483,7 +483,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Domain-Specific Optimization">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Use specialized domain libraries for industry-specific problems:
           </p>
           <CodeBlock
@@ -494,7 +494,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Advanced Features">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Enable advanced capabilities for complex optimization problems:
           </p>
           <CodeBlock
@@ -505,7 +505,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Batch Optimization">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Run multiple optimizations in parallel:
           </p>
           <CodeBlock
@@ -516,7 +516,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Error Handling">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             The SDK throws errors for failed requests. Always handle errors appropriately:
           </p>
           <CodeBlock
@@ -527,7 +527,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="TypeScript Support">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             The SDK includes full TypeScript definitions for type safety:
           </p>
           <CodeBlock
@@ -538,7 +538,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Identity Management">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Manage client identity, privacy settings, and usage quotas:
           </p>
           <CodeBlock
@@ -549,7 +549,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Batch Operations">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Submit and manage batch optimization jobs:
           </p>
           <CodeBlock
@@ -560,7 +560,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Learning System">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Train models and get learning insights:
           </p>
           <CodeBlock
@@ -571,7 +571,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Advanced Optimization">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Multi-objective optimization and sensitivity analysis:
           </p>
           <CodeBlock
@@ -582,7 +582,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Context Intelligence">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Analyze problem context and get recommendations:
           </p>
           <CodeBlock
@@ -593,7 +593,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Data Lake">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Store and query optimization data:
           </p>
           <CodeBlock
@@ -604,7 +604,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Analytics">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Submit metrics and generate performance reports:
           </p>
           <CodeBlock
@@ -615,7 +615,7 @@ console.log('Components:', detailedHealth.components)`
         </CollapsibleSection>
 
         <CollapsibleSection title="Configuration & Health">
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-400 mb-4">
             Get API configuration and check system health:
           </p>
           <CodeBlock
@@ -632,9 +632,9 @@ console.log('Components:', detailedHealth.components)`
 
         <CollapsibleSection title="API Reference">
           <div className="space-y-6">
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Sematryx Class</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Sematryx Class</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">new Sematryx(apiKey, options?)</code> - Initialize the SDK</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.optimize(config)</code> - Run an optimization</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.financial</code> - Financial domain optimization</li>
@@ -651,9 +651,9 @@ console.log('Components:', detailedHealth.components)`
                 <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.health</code> - Health checks</li>
               </ul>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Optimization Config</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Optimization Config</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">objective_function</code> - Function to optimize (required)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">bounds</code> - Search bounds (required)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">max_evaluations</code> - Max function evaluations</li>
@@ -666,9 +666,9 @@ console.log('Components:', detailedHealth.components)`
                 <li><code className="bg-gray-200 px-2 py-1 rounded">use_visual_intelligence</code> - Enable visual analysis</li>
               </ul>
             </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Configuration Options</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-3">Configuration Options</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li><code className="bg-gray-200 px-2 py-1 rounded">apiUrl</code> - Custom API base URL (default: https://api.sematryx.com)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">timeout</code> - Request timeout in milliseconds (default: 30000)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">retries</code> - Number of retry attempts (default: 3)</li>
