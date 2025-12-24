@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 interface PricingTier {
   name: string
   price: string
@@ -182,8 +180,6 @@ const overageRates = [
 ]
 
 export default function Pricing() {
-  const [annual, setAnnual] = useState(false)
-
   return (
     <section className="py-24 bg-gradient-to-b from-bg-primary to-bg-secondary" id="pricing">
       <div className="container mx-auto px-6">
@@ -192,29 +188,9 @@ export default function Pricing() {
           <h2 className="text-4xl font-bold text-white mb-4">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-text-secondary max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-text-secondary max-w-2xl mx-auto">
             Start free, scale as you grow. All plans include access to the public learning pool.
           </p>
-          
-          {/* Annual toggle */}
-          <div className="flex items-center justify-center gap-4">
-            <span className={`text-sm ${!annual ? 'text-white' : 'text-text-secondary'}`}>Monthly</span>
-            <button
-              onClick={() => setAnnual(!annual)}
-              className={`relative w-14 h-7 rounded-full transition-colors ${
-                annual ? 'bg-accent-primary' : 'bg-gray-600'
-              }`}
-            >
-              <span
-                className={`absolute top-1 w-5 h-5 bg-white rounded-full transition-transform ${
-                  annual ? 'translate-x-8' : 'translate-x-1'
-                }`}
-              />
-            </button>
-            <span className={`text-sm ${annual ? 'text-white' : 'text-text-secondary'}`}>
-              Annual <span className="text-accent-primary">(Save 17%)</span>
-            </span>
-          </div>
         </div>
 
         {/* Pricing cards */}
@@ -239,14 +215,8 @@ export default function Pricing() {
               <div className="mb-5">
                 <h3 className="text-lg font-bold text-white mb-2">{tier.name}</h3>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl font-bold text-white">
-                    {annual && tier.price !== '$0' 
-                      ? `$${Math.round(parseInt(tier.price.replace('$', '')) * 10)}`
-                      : tier.price}
-                  </span>
-                  <span className="text-text-secondary text-sm">
-                    {annual && tier.period === '/month' ? '/year' : tier.period}
-                  </span>
+                  <span className="text-3xl font-bold text-white">{tier.price}</span>
+                  <span className="text-text-secondary text-sm">{tier.period}</span>
                 </div>
                 <p className="text-text-secondary text-xs mt-2">{tier.description}</p>
               </div>
