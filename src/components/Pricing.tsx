@@ -20,7 +20,6 @@ interface PricingTier {
   cta: string
   ctaLink: string
   highlighted?: boolean
-  badge?: string
 }
 
 const tiers: PricingTier[] = [
@@ -90,8 +89,7 @@ const tiers: PricingTier[] = [
     },
     cta: 'Start Free Trial',
     ctaLink: '/api/stripe/checkout?plan=growth',
-    highlighted: true,
-    badge: 'Most Popular'
+    highlighted: true
   },
   {
     name: 'Pro',
@@ -200,20 +198,20 @@ export default function Pricing() {
               key={tier.name}
               className={`relative rounded-2xl p-5 ${
                 tier.highlighted
-                  ? 'bg-gradient-to-b from-accent-primary/20 to-accent-primary/5 border-2 border-accent-primary'
+                  ? 'bg-bg-secondary/80 border-2 border-primary-500 ring-1 ring-primary-500/20'
                   : 'bg-bg-secondary/50 border border-gray-700'
               }`}
             >
-              {tier.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-accent-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                    {tier.badge}
-                  </span>
-                </div>
-              )}
 
               <div className="mb-5">
-                <h3 className="text-lg font-bold text-white mb-2">{tier.name}</h3>
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-lg font-bold text-white">{tier.name}</h3>
+                  {tier.highlighted && (
+                    <span className="bg-primary-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
+                      Popular
+                    </span>
+                  )}
+                </div>
                 <div className="flex items-baseline gap-1">
                   <span className="text-3xl font-bold text-white">{tier.price}</span>
                   <span className="text-text-secondary text-sm">{tier.period}</span>
