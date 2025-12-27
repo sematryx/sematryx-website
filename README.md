@@ -1,6 +1,6 @@
 # Sematryx Website
 
-The official website for Sematryx - Enterprise Optimization Framework powered by the AEAO Engine (Agentic Expository Autodidactic Optimizer).
+The official website for Sematryx - Enterprise Optimization Framework with Agentic, Interpretable, and Adaptive intelligence.
 
 ## Features
 

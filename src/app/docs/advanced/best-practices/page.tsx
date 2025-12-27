@@ -62,7 +62,7 @@ def always_fetch():
 
   const webhooks = `# ✅ Good: Use webhooks for real-time updates
 webhook = client.webhooks.create(
-    url='https://your-app.com/webhooks/aeao',
+    url='https://your-app.com/webhooks/sematryx',
     events=['automation.completed']
 )
 

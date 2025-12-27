@@ -476,7 +476,7 @@ result.export_debug_report('debug_report.json')`
               </p>
               <ul className="space-y-2 text-text-secondary mb-6">
                 <li>✓ Set up optimization problems with constraints</li>
-                <li>✓ Configure the AEAO Tetrad</li>
+                <li>✓ Configure Sematryx Intelligence</li>
                 <li>✓ Interpret results and explanations</li>
                 <li>✓ Use domain-specific libraries</li>
                 <li>✓ Apply advanced strategies for complex problems</li>

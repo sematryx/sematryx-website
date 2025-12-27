@@ -25,7 +25,7 @@ const result = await sematryx.optimize({
 console.log('Best solution:', result.best_solution)
 console.log('Best fitness:', result.best_fitness)`
 
-  const tetradConfig = `import { Sematryx } from '@sematryx/javascript-sdk'
+  const intelligenceConfig = `import { Sematryx } from '@sematryx/javascript-sdk'
 
 const sematryx = new Sematryx('your-api-key')
 
@@ -36,24 +36,24 @@ const result = await sematryx.optimize({
   preset: 'production'  // development, production, research, enterprise, minimal
 })
 
-// Option 2: Enable specific tetrad pillars
+// Option 2: Enable specific core pillars
 const result = await sematryx.optimize({
   objective_function: sphere,
   bounds: [[-5, 5], [-5, 5]],
   use_agentic_intelligence: true,      // Multi-agent coordination
-  use_autodidactic_intelligence: true,  // Self-improvement
+  use_adaptive_intelligence: true,     // Self-improvement
   explanation_level: 3                   // Detailed explanations
 })
 
 // Option 3: Complete custom configuration
 const config = {
-  tetrad: {
+  intelligence: {
     use_agentic_intelligence: true,
-    use_expository_intelligence: true,
-    use_autodidactic_intelligence: true,
+    use_interpretable_intelligence: true,
+    use_adaptive_intelligence: true,
     use_domain_extension: true
   },
-  expository: {
+  interpretable: {
     explanation_level: 4
   },
   agentic: {
@@ -108,7 +108,7 @@ const drugResult = await sematryx.healthcare.optimize({
   }
 }`
 
-  const typescriptCode = `import { Sematryx, OptimizationResult, TetradConfig } from '@sematryx/javascript-sdk'
+  const typescriptCode = `import { Sematryx, OptimizationResult, IntelligenceConfig } from '@sematryx/javascript-sdk'
 
 const sematryx = new Sematryx(process.env.SEMATRYX_API_KEY!)
 
@@ -119,12 +119,12 @@ const result: OptimizationResult = await sematryx.optimize({
   preset: 'production'
 })
 
-const config: TetradConfig = {
-  tetrad: {
+const config: IntelligenceConfig = {
+  intelligence: {
     use_agentic_intelligence: true,
-    use_expository_intelligence: true
+    use_interpretable_intelligence: true
   },
-  expository: {
+  interpretable: {
     explanation_level: 3
   }
 }`
@@ -462,22 +462,22 @@ console.log('Components:', detailedHealth.components)`
           />
         </CollapsibleSection>
 
-        <CollapsibleSection title="AEAO Tetrad Configuration">
+        <CollapsibleSection title="Intelligence Configuration">
           <p className="text-gray-400 mb-4">
-            Configure the four pillars of AEAO intelligence:
+            Configure Sematryx's 3 Core Pillars: Agentic, Interpretable, and Adaptive intelligence:
           </p>
           <CodeBlock
-            code={tetradConfig}
+            code={intelligenceConfig}
             language="javascript"
-            title="Tetrad configuration examples"
+            title="Intelligence configuration examples"
           />
           <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-purple-900 mb-3">The AEAO Tetrad</h3>
+            <h3 className="text-lg font-semibold text-purple-900 mb-3">The 3 Core Pillars</h3>
             <ul className="space-y-2 text-purple-800">
               <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
-              <li><strong>📖 Expository Intelligence:</strong> Explainable results (levels 0-5)</li>
-              <li><strong>🧠 Autodidactic Intelligence:</strong> Self-improvement through learning</li>
-              <li><strong>🏗️ Domain Extension:</strong> Business domain libraries (enabled by default)</li>
+              <li><strong>📖 Interpretable Intelligence:</strong> Explainable results (levels 0-5)</li>
+              <li><strong>🧠 Adaptive Intelligence:</strong> Self-improvement through learning</li>
+              <li><strong>🏗️ Domain Extension:</strong> Business domain libraries that leverage the engine (separate feature, enabled by default)</li>
             </ul>
           </div>
         </CollapsibleSection>
@@ -659,8 +659,8 @@ console.log('Components:', detailedHealth.components)`
                 <li><code className="bg-gray-200 px-2 py-1 rounded">max_evaluations</code> - Max function evaluations</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">preset</code> - Preset configuration</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">use_agentic_intelligence</code> - Enable agentic pillar</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_expository_intelligence</code> - Enable expository pillar</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_autodidactic_intelligence</code> - Enable autodidactic pillar</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">use_interpretable_intelligence</code> - Enable interpretable pillar</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">use_adaptive_intelligence</code> - Enable adaptive pillar</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">explanation_level</code> - Explanation detail (0-5)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">use_gpu_acceleration</code> - Enable GPU</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">use_visual_intelligence</code> - Enable visual analysis</li>

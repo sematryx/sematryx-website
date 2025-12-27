@@ -11,7 +11,7 @@ export default function Footer() {
               <Logo size="small" />
             </Link>
             <p className="text-gray-400 mb-4 max-w-md">
-              Sematryx solves optimization problems that traditional optimizers can't handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning—powered by the AEAO Engine.
+              Sematryx solves optimization problems that traditional optimizers can't handle—with an Intelligence Hub that orchestrates and synthesizes insights from multiple AI systems, built-in compliance for regulatory constraints, explainable decisions for audit trails, and continuous learning.
             </p>
           </div>
 

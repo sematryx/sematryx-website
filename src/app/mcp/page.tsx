@@ -23,7 +23,7 @@ const mcpClient = new MCPClient({
 await mcpClient.connect()`
 
   const contextSharingCode = `// Share context between Sematryx and AI models
-const automation = await aeao.automations.create({
+const automation = await sematryx.automations.create({
   name: 'ai-enhanced-processor',
   trigger: {
     type: 'webhook'

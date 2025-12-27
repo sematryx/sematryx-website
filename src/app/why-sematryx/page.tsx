@@ -273,16 +273,16 @@ export default function WhySematryxPage() {
         </div>
       </section>
 
-      {/* AEAO Engine - Simplified */}
+      {/* Sematryx Intelligence - Core 3 Pillars */}
       <section className="py-20 bg-elevated border-t border-elevated-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-2">Under the Hood</p>
             <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-              The <span className="text-brand-primary">AEAO</span> Engine
+              Sematryx Intelligence
             </h2>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              Agentic, Expository, Autodidactic optimization—three capabilities that make 
+              Agentic, Interpretable, Adaptive optimization—three core capabilities that make 
               Sematryx different from traditional tools.
             </p>
           </div>
@@ -295,13 +295,13 @@ export default function WhySematryxPage() {
               </p>
             </div>
             <div className="bg-base p-6 rounded-xl border border-elevated-3 border-l-4 border-l-accent-expository">
-              <h3 className="text-lg font-bold text-accent-expository mb-2">Expository</h3>
+              <h3 className="text-lg font-bold text-accent-expository mb-2">Interpretable</h3>
               <p className="text-text-secondary text-sm">
                 Dedicated explainability engine generates audit trails, decision rationales, and diagnostics.
               </p>
             </div>
             <div className="bg-base p-6 rounded-xl border border-elevated-3 border-l-4 border-l-accent-autodidactic">
-              <h3 className="text-lg font-bold text-accent-autodidactic mb-2">Autodidactic</h3>
+              <h3 className="text-lg font-bold text-accent-autodidactic mb-2">Adaptive</h3>
               <p className="text-text-secondary text-sm">
                 Vector memory and knowledge graphs recall past optimizations to improve continuously.
               </p>

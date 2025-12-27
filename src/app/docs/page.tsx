@@ -23,7 +23,7 @@ result = client.optimize(
 print(f"Solution: {result.solution}")
 print(f"Value: {result.value}")`
 
-  const tetradExample = `from sematryx import Sematryx
+  const intelligenceExample = `from sematryx import Sematryx
 
 client = Sematryx(api_key="sk-your-api-key")
 
@@ -131,16 +131,16 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
             Sematryx's optimization engine is built on three pillars of intelligence. Configure them to match your needs:
           </p>
           <CodeBlock
-            code={tetradExample}
+            code={intelligenceExample}
             language="python"
             title="Engine configuration"
           />
           <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-400 mb-3">The Engine's Three Pillars</h3>
+            <h3 className="text-lg font-semibold text-blue-400 mb-3">The Three Core Pillars</h3>
             <ul className="space-y-2 text-blue-300">
               <li><strong>🤖 Agentic:</strong> Multi-agent coordination for strategy selection</li>
-              <li><strong>📖 Expository:</strong> Explainable results with configurable detail levels</li>
-              <li><strong>🧠 Autodidactic:</strong> Self-improvement through learning from experience</li>
+              <li><strong>📖 Interpretable:</strong> Explainable results with configurable detail levels</li>
+              <li><strong>🧠 Adaptive:</strong> Self-improvement through learning from experience</li>
             </ul>
           </div>
         </section>
@@ -209,7 +209,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
                 API Reference
               </h3>
               <p className="text-gray-400 mb-4">
-                Detailed documentation for all optimization APIs and tetrad configuration.
+                Detailed documentation for all optimization APIs and intelligence configuration.
               </p>
               <a 
                 href="/docs/api/automation" 
@@ -220,13 +220,13 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
             </div>
             <div className="bg-[#1a1f2e] rounded-lg p-6 border border-gray-700">
               <h3 className="text-lg font-semibold text-gray-200 mb-2">
-                Tetrad Configuration
+                Intelligence Configuration
               </h3>
               <p className="text-gray-400 mb-4">
-                Learn how to configure the four pillars of Sematryx's <span className="text-primary-400">AEAO Engine</span> intelligence.
+                Learn how to configure Sematryx's 3 Core Pillars: Agentic, Interpretable, and Adaptive intelligence.
               </p>
               <a 
-                href="/docs/advanced/best-practices" 
+                href="/docs/api/intelligence-config" 
                 className="text-primary-400 hover:text-primary-300 font-medium"
               >
                 Configuration Guide →

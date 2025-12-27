@@ -33,7 +33,7 @@ result = client.optimize(
 print(f"Solution: {result.solution}")
 print(f"Value: {result.value}")`
 
-  const tetradConfig = `from sematryx import Sematryx
+  const intelligenceConfig = `from sematryx import Sematryx
 
 client = Sematryx(api_key="sk-your-api-key")
 
@@ -98,15 +98,15 @@ result = client.optimize(
   "evaluations": 847,
   "duration_seconds": 2.34,
   "strategy_used": "shgo",
-  "tetrad_config": {
-    "use_agentic_intelligence": true,
-    "use_expository_intelligence": true,
-    "use_autodidactic_intelligence": false,
-    "use_domain_extension": true
-  },
+    "intelligence_config": {
+      "use_agentic_intelligence": true,
+      "use_interpretable_intelligence": true,
+      "use_adaptive_intelligence": false,
+      "use_domain_extension": true
+    },
   "features_active": {
     "agentic_intelligence": true,
-    "expository_intelligence": true,
+    "interpretable_intelligence": true,
     "explanation_level": 2,
     "cross_problem_learning": false
   }
@@ -120,9 +120,9 @@ result = client.optimize(
     "bounds": [[-10, 10], [-10, 10], [-10, 10]],
     "max_evaluations": 2000,
     "preset": "production",
-    "tetrad_config": {
+    "intelligence_config": {
       "use_agentic_intelligence": true,
-      "use_expository_intelligence": true,
+      "use_interpretable_intelligence": true,
       "explanation_level": 3
     }
   }'`
@@ -134,7 +134,7 @@ result = client.optimize(
           Optimization API
         </h1>
         <p className="text-xl text-gray-400">
-          Solve optimization problems using Sematryx with configurable AI intelligence through the AEAO Tetrad.
+          Solve optimization problems using Sematryx with configurable AI intelligence through the 3 Core Pillars: Agentic, Interpretable, and Adaptive.
         </p>
       </div>
 
@@ -164,23 +164,23 @@ result = client.optimize(
 
         <section>
           <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            AEAO Tetrad Configuration
+            Intelligence Configuration
           </h2>
           <p className="text-gray-400 mb-4">
-            Configure the four pillars of Sematryx's AEAO Engine intelligence: Agentic, Expository, Autodidactic, and Domain Extension.
+            Configure Sematryx's 3 Core Pillars: Agentic, Interpretable, and Adaptive intelligence, plus Domain Extension libraries.
           </p>
           <CodeBlock
-            code={tetradConfig}
+            code={intelligenceConfig}
             language="python"
-            title="Tetrad Configuration Examples"
+            title="Intelligence Configuration Examples"
           />
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-green-900 mb-3">Tetrad Pillars</h3>
+            <h3 className="text-lg font-semibold text-green-900 mb-3">Core Pillars</h3>
             <ul className="space-y-2 text-green-800">
               <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
-              <li><strong>📖 Expository Intelligence:</strong> Explainability with configurable levels (0-5)</li>
-              <li><strong>🧠 Autodidactic Intelligence:</strong> Self-improvement and learning from experience</li>
-              <li><strong>🏗️ Domain Extension:</strong> Business domain libraries for rapid adoption</li>
+              <li><strong>📖 Interpretable Intelligence:</strong> Explainability with configurable levels (0-5)</li>
+              <li><strong>🧠 Adaptive Intelligence:</strong> Self-improvement and learning from experience</li>
+              <li><strong>🏗️ Domain Extension:</strong> Business domain libraries that leverage the engine (separate feature)</li>
             </ul>
           </div>
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mt-4">
@@ -251,8 +251,8 @@ result = client.optimize(
               <li><strong>evaluations:</strong> Number of function evaluations used</li>
               <li><strong>duration_seconds:</strong> Time taken for optimization</li>
               <li><strong>strategy_used:</strong> Optimization algorithm selected</li>
-              <li><strong>tetrad_config:</strong> Tetrad configuration that was active</li>
-              <li><strong>features_active:</strong> Which tetrad features were enabled</li>
+              <li><strong>intelligence_config:</strong> Intelligence configuration that was active</li>
+              <li><strong>features_active:</strong> Which core pillars were enabled</li>
             </ul>
           </div>
         </section>

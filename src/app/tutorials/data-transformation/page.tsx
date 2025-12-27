@@ -341,14 +341,14 @@ result = optimize(
             <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
               <p className="text-text-secondary mb-4">
                 You now know how to set up complex optimization problems. 
-                Next, learn how to configure the AEAO Tetrad for enhanced optimization.
+                Next, learn how to configure Sematryx Intelligence for enhanced optimization.
               </p>
               <div className="space-y-2">
                 <Link 
                   href="/tutorials/ai-content-generation" 
                   className="block text-brand-primary hover:underline"
                 >
-                  → Configure the AEAO Tetrad
+                  → Configure Sematryx Intelligence
                 </Link>
                 <Link 
                   href="/tutorials/monitoring-alerts" 

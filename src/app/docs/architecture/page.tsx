@@ -45,7 +45,7 @@ export default function ArchitecturePage() {
 │                  CORE OPTIMIZATION ENGINE                    │
 │  ┌──────────────┐  ┌──────────────┐  ┌─────────────────┐  │
 │  │  Optimizers  │◄─┤   Strategies │◄─┤  Meta-Policy    │  │
-│  │  - AEAO      │  │  - CMA-ES    │  │  Learning       │  │
+│  │  - Sematryx  │  │  - CMA-ES    │  │  Learning       │  │
 │  │  - Async     │  │  - DE        │  └─────────────────┘  │
 │  │  - Enhanced  │  │  - Bayesian  │                        │
 │  └──────┬───────┘  └──────────────┘                        │
@@ -133,7 +133,7 @@ export default function ArchitecturePage() {
                 <h3 className="text-xl font-bold text-gray-200">Knowledge & Memory</h3>
               </div>
               <p className="text-gray-400 text-sm mb-4">
-                Long-term persistence layers that store optimization contexts and results. This "Autodidactic" memory allows Sematryx to get smarter over time.
+                Long-term persistence layers that store optimization contexts and results. This "Adaptive" memory allows Sematryx to get smarter over time.
               </p>
               <ul className="space-y-2 text-sm text-gray-300">
                 <li className="flex gap-2"><span className="text-blue-400">•</span> Vector Memory (Qdrant)</li>

@@ -44,9 +44,9 @@ print(f"Evaluations used: {result['evaluations']}")`
   }
 }`
 
-  const tetradExample = `from sematryx import optimize
+  const intelligenceExample = `from sematryx import optimize
 
-# Configure the engine's three pillars
+# Configure the engine's three core pillars
 result = optimize(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
@@ -54,10 +54,10 @@ result = optimize(
     # Agentic: Multi-agent strategy selection
     use_agentic=True,
     
-    # Expository: Get detailed explanations
+    # Interpretable: Get detailed explanations
     explanation_level=3,
     
-    # Autodidactic: Learn from this optimization
+    # Adaptive: Learn from this optimization
     use_learning=True
 )`
 
@@ -118,7 +118,7 @@ print(f"Explanation: {result['explanation']['rationale']}")`
             Getting Started with Sematryx
           </h1>
           <p className="text-xl text-text-secondary">
-            Solve your first optimization problem and learn the core concepts of the AEAO Engine.
+            Solve your first optimization problem and learn the core concepts of Sematryx.
           </p>
         </div>
 
@@ -149,7 +149,7 @@ print(f"Explanation: {result['explanation']['rationale']}")`
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-brand-primary mt-1">•</span>
-                <span>Configuring the AEAO Tetrad</span>
+                <span>Configuring Sematryx Intelligence</span>
               </li>
             </ul>
           </section>
@@ -251,23 +251,23 @@ print(f"Explanation: {result['explanation']['rationale']}")`
               Sematryx's optimization engine has three pillars you can enable for enhanced optimization:
             </p>
             <CodeBlock
-              code={tetradExample}
+              code={intelligenceExample}
               language="python"
               title="Engine configuration"
             />
             <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
-              <h3 className="text-lg font-semibold text-text-primary mb-3">The Engine's Three Pillars</h3>
+              <h3 className="text-lg font-semibold text-text-primary mb-3">The Three Core Pillars</h3>
               <ul className="space-y-3 text-text-secondary">
                 <li>
                   <strong className="text-accent-agentic">Agentic Intelligence:</strong>{' '}
                   Multiple AI agents collaborate to select the best optimization strategy
                 </li>
                 <li>
-                  <strong className="text-accent-expository">Expository Intelligence:</strong>{' '}
+                  <strong className="text-accent-expository">Interpretable Intelligence:</strong>{' '}
                   Get explanations of optimization decisions (levels 0-5 for detail)
                 </li>
                 <li>
-                  <strong className="text-accent-autodidactic">Autodidactic Intelligence:</strong>{' '}
+                  <strong className="text-accent-autodidactic">Adaptive Intelligence:</strong>{' '}
                   System learns from your optimizations to improve over time
                 </li>
               </ul>
@@ -313,7 +313,7 @@ print(f"Explanation: {result['explanation']['rationale']}")`
                   href="/tutorials/ai-content-generation" 
                   className="block text-brand-primary hover:underline"
                 >
-                  → Master AEAO Tetrad configuration
+                  → Master Sematryx Intelligence configuration
                 </Link>
                 <Link 
                   href="/docs" 

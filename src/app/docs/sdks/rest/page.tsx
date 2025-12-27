@@ -32,17 +32,17 @@ export default function RESTAPIPage() {
     "preset": "production"
   }'`
 
-  const tetradConfigExample = `curl -X POST https://api.sematryx.com/v1/optimize \\
+  const intelligenceConfigExample = `curl -X POST https://api.sematryx.com/v1/optimize \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
     "objective_function_id": "func_1234567890",
     "bounds": [[-5, 5], [-5, 5]],
     "max_evaluations": 1000,
-    "tetrad_config": {
+    "intelligence_config": {
       "use_agentic_intelligence": true,
-      "use_expository_intelligence": true,
-      "use_autodidactic_intelligence": true,
+      "use_interpretable_intelligence": true,
+      "use_adaptive_intelligence": true,
       "explanation_level": 3
     }
   }'`
@@ -82,15 +82,15 @@ export default function RESTAPIPage() {
   "evaluations": 847,
   "duration_seconds": 2.34,
   "strategy_used": "shgo",
-  "tetrad_config": {
+  "intelligence_config": {
     "use_agentic_intelligence": true,
-    "use_expository_intelligence": true,
-    "use_autodidactic_intelligence": false,
+    "use_interpretable_intelligence": true,
+    "use_adaptive_intelligence": false,
     "use_domain_extension": true
   },
   "features_active": {
     "agentic_intelligence": true,
-    "expository_intelligence": true,
+    "interpretable_intelligence": true,
     "explanation_level": 2
   },
   "created_at": "2024-01-01T00:00:00Z",
@@ -231,7 +231,7 @@ export default function RESTAPIPage() {
           REST API
         </h1>
         <p className="text-xl text-gray-400">
-          Complete REST API reference for Sematryx. Use HTTP requests to interact with all optimization features and configure the AEAO Tetrad.
+          Complete REST API reference for Sematryx. Use HTTP requests to interact with all optimization features and configure Sematryx intelligence.
         </p>
       </div>
 
@@ -291,15 +291,15 @@ export default function RESTAPIPage() {
             title="POST /v1/optimize - Run optimization"
           />
           <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
-            Configure AEAO Tetrad
+            Configure Intelligence
           </h3>
           <p className="text-gray-400 mb-4">
-            Enable tetrad pillars and configure intelligence features:
+            Enable core pillars and configure intelligence features:
           </p>
           <CodeBlock
-            code={tetradConfigExample}
+            code={intelligenceConfigExample}
             language="bash"
-            title="POST /v1/optimize - With Tetrad configuration"
+            title="POST /v1/optimize - With Intelligence configuration"
           />
           <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
             Get Optimization Status
@@ -667,15 +667,15 @@ export default function RESTAPIPage() {
               <li><strong>bounds</strong> (required): Search bounds [[min1, max1], [min2, max2], ...]</li>
               <li><strong>max_evaluations</strong> (optional): Maximum function evaluations (default: 1000)</li>
               <li><strong>preset</strong> (optional): Preset config ("development", "production", "research", "enterprise", "minimal")</li>
-              <li><strong>tetrad_config</strong> (optional): Custom tetrad configuration object</li>
+              <li><strong>intelligence_config</strong> (optional): Custom intelligence configuration object</li>
             </ul>
           </div>
           <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-gray-200 mb-3">Tetrad Configuration</h3>
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Intelligence Configuration</h3>
             <ul className="space-y-2 text-gray-400">
               <li><strong>use_agentic_intelligence</strong> (boolean): Enable multi-agent coordination</li>
-              <li><strong>use_expository_intelligence</strong> (boolean): Enable explainability</li>
-              <li><strong>use_autodidactic_intelligence</strong> (boolean): Enable self-improvement</li>
+              <li><strong>use_interpretable_intelligence</strong> (boolean): Enable explainability</li>
+              <li><strong>use_adaptive_intelligence</strong> (boolean): Enable self-improvement</li>
               <li><strong>use_domain_extension</strong> (boolean): Enable domain libraries</li>
               <li><strong>explanation_level</strong> (integer 0-5): Explanation detail level</li>
               <li><strong>use_gpu_acceleration</strong> (boolean): Enable GPU/CUDA</li>

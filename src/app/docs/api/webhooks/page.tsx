@@ -5,7 +5,7 @@ export default function WebhooksPage() {
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "url": "https://your-app.com/webhooks/aeao",
+    "url": "https://your-app.com/webhooks/sematryx",
     "events": ["automation.completed", "automation.failed"],
     "secret": "your-webhook-secret"
   }'`

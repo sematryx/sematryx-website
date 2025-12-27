@@ -22,7 +22,7 @@ result = sematryx(
 print(f"Best solution: {result['best_solution']}")
 print(f"Best fitness: {result['best_fitness']}")`
 
-  const tetradConfig = `from sematryx import sematryx, AEAOTetradCompleteConfig
+  const intelligenceConfig = `from sematryx import sematryx, SematryxIntelligenceConfig
 
 # Option 1: Use preset configuration
 result = sematryx(
@@ -31,18 +31,18 @@ result = sematryx(
     preset="production"  # development, production, research, enterprise, minimal
 )
 
-# Option 2: Enable specific tetrad pillars
+# Option 2: Enable specific core pillars
 result = sematryx(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
     use_agentic_intelligence=True,      # Multi-agent coordination
-    use_autodidactic_intelligence=True,  # Self-improvement
+    use_adaptive_intelligence=True,     # Self-improvement
     explanation_level=3                 # Detailed explanations
 )
 
 # Option 3: Complete custom configuration
-config = AEAOTetradCompleteConfig.enterprise()
-config.expository.explanation_level = 4
+config = SematryxIntelligenceConfig.enterprise()
+config.interpretable.explanation_level = 4
 config.agentic.max_agents_per_problem = 5
 result = sematryx(objective_function=sphere, bounds=[[-5, 5], [-5, 5]], config=config)`
 
@@ -414,7 +414,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
         </h1>
         <p className="text-xl text-gray-400">
           Official Python SDK for Sematryx. Full-featured client library with support for optimization, 
-          AEAO Tetrad configuration, and domain-specific libraries.
+          intelligence configuration, and domain-specific libraries.
         </p>
       </div>
 
@@ -446,22 +446,22 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
           />
         </CollapsibleSection>
 
-        <CollapsibleSection title="AEAO Tetrad Configuration">
+        <CollapsibleSection title="Intelligence Configuration">
           <p className="text-gray-400 mb-4">
-            Configure the four pillars of AEAO intelligence to match your needs:
+            Configure Sematryx's 3 Core Pillars: Agentic, Interpretable, and Adaptive intelligence to match your needs:
           </p>
           <CodeBlock
-            code={tetradConfig}
+            code={intelligenceConfig}
             language="python"
-            title="Tetrad configuration examples"
+            title="Intelligence configuration examples"
           />
           <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-purple-900 mb-3">The AEAO Tetrad</h3>
+            <h3 className="text-lg font-semibold text-purple-900 mb-3">The 3 Core Pillars</h3>
             <ul className="space-y-2 text-purple-800">
               <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
-              <li><strong>📖 Expository Intelligence:</strong> Explainable results (levels 0-5)</li>
-              <li><strong>🧠 Autodidactic Intelligence:</strong> Self-improvement through learning</li>
-              <li><strong>🏗️ Domain Extension:</strong> Business domain libraries (enabled by default)</li>
+              <li><strong>📖 Interpretable Intelligence:</strong> Explainable results (levels 0-5)</li>
+              <li><strong>🧠 Adaptive Intelligence:</strong> Self-improvement through learning</li>
+              <li><strong>🏗️ Domain Extension:</strong> Business domain libraries that leverage the engine (separate feature, enabled by default)</li>
             </ul>
           </div>
         </CollapsibleSection>
@@ -522,7 +522,7 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
 
         <CollapsibleSection title="Async Support">
           <p className="text-gray-400 mb-4">
-            Use AsyncAEAO for concurrent operations:
+            Use AsyncSematryx for concurrent operations:
           </p>
           <CodeBlock
             code={asyncCode}
@@ -629,11 +629,11 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-200 mb-3">Main Function</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">aeao(objective_function, bounds, **kwargs)</code> - Main optimization function</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx(objective_function, bounds, **kwargs)</code> - Main optimization function</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">preset</code> - Use preset config ("development", "production", "research", "enterprise", "minimal")</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">use_agentic_intelligence</code> - Enable multi-agent coordination</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_expository_intelligence</code> - Enable explainability</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_autodidactic_intelligence</code> - Enable self-improvement</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">use_interpretable_intelligence</code> - Enable explainability</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">use_adaptive_intelligence</code> - Enable self-improvement</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">explanation_level</code> - Explanation detail (0-5)</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">use_gpu_acceleration</code> - Enable GPU/CUDA</li>
                 <li><code className="bg-gray-200 px-2 py-1 rounded">use_visual_intelligence</code> - Enable visual analysis</li>
@@ -642,11 +642,11 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-200 mb-3">Configuration Classes</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig</code> - Complete tetrad configuration</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig.development()</code> - Development preset</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig.production()</code> - Production preset</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig.research()</code> - Research preset</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">AEAOTetradCompleteConfig.enterprise()</code> - Enterprise preset</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig</code> - Complete intelligence configuration</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig.development()</code> - Development preset</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig.production()</code> - Production preset</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig.research()</code> - Research preset</li>
+                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig.enterprise()</code> - Enterprise preset</li>
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">

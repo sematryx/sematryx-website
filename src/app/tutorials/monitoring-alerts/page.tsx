@@ -315,7 +315,7 @@ else:
               Learning Context
             </h2>
             <p className="text-text-secondary mb-4">
-              When autodidactic learning is enabled, results include information about 
+              When adaptive learning is enabled, results include information about 
               prior experience used:
             </p>
             <CodeBlock

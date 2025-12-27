@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Configuring the AEAO Tetrad - Sematryx Tutorials',
-  description: 'Master the four pillars of the AEAO Engine: Agentic, Expository, Autodidactic, and Domain Extension.',
+  title: 'Configuring Sematryx Intelligence - Sematryx Tutorials',
+  description: 'Master the 3 Core Pillars: Agentic, Interpretable, Adaptive, plus Domain Extension.',
 }
 
-export default function TetradConfigTutorial() {
+export default function IntelligenceConfigTutorial() {
   const agenticExample = `from sematryx import optimize
 
 # Enable Agentic Intelligence
@@ -31,7 +31,7 @@ result = optimize(
 print(f"Strategy selected: {result['strategy_used']}")
 print(f"Agent rationale: {result['explanation']['agent_reasoning']}")`
 
-  const expositoryLevels = `from sematryx import optimize
+  const interpretableLevels = `from sematryx import optimize
 
 # Explanation levels control detail and compute cost
 # Level 0: No explanations (fastest)
@@ -59,7 +59,7 @@ result = optimize(
 print(result['explanation']['audit_trail'])
 # Detailed log of every decision made`
 
-  const expositoryOutput = `{
+  const interpretableOutput = `{
   "explanation": {
     "summary": "CMA-ES selected for smooth continuous landscape",
     "rationale": "Problem analysis detected: smooth, unimodal, 
@@ -79,15 +79,15 @@ print(result['explanation']['audit_trail'])
   }
 }`
 
-  const autodidacticExample = `from sematryx import optimize
+  const adaptiveExample = `from sematryx import optimize
 
-# Enable Autodidactic Intelligence
+# Enable Adaptive Intelligence
 # System learns from this optimization for future problems
 result = optimize(
     objective_function=my_function,
     bounds=bounds,
     
-    # Autodidactic configuration
+    # Adaptive configuration
     use_learning=True,
     learning_config={
         'store_result': True,              # Save to learning store
@@ -158,7 +158,7 @@ from sematryx.domains import ml           # Hyperparameters, NAS, features`
 
   const fullConfig = `from sematryx import optimize
 
-# Full AEAO Tetrad configuration
+# Full Intelligence configuration (3 Core Pillars)
 result = optimize(
     objective_function=enterprise_function,
     bounds=bounds,
@@ -170,10 +170,10 @@ result = optimize(
         'exploration_weight': 0.3
     },
     
-    # === EXPOSITORY ===
+    # === INTERPRETABLE ===
     explanation_level=4,  # Full audit trail
     
-    # === AUTODIDACTIC ===
+    # === ADAPTIVE ===
     use_learning=True,
     learning_config={
         'store_result': True,
@@ -213,17 +213,17 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
             <span className="text-text-tertiary">• 30 minutes</span>
           </div>
           <h1 className="text-4xl font-bold text-text-primary mb-4">
-            Configuring the AEAO Tetrad
+            Configuring Sematryx Intelligence
           </h1>
           <p className="text-xl text-text-secondary">
-            Master the four pillars that make Sematryx different: Agentic, Expository, Autodidactic, and Domain Extension.
+            Master the 3 Core Pillars that make Sematryx different: Agentic, Interpretable, Adaptive, plus Domain Extension.
           </p>
         </div>
 
         <div className="space-y-12">
           <section>
             <h2 className="text-2xl font-semibold text-text-primary mb-4">
-              The Four Pillars
+              The 3 Core Pillars + Domain Extension
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-accent-agentic">
@@ -231,16 +231,16 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
                 <p className="text-sm text-text-secondary">Multiple AI agents collaborate to select the best optimization strategy</p>
               </div>
               <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-accent-expository">
-                <h3 className="font-semibold text-accent-expository mb-2">📖 Expository</h3>
+                <h3 className="font-semibold text-accent-expository mb-2">📖 Interpretable</h3>
                 <p className="text-sm text-text-secondary">Detailed explanations of every optimization decision for audits and understanding</p>
               </div>
               <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-accent-autodidactic">
-                <h3 className="font-semibold text-accent-autodidactic mb-2">🧠 Autodidactic</h3>
+                <h3 className="font-semibold text-accent-autodidactic mb-2">🧠 Adaptive</h3>
                 <p className="text-sm text-text-secondary">System learns from optimizations to improve continuously over time</p>
               </div>
               <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-orange-400">
                 <h3 className="font-semibold text-orange-400 mb-2">🏗️ Domain Extension</h3>
-                <p className="text-sm text-text-secondary">Pre-built libraries for finance, healthcare, manufacturing, and more</p>
+                <p className="text-sm text-text-secondary">Pre-built libraries that leverage the engine for finance, healthcare, manufacturing, and more</p>
               </div>
             </div>
           </section>
@@ -279,14 +279,14 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
 
           <section>
             <h2 className="text-2xl font-semibold text-text-primary mb-4">
-              <span className="text-accent-expository">Expository Intelligence</span>
+              <span className="text-accent-expository">Interpretable Intelligence</span>
             </h2>
             <p className="text-text-secondary mb-4">
               Control how much explanation Sematryx generates. Higher levels provide more detail 
               but use more compute. Level 4+ is recommended for compliance-sensitive applications.
             </p>
             <CodeBlock
-              code={expositoryLevels}
+              code={interpretableLevels}
               language="python"
               title="Explanation levels"
             />
@@ -294,7 +294,7 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
               Here's what a detailed explanation looks like:
             </p>
             <CodeBlock
-              code={expositoryOutput}
+              code={interpretableOutput}
               language="json"
               title="Explanation output example"
             />
@@ -302,16 +302,16 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
 
           <section>
             <h2 className="text-2xl font-semibold text-text-primary mb-4">
-              <span className="text-accent-autodidactic">Autodidactic Intelligence</span>
+              <span className="text-accent-autodidactic">Adaptive Intelligence</span>
             </h2>
             <p className="text-text-secondary mb-4">
               Enable learning to let Sematryx improve over time. It remembers successful strategies 
               and applies them to similar problems, accelerating convergence.
             </p>
             <CodeBlock
-              code={autodidacticExample}
+              code={adaptiveExample}
               language="python"
-              title="Autodidactic configuration"
+              title="Adaptive configuration"
             />
             
             <h3 className="text-xl font-semibold text-text-primary mb-4 mt-8">
@@ -353,15 +353,15 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
 
           <section>
             <h2 className="text-2xl font-semibold text-text-primary mb-4">
-              Full Tetrad Configuration
+              Full Intelligence Configuration
             </h2>
             <p className="text-text-secondary mb-4">
-              Here's how to combine all four pillars for maximum capability:
+              Here's how to combine all 3 core pillars for maximum capability:
             </p>
             <CodeBlock
               code={fullConfig}
               language="python"
-              title="Complete AEAO Tetrad"
+              title="Complete Intelligence Configuration"
             />
           </section>
 
@@ -399,7 +399,7 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
             </h2>
             <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
               <p className="text-text-secondary mb-4">
-                You now understand how to configure the AEAO Tetrad. 
+                You now understand how to configure Sematryx Intelligence. 
                 Next, learn how to interpret the rich results Sematryx returns.
               </p>
               <div className="space-y-2">

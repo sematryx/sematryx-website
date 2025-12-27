@@ -464,7 +464,7 @@ export default function BenchmarksPage() {
             
             <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
               <a
-                href="https://github.com/sematryx/aeao/blob/main/notebooks/benchmarks/01_sematryx_vs_scipy.ipynb"
+                href="https://github.com/sematryx/sematryx/blob/main/notebooks/benchmarks/01_sematryx_vs_scipy.ipynb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-elevated rounded-xl p-4 border border-elevated-3 hover:border-brand-primary/50 transition-all group flex items-center gap-4"
@@ -479,7 +479,7 @@ export default function BenchmarksPage() {
               </a>
               
               <a
-                href="https://github.com/sematryx/aeao/blob/main/notebooks/benchmarks/02_comprehensive_competitive_benchmark.ipynb"
+                href="https://github.com/sematryx/sematryx/blob/main/notebooks/benchmarks/02_comprehensive_competitive_benchmark.ipynb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-elevated rounded-xl p-4 border border-elevated-3 hover:border-brand-primary/50 transition-all group flex items-center gap-4"
@@ -494,7 +494,7 @@ export default function BenchmarksPage() {
               </a>
               
               <a
-                href="https://github.com/sematryx/aeao/blob/main/notebooks/benchmarks/03_batch_optimization_benchmark.ipynb"
+                href="https://github.com/sematryx/sematryx/blob/main/notebooks/benchmarks/03_batch_optimization_benchmark.ipynb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-elevated rounded-xl p-4 border border-elevated-3 hover:border-brand-primary/50 transition-all group flex items-center gap-4"

@@ -1,6 +1,6 @@
 import CodeBlock from '@/components/CodeBlock'
 
-export default function TetradConfigPage() {
+export default function IntelligenceConfigPage() {
   const presetConfig = `from sematryx import Sematryx
 
 client = Sematryx(api_key="sk-your-api-key")
@@ -52,16 +52,16 @@ result = client.optimize(
     "bounds": [[-10, 10], [-10, 10]],
     "max_evaluations": 2000,
     "preset": "production",
-    "tetrad_config": {
+    "intelligence_config": {
       "use_agentic_intelligence": true,
-      "use_expository_intelligence": true,
-      "use_autodidactic_intelligence": true,
+      "use_interpretable_intelligence": true,
+      "use_adaptive_intelligence": true,
       "use_domain_extension": true,
       "explanation_level": 3,
       "agentic": {
         "max_agents_per_problem": 5
       },
-      "autodidactic": {
+      "adaptive": {
         "learning_enabled": true,
         "cross_problem_learning": true
       }
@@ -100,22 +100,22 @@ console.log(result.explanation)`
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
         <h1 className="text-4xl font-bold text-gray-200 mb-4">
-          <span className="text-primary-400">AEAO</span> Tetrad Configuration
+          Intelligence Configuration
         </h1>
         <p className="text-xl text-gray-400">
-          Configure the four pillars of Sematryx's <span className="text-primary-400">AEAO Engine</span>: Agentic, Expository, Autodidactic, and Domain Extension. 
+          Configure Sematryx's 3 Core Pillars: Agentic, Interpretable, and Adaptive intelligence, plus Domain Extension libraries. 
           Control compute cost vs capability trade-offs with granular configuration options.
         </p>
       </div>
 
       <div className="space-y-12">
-        {/* The AEAO Tetrad Overview */}
+        {/* The 3 Core Pillars + Domain Extension Overview */}
         <section>
           <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            The <span className="text-primary-400">AEAO</span> Tetrad
+            The 3 Core Pillars + Domain Extension
           </h2>
           <p className="text-gray-400 mb-6">
-            Sematryx's <span className="text-primary-400">AEAO Engine</span> is built on four central pillars that work together to provide enterprise-grade optimization:
+            Sematryx is built on three core pillars of intelligence that work together to provide enterprise-grade optimization, plus Domain Extension libraries that leverage the engine:
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -138,7 +138,7 @@ console.log(result.explanation)`
             <div className="bg-green-950/40 border border-green-800/50 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">📖</span>
-                <h3 className="text-xl font-bold text-green-400">Expository Intelligence</h3>
+                <h3 className="text-xl font-bold text-green-400">Interpretable Intelligence</h3>
               </div>
               <p className="text-green-200/80 mb-3">
                 Comprehensive explanation of all optimization decisions with configurable explanation levels (0-5) for compute cost control.
@@ -155,7 +155,7 @@ console.log(result.explanation)`
             <div className="bg-pink-950/40 border border-pink-800/50 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🧠</span>
-                <h3 className="text-xl font-bold text-pink-400">Autodidactic Intelligence</h3>
+                <h3 className="text-xl font-bold text-pink-400">Adaptive Intelligence</h3>
               </div>
               <p className="text-pink-200/80 mb-3">
                 Self-improvement and continuous learning from optimization experience. Problem signature detection, strategy variation, and cross-problem learning.
@@ -175,7 +175,7 @@ console.log(result.explanation)`
                 <h3 className="text-xl font-bold text-orange-400">Domain Extension</h3>
               </div>
               <p className="text-orange-200/80 mb-3">
-                Business domain libraries for rapid enterprise adoption. Engine-domain separation enables core optimization algorithms across 13+ business domains.
+                Business domain libraries that leverage the core engine for rapid enterprise adoption. Separate from the engine itself, Domain Extension enables core optimization algorithms across 13+ business domains.
               </p>
               <ul className="space-y-1 text-sm text-orange-400">
                 <li>• 13+ business domains</li>
@@ -229,19 +229,19 @@ console.log(result.explanation)`
             Simple Configuration
           </h2>
           <p className="text-gray-400 mb-4">
-            Enable specific tetrad pillars with simple boolean flags and basic parameters:
+            Enable specific core pillars with simple boolean flags and basic parameters:
           </p>
           <CodeBlock
             code={simpleConfig}
             language="python"
-            title="Simple Tetrad Configuration"
+            title="Simple Intelligence Configuration"
           />
           <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6 mt-4">
             <h3 className="text-lg font-semibold text-primary-400 mb-3">Simple Configuration Options</h3>
             <ul className="space-y-2 text-gray-400">
               <li><strong className="text-gray-200">use_agentic_intelligence</strong> (bool): Enable multi-agent coordination</li>
-              <li><strong className="text-gray-200">use_expository_intelligence</strong> (bool): Enable explainability</li>
-              <li><strong className="text-gray-200">use_autodidactic_intelligence</strong> (bool): Enable learning system</li>
+              <li><strong className="text-gray-200">use_interpretable_intelligence</strong> (bool): Enable explainability</li>
+              <li><strong className="text-gray-200">use_adaptive_intelligence</strong> (bool): Enable learning system</li>
               <li><strong className="text-gray-200">use_domain_extension</strong> (bool): Enable domain libraries (default: True)</li>
               <li><strong className="text-gray-200">explanation_level</strong> (int, 0-5): Detail level for explanations (0=off, 5=comprehensive)</li>
             </ul>
@@ -254,12 +254,12 @@ console.log(result.explanation)`
             Advanced Configuration
           </h2>
           <p className="text-gray-400 mb-4">
-            Fine-tune every aspect of the Tetrad with complete configuration objects:
+            Fine-tune every aspect of the core pillars with complete configuration objects:
           </p>
           <CodeBlock
             code={advancedConfig}
             language="python"
-            title="Advanced Tetrad Configuration"
+            title="Advanced Intelligence Configuration"
           />
           <div className="bg-[#1a1f2e] border border-primary-700 rounded-lg p-6 mt-4">
             <h3 className="text-lg font-semibold text-primary-400 mb-3">Advanced Configuration Options</h3>
@@ -273,7 +273,7 @@ console.log(result.explanation)`
                 </ul>
               </div>
               <div>
-                <strong className="text-gray-200">Expository Configuration:</strong>
+                <strong className="text-gray-200">Interpretable Configuration:</strong>
                 <ul className="ml-4 mt-1 space-y-1 text-sm">
                   <li>• explanation_level: 0-5 detail level</li>
                   <li>• async_explanations: Background processing (default: True)</li>
@@ -282,7 +282,7 @@ console.log(result.explanation)`
                 </ul>
               </div>
               <div>
-                <strong className="text-gray-200">Autodidactic Configuration:</strong>
+                <strong className="text-gray-200">Adaptive Configuration:</strong>
                 <ul className="ml-4 mt-1 space-y-1 text-sm">
                   <li>• learning_enabled: Enable learning system</li>
                   <li>• cross_problem_learning: Learn across different problems</li>
@@ -308,12 +308,12 @@ console.log(result.explanation)`
             REST API Configuration
           </h2>
           <p className="text-gray-400 mb-4">
-            Configure the Tetrad via REST API requests:
+            Configure the core pillars via REST API requests:
           </p>
           <CodeBlock
             code={restAPIConfig}
             language="bash"
-            title="REST API - Tetrad Configuration"
+            title="REST API - Intelligence Configuration"
           />
         </section>
 
@@ -323,12 +323,12 @@ console.log(result.explanation)`
             JavaScript SDK Configuration
           </h2>
           <p className="text-gray-400 mb-4">
-            Configure the Tetrad using the JavaScript SDK:
+            Configure the core pillars using the JavaScript SDK:
           </p>
           <CodeBlock
             code={javascriptConfig}
             language="javascript"
-            title="JavaScript SDK - Tetrad Configuration"
+            title="JavaScript SDK - Intelligence Configuration"
           />
         </section>
 
@@ -338,7 +338,7 @@ console.log(result.explanation)`
             Compute Cost vs Capability Trade-offs
           </h2>
           <p className="text-gray-400 mb-4">
-            Each Tetrad pillar can be independently enabled or disabled to balance performance and capabilities:
+            Each core pillar can be independently enabled or disabled to balance performance and capabilities:
           </p>
           <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
             <div className="space-y-4">
@@ -346,17 +346,17 @@ console.log(result.explanation)`
                 <h3 className="font-semibold text-gray-200 mb-2">Minimal Cost (minimal preset)</h3>
                 <p className="text-gray-400 text-sm mb-2">Fastest execution, no AI overhead:</p>
                 <ul className="text-sm text-gray-500 space-y-1 ml-4">
-                  <li>• All Tetrad pillars disabled</li>
+                  <li>• All core pillars disabled</li>
                   <li>• Core optimization only</li>
-                  <li>• ~10-20% faster than full Tetrad</li>
+                  <li>• ~10-20% faster than full intelligence</li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-semibold text-gray-200 mb-2">Balanced (production preset)</h3>
                 <p className="text-gray-400 text-sm mb-2">Good performance with essential capabilities:</p>
                 <ul className="text-sm text-gray-500 space-y-1 ml-4">
-                  <li>• Agentic + Expository enabled</li>
-                  <li>• Autodidactic disabled (no learning overhead)</li>
+                  <li>• Agentic + Interpretable enabled</li>
+                  <li>• Adaptive disabled (no learning overhead)</li>
                   <li>• Domain Extension enabled</li>
                   <li>• Explanation level 2-3</li>
                 </ul>
@@ -365,7 +365,7 @@ console.log(result.explanation)`
                 <h3 className="font-semibold text-gray-200 mb-2">Maximum Capability (research/enterprise preset)</h3>
                 <p className="text-gray-400 text-sm mb-2">Full capabilities, comprehensive explanations:</p>
                 <ul className="text-sm text-gray-500 space-y-1 ml-4">
-                  <li>• All Tetrad pillars enabled</li>
+                  <li>• All core pillars enabled</li>
                   <li>• Maximum agents, full learning</li>
                   <li>• Explanation level 4-5</li>
                   <li>• All domain libraries active</li>

@@ -2,7 +2,7 @@ import CodeBlock from '@/components/CodeBlock'
 
 export default function AuthenticationPage() {
   const authExample = `curl -X POST https://api.sematryx.com/v1/optimize \\
-  -H "Authorization: Bearer aeao_1234567890abcdef" \\
+  -H "Authorization: Bearer sematryx_1234567890abcdef" \\
   -H "Content-Type: application/json" \\
   -d '{
     "objective_function_id": "func_1234567890",
@@ -15,7 +15,7 @@ export default function AuthenticationPage() {
 const sematryx = new Sematryx('sematryx_1234567890abcdef')
 
 // All requests will automatically include authentication
-const result = await aeao.optimize({
+const result = await sematryx.optimize({
   objective_function: (x) => x.reduce((s, v) => s + v * v, 0),
   bounds: [[-5, 5], [-5, 5]],
   max_evaluations: 1000
