@@ -19,60 +19,6 @@ export default function ArchitecturePage() {
 
       <div className="space-y-16">
         
-        {/* High Level Diagram */}
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-200 mb-6">High-Level Overview</h2>
-          <div className="bg-[#0a0d12] border border-gray-800 rounded-xl p-6 overflow-x-auto">
-            <pre className="font-mono text-xs md:text-sm text-blue-300 leading-relaxed">
-{`┌─────────────────────────────────────────────────────────────┐
-│                      USER INTERFACES                         │
-│  ┌─────────┐  ┌─────────┐  ┌───────────┐  ┌────────────┐  │
-│  │   CLI   │  │   API   │  │ Dashboard │  │   SDK      │  │
-│  └────┬────┘  └────┬────┘  └─────┬─────┘  └─────┬──────┘  │
-└───────┼────────────┼──────────────┼──────────────┼─────────┘
-        └────────────┴──────────────┴──────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    PLATFORM SERVICES                         │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ API Server │ Explainability │ Diagnostics │ Billing │  │
-│  └──────────────────────┬───────────────────────────────┘  │
-└─────────────────────────┼───────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│                  CORE OPTIMIZATION ENGINE                    │
-│  ┌──────────────┐  ┌──────────────┐  ┌─────────────────┐  │
-│  │  Optimizers  │◄─┤   Strategies │◄─┤  Meta-Policy    │  │
-│  │  - Sematryx  │  │  - CMA-ES    │  │  Learning       │  │
-│  │  - Async     │  │  - DE        │  └─────────────────┘  │
-│  │  - Enhanced  │  │  - Bayesian  │                        │
-│  └──────┬───────┘  └──────────────┘                        │
-└─────────┼───────────────────────────────────────────────────┘
-          │
-          ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    AI/ML INTELLIGENCE                        │
-│  ┌────────────┐  ┌────────────┐  ┌───────────────────────┐ │
-│  │   Visual   │  │   Neural   │  │  Learning System      │ │
-│  │Intelligence│  │  Networks  │  │  - Cross-Problem      │ │
-│  └────────────┘  └────────────┘  │  - Transfer Learning  │ │
-│                                   └───────────────────────┘ │
-└─────────────────────────┬───────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│               KNOWLEDGE & MEMORY SYSTEMS                     │
-│  ┌──────────────┐  ┌──────────────┐  ┌─────────────────┐  │
-│  │Vector Memory │  │Knowledge Graph│  │ Context Intel   │  │
-│  │  (Qdrant)   │  │   (Neo4j)     │  │   & Temporal    │  │
-│  └──────────────┘  └──────────────┘  └─────────────────┘  │
-└─────────────────────────────────────────────────────────────┘`}
-            </pre>
-          </div>
-        </section>
-
         {/* Component Breakdown */}
         <section>
           <h2 className="text-2xl font-semibold text-gray-200 mb-8">Core Components</h2>

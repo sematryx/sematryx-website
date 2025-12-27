@@ -455,9 +455,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Intelligence configuration examples"
           />
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-purple-900 mb-3">The 3 Core Pillars</h3>
-            <ul className="space-y-2 text-purple-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">The 3 Core Pillars</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
               <li><strong>📖 Interpretable Intelligence:</strong> Explainable results (levels 0-5)</li>
               <li><strong>🧠 Adaptive Intelligence:</strong> Self-improvement through learning</li>
@@ -475,9 +475,9 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
             language="python"
             title="Domain-specific optimization examples"
           />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Available Domains</h3>
-            <ul className="space-y-2 text-blue-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Available Domains</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>financial:</strong> Portfolio optimization, trading strategies, risk management</li>
               <li><strong>healthcare:</strong> Drug discovery, clinical trials, treatment optimization</li>
               <li><strong>supply_chain:</strong> Vehicle routing, inventory optimization, cold chain</li>

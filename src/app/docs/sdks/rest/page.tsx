@@ -331,12 +331,12 @@ export default function RESTAPIPage() {
             language="bash"
             title="POST /v1/domains/{domain}/optimize"
           />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Available Domains</h3>
-            <ul className="space-y-2 text-blue-800">
-              <li><code className="bg-blue-100 px-2 py-1 rounded">financial</code> - Portfolio optimization, trading strategies</li>
-              <li><code className="bg-blue-100 px-2 py-1 rounded">healthcare</code> - Drug discovery, clinical trials</li>
-              <li><code className="bg-blue-100 px-2 py-1 rounded">supply_chain</code> - Vehicle routing, inventory optimization</li>
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Available Domains</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li><code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">financial</code> - Portfolio optimization, trading strategies</li>
+              <li><code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">healthcare</code> - Drug discovery, clinical trials</li>
+              <li><code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">supply_chain</code> - Vehicle routing, inventory optimization</li>
               <li><code className="bg-blue-100 px-2 py-1 rounded">ai_ml</code> - Hyperparameter tuning, architecture search</li>
               <li><code className="bg-blue-100 px-2 py-1 rounded">marketing</code> - Campaign optimization, pricing</li>
             </ul>

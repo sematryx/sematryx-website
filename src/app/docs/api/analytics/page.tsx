@@ -79,9 +79,9 @@ export default function AnalyticsEndpointsPage() {
             language="bash"
             title="GET /v1/analytics/metrics"
           />
-          <div className="bg-blue-900/20 border border-blue-700/50 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-300 mb-3">Query Parameters</h3>
-            <ul className="space-y-2 text-blue-200">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Query Parameters</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>start_date</strong> (required): Start date in ISO 8601 format</li>
               <li><strong>end_date</strong> (required): End date in ISO 8601 format</li>
               <li><strong>optimization_id</strong> (optional): Filter by specific optimization</li>
@@ -107,9 +107,9 @@ export default function AnalyticsEndpointsPage() {
             language="bash"
             title="GET /v1/analytics/executions"
           />
-          <div className="bg-blue-900/20 border border-blue-700/50 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-300 mb-3">Query Parameters</h3>
-            <ul className="space-y-2 text-blue-200">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Query Parameters</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>start_date</strong> (optional): Filter executions from this date</li>
               <li><strong>end_date</strong> (optional): Filter executions until this date</li>
               <li><strong>optimization_id</strong> (optional): Filter by specific optimization</li>
@@ -135,9 +135,9 @@ export default function AnalyticsEndpointsPage() {
             language="bash"
             title="GET /v1/analytics/performance"
           />
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-green-900 mb-3">Performance Metrics</h3>
-            <ul className="space-y-2 text-green-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Performance Metrics</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>Execution Time:</strong> Average, median, p95, p99 execution times</li>
               <li><strong>Throughput:</strong> Executions per second/minute/hour</li>
               <li><strong>Error Rate:</strong> Percentage of failed executions</li>
@@ -202,11 +202,11 @@ export default function AnalyticsEndpointsPage() {
           <p className="text-gray-400 mb-4">
             Analytics data can be exported in various formats for further analysis:
           </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <ul className="space-y-2 text-blue-800">
-              <li><strong>CSV:</strong> Add <code className="bg-blue-100 px-2 py-1 rounded">?format=csv</code> to any endpoint</li>
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <ul className="space-y-2 text-gray-400">
+              <li><strong>CSV:</strong> Add <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">?format=csv</code> to any endpoint</li>
               <li><strong>JSON:</strong> Default format for all endpoints</li>
-              <li><strong>Excel:</strong> Add <code className="bg-blue-100 px-2 py-1 rounded">?format=xlsx</code> for Excel export</li>
+              <li><strong>Excel:</strong> Add <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">?format=xlsx</code> for Excel export</li>
               <li><strong>PDF:</strong> Add <code className="bg-blue-100 px-2 py-1 rounded">?format=pdf</code> for report export</li>
             </ul>
           </div>

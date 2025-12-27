@@ -160,16 +160,16 @@ console.log(result)`
             language="json"
             title="Example successful response"
           />
-          <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-400 mb-3">Response Fields</h3>
-            <ul className="space-y-2 text-blue-300">
-              <li><strong className="text-blue-200">id:</strong> Unique identifier for the optimization job</li>
-              <li><strong className="text-blue-200">status:</strong> Current status (pending, running, completed, failed)</li>
-              <li><strong className="text-blue-200">best_solution:</strong> The best solution found</li>
-              <li><strong className="text-blue-200">best_fitness:</strong> The fitness value of the best solution</li>
-              <li><strong className="text-blue-200">evaluations:</strong> Number of function evaluations performed</li>
-              <li><strong className="text-blue-200">strategy_used:</strong> Optimization algorithm that was selected</li>
-              <li><strong className="text-blue-200">execution_time:</strong> Time taken in seconds</li>
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Response Fields</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li><strong className="text-gray-300">id:</strong> Unique identifier for the optimization job</li>
+              <li><strong className="text-gray-300">status:</strong> Current status (pending, running, completed, failed)</li>
+              <li><strong className="text-gray-300">best_solution:</strong> The best solution found</li>
+              <li><strong className="text-gray-300">best_fitness:</strong> The fitness value of the best solution</li>
+              <li><strong className="text-gray-300">evaluations:</strong> Number of function evaluations performed</li>
+              <li><strong className="text-gray-300">strategy_used:</strong> Optimization algorithm that was selected</li>
+              <li><strong className="text-gray-300">execution_time:</strong> Time taken in seconds</li>
             </ul>
           </div>
         </section>
@@ -187,15 +187,15 @@ console.log(result)`
             title="Example error response"
           />
           <div className="mt-6 space-y-4">
-            <div className="bg-red-900/30 border border-red-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-red-400 mb-3">HTTP Status Codes</h3>
-              <ul className="space-y-2 text-red-300">
-                <li><strong className="text-red-200">400 Bad Request:</strong> Invalid request parameters or malformed JSON</li>
-                <li><strong className="text-red-200">401 Unauthorized:</strong> Missing or invalid API key</li>
-                <li><strong className="text-red-200">403 Forbidden:</strong> API key doesn't have permission for this operation</li>
-                <li><strong className="text-red-200">404 Not Found:</strong> Resource not found</li>
-                <li><strong className="text-red-200">429 Too Many Requests:</strong> Rate limit exceeded</li>
-                <li><strong className="text-red-200">500 Internal Server Error:</strong> Server error - contact support</li>
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">HTTP Status Codes</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><strong className="text-gray-300">400 Bad Request:</strong> Invalid request parameters or malformed JSON</li>
+                <li><strong className="text-gray-300">401 Unauthorized:</strong> Missing or invalid API key</li>
+                <li><strong className="text-gray-300">403 Forbidden:</strong> API key doesn't have permission for this operation</li>
+                <li><strong className="text-gray-300">404 Not Found:</strong> Resource not found</li>
+                <li><strong className="text-gray-300">429 Too Many Requests:</strong> Rate limit exceeded</li>
+                <li><strong className="text-gray-300">500 Internal Server Error:</strong> Server error - contact support</li>
               </ul>
             </div>
           </div>
@@ -232,9 +232,9 @@ X-RateLimit-Reset: 1640995200`}
             Best Practices
           </h2>
           <div className="space-y-4">
-            <div className="bg-green-900/30 border border-green-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-green-400 mb-3">✅ Do</h3>
-              <ul className="space-y-2 text-green-300">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">✅ Do</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>Always include error handling in your code</li>
                 <li>Store API keys securely (environment variables, secrets management)</li>
                 <li>Use appropriate timeout values for long-running operations</li>
@@ -242,9 +242,9 @@ X-RateLimit-Reset: 1640995200`}
                 <li>Monitor rate limit headers to avoid hitting limits</li>
               </ul>
             </div>
-            <div className="bg-red-900/30 border border-red-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-red-400 mb-3">❌ Don't</h3>
-              <ul className="space-y-2 text-red-300">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">❌ Don't</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>Commit API keys to version control</li>
                 <li>Make synchronous requests for long-running optimizations</li>
                 <li>Ignore error responses - always check status codes</li>

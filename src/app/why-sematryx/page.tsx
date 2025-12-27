@@ -1,5 +1,3 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import Link from 'next/link'
 import { Metadata } from 'next'
 
@@ -126,8 +124,7 @@ export default function WhySematryxPage() {
   ]
 
   return (
-    <main className="bg-base">
-      <Header />
+    <div className="bg-base">
       
       {/* Hero Section - Outcome-focused */}
       <section className="bg-gradient-to-b from-base to-elevated pt-24 pb-20">
@@ -477,8 +474,6 @@ export default function WhySematryxPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </div>
   )
 }

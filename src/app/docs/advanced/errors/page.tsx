@@ -129,9 +129,9 @@ def make_request_with_retry(func, max_retries=3):
             language="json"
             title="Error response format"
           />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Error Fields</h3>
-            <ul className="space-y-2 text-blue-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Error Fields</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>code:</strong> Machine-readable error code</li>
               <li><strong>message:</strong> Human-readable error message</li>
               <li><strong>field:</strong> (Optional) Field name if validation error</li>
@@ -218,9 +218,9 @@ def make_request_with_retry(func, max_retries=3):
             language="python"
             title="Retry logic with exponential backoff"
           />
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-yellow-900 mb-3">When to Retry</h3>
-            <ul className="space-y-2 text-yellow-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">When to Retry</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>Rate Limit Errors (429):</strong> Always retry after waiting for reset time</li>
               <li><strong>Server Errors (500, 503):</strong> Retry with exponential backoff</li>
               <li><strong>Network Errors:</strong> Retry for transient network issues</li>
@@ -234,9 +234,9 @@ def make_request_with_retry(func, max_retries=3):
             Best Practices
           </h2>
           <div className="space-y-4">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-green-900 mb-3">✅ Do</h3>
-              <ul className="space-y-2 text-green-800">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">✅ Do</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>Always handle errors explicitly</li>
                 <li>Log errors with request IDs for debugging</li>
                 <li>Implement retry logic for transient errors</li>
@@ -245,9 +245,9 @@ def make_request_with_retry(func, max_retries=3):
                 <li>Monitor error rates and patterns</li>
               </ul>
             </div>
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-red-900 mb-3">❌ Don't</h3>
-              <ul className="space-y-2 text-red-800">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">❌ Don't</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>Ignore errors silently</li>
                 <li>Retry non-retryable errors (401, 400, 404)</li>
                 <li>Expose internal error details to end users</li>
@@ -265,8 +265,8 @@ def make_request_with_retry(func, max_retries=3):
           <p className="text-gray-400 mb-4">
             When debugging errors, use the request ID to get help from support:
           </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Request ID</h3>
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Request ID</h3>
             <p className="text-blue-800 mb-3">
               Every error response includes a <code className="bg-blue-100 px-2 py-1 rounded">request_id</code> field. 
               This unique identifier helps our support team quickly locate and diagnose issues.

@@ -81,9 +81,9 @@ const result = await sematryx.optimize({
           <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Security Best Practices
           </h2>
-          <div className="bg-yellow-900/30 border border-yellow-700 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-yellow-400 mb-3">Keep Your API Key Secure</h3>
-            <ul className="space-y-2 text-yellow-300">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Keep Your API Key Secure</h3>
+            <ul className="space-y-2 text-gray-400">
               <li>• Never expose your API key in client-side code</li>
               <li>• Store API keys as environment variables</li>
               <li>• Rotate your API keys regularly</li>

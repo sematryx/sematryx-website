@@ -103,9 +103,9 @@ while True:
                 title="Secure API key handling"
               />
             </div>
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-red-900 mb-3">Security Checklist</h3>
-              <ul className="space-y-2 text-red-800">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Security Checklist</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>✅ Store API keys in environment variables</li>
                 <li>✅ Use different keys for development and production</li>
                 <li>✅ Rotate API keys regularly</li>
@@ -129,9 +129,9 @@ while True:
             language="python"
             title="Proper error handling"
           />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Error Handling Principles</h3>
-            <ul className="space-y-2 text-blue-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Error Handling Principles</h3>
+            <ul className="space-y-2 text-gray-400">
               <li>Handle specific error types appropriately</li>
               <li>Implement retry logic for transient errors</li>
               <li>Log errors with context for debugging</li>
@@ -192,9 +192,9 @@ while True:
           <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Rate Limit Management
           </h2>
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-yellow-900 mb-3">Rate Limit Best Practices</h3>
-            <ul className="space-y-2 text-yellow-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Rate Limit Best Practices</h3>
+            <ul className="space-y-2 text-gray-400">
               <li>Monitor rate limit headers on every request</li>
               <li>Implement exponential backoff for retries</li>
               <li>Batch requests when possible</li>
@@ -235,9 +235,9 @@ while True:
           <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Monitoring and Observability
           </h2>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">What to Monitor</h3>
-            <ul className="space-y-2 text-blue-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">What to Monitor</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>API Response Times:</strong> Track latency and identify slow endpoints</li>
               <li><strong>Error Rates:</strong> Monitor error frequency and types</li>
               <li><strong>Rate Limit Usage:</strong> Track rate limit consumption</li>
@@ -252,9 +252,9 @@ while True:
             Production Checklist
           </h2>
           <div className="space-y-4">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-green-900 mb-3">Before Going to Production</h3>
-              <ul className="space-y-2 text-green-800">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">Before Going to Production</h3>
+              <ul className="space-y-2 text-gray-400">
                 <li>✅ API keys stored securely (environment variables, secrets manager)</li>
                 <li>✅ Error handling implemented for all API calls</li>
                 <li>✅ Rate limit handling with retry logic</li>

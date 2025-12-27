@@ -113,9 +113,9 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
             language="python"
             title="Basic optimization example"
           />
-          <div className="bg-green-900/30 border border-green-700 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-green-400 mb-3">What happened?</h3>
-            <ul className="space-y-2 text-green-300">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">What happened?</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><span className="text-primary-400">Sematryx</span> analyzed your problem and selected the best optimization strategy</li>
               <li>The optimizer evaluated your function to find the optimal solution</li>
               <li>The result includes the best parameters, objective value, and explanation</li>
@@ -135,9 +135,9 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
             language="python"
             title="Engine configuration"
           />
-          <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-400 mb-3">The Three Core Pillars</h3>
-            <ul className="space-y-2 text-blue-300">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">The Three Core Pillars</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>🤖 Agentic:</strong> Multi-agent coordination for strategy selection</li>
               <li><strong>📖 Interpretable:</strong> Explainable results with configurable detail levels</li>
               <li><strong>🧠 Adaptive:</strong> Self-improvement through learning from experience</li>
@@ -157,9 +157,9 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
             language="python"
             title="Domain-specific optimization"
           />
-          <div className="bg-purple-900/30 border border-purple-700 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-purple-400 mb-3">Available Domains</h3>
-            <ul className="space-y-2 text-purple-300">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Available Domains</h3>
+            <ul className="space-y-2 text-gray-400">
               <li>Financial: Portfolio optimization, trading strategies</li>
               <li>Healthcare: Drug discovery, clinical trials</li>
               <li>Supply Chain: Vehicle routing, inventory management</li>
@@ -173,9 +173,9 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
           <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             6. Key Concepts
           </h2>
-          <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-blue-400 mb-3">Understanding Optimization</h3>
-            <ul className="space-y-2 text-blue-300">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Understanding Optimization</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong className="text-blue-200">Objective Function:</strong> The function you want to minimize or maximize</li>
               <li><strong className="text-blue-200">Bounds:</strong> Search space constraints for each variable</li>
               <li><strong className="text-blue-200">Strategy Selection:</strong> <span className="text-primary-400">Sematryx</span> automatically chooses the best optimization algorithm</li>

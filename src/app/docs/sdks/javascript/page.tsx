@@ -471,9 +471,9 @@ console.log('Components:', detailedHealth.components)`
             language="javascript"
             title="Intelligence configuration examples"
           />
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-purple-900 mb-3">The 3 Core Pillars</h3>
-            <ul className="space-y-2 text-purple-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">The 3 Core Pillars</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
               <li><strong>📖 Interpretable Intelligence:</strong> Explainable results (levels 0-5)</li>
               <li><strong>🧠 Adaptive Intelligence:</strong> Self-improvement through learning</li>

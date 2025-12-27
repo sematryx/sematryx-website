@@ -187,9 +187,9 @@ for attempt in range(max_retries):
             language="python"
             title="Exponential backoff implementation"
           />
-          <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6 mt-6">
-            <h3 className="text-lg font-semibold text-text-primary mb-3">Benefits</h3>
-            <ul className="space-y-2 text-text-secondary">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-6">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Benefits</h3>
+            <ul className="space-y-2 text-gray-400">
               <li>• Prevents thundering herd problems</li>
               <li>• Reduces server load during high traffic</li>
               <li>• More efficient use of available rate limit</li>
@@ -203,9 +203,9 @@ for attempt in range(max_retries):
             Best Practices
           </h2>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-emerald-400 mb-3">✓ Do</h3>
-              <ul className="space-y-2 text-text-secondary text-sm">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">✓ Do</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
                 <li>• Monitor rate limit headers</li>
                 <li>• Implement exponential backoff</li>
                 <li>• Cache results when possible</li>
@@ -213,9 +213,9 @@ for attempt in range(max_retries):
                 <li>• Respect the reset time</li>
               </ul>
             </div>
-            <div className="bg-rose-500/10 border border-rose-500/30 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-rose-400 mb-3">✗ Don't</h3>
-              <ul className="space-y-2 text-text-secondary text-sm">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-3">✗ Don't</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
                 <li>• Ignore 429 status codes</li>
                 <li>• Retry immediately without waiting</li>
                 <li>• Make unnecessary requests</li>

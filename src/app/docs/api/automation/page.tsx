@@ -151,9 +151,9 @@ result = client.optimize(
             language="python"
             title="Python SDK - Basic Optimization"
           />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Parameters</h3>
-            <ul className="space-y-2 text-blue-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Parameters</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>objective_function</strong> (required): Function to optimize f(x) → float</li>
               <li><strong>bounds</strong> (required): Search bounds [[min1, max1], [min2, max2], ...]</li>
               <li><strong>max_evaluations</strong> (optional): Maximum function evaluations (default: 1000)</li>
@@ -174,18 +174,18 @@ result = client.optimize(
             language="python"
             title="Intelligence Configuration Examples"
           />
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-green-900 mb-3">Core Pillars</h3>
-            <ul className="space-y-2 text-green-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Core Pillars</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
               <li><strong>📖 Interpretable Intelligence:</strong> Explainability with configurable levels (0-5)</li>
               <li><strong>🧠 Adaptive Intelligence:</strong> Self-improvement and learning from experience</li>
               <li><strong>🏗️ Domain Extension:</strong> Business domain libraries that leverage the engine (separate feature)</li>
             </ul>
           </div>
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-yellow-900 mb-3">Preset Configurations</h3>
-            <ul className="space-y-2 text-yellow-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Preset Configurations</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>development:</strong> Fast iteration, basic explanations</li>
               <li><strong>production:</strong> Balanced performance, standard explanations</li>
               <li><strong>research:</strong> Maximum capabilities, comprehensive explanations</li>
@@ -207,9 +207,9 @@ result = client.optimize(
             language="python"
             title="Domain-Specific Optimization"
           />
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-4">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Available Domains</h3>
-            <ul className="space-y-2 text-blue-800">
+          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
+            <h3 className="text-lg font-semibold text-gray-200 mb-3">Available Domains</h3>
+            <ul className="space-y-2 text-gray-400">
               <li><strong>Financial:</strong> Portfolio optimization, trading strategies, risk management</li>
               <li><strong>Healthcare:</strong> Drug discovery, clinical trial design, treatment protocols</li>
               <li><strong>Supply Chain:</strong> Vehicle routing, inventory management, warehouse optimization</li>
