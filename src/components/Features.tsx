@@ -1,22 +1,24 @@
+import { Bot, BookOpen, Brain } from 'lucide-react'
+
 export default function Features() {
   // The core optimization engine - 3 pillars
   const enginePillars = [
     { 
       title: "Agentic Core", 
       description: "Uses Meta-Policy Learning to dynamically select and coordinate solvers (CMA-ES, Bayesian, Differential Evolution) based on problem topology.",
-      icon: "🤖",
+      icon: Bot,
       features: ["Meta-Strategy Selection", "Multi-Agent Coordination", "Dynamic Constraint Handling"]
     },
     { 
       title: "Interpretable Layer", 
       description: "Delivers transparency via a dedicated Explainability Engine that generates audit trails, decision rationales, and visual diagnostics.",
-      icon: "📖",
+      icon: BookOpen,
       features: ["Decision Rationale", "Full Audit Trails", "Visual Diagnostics"]
     },
     { 
       title: "Adaptive Memory", 
       description: "Leverages Vector Memory (Qdrant) and Knowledge Graphs (Neo4j) to recall past optimizations and improve continuously.",
-      icon: "🧠",
+      icon: Brain,
       features: ["Vector Context Retrieval", "Knowledge Graph Mapping", "Transfer Learning"]
     }
   ]
@@ -40,7 +42,12 @@ export default function Features() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Agentic */}
             <div className="bg-elevated p-8 rounded-xl border border-elevated-3 border-l-4 border-l-accent-agentic text-left hover:bg-elevated-2 hover:shadow-lg hover:shadow-accent-agentic/10 transition-all cursor-pointer group">
-              <span className="text-4xl block mb-4 bg-accent-agentic/10 w-16 h-16 flex items-center justify-center rounded-lg">{enginePillars[0].icon}</span>
+              <div className="mb-4 bg-accent-agentic/10 w-16 h-16 flex items-center justify-center rounded-lg">
+                {(() => {
+                  const IconComponent = enginePillars[0].icon
+                  return <IconComponent className="w-8 h-8 text-accent-agentic" />
+                })()}
+              </div>
               <h3 className="text-xl font-bold text-accent-agentic mb-3">{enginePillars[0].title}</h3>
               <p className="text-text-secondary mb-6 leading-relaxed">{enginePillars[0].description}</p>
               <div className="flex flex-wrap gap-2">
@@ -54,7 +61,12 @@ export default function Features() {
 
             {/* Interpretable */}
             <div className="bg-elevated p-8 rounded-xl border border-elevated-3 border-l-4 border-l-accent-expository text-left hover:bg-elevated-2 hover:shadow-lg hover:shadow-accent-expository/10 transition-all cursor-pointer group">
-              <span className="text-4xl block mb-4 bg-accent-expository/10 w-16 h-16 flex items-center justify-center rounded-lg">{enginePillars[1].icon}</span>
+              <div className="mb-4 bg-accent-expository/10 w-16 h-16 flex items-center justify-center rounded-lg">
+                {(() => {
+                  const IconComponent = enginePillars[1].icon
+                  return <IconComponent className="w-8 h-8 text-accent-expository" />
+                })()}
+              </div>
               <h3 className="text-xl font-bold text-accent-expository mb-3">{enginePillars[1].title}</h3>
               <p className="text-text-secondary mb-6 leading-relaxed">{enginePillars[1].description}</p>
               <div className="flex flex-wrap gap-2">
@@ -68,7 +80,12 @@ export default function Features() {
 
             {/* Adaptive */}
             <div className="bg-elevated p-8 rounded-xl border border-elevated-3 border-l-4 border-l-accent-autodidactic text-left hover:bg-elevated-2 hover:shadow-lg hover:shadow-accent-autodidactic/10 transition-all cursor-pointer group">
-              <span className="text-4xl block mb-4 bg-accent-autodidactic/10 w-16 h-16 flex items-center justify-center rounded-lg">{enginePillars[2].icon}</span>
+              <div className="mb-4 bg-accent-autodidactic/10 w-16 h-16 flex items-center justify-center rounded-lg">
+                {(() => {
+                  const IconComponent = enginePillars[2].icon
+                  return <IconComponent className="w-8 h-8 text-accent-autodidactic" />
+                })()}
+              </div>
               <h3 className="text-xl font-bold text-accent-autodidactic mb-3">{enginePillars[2].title}</h3>
               <p className="text-text-secondary mb-6 leading-relaxed">{enginePillars[2].description}</p>
               <div className="flex flex-wrap gap-2">

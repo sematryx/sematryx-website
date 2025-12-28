@@ -1,4 +1,5 @@
 import CodeBlock from '@/components/CodeBlock'
+import { Link2, Brain, Wrench, Bot, Zap, Lock } from 'lucide-react'
 
 export default function MCPPage() {
   const mcpIntegrationCode = `import { MCPClient } from '@sematryx/mcp-client'
@@ -74,32 +75,32 @@ const mcpTools = [
     {
       title: 'Standardized Communication',
       description: 'Use the industry-standard MCP protocol for seamless AI model integration',
-      icon: '🔗'
+      icon: Link2
     },
     {
       title: 'Context Preservation',
       description: 'Maintain conversation context across automation steps and model interactions',
-      icon: '🧠'
+      icon: Brain
     },
     {
       title: 'Tool Integration',
       description: 'Access web search, code execution, and data analysis tools through MCP',
-      icon: '🛠️'
+      icon: Wrench
     },
     {
       title: 'Multi-Model Support',
       description: 'Connect with Claude, GPT, and other AI models using the same protocol',
-      icon: '🤖'
+      icon: Bot
     },
     {
       title: 'Real-time Streaming',
       description: 'Stream responses and maintain persistent connections with AI models',
-      icon: '⚡'
+      icon: Zap
     },
     {
       title: 'Secure Context Sharing',
       description: 'Share context and data securely with encryption and access controls',
-      icon: '🔒'
+      icon: Lock
     }
   ]
 
@@ -145,13 +146,18 @@ const mcpTools = [
               MCP Features in Sematryx
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
+              {features.map((feature, index) => {
+                const IconComponent = feature.icon
+                return (
                 <div key={index} className="bg-[#1a1f2e] rounded-xl p-6 border border-gray-700">
-                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <div className="mb-4">
+                    <IconComponent className="w-8 h-8 text-brand-primary" />
+                  </div>
                   <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
                   <p className="text-gray-400">{feature.description}</p>
                 </div>
-              ))}
+              )
+              })}
             </div>
           </div>
 

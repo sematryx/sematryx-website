@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Bot, Zap, MessageSquare } from 'lucide-react'
 
 export default function AgentReady() {
   return (
@@ -8,7 +9,7 @@ export default function AgentReady() {
           {/* Left: Messaging */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">🤖</span>
+              <Bot className="w-5 h-5 text-accent-agentic" />
               <span className="text-sm font-semibold text-accent-agentic uppercase tracking-wide">AI-Native</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
@@ -54,8 +55,8 @@ export default function AgentReady() {
               <div className="p-6 space-y-4">
                 {/* Agent request */}
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center text-sm flex-shrink-0">
-                    🤖
+                  <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
+                    <Bot className="w-4 h-4 text-violet-400" />
                   </div>
                   <div className="flex-1 bg-elevated rounded-lg p-3 border border-elevated-3">
                     <div className="text-xs text-text-tertiary mb-1">Agent Request</div>
@@ -72,8 +73,8 @@ export default function AgentReady() {
 
                 {/* Sematryx response */}
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-brand-primary/20 flex items-center justify-center text-sm flex-shrink-0">
-                    ⚡
+                  <div className="w-8 h-8 rounded-lg bg-brand-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-4 h-4 text-brand-primary" />
                   </div>
                   <div className="flex-1 bg-elevated rounded-lg p-3 border border-elevated-3">
                     <div className="text-xs text-text-tertiary mb-1">Sematryx Response</div>
@@ -93,8 +94,8 @@ export default function AgentReady() {
 
                 {/* Agent to user */}
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center text-sm flex-shrink-0">
-                    💬
+                  <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
+                    <MessageSquare className="w-4 h-4 text-violet-400" />
                   </div>
                   <div className="flex-1 bg-elevated rounded-lg p-3 border border-elevated-3">
                     <div className="text-xs text-text-tertiary mb-1">Agent to User</div>

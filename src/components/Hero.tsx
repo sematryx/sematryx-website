@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Code, Plug, Terminal, Bot, Zap, Shield } from 'lucide-react'
 
 export default function Hero() {
   return (
@@ -46,19 +47,19 @@ export default function Hero() {
             <div className="border-t border-elevated-3 pt-8">
               <div className="flex flex-wrap items-center justify-between gap-6 opacity-70 hover:opacity-100 transition-opacity duration-300">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">🐍</span>
+                  <Code className="w-5 h-5 text-text-secondary" />
                   <span className="font-mono text-sm text-text-secondary">Python SDK</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">🔌</span>
+                  <Plug className="w-5 h-5 text-text-secondary" />
                   <span className="font-mono text-sm text-text-secondary">REST API</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">💻</span>
+                  <Terminal className="w-5 h-5 text-text-secondary" />
                   <span className="font-mono text-sm text-text-secondary">CLI Tool</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">🤖</span>
+                  <Bot className="w-5 h-5 text-text-secondary" />
                   <span className="font-mono text-sm text-text-secondary">MCP Server</span>
                 </div>
               </div>
@@ -100,13 +101,13 @@ export default function Hero() {
 
             {/* Floating Badges */}
             <div className="absolute -top-20 -right-6 bg-elevated border border-elevated-3 rounded-lg px-4 py-2.5 flex items-center gap-2 text-sm shadow-xl shadow-black/30 animate-bounce-slow z-20">
-              <span className="text-amber-400">⚡</span>
+              <Zap className="w-4 h-4 text-amber-400" />
               <span className="text-text-tertiary">Latency:</span>
               <span className="font-semibold text-emerald-400">142ms</span>
             </div>
 
             <div className="absolute -bottom-16 -left-8 bg-elevated border border-elevated-3 rounded-lg px-4 py-2.5 flex items-center gap-2 text-sm shadow-xl shadow-black/30 animate-bounce-slow delay-700 z-20">
-              <span className="text-brand-primary">🛡️</span>
+              <Shield className="w-4 h-4 text-brand-primary" />
               <span className="text-text-tertiary">Audit:</span>
               <span className="font-semibold text-brand-primary">Logged</span>
             </div>

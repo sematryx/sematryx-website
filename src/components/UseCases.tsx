@@ -1,24 +1,26 @@
+import { BarChart3, Truck, Heart, Factory } from 'lucide-react'
+
 export default function UseCases() {
   const useCases = [
     {
       title: "Portfolio Optimization",
       description: "Balance risk, return, and regulatory limits with explainable allocation decisions that satisfy compliance teams.",
-      icon: "📊"
+      icon: BarChart3
     },
     {
       title: "Supply Chain & Logistics",
       description: "Route optimization, inventory allocation, and demand planning with real-world constraints like driver hours and weather.",
-      icon: "🚚"
+      icon: Truck
     },
     {
       title: "Healthcare Resource Allocation",
       description: "Staff scheduling, bed management, and treatment planning with patient safety constraints and audit requirements.",
-      icon: "⚕️"
+      icon: Heart
     },
     {
       title: "Manufacturing & Operations",
       description: "Production scheduling, quality optimization, and maintenance planning across complex multi-site operations.",
-      icon: "🏭"
+      icon: Factory
     }
   ]
 
@@ -36,10 +38,12 @@ export default function UseCases() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {useCases.map((useCase, index) => (
+          {useCases.map((useCase, index) => {
+            const IconComponent = useCase.icon
+            return (
             <div key={index} className="bg-elevated p-8 rounded-xl border border-elevated-3 hover:border-elevated-4 hover:bg-elevated-2 transition-all duration-200 group cursor-default">
-              <div className="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-200">
-                {useCase.icon}
+              <div className="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
+                <IconComponent className="w-6 h-6 text-brand-primary" />
               </div>
               <h3 className="text-xl font-bold text-text-primary mb-3">
                 {useCase.title}
@@ -48,7 +52,8 @@ export default function UseCases() {
                 {useCase.description}
               </p>
             </div>
-          ))}
+          )
+          })}
         </div>
       </div>
     </div>

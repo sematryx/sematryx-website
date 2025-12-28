@@ -14,22 +14,44 @@ export default function FeedbackButton() {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // For now, send via mailto - can be replaced with API endpoint
-    const subject = encodeURIComponent(`[${feedbackType.toUpperCase()}] Sematryx Feedback`)
-    const body = encodeURIComponent(`Type: ${feedbackType}\nEmail: ${email || 'Not provided'}\n\nMessage:\n${message}`)
-    window.open(`mailto:feedback@sematryx.com?subject=${subject}&body=${body}`, '_blank')
-    
-    setSubmitted(true)
-    setIsSubmitting(false)
-    
-    // Reset after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false)
-      setIsOpen(false)
-      setMessage('')
-      setEmail('')
-      setFeedbackType('feedback')
-    }, 3000)
+    try {
+      // Get API base URL from environment or use default
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.sematryx.com'
+      
+      const response = await fetch(`${apiUrl}/feedback/submit`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          feedback_type: feedbackType,
+          message: message.trim(),
+          email: email.trim() || undefined,
+        }),
+      })
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Failed to submit feedback' }))
+        throw new Error(errorData.detail || 'Failed to submit feedback')
+      }
+      
+      setSubmitted(true)
+      setIsSubmitting(false)
+      
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setSubmitted(false)
+        setIsOpen(false)
+        setMessage('')
+        setEmail('')
+        setFeedbackType('feedback')
+      }, 3000)
+    } catch (error) {
+      console.error('Error submitting feedback:', error)
+      setIsSubmitting(false)
+      // Show error message to user
+      alert(`Failed to submit feedback: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    }
   }
 
   return (

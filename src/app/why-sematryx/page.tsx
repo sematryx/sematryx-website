@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
+import { Briefcase, Factory, Truck, Heart, Zap, FlaskConical, BookOpen, Shield, Building2, Eye, BarChart3 } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Why Sematryx - Enterprise Optimization with Explainability',
@@ -12,22 +13,22 @@ export default function WhySematryxPage() {
     {
       title: "Async Explainability",
       description: "Background-processed explanations minimize performance overhead. Natural language summaries, technical logs, and visualizations run asynchronously so optimization doesn't wait.",
-      icon: "📖"
+      icon: BookOpen
     },
     {
       title: "Enterprise Compliance",
       description: "Built-in regulatory compliance, safety constraints, and audit trails. Essential for financial services, healthcare, and manufacturing where regulations matter.",
-      icon: "🛡️"
+      icon: Shield
     },
     {
       title: "Domain Libraries",
       description: "Pre-built solutions for finance, healthcare, supply chain, manufacturing, and more—all production-ready with industry-specific constraints and best practices.",
-      icon: "🏗️"
+      icon: Building2
     },
     {
       title: "Visual Intelligence",
       description: "CV-based optimization landscape analysis detects multimodal landscapes, identifies local optima clusters, and informs which optimizer gets selected for your problem.",
-      icon: "👁️"
+      icon: Eye
     }
   ]
 
@@ -35,7 +36,7 @@ export default function WhySematryxPage() {
   const industries = [
     {
       industry: "Financial Services",
-      icon: "💼",
+      icon: Briefcase,
       advantages: [
         "Regulatory compliance built-in (Basel III, MiFID II, Solvency II)",
         "Explainable decisions for audit trails",
@@ -44,7 +45,7 @@ export default function WhySematryxPage() {
     },
     {
       industry: "Manufacturing",
-      icon: "🏭",
+      icon: Factory,
       advantages: [
         "Safety-first optimization with hard constraints",
         "Handles noisy sensor data and real-world uncertainty",
@@ -53,7 +54,7 @@ export default function WhySematryxPage() {
     },
     {
       industry: "Supply Chain",
-      icon: "🚚",
+      icon: Truck,
       advantages: [
         "Optimizes under uncertainty and changing conditions",
         "Multi-objective trade-off handling",
@@ -62,7 +63,7 @@ export default function WhySematryxPage() {
     },
     {
       industry: "Healthcare",
-      icon: "🏥",
+      icon: Heart,
       advantages: [
         "Patient safety constraints enforced",
         "Explainable decisions for review boards",
@@ -71,7 +72,7 @@ export default function WhySematryxPage() {
     },
     {
       industry: "Energy & Utilities",
-      icon: "⚡",
+      icon: Zap,
       advantages: [
         "Real-time grid adaptation",
         "Renewable intermittency handling",
@@ -80,7 +81,7 @@ export default function WhySematryxPage() {
     },
     {
       industry: "AI/ML Research",
-      icon: "🔬",
+      icon: FlaskConical,
       advantages: [
         "Cross-problem learning accelerates experiments",
         "Full explainability for publications",
@@ -203,7 +204,9 @@ export default function WhySematryxPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 p-4 bg-elevated rounded-lg border border-elevated-3">
-                  <div className="w-12 h-12 rounded-lg bg-accent-expository/10 flex items-center justify-center text-2xl">📊</div>
+                  <div className="w-12 h-12 rounded-lg bg-accent-expository/10 flex items-center justify-center">
+                    <BarChart3 className="w-6 h-6 text-accent-expository" />
+                  </div>
                   <div>
                     <h4 className="font-semibold text-text-primary">Cross-Problem Transfer</h4>
                     <p className="text-sm text-text-secondary">Portfolio insights inform supply chain decisions</p>
@@ -326,13 +329,18 @@ export default function WhySematryxPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {enterpriseFeatures.map((feature, index) => (
+            {enterpriseFeatures.map((feature, index) => {
+              const IconComponent = feature.icon
+              return (
               <div key={index} className="bg-elevated rounded-xl p-8 border border-elevated-3 border-l-4 border-l-brand-primary">
-                <div className="text-3xl mb-4">{feature.icon}</div>
+                <div className="mb-4">
+                  <IconComponent className="w-8 h-8 text-brand-primary" />
+                </div>
                 <h3 className="text-xl font-bold text-text-primary mb-3">{feature.title}</h3>
                 <p className="text-text-secondary leading-relaxed">{feature.description}</p>
               </div>
-            ))}
+            )
+            })}
           </div>
         </div>
       </section>
@@ -350,10 +358,12 @@ export default function WhySematryxPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {industries.map((item, index) => (
+            {industries.map((item, index) => {
+              const IconComponent = item.icon
+              return (
               <div key={index} className="bg-base rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/30 transition-colors">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-3xl">{item.icon}</span>
+                  <IconComponent className="w-6 h-6 text-brand-primary" />
                   <h3 className="text-lg font-bold text-text-primary">{item.industry}</h3>
                 </div>
                 <ul className="space-y-2">
@@ -365,7 +375,8 @@ export default function WhySematryxPage() {
                   ))}
                 </ul>
               </div>
-            ))}
+            )
+            })}
           </div>
         </div>
       </section>
