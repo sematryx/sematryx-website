@@ -628,51 +628,51 @@ print(f"Memory usage: {health_status['memory_usage']}%")`
           <div className="space-y-6">
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-200 mb-3">Main Function</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx(objective_function, bounds, **kwargs)</code> - Main optimization function</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">preset</code> - Use preset config ("development", "production", "research", "enterprise", "minimal")</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_agentic_intelligence</code> - Enable multi-agent coordination</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_interpretable_intelligence</code> - Enable explainability</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_adaptive_intelligence</code> - Enable self-improvement</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">explanation_level</code> - Explanation detail (0-5)</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_gpu_acceleration</code> - Enable GPU/CUDA</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_visual_intelligence</code> - Enable visual analysis</li>
+              <ul className="space-y-2 text-gray-300">
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">sematryx(objective_function, bounds, **kwargs)</code> <span className="text-gray-400">- Main optimization function</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">preset</code> <span className="text-gray-400">- Use preset config ("development", "production", "research", "enterprise", "minimal")</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">use_agentic_intelligence</code> <span className="text-gray-400">- Enable multi-agent coordination</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">use_interpretable_intelligence</code> <span className="text-gray-400">- Enable explainability</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">use_adaptive_intelligence</code> <span className="text-gray-400">- Enable self-improvement</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">explanation_level</code> <span className="text-gray-400">- Explanation detail (0-5)</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">use_gpu_acceleration</code> <span className="text-gray-400">- Enable GPU/CUDA</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">use_visual_intelligence</code> <span className="text-gray-400">- Enable visual analysis</span></li>
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-200 mb-3">Configuration Classes</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig</code> - Complete intelligence configuration</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig.development()</code> - Development preset</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig.production()</code> - Production preset</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig.research()</code> - Research preset</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxIntelligenceConfig.enterprise()</code> - Enterprise preset</li>
+              <ul className="space-y-2 text-gray-300">
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">SematryxIntelligenceConfig</code> <span className="text-gray-400">- Complete intelligence configuration</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">SematryxIntelligenceConfig.development()</code> <span className="text-gray-400">- Development preset</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">SematryxIntelligenceConfig.production()</code> <span className="text-gray-400">- Production preset</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">SematryxIntelligenceConfig.research()</code> <span className="text-gray-400">- Research preset</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">SematryxIntelligenceConfig.enterprise()</code> <span className="text-gray-400">- Enterprise preset</span></li>
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-200 mb-3">Domain Functions</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">financial_optimize(problem_type, config, **kwargs)</code> - Financial optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">healthcare_optimize(problem_type, config, **kwargs)</code> - Healthcare optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">supply_chain_optimize(problem_type, config, **kwargs)</code> - Supply chain optimization</li>
+              <ul className="space-y-2 text-gray-300">
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">financial_optimize(problem_type, config, **kwargs)</code> <span className="text-gray-400">- Financial optimization</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">healthcare_optimize(problem_type, config, **kwargs)</code> <span className="text-gray-400">- Healthcare optimization</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">supply_chain_optimize(problem_type, config, **kwargs)</code> <span className="text-gray-400">- Supply chain optimization</span></li>
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-200 mb-3">API Client</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">SematryxClient(api_url, api_key)</code> - Initialize API client</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.authenticate()</code> - Authenticate with API</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.optimize(objective, bounds, **kwargs)</code> - Run optimization via API</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.register_with_identity()</code> - Create client identity</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.get_usage_quotas()</code> - Get usage quotas</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.submit_batch_optimization()</code> - Submit batch job</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.train_learning_model()</code> - Train learning model</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.multi_objective_optimize()</code> - Multi-objective optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.analyze_context()</code> - Analyze problem context</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.upload_dataset()</code> - Upload to data lake</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.submit_metrics()</code> - Submit performance metrics</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">client.get_system_status()</code> - Get system health</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">AsyncSematryx</code> - Async version of API client</li>
+              <ul className="space-y-2 text-gray-300">
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">SematryxClient(api_url, api_key)</code> <span className="text-gray-400">- Initialize API client</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.authenticate()</code> <span className="text-gray-400">- Authenticate with API</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.optimize(objective, bounds, **kwargs)</code> <span className="text-gray-400">- Run optimization via API</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.register_with_identity()</code> <span className="text-gray-400">- Create client identity</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.get_usage_quotas()</code> <span className="text-gray-400">- Get usage quotas</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.submit_batch_optimization()</code> <span className="text-gray-400">- Submit batch job</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.train_learning_model()</code> <span className="text-gray-400">- Train learning model</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.multi_objective_optimize()</code> <span className="text-gray-400">- Multi-objective optimization</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.analyze_context()</code> <span className="text-gray-400">- Analyze problem context</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.upload_dataset()</code> <span className="text-gray-400">- Upload to data lake</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.submit_metrics()</code> <span className="text-gray-400">- Submit performance metrics</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">client.get_system_status()</code> <span className="text-gray-400">- Get system health</span></li>
+                <li><code className="bg-gray-800 text-gray-100 px-2 py-1 rounded border border-gray-700">AsyncSematryx</code> <span className="text-gray-400">- Async version of API client</span></li>
               </ul>
             </div>
           </div>
