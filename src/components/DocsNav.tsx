@@ -89,20 +89,6 @@ export default function DocsNav({ isCollapsed = false, onToggle, isMobile = fals
   return (
     <nav className="h-full">
       <div className={`${isCollapsed ? 'p-2' : 'p-6'}`}>
-        {/* Toggle button */}
-        {onToggle && !isCollapsed && (
-          <div className="flex items-center justify-end mb-4">
-            <button
-              onClick={onToggle}
-              className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-[#242b3d] transition-colors"
-              aria-label="Collapse sidebar"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          </div>
-        )}
         
         {docsSections.map((section, sectionIndex) => (
           <div key={sectionIndex} className={`${isCollapsed ? 'mb-4' : 'mb-6'}`}>
