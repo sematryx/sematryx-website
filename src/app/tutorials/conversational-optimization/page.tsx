@@ -112,7 +112,30 @@ Agent: "Perfect! And what's the average revenue per customer?"
 User: "$150"
 
 Agent: "Excellent! I have all the information I need. 
-Your optimization problem is ready to solve."`
+Starting optimization now... This may take a few moments."
+
+[Optimization running...]
+
+Agent: "🎉 Optimization complete! Here are your results:
+
+📊 **Optimal Budget Allocation:**
+   • Google: $28,500 (57.0%) - Best ROI channel
+   • Facebook: $15,000 (30.0%) - Strong performance
+   • LinkedIn: $6,500 (13.0%) - Lower efficiency, minimal allocation
+
+💰 **Expected Performance:**
+   • Total Conversions: 1,140 customers
+   • Total Revenue: $171,000
+   • Average ROI: 242% (2.42x return)
+   • Total Profit: $121,000
+
+💡 **Key Insights:**
+   Google delivers the best ROI at 300% due to lower CPA.
+   I've allocated 57% of your budget there to maximize returns.
+   Facebook gets 30% as it's your second-best performer.
+   LinkedIn gets minimal allocation (13%) due to higher CPA.
+
+Would you like me to explain any of these results in more detail?"`
 
   return (
     <>
