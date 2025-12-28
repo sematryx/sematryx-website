@@ -27,7 +27,7 @@ export default function TutorialsPage() {
     {
       id: 'ai-content-generation',
       title: 'Configuring Sematryx Intelligence',
-      description: 'Master the 3 Core Pillars: Agentic, Interpretable, Adaptive, plus Domain Extension',
+      description: 'Master the 3 Core Pillars: Agentic, Interpretable, and Adaptive Intelligence',
       difficulty: 'Intermediate',
       duration: '30 min',
       category: 'Engine Configuration'

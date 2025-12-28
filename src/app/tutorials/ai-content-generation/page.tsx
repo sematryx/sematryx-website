@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Configuring Sematryx Intelligence - Sematryx Tutorials',
-  description: 'Master the 3 Core Pillars: Agentic, Interpretable, Adaptive, plus Domain Extension.',
+  description: 'Master the 3 Core Pillars: Agentic, Interpretable, and Adaptive Intelligence.',
 }
 
 export default function IntelligenceConfigTutorial() {
