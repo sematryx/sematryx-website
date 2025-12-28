@@ -171,7 +171,32 @@ Agent: "🎉 Optimization complete! Here are your results:
    Facebook gets 30% as it's your second-best performer.
    LinkedIn gets minimal allocation (13%) due to higher CPA.
 
-Would you like me to explain any of these results in more detail?"`
+Would you like me to explain any of these results in more detail?"
+
+User: "Yes, why didn't you put all the budget in Google since it has the highest ROI?"
+
+Agent: "Great question! While Google has the highest ROI, I applied risk diversification constraints to protect your marketing strategy:
+
+🛡️ **Risk Management:**
+   • **Diminishing Returns**: As spend increases on a single channel, marginal ROI decreases. 
+     Google's ROI drops from 300% at low spend to ~250% at high spend due to ad saturation.
+   
+   • **Channel Diversification**: Allocating 30% to Facebook maintains your presence there, 
+     preventing competitors from dominating that channel and protecting future opportunities.
+   
+   • **Minimum Viable Presence**: LinkedIn gets 13% to maintain brand visibility in the 
+     professional network, which is important for B2B credibility even if direct ROI is lower.
+
+   • **Risk Mitigation**: If Google's performance suddenly drops (algorithm changes, competition, etc.), 
+     you're not left with zero marketing presence. Diversification reduces portfolio risk.
+
+📈 **The Math:**
+   • 100% Google: Would yield ~$165,000 revenue (diminishing returns)
+   • Diversified (57/30/13): Yields $171,000 revenue (optimal balance)
+   
+   The diversified approach actually generates $6,000 more revenue while reducing risk!
+
+Would you like to adjust these constraints, or explore what happens with different risk tolerance levels?"`
 
   return (
     <>
