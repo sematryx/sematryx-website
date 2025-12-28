@@ -81,11 +81,11 @@ export default function FeedbackButton() {
     return (
       <button
         onClick={handleRestore}
-        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-gray-700/80 hover:bg-gray-600 text-gray-300 hover:text-white transition-all shadow-lg hover:scale-110"
+        className="fixed bottom-6 right-6 z-50 p-2 rounded-full bg-gray-700/80 hover:bg-gray-600 text-gray-300 hover:text-white transition-all shadow-lg hover:scale-110"
         aria-label="Restore feedback button"
         title="Restore feedback"
       >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
         </svg>
       </button>
