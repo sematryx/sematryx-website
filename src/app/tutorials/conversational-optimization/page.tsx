@@ -86,8 +86,44 @@ result = client.complete_conversational_optimization(
     mode="balanced"
 )
 
+optimization_id = result['optimization_id']
 print(f"\\n🚀 Optimization started!")
-print(f"📊 Optimization ID: {result['optimization_id']}")`
+print(f"📊 Optimization ID: {optimization_id}")
+
+# Step 4: Poll for results
+print("\\n⏳ Waiting for optimization to complete...")
+while True:
+    opt_status = client.get_optimization_status(optimization_id)
+    
+    if opt_status["status"] == "completed":
+        print("\\n🎉 Optimization complete!")
+        
+        # Get detailed results
+        results = client.get_optimization_results(optimization_id)
+        
+        # Display results in a user-friendly format
+        print(f"\\n📊 Optimal Budget Allocation:")
+        solution = results.get("solution", {})
+        for channel, allocation in solution.items():
+            print(f"   • {channel}: ${allocation:,.0f}")
+        
+        print(f"\\n💰 Performance Metrics:")
+        print(f"   • Total ROI: {results.get('roi', 0):.1%}")
+        print(f"   • Expected Revenue: ${results.get('revenue', 0):,.0f}")
+        print(f"   • Total Conversions: {results.get('conversions', 0):,.0f}")
+        
+        # Agent can also provide insights
+        if "insights" in results:
+            print(f"\\n💡 Key Insights:")
+            for insight in results["insights"]:
+                print(f"   • {insight}")
+        
+        break
+    elif opt_status["status"] == "failed":
+        print(f"\\n❌ Optimization failed: {opt_status.get('error')}")
+        break
+    else:
+        time.sleep(2)  # Poll every 2 seconds`
 
   const conversationExample = `User: "I want to optimize my marketing budget for maximum ROI"
 
