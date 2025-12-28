@@ -2,46 +2,74 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import {
+  BookOpen,
+  Building2,
+  Zap,
+  Key,
+  Send,
+  Settings,
+  Brain,
+  BarChart3,
+  Package,
+  Code,
+  Globe,
+  CreditCard,
+  Timer,
+  AlertTriangle,
+  CheckCircle
+} from 'lucide-react'
 
-const docsSections = [
+interface NavItem {
+  title: string
+  href: string
+  icon: React.ComponentType<{ className?: string }>
+}
+
+interface NavSection {
+  title: string
+  items: NavItem[]
+}
+
+const docsSections: NavSection[] = [
   {
     title: 'Getting Started',
     items: [
-      { title: 'Introduction', href: '/why-sematryx', icon: '📖' },
-      { title: 'System Architecture', href: '/docs/architecture', icon: '🏗️' },
-      { title: 'Quick Start', href: '/docs', icon: '🚀' },
-      { title: 'Authentication', href: '/docs/authentication', icon: '🔐' },
-      { title: 'Making Requests', href: '/docs/requests', icon: '📡' },
+      { title: 'Introduction', href: '/why-sematryx', icon: BookOpen },
+      { title: 'System Architecture', href: '/docs/architecture', icon: Building2 },
+      { title: 'Quick Start', href: '/docs', icon: Zap },
+      { title: 'Authentication', href: '/docs/authentication', icon: Key },
+      { title: 'Making Requests', href: '/docs/requests', icon: Send },
     ]
   },
   {
     title: 'API Reference',
     items: [
-      { title: 'Optimization API', href: '/docs/api/automation', icon: '⚙️' },
-      { title: 'Intelligence Configuration', href: '/docs/api/intelligence-config', icon: '🧠' },
-      { title: 'Analytics Endpoints', href: '/docs/api/analytics', icon: '📊' },
+      { title: 'Optimization API', href: '/docs/api/automation', icon: Settings },
+      { title: 'Intelligence Configuration', href: '/docs/api/intelligence-config', icon: Brain },
+      { title: 'Analytics Endpoints', href: '/docs/api/analytics', icon: BarChart3 },
     ]
   },
   {
     title: 'Integrations',
     items: [
-      { title: 'JavaScript SDK', href: '/docs/sdks/javascript', icon: '📦' },
-      { title: 'Python SDK', href: '/docs/sdks/python', icon: '🐍' },
-      { title: 'REST API', href: '/docs/sdks/rest', icon: '🌐' },
+      { title: 'JavaScript SDK', href: '/docs/sdks/javascript', icon: Package },
+      { title: 'Python SDK', href: '/docs/sdks/python', icon: Code },
+      { title: 'REST API', href: '/docs/sdks/rest', icon: Globe },
     ]
   },
   {
     title: 'Account',
     items: [
-      { title: 'Billing & Usage', href: '/docs/billing', icon: '💳' },
-      { title: 'Rate Limiting', href: '/docs/advanced/rate-limiting', icon: '⏱️' },
+      { title: 'Billing & Usage', href: '/docs/billing', icon: CreditCard },
+      { title: 'Rate Limiting', href: '/docs/advanced/rate-limiting', icon: Timer },
     ]
   },
   {
     title: 'Advanced',
     items: [
-      { title: 'Error Handling', href: '/docs/advanced/errors', icon: '⚠️' },
-      { title: 'Best Practices', href: '/docs/advanced/best-practices', icon: '✅' },
+      { title: 'Error Handling', href: '/docs/advanced/errors', icon: AlertTriangle },
+      { title: 'Best Practices', href: '/docs/advanced/best-practices', icon: CheckCircle },
     ]
   }
 ]
@@ -91,23 +119,26 @@ export default function DocsNav({ isCollapsed = false, onToggle, isMobile = fals
               </h3>
             )}
             <ul className="space-y-1">
-              {section.items.map((item, itemIndex) => (
-                <li key={itemIndex}>
-                  <Link
-                    href={item.href}
-                    onClick={isMobile ? onMobileClose : undefined}
-                    className={`flex items-center gap-2 ${isCollapsed ? 'px-2 py-2 justify-center' : 'px-3 py-2'} rounded-md text-sm transition-colors ${
-                      pathname === item.href
-                        ? 'bg-primary-600/20 text-primary-400 font-medium'
-                        : 'text-gray-400 hover:bg-[#242b3d] hover:text-white'
-                    }`}
-                    title={isCollapsed ? item.title : undefined}
-                  >
-                    <span className="text-base">{item.icon}</span>
-                    {!isCollapsed && <span>{item.title}</span>}
-                  </Link>
-                </li>
-              ))}
+              {section.items.map((item, itemIndex) => {
+                const IconComponent = item.icon
+                return (
+                  <li key={itemIndex}>
+                    <Link
+                      href={item.href}
+                      onClick={isMobile ? onMobileClose : undefined}
+                      className={`flex items-center gap-2 ${isCollapsed ? 'px-2 py-2 justify-center' : 'px-3 py-2'} rounded-md text-sm transition-colors ${
+                        pathname === item.href
+                          ? 'bg-primary-600/20 text-primary-400 font-medium'
+                          : 'text-gray-400 hover:bg-[#242b3d] hover:text-white'
+                      }`}
+                      title={isCollapsed ? item.title : undefined}
+                    >
+                      <IconComponent className="w-4 h-4 flex-shrink-0" />
+                      {!isCollapsed && <span>{item.title}</span>}
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </div>
         ))}
