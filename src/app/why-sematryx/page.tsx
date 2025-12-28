@@ -331,15 +331,29 @@ export default function WhySematryxPage() {
           <div className="grid md:grid-cols-2 gap-6">
             {enterpriseFeatures.map((feature, index) => {
               const IconComponent = feature.icon
+              const isDomainLibraries = feature.title === "Domain Libraries"
+              const content = (
+                <>
+                  <div className="mb-4">
+                    <IconComponent className="w-8 h-8 text-brand-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-text-primary mb-3">{feature.title}</h3>
+                  <p className="text-text-secondary leading-relaxed">{feature.description}</p>
+                  {isDomainLibraries && (
+                    <Link 
+                      href="/domains"
+                      className="inline-block mt-4 text-brand-primary hover:text-brand-primary/80 font-semibold text-sm"
+                    >
+                      Explore Domain Libraries →
+                    </Link>
+                  )}
+                </>
+              )
               return (
-              <div key={index} className="bg-elevated rounded-xl p-8 border border-elevated-3 border-l-4 border-l-brand-primary">
-                <div className="mb-4">
-                  <IconComponent className="w-8 h-8 text-brand-primary" />
+                <div key={index} className={`bg-elevated rounded-xl p-8 border border-elevated-3 border-l-4 border-l-brand-primary ${isDomainLibraries ? 'hover:border-brand-primary/80 transition-colors' : ''}`}>
+                  {content}
                 </div>
-                <h3 className="text-xl font-bold text-text-primary mb-3">{feature.title}</h3>
-                <p className="text-text-secondary leading-relaxed">{feature.description}</p>
-              </div>
-            )
+              )
             })}
           </div>
         </div>

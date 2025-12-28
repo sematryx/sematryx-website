@@ -55,6 +55,14 @@ export default function TutorialsPage() {
       difficulty: 'Advanced',
       duration: '40 min',
       category: 'Advanced'
+    },
+    {
+      id: 'mcp-agent-demo',
+      title: 'MCP Agent Demo',
+      description: 'See how AI agents use MCP to solve complex optimization problems they would otherwise struggle with',
+      difficulty: 'Intermediate',
+      duration: '15 min',
+      category: 'Agent Integration'
     }
   ]
 

@@ -8,7 +8,8 @@ import {
   BarChart3,
   DollarSign,
   Plug,
-  Home
+  Home,
+  Building2
 } from 'lucide-react'
 
 interface NavItem {
@@ -26,6 +27,7 @@ interface MainSiteNavProps {
 const mainNavItems: NavItem[] = [
   { title: 'Home', href: '/docs', icon: Home },
   { title: 'Why Sematryx', href: '/why-sematryx', icon: BookOpen },
+  { title: 'Domains', href: '/domains', icon: Building2 },
   { title: 'Documentation', href: '/docs', icon: BookOpen },
   { title: 'Tutorials', href: '/tutorials', icon: GraduationCap },
   { title: 'Benchmarks', href: '/benchmarks', icon: BarChart3 },
