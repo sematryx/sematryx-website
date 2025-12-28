@@ -63,6 +63,14 @@ export default function TutorialsPage() {
       difficulty: 'Intermediate',
       duration: '15 min',
       category: 'Agent Integration'
+    },
+    {
+      id: 'conversational-optimization',
+      title: 'Conversational Optimization',
+      description: 'Create optimization problems through natural language conversation with an AI agent',
+      difficulty: 'Beginner',
+      duration: '20 min',
+      category: 'Problem Setup'
     }
   ]
 

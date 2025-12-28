@@ -122,40 +122,6 @@ result = optimize(
 # Your competitive insights stay private
 print(f"Private patterns used: {result['learning_context']['private_patterns_matched']}")`
 
-  const domainExtension = `from sematryx import optimize
-from sematryx.domains import finance
-
-# Use domain-specific optimization
-# Pre-configured for financial constraints and best practices
-result = finance.optimize_portfolio(
-    returns=expected_returns,
-    covariance=cov_matrix,
-    
-    # Financial-specific constraints
-    constraints={
-        'max_position': 0.30,           # Max 30% in single asset
-        'min_position': 0.02,           # Min 2% if included
-        'sector_limits': sector_caps,    # Sector concentration limits
-        'regulatory': 'basel_iii'        # Regulatory framework
-    },
-    
-    # Built-in risk measures
-    risk_measure='cvar',                 # Conditional Value at Risk
-    confidence_level=0.95
-)
-
-# Domain-aware explanations
-print(result['explanation']['compliance_check'])
-# "Portfolio satisfies Basel III capital requirements"`
-
-  const domainList = `# Available domain libraries
-from sematryx.domains import finance      # Portfolio, trading, risk
-from sematryx.domains import healthcare   # Resource allocation, scheduling
-from sematryx.domains import supply_chain # Logistics, inventory, routing
-from sematryx.domains import manufacturing # Production, quality, energy
-from sematryx.domains import energy       # Grid, trading, demand response
-from sematryx.domains import ml           # Hyperparameters, NAS, features`
-
   const fullConfig = `from sematryx import optimize
 
 # Full Intelligence configuration (3 Core Pillars)
@@ -178,13 +144,6 @@ result = optimize(
     learning_config={
         'store_result': True,
         'problem_signature': 'production_scheduling'
-    },
-    
-    # === DOMAIN EXTENSION ===
-    domain='manufacturing',
-    domain_config={
-        'safety_constraints': True,
-        'quality_requirements': quality_spec
     }
 )
 
@@ -216,16 +175,16 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
             Configuring Sematryx Intelligence
           </h1>
           <p className="text-xl text-text-secondary">
-            Master the 3 Core Pillars that make Sematryx different: Agentic, Interpretable, Adaptive, plus Domain Extension.
+            Master the 3 Core Pillars that make Sematryx different: Agentic, Interpretable, and Adaptive.
           </p>
         </div>
 
         <div className="space-y-12">
           <section>
             <h2 className="text-2xl font-semibold text-text-primary mb-4">
-              The 3 Core Pillars + Domain Extension
+              The 3 Core Pillars
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-accent-agentic">
                 <h3 className="font-semibold text-accent-agentic mb-2">🤖 Agentic</h3>
                 <p className="text-sm text-text-secondary">Multiple AI agents collaborate to select the best optimization strategy</p>
@@ -237,10 +196,6 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
               <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-accent-autodidactic">
                 <h3 className="font-semibold text-accent-autodidactic mb-2">🧠 Adaptive</h3>
                 <p className="text-sm text-text-secondary">System learns from optimizations to improve continuously over time</p>
-              </div>
-              <div className="bg-elevated p-5 rounded-xl border border-elevated-3 border-l-4 border-l-orange-400">
-                <h3 className="font-semibold text-orange-400 mb-2">🏗️ Domain Extension</h3>
-                <p className="text-sm text-text-secondary">Pre-built libraries that leverage the engine for finance, healthcare, manufacturing, and more</p>
               </div>
             </div>
           </section>
@@ -330,33 +285,11 @@ print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
 
           <section>
             <h2 className="text-2xl font-semibold text-text-primary mb-4">
-              <span className="text-orange-400">Domain Extension</span>
-            </h2>
-            <p className="text-text-secondary mb-4">
-              Domain libraries provide pre-built optimization patterns for specific industries, 
-              with built-in constraints, compliance checks, and domain-aware explanations.
-            </p>
-            <CodeBlock
-              code={domainExtension}
-              language="python"
-              title="Domain-specific optimization"
-            />
-            <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
-              <h3 className="text-lg font-semibold text-text-primary mb-3">Available Domains</h3>
-              <CodeBlock
-                code={domainList}
-                language="python"
-                title="Domain libraries"
-              />
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold text-text-primary mb-4">
               Full Intelligence Configuration
             </h2>
             <p className="text-text-secondary mb-4">
-              Here's how to combine all 3 core pillars for maximum capability:
+              Here's how to combine all 3 core pillars for maximum capability. 
+              Note: Domain libraries are a separate feature - see the Domain-Specific Optimization tutorial.
             </p>
             <CodeBlock
               code={fullConfig}
