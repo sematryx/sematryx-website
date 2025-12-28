@@ -105,11 +105,16 @@ while True:
         print(f"\\n📊 Optimal Budget Allocation:")
         solution = results.get("solution", {})
         for channel, allocation in solution.items():
-            print(f"   • {channel}: ${allocation:,.0f}")
+            dollar_sign = "$"
+            formatted_amount = f"{dollar_sign}{allocation:,.0f}"
+            print(f"   • {channel}: {formatted_amount}")
         
         print(f"\\n💰 Performance Metrics:")
         print(f"   • Total ROI: {results.get('roi', 0):.1%}")
-        print(f"   • Expected Revenue: ${results.get('revenue', 0):,.0f}")
+        revenue = results.get('revenue', 0)
+        dollar_sign = "$"
+        formatted_revenue = f"{dollar_sign}{revenue:,.0f}"
+        print(f"   • Expected Revenue: {formatted_revenue}")
         print(f"   • Total Conversions: {results.get('conversions', 0):,.0f}")
         
         # Agent can also provide insights
