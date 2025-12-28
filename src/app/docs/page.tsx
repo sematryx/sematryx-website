@@ -165,6 +165,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
               <li>Supply Chain: Vehicle routing, inventory management</li>
               <li>AI/ML: Hyperparameter tuning, architecture search</li>
               <li>Marketing: Campaign optimization, budget allocation</li>
+              <li>Conversational: Natural language problem creation with AI agent</li>
             </ul>
           </div>
         </section>

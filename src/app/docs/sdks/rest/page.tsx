@@ -74,6 +74,31 @@ export default function RESTAPIPage() {
     "max_evaluations": 2000
   }'`
 
+  const conversationalCreate = `curl -X POST https://api.sematryx.com/v1/domains/conversational/create \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "description": "I want to optimize my marketing budget across Google, Facebook, and LinkedIn to maximize ROI"
+  }'`
+
+  const conversationalStatus = `curl -X GET https://api.sematryx.com/v1/domains/conversational/status/conv_abc123 \\
+  -H "Authorization: Bearer YOUR_API_KEY"`
+
+  const conversationalContinue = `curl -X POST https://api.sematryx.com/v1/domains/conversational/continue/conv_abc123 \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "response": "$50000"
+  }'`
+
+  const conversationalComplete = `curl -X POST https://api.sematryx.com/v1/domains/conversational/complete/conv_abc123 \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "max_evaluations": 2000,
+    "mode": "balanced"
+  }'`
+
   const responseExample = `{
   "id": "opt_1234567890",
   "status": "completed",
@@ -212,6 +237,13 @@ export default function RESTAPIPage() {
     { method: 'GET', path: '/federated-learning/operations/{operation_id}', description: 'Get operation status', category: 'Federated Learning' },
     { method: 'GET', path: '/federated-learning/', description: 'List federated learning operations', category: 'Federated Learning' },
     
+    // Conversational Optimization (Available)
+    { method: 'POST', path: '/domains/conversational/create', description: 'Start conversational optimization', category: 'Conversational' },
+    { method: 'GET', path: '/domains/conversational/status/{conversation_id}', description: 'Get conversation status', category: 'Conversational' },
+    { method: 'POST', path: '/domains/conversational/continue/{conversation_id}', description: 'Continue conversation with response', category: 'Conversational' },
+    { method: 'POST', path: '/domains/conversational/complete/{conversation_id}', description: 'Complete conversation and optimize', category: 'Conversational' },
+    { method: 'DELETE', path: '/domains/conversational/{conversation_id}', description: 'Cancel conversation', category: 'Conversational' },
+    
     // Examples - COMING SOON
     { method: 'GET', path: '/examples/', description: 'List examples', category: 'Examples' },
     { method: 'GET', path: '/examples/categories', description: 'Get example categories', category: 'Examples' },
@@ -337,9 +369,77 @@ export default function RESTAPIPage() {
               <li><code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">financial</code> - Portfolio optimization, trading strategies</li>
               <li><code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">healthcare</code> - Drug discovery, clinical trials</li>
               <li><code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">supply_chain</code> - Vehicle routing, inventory optimization</li>
-              <li><code className="bg-blue-100 px-2 py-1 rounded">ai_ml</code> - Hyperparameter tuning, architecture search</li>
-              <li><code className="bg-blue-100 px-2 py-1 rounded">marketing</code> - Campaign optimization, pricing</li>
+              <li><code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">ai_ml</code> - Hyperparameter tuning, architecture search</li>
+              <li><code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">marketing</code> - Campaign optimization, pricing</li>
+              <li><code className="bg-primary-500/20 text-primary-400 px-2 py-1 rounded border border-primary-500/50">conversational</code> - Natural language problem creation</li>
             </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
+            Conversational Optimization
+          </h2>
+          <p className="text-gray-400 mb-4">
+            Create optimization problems through natural language conversation with an AI agent.
+            Perfect for users who want to optimize but aren't familiar with technical optimization concepts.
+          </p>
+          
+          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
+            Start Conversation
+          </h3>
+          <CodeBlock
+            code={conversationalCreate}
+            language="bash"
+            title="POST /v1/domains/conversational/create"
+          />
+          
+          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
+            Get Conversation Status
+          </h3>
+          <p className="text-gray-400 mb-4">
+            Poll this endpoint to check if the agent has questions ready. Status will be "waiting_for_input"
+            when a question is available.
+          </p>
+          <CodeBlock
+            code={conversationalStatus}
+            language="bash"
+            title="GET /v1/domains/conversational/status/{conversation_id}"
+          />
+          
+          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
+            Continue Conversation
+          </h3>
+          <p className="text-gray-400 mb-4">
+            Provide a response to the agent's question.
+          </p>
+          <CodeBlock
+            code={conversationalContinue}
+            language="bash"
+            title="POST /v1/domains/conversational/continue/{conversation_id}"
+          />
+          
+          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
+            Complete and Optimize
+          </h3>
+          <p className="text-gray-400 mb-4">
+            Once all parameters are collected (status is "ready_to_optimize"), complete the conversation
+            and execute the optimization.
+          </p>
+          <CodeBlock
+            code={conversationalComplete}
+            language="bash"
+            title="POST /v1/domains/conversational/complete/{conversation_id}"
+          />
+          
+          <div className="bg-blue-900/20 border border-blue-700 rounded-lg p-4 mt-4">
+            <p className="text-blue-200 text-sm">
+              <strong>Learn more:</strong> See the{' '}
+              <a href="/docs/conversational-optimization" className="underline hover:text-blue-100">
+                Conversational Optimization guide
+              </a>{' '}
+              for detailed examples and best practices.
+            </p>
           </div>
         </section>
 
