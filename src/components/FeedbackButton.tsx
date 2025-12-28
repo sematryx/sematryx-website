@@ -1,14 +1,36 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function FeedbackButton() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isMinimized, setIsMinimized] = useState(false)
   const [feedbackType, setFeedbackType] = useState<'feedback' | 'feature' | 'bug'>('feedback')
   const [message, setMessage] = useState('')
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Load minimized state from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('feedback-button-minimized')
+    if (saved !== null) {
+      setIsMinimized(JSON.parse(saved))
+    }
+  }, [])
+
+  // Save minimized state to localStorage
+  const handleMinimize = () => {
+    const newState = true
+    setIsMinimized(newState)
+    localStorage.setItem('feedback-button-minimized', JSON.stringify(newState))
+  }
+
+  // Restore feedback button
+  const handleRestore = () => {
+    setIsMinimized(false)
+    localStorage.removeItem('feedback-button-minimized')
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -54,17 +76,45 @@ export default function FeedbackButton() {
     }
   }
 
+  // Show restore button if minimized
+  if (isMinimized) {
+    return (
+      <button
+        onClick={handleRestore}
+        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-gray-700/80 hover:bg-gray-600 text-gray-300 hover:text-white transition-all shadow-lg hover:scale-110"
+        aria-label="Restore feedback button"
+        title="Restore feedback"
+      >
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+        </svg>
+      </button>
+    )
+  }
+
   return (
     <>
       {/* Floating Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-brand-primary hover:bg-brand-primary/90 text-white px-4 py-3 rounded-full shadow-lg shadow-brand-primary/30 flex items-center gap-2 transition-all hover:scale-105 group"
-        aria-label="Send feedback"
-      >
-        <span className="text-lg">💬</span>
-        <span className="font-medium hidden sm:inline group-hover:inline">Feedback</span>
-      </button>
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="bg-brand-primary hover:bg-brand-primary/90 text-white px-4 py-3 rounded-full shadow-lg shadow-brand-primary/30 flex items-center gap-2 transition-all hover:scale-105 group"
+          aria-label="Send feedback"
+        >
+          <span className="text-lg">💬</span>
+          <span className="font-medium hidden sm:inline group-hover:inline">Feedback</span>
+        </button>
+        <button
+          onClick={handleMinimize}
+          className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white transition-colors shadow-lg"
+          aria-label="Minimize feedback button"
+          title="Minimize"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+          </svg>
+        </button>
+      </div>
 
       {/* Modal Backdrop */}
       {isOpen && (
