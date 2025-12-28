@@ -39,10 +39,6 @@ export default function MainSiteNav({ isCollapsed = false, isMobile = false, onM
   return (
     <nav className="h-full">
       <div className={`${isCollapsed ? 'p-2' : 'p-6'}`}>
-        {!isCollapsed && (
-          <h2 className="text-lg font-semibold text-white mb-4">Navigation</h2>
-        )}
-        
         <ul className="space-y-1">
           {mainNavItems.map((item) => {
             const IconComponent = item.icon
