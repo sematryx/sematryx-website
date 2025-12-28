@@ -38,10 +38,6 @@ export default function TutorialsNav({ isCollapsed = false, isMobile = false, on
   return (
     <nav className="h-full">
       <div className={`${isCollapsed ? 'p-2' : 'p-6'}`}>
-        {!isCollapsed && (
-          <h2 className="text-lg font-semibold text-white mb-4">Tutorials</h2>
-        )}
-        
         <ul className="space-y-1">
           {tutorials.map((tutorial) => {
             const IconComponent = tutorial.icon

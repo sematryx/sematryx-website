@@ -47,8 +47,7 @@ export default function DocsLayoutWrapper({ children }: DocsLayoutWrapperProps) 
             onClick={() => setIsMobileMenuOpen(false)}
           />
           <aside className="md:hidden fixed left-0 top-16 bottom-0 w-64 bg-[#1a1f2e] border-r border-gray-800 z-50 overflow-y-auto">
-            <div className="p-4 border-b border-gray-800 flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-white">Documentation</h2>
+            <div className="p-4 border-b border-gray-800 flex items-center justify-end">
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-[#242b3d] transition-colors"

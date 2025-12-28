@@ -30,12 +30,7 @@ export default function UniversalLayoutWrapper({ children }: UniversalLayoutWrap
 
   // Determine sidebar title based on current section
   const getSidebarTitle = () => {
-    if (pathname.startsWith('/docs') || pathname === '/why-sematryx') {
-      return 'Documentation'
-    }
-    if (pathname.startsWith('/tutorials')) {
-      return 'Tutorials'
-    }
+    // No titles for navigation sections
     return ''
   }
 
