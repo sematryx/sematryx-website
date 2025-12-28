@@ -21,7 +21,7 @@ export default function UniversalSidebar({
   const pathname = usePathname()
 
   // Determine which nav to show based on pathname
-  if (pathname.startsWith('/docs') || pathname === '/why-sematryx') {
+  if (pathname.startsWith('/docs')) {
     return (
       <DocsNav 
         isCollapsed={isCollapsed} 

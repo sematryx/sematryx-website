@@ -14,6 +14,7 @@ import {
   Package,
   Code,
   Globe,
+  Plug,
   CreditCard,
   Timer,
   AlertTriangle,
@@ -56,6 +57,7 @@ const docsSections: NavSection[] = [
       { title: 'JavaScript SDK', href: '/docs/sdks/javascript', icon: Package },
       { title: 'Python SDK', href: '/docs/sdks/python', icon: Code },
       { title: 'REST API', href: '/docs/sdks/rest', icon: Globe },
+      { title: 'MCP Integration', href: '/mcp', icon: Plug },
     ]
   },
   {
