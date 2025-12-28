@@ -24,7 +24,7 @@ interface MainSiteNavProps {
 }
 
 const mainNavItems: NavItem[] = [
-  { title: 'Home', href: '/', icon: Home },
+  { title: 'Home', href: '/docs', icon: Home },
   { title: 'Why Sematryx', href: '/why-sematryx', icon: BookOpen },
   { title: 'Documentation', href: '/docs', icon: BookOpen },
   { title: 'Tutorials', href: '/tutorials', icon: GraduationCap },
