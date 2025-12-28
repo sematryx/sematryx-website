@@ -1,0 +1,82 @@
+# Sematryx Website - Cursor Rules
+
+## Workflow Rules
+
+### After Task Completion
+**CRITICAL**: After completing a task that the user has confirmed/approved:
+1. **Always commit and push** the changes immediately
+2. Use descriptive commit messages that explain what was changed
+3. Do not wait for explicit instruction to commit - this is automatic after confirmation
+
+### Commit Message Format
+- Use clear, descriptive commit messages
+- Include what was changed and why (if relevant)
+- Group related changes in a single commit
+
+### Example Workflow
+```
+User: "Implement feature X"
+[Implementation happens]
+User: [confirms/accepts changes]
+→ Automatically commit and push
+```
+
+## Code Standards
+
+### TypeScript/React
+- Use TypeScript for all new code
+- Prefer functional components with hooks
+- Use proper type definitions
+- Follow Next.js 14+ App Router conventions
+
+### Styling
+- Use Tailwind CSS for styling
+- Follow existing design system (dark theme, consistent spacing)
+- Use Lucide React icons (not emojis) for professional appearance
+- Maintain responsive design (mobile-first approach)
+
+### Components
+- Keep components focused and reusable
+- Use proper prop types/interfaces
+- Follow existing component patterns
+
+## Navigation Standards
+
+### Top Navigation
+- Site-wide navigation (marketing/product pages)
+- Should be consistent across all pages
+
+### Side Navigation
+- Documentation-specific navigation
+- Should be collapsible on desktop
+- Should have mobile drawer
+
+## Documentation Standards
+
+### Code Examples
+- Use professional, production-ready examples
+- Keep examples up-to-date with API changes
+- Use consistent terminology (Sematryx Intelligence, not AEAO)
+
+### Content
+- Remove all AEAO branding references
+- Use "3 Core Pillars: Agentic, Interpretable, Adaptive"
+- Domain Extension is separate from core pillars
+
+## Git Workflow
+
+### Branching
+- Work on master/main branch unless specified otherwise
+- Commit frequently with meaningful messages
+
+### Deployment
+- Changes are automatically deployed after push (if connected to Vercel)
+- No manual deployment step needed unless specified
+
+## Important Notes
+
+- Always use SVG icons (Lucide React) - never emojis in UI
+- Maintain dark theme consistency
+- Keep navigation professional and modern
+- Follow modern tech product design standards
+
