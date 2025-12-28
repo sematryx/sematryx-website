@@ -102,11 +102,16 @@ Which marketing channels would you like to optimize across?"
 User: "Google, Facebook, LinkedIn"
 
 Agent: "Great! I've recorded channels as ['Google', 'Facebook', 'LinkedIn'].
-What is your target ROI?"
+To calculate ROI, I need some performance data. 
+What's the average cost per acquisition (CPA) for each channel?"
 
-User: "0.15"
+User: "Google: $25, Facebook: $30, LinkedIn: $45"
 
-Agent: "Perfect! I have all the information I need. 
+Agent: "Perfect! And what's the average revenue per customer?"
+
+User: "$150"
+
+Agent: "Excellent! I have all the information I need. 
 Your optimization problem is ready to solve."`
 
   return (
