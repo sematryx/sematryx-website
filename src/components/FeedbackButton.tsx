@@ -60,7 +60,8 @@ export default function FeedbackButton() {
               <h2 className="text-xl font-bold text-text-primary">Send Feedback</h2>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="text-text-tertiary hover:text-text-primary transition-colors text-2xl leading-none"
+                className="text-text-primary hover:text-white transition-colors text-2xl leading-none font-bold w-8 h-8 flex items-center justify-center rounded-lg hover:bg-elevated-3"
+                aria-label="Close feedback modal"
               >
                 ×
               </button>
@@ -70,13 +71,13 @@ export default function FeedbackButton() {
               <div className="p-8 text-center">
                 <span className="text-5xl block mb-4">✅</span>
                 <h3 className="text-xl font-semibold text-text-primary mb-2">Thank you!</h3>
-                <p className="text-text-secondary">Your feedback helps us improve Sematryx.</p>
+                <p className="text-text-primary">Your feedback helps us improve Sematryx.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="p-5 space-y-4">
                 {/* Type Selection */}
                 <div>
-                  <label className="block text-sm font-medium text-text-secondary mb-2">What type of feedback?</label>
+                  <label className="block text-sm font-medium text-text-primary mb-2">What type of feedback?</label>
                   <div className="flex gap-2">
                     {[
                       { value: 'feedback', label: '💭 General', color: 'brand-primary' },
@@ -90,7 +91,7 @@ export default function FeedbackButton() {
                         className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                           feedbackType === type.value
                             ? `bg-${type.color}/20 text-${type.color} border border-${type.color}/50`
-                            : 'bg-base border border-elevated-3 text-text-secondary hover:border-elevated-2'
+                            : 'bg-base border border-elevated-3 text-text-primary hover:border-elevated-2'
                         }`}
                       >
                         {type.label}
@@ -101,7 +102,7 @@ export default function FeedbackButton() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="feedback-message" className="block text-sm font-medium text-text-secondary mb-2">
+                  <label htmlFor="feedback-message" className="block text-sm font-medium text-text-primary mb-2">
                     Your message
                   </label>
                   <textarea
@@ -117,8 +118,8 @@ export default function FeedbackButton() {
 
                 {/* Email (optional) */}
                 <div>
-                  <label htmlFor="feedback-email" className="block text-sm font-medium text-text-secondary mb-2">
-                    Email <span className="text-text-tertiary">(optional, for follow-up)</span>
+                  <label htmlFor="feedback-email" className="block text-sm font-medium text-text-primary mb-2">
+                    Email <span className="text-text-secondary">(optional, for follow-up)</span>
                   </label>
                   <input
                     type="email"

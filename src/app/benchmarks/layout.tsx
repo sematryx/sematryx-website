@@ -2,7 +2,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import UniversalLayoutWrapper from '@/components/UniversalLayoutWrapper'
 
-export default function DocsLayout({
+export default function BenchmarksLayout({
   children,
 }: {
   children: React.ReactNode
@@ -17,3 +17,4 @@ export default function DocsLayout({
     </main>
   )
 }
+

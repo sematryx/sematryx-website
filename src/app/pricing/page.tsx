@@ -1,6 +1,4 @@
-import Header from '@/components/Header'
 import Pricing from '@/components/Pricing'
-import Footer from '@/components/Footer'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -10,9 +8,7 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <main>
-      <Header />
-      <div className="pt-20">
+    <div className="pt-20">
         <Pricing />
         
         {/* Additional pricing details */}
@@ -120,9 +116,7 @@ export default function PricingPage() {
             </div>
           </div>
         </section>
-      </div>
-      <Footer />
-    </main>
+    </div>
   )
 }
 

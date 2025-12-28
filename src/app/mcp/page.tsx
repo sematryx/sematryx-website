@@ -1,5 +1,3 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import CodeBlock from '@/components/CodeBlock'
 
 export default function MCPPage() {
@@ -129,10 +127,7 @@ const mcpTools = [
   ]
 
   return (
-    <main>
-      <Header />
-      
-      <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-24">
+    <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -279,8 +274,5 @@ const mcpTools = [
           </div>
         </div>
       </div>
-
-      <Footer />
-    </main>
   )
 }

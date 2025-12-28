@@ -1,5 +1,3 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import Link from 'next/link'
 import { Metadata } from 'next'
 
@@ -74,9 +72,7 @@ export default function TutorialsPage() {
   }
 
   return (
-    <main className="bg-base min-h-screen">
-      <Header />
-      
+    <div className="bg-base min-h-screen">
       <div className="bg-gradient-to-b from-base to-elevated pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -219,8 +215,6 @@ export default function TutorialsPage() {
           </div>
         </div>
       </div>
-
-      <Footer />
-    </main>
+    </div>
   )
 }

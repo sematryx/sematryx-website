@@ -1,6 +1,6 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import DocsLayoutWrapper from '@/components/DocsLayoutWrapper'
+import UniversalLayoutWrapper from '@/components/UniversalLayoutWrapper'
 
 export default function WhySematryxLayout({
   children,
@@ -10,9 +10,9 @@ export default function WhySematryxLayout({
   return (
     <main className="flex flex-col min-h-screen">
       <Header />
-      <DocsLayoutWrapper>
+      <UniversalLayoutWrapper>
         {children}
-      </DocsLayoutWrapper>
+      </UniversalLayoutWrapper>
       <Footer />
     </main>
   )
