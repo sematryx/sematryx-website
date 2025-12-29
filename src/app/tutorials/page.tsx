@@ -147,7 +147,7 @@ export default function TutorialsPage() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               <a
                 href="https://github.com/sematryx/sematryx/blob/main/notebooks/tutorials/01_sematryx_quick_start.ipynb"
                 target="_blank"
@@ -199,6 +199,42 @@ export default function TutorialsPage() {
                 </h3>
                 <p className="text-sm text-text-secondary">
                   Healthcare, supply chain, marketing, and ML hyperparameter tuning.
+                </p>
+              </a>
+              
+              <a
+                href="https://github.com/sematryx/sematryx/blob/main/notebooks/tutorials/04_mcp_agent_demo.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-2xl">🤖</span>
+                  <span className="text-xs font-medium text-amber-400 bg-amber-400/10 px-2 py-1 rounded-full">Intermediate</span>
+                </div>
+                <h3 className="font-semibold text-text-primary group-hover:text-brand-primary transition-colors mb-2">
+                  MCP Agent Demo
+                </h3>
+                <p className="text-sm text-text-secondary">
+                  See how AI agents use MCP to solve complex optimization problems.
+                </p>
+              </a>
+              
+              <a
+                href="https://github.com/sematryx/sematryx/blob/main/notebooks/tutorials/05_conversational_optimization.ipynb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-2xl">💬</span>
+                  <span className="text-xs font-medium text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full">Beginner</span>
+                </div>
+                <h3 className="font-semibold text-text-primary group-hover:text-brand-primary transition-colors mb-2">
+                  Conversational Optimization
+                </h3>
+                <p className="text-sm text-text-secondary">
+                  Create optimization problems through natural language conversation with an AI agent.
                 </p>
               </a>
             </div>
