@@ -149,7 +149,7 @@ export default function TutorialsPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               <a
-                href="https://github.com/sematryx/sematryx/blob/main/notebooks/tutorials/01_sematryx_quick_start.ipynb"
+                href="https://github.com/sematryx/sematryx-api/blob/master/notebooks/tutorials/01_sematryx_quick_start.ipynb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
@@ -167,7 +167,7 @@ export default function TutorialsPage() {
               </a>
               
               <a
-                href="https://github.com/sematryx/sematryx/blob/main/notebooks/tutorials/02_portfolio_optimization.ipynb"
+                href="https://github.com/sematryx/sematryx-api/blob/master/notebooks/tutorials/02_portfolio_optimization.ipynb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
@@ -185,7 +185,7 @@ export default function TutorialsPage() {
               </a>
               
               <a
-                href="https://github.com/sematryx/sematryx/blob/main/notebooks/tutorials/03_domain_examples.ipynb"
+                href="https://github.com/sematryx/sematryx-api/blob/master/notebooks/tutorials/03_domain_examples.ipynb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
@@ -203,7 +203,7 @@ export default function TutorialsPage() {
               </a>
               
               <a
-                href="https://github.com/sematryx/sematryx/blob/main/notebooks/tutorials/04_mcp_agent_demo.ipynb"
+                href="https://github.com/sematryx/sematryx-api/blob/master/notebooks/tutorials/04_mcp_agent_demo.ipynb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
@@ -221,7 +221,7 @@ export default function TutorialsPage() {
               </a>
               
               <a
-                href="https://github.com/sematryx/sematryx/blob/main/notebooks/tutorials/05_conversational_optimization.ipynb"
+                href="https://github.com/sematryx/sematryx-api/blob/master/notebooks/tutorials/05_conversational_optimization.ipynb"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-elevated rounded-xl p-6 border border-elevated-3 hover:border-brand-primary/50 transition-all group"
