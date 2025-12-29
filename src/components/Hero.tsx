@@ -24,8 +24,11 @@ export default function Hero() {
               <p className="text-lg text-gray-300 leading-relaxed mb-3">
                 Sematryx handles the optimization problems that break conventional tools—with full audit trails for regulated industries.
               </p>
-              <p className="text-sm text-text-tertiary">
+              <p className="text-sm text-text-tertiary mb-2">
                 Built to be your AI agents' optimization backend.
+              </p>
+              <p className="text-sm text-brand-primary/80 font-medium">
+                Or describe your problem in natural language—no code required.
               </p>
             </div>
 

@@ -1,4 +1,4 @@
-import { Zap, FileText, Building2, TrendingUp } from 'lucide-react'
+import { Zap, FileText, Building2, TrendingUp, MessageSquare } from 'lucide-react'
 
 export default function Differentiators() {
   const differentiators = [
@@ -21,13 +21,18 @@ export default function Differentiators() {
       title: "Gets Smarter",
       description: "Continuous learning means better results over time, automatically.",
       icon: TrendingUp
+    },
+    {
+      title: "Natural Language Interface",
+      description: "Describe problems in plain English. No code or optimization expertise required. Patent pending.",
+      icon: MessageSquare
     }
   ]
 
   return (
     <div className="py-20 md:py-24 bg-base border-t border-elevated-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {differentiators.map((item, index) => {
             const IconComponent = item.icon
             return (
