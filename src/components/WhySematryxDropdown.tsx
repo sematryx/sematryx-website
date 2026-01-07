@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
-import { ChevronDown, Code, MessageSquare, Building2, Plug, Sparkles } from 'lucide-react'
+import { ChevronDown, Code, MessageSquare, Building2, Plug, Sparkles, Bot, Brain, BookOpen } from 'lucide-react'
 
 interface DropdownGroup {
   title: string
@@ -19,6 +19,9 @@ const whySematryxMenu: DropdownGroup[] = [
     items: [
       { title: 'Overview', href: '/why-sematryx', icon: Sparkles },
       { title: 'Three Intelligence Pillars', href: '/docs/api/intelligence-config', icon: Code },
+      { title: 'Agentic Intelligence', href: '/why-sematryx/agentic-intelligence', icon: Bot },
+      { title: 'Interpretable Intelligence', href: '/why-sematryx/interpretable-intelligence', icon: BookOpen },
+      { title: 'Adaptive Intelligence', href: '/why-sematryx/adaptive-intelligence', icon: Brain },
       { title: 'Conversational Optimization', href: '/docs/conversational-optimization', icon: MessageSquare },
       { title: 'Domain Libraries', href: '/docs/domain-libraries', icon: Building2 },
       { title: 'Agent Integrations (MCP)', href: '/docs/integrations/mcp', icon: Plug },
