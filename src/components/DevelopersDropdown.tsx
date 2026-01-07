@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
-import { ChevronDown, Zap, BookOpen, GraduationCap, Code, Package, Globe, MessageSquare, Building2, Plug, Bot, Brain } from 'lucide-react'
+import { ChevronDown, Zap, BookOpen, GraduationCap, Code, Package, Globe, MessageSquare, Building2, Plug } from 'lucide-react'
 
 interface DropdownGroup {
   title: string
@@ -29,9 +29,6 @@ const developersMenu: DropdownGroup[] = [
     title: 'Key Capabilities',
     items: [
       { title: 'Intelligence Configuration', href: '/docs/api/intelligence-config', icon: Code },
-      { title: 'Agentic Intelligence', href: '/docs/api/intelligence-config#agentic-intelligence', icon: Bot },
-      { title: 'Interpretable Intelligence', href: '/docs/api/intelligence-config#interpretable-intelligence', icon: BookOpen },
-      { title: 'Adaptive Intelligence', href: '/docs/api/intelligence-config#adaptive-intelligence', icon: Brain },
       { title: 'Conversational Optimization', href: '/docs/conversational-optimization', icon: MessageSquare },
       { title: 'Domain Libraries', href: '/docs/domain-libraries', icon: Building2 },
       { title: 'Agent Integrations (MCP)', href: '/docs/integrations/mcp', icon: Plug },

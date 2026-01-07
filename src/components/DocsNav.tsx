@@ -5,11 +5,9 @@ import { usePathname } from 'next/navigation'
 import {
   BookOpen,
   Building2,
-  Zap,
   Key,
   Send,
   Settings,
-  Brain,
   BarChart3,
   Package,
   Code,
@@ -20,7 +18,6 @@ import {
   AlertTriangle,
   CheckCircle,
   MessageSquare,
-  Bot
 } from 'lucide-react'
 
 interface NavItem {
@@ -48,18 +45,9 @@ const docsSections: NavSection[] = [
     title: 'Concepts & Guides',
     items: [
       { title: 'Intelligence Configuration', href: '/docs/api/intelligence-config', icon: Settings },
-      { title: 'Agentic Intelligence', href: '/docs/api/intelligence-config#agentic-intelligence', icon: Bot },
-      { title: 'Interpretable Intelligence', href: '/docs/api/intelligence-config#interpretable-intelligence', icon: BookOpen },
-      { title: 'Adaptive Intelligence', href: '/docs/api/intelligence-config#adaptive-intelligence', icon: Brain },
       { title: 'Conversational Optimization', href: '/docs/conversational-optimization', icon: MessageSquare },
       { title: 'Domain Libraries', href: '/docs/domain-libraries', icon: Building2 },
-    ]
-  },
-  {
-    title: 'API Endpoints',
-    items: [
-      { title: 'Analytics', href: '/docs/api/analytics', icon: BarChart3 },
-      { title: 'Webhooks', href: '/docs/api/webhooks', icon: Settings },
+      { title: 'Agent Integrations (MCP)', href: '/docs/integrations/mcp', icon: Plug },
     ]
   },
   {
@@ -71,16 +59,12 @@ const docsSections: NavSection[] = [
     ]
   },
   {
-    title: 'Integrations',
-    items: [
-      { title: 'Agent Integrations (MCP)', href: '/docs/integrations/mcp', icon: Plug },
-    ]
-  },
-  {
-    title: 'Account / Limits',
+    title: 'Account & Services',
     items: [
       { title: 'Billing & Usage', href: '/docs/billing', icon: CreditCard },
       { title: 'Rate Limiting', href: '/docs/advanced/rate-limiting', icon: Timer },
+      { title: 'Analytics', href: '/docs/api/analytics', icon: BarChart3 },
+      { title: 'Webhooks', href: '/docs/api/webhooks', icon: Settings },
     ]
   },
   {
