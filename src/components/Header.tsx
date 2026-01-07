@@ -52,14 +52,9 @@ export default function Header() {
               {isLoaded ? (
                 <>
                   <SignedOut>
-                    <div className="flex items-center gap-3">
-                      <Link href="/sign-in" className="text-text-secondary hover:text-text-primary px-4 py-2 rounded-md text-sm font-medium border border-elevated-3 hover:border-elevated-2 transition-colors">
-                        Sign In
-                      </Link>
-                      <Link href="/sign-up" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
-                        Get Started
-                      </Link>
-                    </div>
+                    <Link href="/sign-in" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
+                      Sign In
+                    </Link>
                   </SignedOut>
                   
                   <SignedIn>
@@ -77,10 +72,7 @@ export default function Header() {
                   </SignedIn>
                 </>
               ) : (
-                <div className="flex items-center gap-3 min-w-[180px]">
-                  <div className="h-9 w-20 bg-elevated-2 rounded-md animate-pulse"></div>
-                  <div className="h-9 w-24 bg-elevated-2 rounded-md animate-pulse"></div>
-                </div>
+                <div className="h-9 w-20 bg-elevated-2 rounded-md animate-pulse"></div>
               )}
             </div>
           </div>
@@ -133,14 +125,9 @@ export default function Header() {
               {isLoaded ? (
                 <>
                   <SignedOut>
-                    <div className="space-y-2">
-                      <Link href="/sign-in" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium border border-elevated-3 hover:border-elevated-2 transition-colors text-center">
-                        Sign In
-                      </Link>
-                      <Link href="/sign-up" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium text-center">
-                        Get Started
-                      </Link>
-                    </div>
+                    <Link href="/sign-in" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium text-center">
+                      Sign In
+                    </Link>
                   </SignedOut>
                   
                   <SignedIn>
@@ -150,10 +137,7 @@ export default function Header() {
                   </SignedIn>
                 </>
               ) : (
-                <div className="space-y-2">
-                  <div className="h-10 bg-elevated-2 rounded-md animate-pulse"></div>
-                  <div className="h-10 bg-elevated-2 rounded-md animate-pulse"></div>
-                </div>
+                <div className="h-10 bg-elevated-2 rounded-md animate-pulse"></div>
               )}
             </div>
           </div>
