@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { SignedIn, SignedOut, UserButton, useAuth } from '@clerk/nextjs'
 import Logo from './Logo'
 import DevelopersDropdown from './DevelopersDropdown'
+import WhySematryxDropdown from './WhySematryxDropdown'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -31,9 +32,7 @@ export default function Header() {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <Link href="/why-sematryx" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
-                Why Sematryx
-              </Link>
+              <WhySematryxDropdown />
               <Link href="/benchmarks" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Benchmarks
               </Link>
@@ -96,9 +95,7 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-elevated rounded-lg mt-2">
-              <Link href="/why-sematryx" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
-                Why Sematryx
-              </Link>
+              <WhySematryxDropdown isMobile={true} onMobileClose={() => setIsMenuOpen(false)} />
               <Link href="/benchmarks" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Benchmarks
               </Link>
