@@ -34,7 +34,7 @@ const tutorialSections: TutorialSection[] = [
   {
     title: 'START HERE',
     items: [
-      { title: 'Getting Started', href: '/tutorials/getting-started', icon: Zap },
+  { title: 'Getting Started', href: '/tutorials/getting-started', icon: Zap },
       { title: 'Conversational Optimization', href: '/tutorials/conversational-optimization', icon: MessageSquare },
     ]
   },
@@ -76,29 +76,29 @@ export default function TutorialsNav({ isCollapsed = false, isMobile = false, on
                 {section.title}
               </h3>
             )}
-            <ul className="space-y-1">
+        <ul className="space-y-1">
               {section.items.map((tutorial) => {
-                const IconComponent = tutorial.icon
-                const isActive = pathname === tutorial.href
-                return (
-                  <li key={tutorial.href}>
-                    <Link
-                      href={tutorial.href}
-                      onClick={isMobile ? onMobileClose : undefined}
-                      className={`flex items-center gap-2 ${isCollapsed ? 'px-2 py-2 justify-center' : 'px-3 py-2'} rounded-md text-sm transition-colors ${
-                        isActive
-                          ? 'bg-primary-600/20 text-primary-400 font-medium'
-                          : 'text-gray-400 hover:bg-[#242b3d] hover:text-white'
-                      }`}
-                      title={isCollapsed ? tutorial.title : undefined}
-                    >
-                      <IconComponent className="w-4 h-4 flex-shrink-0" />
-                      {!isCollapsed && <span>{tutorial.title}</span>}
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
+            const IconComponent = tutorial.icon
+            const isActive = pathname === tutorial.href
+            return (
+              <li key={tutorial.href}>
+                <Link
+                  href={tutorial.href}
+                  onClick={isMobile ? onMobileClose : undefined}
+                  className={`flex items-center gap-2 ${isCollapsed ? 'px-2 py-2 justify-center' : 'px-3 py-2'} rounded-md text-sm transition-colors ${
+                    isActive
+                      ? 'bg-primary-600/20 text-primary-400 font-medium'
+                      : 'text-gray-400 hover:bg-[#242b3d] hover:text-white'
+                  }`}
+                  title={isCollapsed ? tutorial.title : undefined}
+                >
+                  <IconComponent className="w-4 h-4 flex-shrink-0" />
+                  {!isCollapsed && <span>{tutorial.title}</span>}
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
           </div>
         ))}
       </div>

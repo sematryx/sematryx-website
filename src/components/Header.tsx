@@ -44,25 +44,25 @@ export default function Header() {
               
               {isLoaded ? (
                 <>
-                  <SignedOut>
+              <SignedOut>
                     <Link href="/sign-in" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
                       Sign In
-                    </Link>
-                  </SignedOut>
-                  
-                  <SignedIn>
-                    <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
-                      Dashboard
-                    </Link>
-                    <UserButton 
-                      afterSignOutUrl="/"
-                      appearance={{
-                        elements: {
-                          avatarBox: 'h-8 w-8',
-                        }
-                      }}
-                    />
-                  </SignedIn>
+                </Link>
+              </SignedOut>
+              
+              <SignedIn>
+                <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
+                  Dashboard
+                </Link>
+                <UserButton 
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: 'h-8 w-8',
+                    }
+                  }}
+                />
+              </SignedIn>
                 </>
               ) : (
                 <div className="h-9 w-20 bg-elevated-2 rounded-md animate-pulse"></div>
@@ -109,17 +109,17 @@ export default function Header() {
               
               {isLoaded ? (
                 <>
-                  <SignedOut>
+              <SignedOut>
                     <Link href="/sign-in" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium text-center">
                       Sign In
-                    </Link>
-                  </SignedOut>
-                  
-                  <SignedIn>
-                    <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium">
-                      Dashboard
-                    </Link>
-                  </SignedIn>
+                </Link>
+              </SignedOut>
+              
+              <SignedIn>
+                <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium">
+                  Dashboard
+                </Link>
+              </SignedIn>
                 </>
               ) : (
                 <div className="h-10 bg-elevated-2 rounded-md animate-pulse"></div>

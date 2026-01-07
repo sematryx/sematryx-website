@@ -92,8 +92,8 @@ print(f"Risk value: {result.objective_value:.6f}")
 print(f"Explanation: {result.explanation}")`
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="mb-8">
         <div className="flex items-center gap-4 mb-6">
             <span className="bg-emerald-500/15 text-emerald-400 text-xs font-medium px-3 py-1 rounded-full border border-emerald-500/30">
               Beginner

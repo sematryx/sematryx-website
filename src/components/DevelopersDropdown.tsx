@@ -20,7 +20,6 @@ const developersMenu: DropdownGroup[] = [
       { title: 'Quickstart', href: '/tutorials/getting-started', icon: Zap },
       { title: 'Documentation', href: '/docs', icon: BookOpen },
       { title: 'Tutorials', href: '/tutorials', icon: GraduationCap },
-      { title: 'API Reference', href: '/docs/api/intelligence-config', icon: Code },
       { title: 'SDKs (JS)', href: '/docs/sdks/javascript', icon: Package },
       { title: 'REST API', href: '/docs/sdks/rest', icon: Globe },
     ]
