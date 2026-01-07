@@ -13,6 +13,16 @@ const nextConfig = {
         destination: '/docs/api/intelligence-config',
         permanent: true, // 301 redirect
       },
+      {
+        source: '/domain-libraries',
+        destination: '/domains',
+        permanent: true, // 308 redirect
+      },
+      {
+        source: '/agents',
+        destination: '/mcp',
+        permanent: true, // 308 redirect
+      },
     ]
   },
 }

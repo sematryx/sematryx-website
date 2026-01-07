@@ -18,7 +18,8 @@ import {
   CreditCard,
   Timer,
   AlertTriangle,
-  CheckCircle
+  CheckCircle,
+  MessageSquare
 } from 'lucide-react'
 
 interface NavItem {
@@ -36,32 +37,39 @@ const docsSections: NavSection[] = [
   {
     title: 'Getting Started',
     items: [
-      { title: 'Introduction', href: '/why-sematryx', icon: BookOpen },
+      { title: 'Introduction', href: '/docs', icon: BookOpen },
       { title: 'System Architecture', href: '/docs/architecture', icon: Building2 },
-      { title: 'Quick Start', href: '/docs', icon: Zap },
       { title: 'Authentication', href: '/docs/authentication', icon: Key },
       { title: 'Making Requests', href: '/docs/requests', icon: Send },
     ]
   },
   {
-    title: 'API Reference',
+    title: 'Guides / Concepts',
     items: [
-      { title: 'Optimization API', href: '/docs/api/automation', icon: Settings },
-      { title: 'Intelligence Configuration', href: '/docs/api/intelligence-config', icon: Brain },
-      { title: 'Analytics Endpoints', href: '/docs/api/analytics', icon: BarChart3 },
+      { title: 'Conversational Optimization', href: '/docs/conversational-optimization', icon: MessageSquare },
+      { title: 'Domain Libraries', href: '/docs/domain-libraries', icon: Building2 },
     ]
   },
   {
-    title: 'Integrations',
+    title: 'API Reference',
+    items: [
+      { title: 'Intelligence Configuration', href: '/docs/api/intelligence-config', icon: Brain },
+      { title: 'Analytics', href: '/docs/api/analytics', icon: BarChart3 },
+      { title: 'Webhooks', href: '/docs/api/webhooks', icon: Settings },
+      { title: 'Automation', href: '/docs/api/automation', icon: Settings },
+    ]
+  },
+  {
+    title: 'Integrations / SDKs',
     items: [
       { title: 'JavaScript SDK', href: '/docs/sdks/javascript', icon: Package },
       { title: 'Python SDK', href: '/docs/sdks/python', icon: Code },
       { title: 'REST API', href: '/docs/sdks/rest', icon: Globe },
-      { title: 'MCP Integration', href: '/mcp', icon: Plug },
+      { title: 'Agent Integrations (MCP)', href: '/docs/integrations/mcp', icon: Plug },
     ]
   },
   {
-    title: 'Account',
+    title: 'Account / Limits',
     items: [
       { title: 'Billing & Usage', href: '/docs/billing', icon: CreditCard },
       { title: 'Rate Limiting', href: '/docs/advanced/rate-limiting', icon: Timer },
@@ -70,7 +78,7 @@ const docsSections: NavSection[] = [
   {
     title: 'Advanced',
     items: [
-      { title: 'Error Handling', href: '/docs/advanced/errors', icon: AlertTriangle },
+      { title: 'Errors', href: '/docs/advanced/errors', icon: AlertTriangle },
       { title: 'Best Practices', href: '/docs/advanced/best-practices', icon: CheckCircle },
     ]
   }

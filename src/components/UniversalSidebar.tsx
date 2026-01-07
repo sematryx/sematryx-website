@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation'
 import DocsNav from './DocsNav'
 import TutorialsNav from './TutorialsNav'
-import MainSiteNav from './MainSiteNav'
 
 interface UniversalSidebarProps {
   isCollapsed?: boolean
@@ -20,7 +19,7 @@ export default function UniversalSidebar({
 }: UniversalSidebarProps) {
   const pathname = usePathname()
 
-  // Determine which nav to show based on pathname
+  // Only show left nav for /docs/* and /tutorials/* sections
   if (pathname.startsWith('/docs')) {
     return (
       <DocsNav 
@@ -42,13 +41,7 @@ export default function UniversalSidebar({
     )
   }
 
-  // Default: main site navigation
-  return (
-    <MainSiteNav 
-      isCollapsed={isCollapsed} 
-      isMobile={isMobile} 
-      onMobileClose={onMobileClose} 
-    />
-  )
+  // No left nav for marketing pages or other routes
+  return null
 }
 

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { SignedIn, SignedOut, UserButton, useAuth } from '@clerk/nextjs'
 import Logo from './Logo'
+import DevelopersDropdown from './DevelopersDropdown'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -33,21 +34,13 @@ export default function Header() {
               <Link href="/why-sematryx" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Why Sematryx
               </Link>
-              <Link href="/docs" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
-                Documentation
-              </Link>
-              <Link href="/tutorials" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
-                Tutorials
-              </Link>
               <Link href="/benchmarks" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Benchmarks
               </Link>
               <Link href="/pricing" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
                 Pricing
               </Link>
-              <Link href="/mcp" className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium">
-                MCP
-              </Link>
+              <DevelopersDropdown />
               
               {isLoaded ? (
                 <>
@@ -106,21 +99,13 @@ export default function Header() {
               <Link href="/why-sematryx" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Why Sematryx
               </Link>
-              <Link href="/docs" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
-                Documentation
-              </Link>
-              <Link href="/tutorials" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
-                Tutorials
-              </Link>
               <Link href="/benchmarks" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Benchmarks
               </Link>
               <Link href="/pricing" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
                 Pricing
               </Link>
-              <Link href="/mcp" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium">
-                MCP
-              </Link>
+              <DevelopersDropdown isMobile={true} onMobileClose={() => setIsMenuOpen(false)} />
               
               {isLoaded ? (
                 <>

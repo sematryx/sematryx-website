@@ -1,5 +1,6 @@
 import CodeBlock from '@/components/CodeBlock'
-import { Link2, Brain, Wrench, Bot, Zap, Lock } from 'lucide-react'
+import Link from 'next/link'
+import { Link2, Brain, Wrench, Bot, Zap, Lock, BookOpen, GraduationCap, ArrowRight } from 'lucide-react'
 
 export default function MCPPage() {
   const mcpIntegrationCode = `import { MCPClient } from '@sematryx/mcp-client'
@@ -276,6 +277,49 @@ const mcpTools = [
                 <strong>Current Version:</strong> 2024-11-05 | 
                 <strong> Next Version:</strong> 2024-12-01 (Preview Available)
               </div>
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-16 bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">
+              Ready to Integrate?
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Link
+                href="/docs/integrations/mcp"
+                className="bg-elevated border border-elevated-3 rounded-lg p-6 hover:bg-elevated-2 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-semibold text-text-primary flex items-center gap-2 mb-2">
+                      <BookOpen className="w-5 h-5" />
+                      View Integration Docs
+                    </div>
+                    <div className="text-sm text-text-secondary">
+                      Technical guide for MCP integration
+                    </div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-text-secondary" />
+                </div>
+              </Link>
+              <Link
+                href="/tutorials/mcp-agent-demo"
+                className="bg-elevated border border-elevated-3 rounded-lg p-6 hover:bg-elevated-2 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-semibold text-text-primary flex items-center gap-2 mb-2">
+                      <GraduationCap className="w-5 h-5" />
+                      Run the Agent Demo
+                    </div>
+                    <div className="text-sm text-text-secondary">
+                      Interactive tutorial with examples
+                    </div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-text-secondary" />
+                </div>
+              </Link>
             </div>
           </div>
         </div>

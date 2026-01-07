@@ -16,7 +16,9 @@ import {
   CheckCircle,
   Code,
   Building2,
-  MessageSquare
+  MessageSquare,
+  BookOpen,
+  GraduationCap
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -476,16 +478,18 @@ result = client.complete_conversational_optimization(conversation_id)`,
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/docs"
-                className="px-8 py-3 bg-brand-primary hover:bg-brand-primary/90 text-white rounded-lg font-semibold transition-colors"
+                href="/docs/domain-libraries"
+                className="px-8 py-3 bg-brand-primary hover:bg-brand-primary/90 text-white rounded-lg font-semibold transition-colors inline-flex items-center gap-2"
               >
-                View Documentation
+                <BookOpen className="w-5 h-5" />
+                Read the Docs
               </Link>
               <Link
-                href="/tutorials/enterprise-workflows"
-                className="px-8 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-colors"
+                href="/tutorials/domain-specific-optimization"
+                className="px-8 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-colors inline-flex items-center gap-2"
               >
-                Try Tutorial
+                <GraduationCap className="w-5 h-5" />
+                Domain Tutorials
               </Link>
             </div>
           </div>

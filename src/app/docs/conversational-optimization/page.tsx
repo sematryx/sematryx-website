@@ -1,5 +1,6 @@
 import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
 
 export default function ConversationalOptimizationPage() {
   const createConversation = `curl -X POST https://api.sematryx.com/v1/domains/conversational/create \\
@@ -91,6 +92,13 @@ print(f"Optimization started: {result['optimization_id']}")`
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
+        <Link 
+          href="/conversational-optimization" 
+          className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary mb-6 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back to Overview</span>
+        </Link>
         <h1 className="text-4xl font-bold text-gray-200 mb-4">
           Conversational Optimization
         </h1>
