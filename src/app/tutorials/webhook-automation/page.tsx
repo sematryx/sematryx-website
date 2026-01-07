@@ -13,31 +13,18 @@ export default function AdvancedStrategiesTutorial() {
   const multiStrategy = `from sematryx import optimize
 
 # Multi-strategy optimization for complex landscapes
+# Use 'auto' strategy to let Sematryx select the best approach
 result = optimize(
     objective_function=multimodal_function,
     bounds=bounds,
-    
-    # Enable multi-strategy approach
-    multi_strategy=True,
-    strategy_config={
-        'initial_strategies': ['cma_es', 'differential_evolution', 'bayesian'],
-        'allocation': 'adaptive',      # Dynamically shift budget to best performer
-        'min_budget_fraction': 0.1,    # Each strategy gets at least 10%
-        'switch_threshold': 0.8        # Switch focus when one is 80% better
-    },
-    
-    # Multi-start for global search
-    multi_start=True,
-    n_starts=5,                        # 5 independent runs
-    start_selection='latin_hypercube', # Space-filling initial points
-    
-    # Combine results
-    result_aggregation='best'          # Return best across all starts
+    strategy="auto",  # Automatically select best strategy
+    max_evaluations=5000
 )
 
-# Results show which strategies contributed
-print(f"Winning strategy: {result['strategy_used']}")
-print(f"Strategy contributions: {result['strategy_breakdown']}")`
+# Results show which strategy was used
+print(f"Strategy used: {result.strategy_used}")
+print(f"Solution: {result.solution}")
+print(f"Value: {result.objective_value}")`
 
   const landscapeAnalysis = `from sematryx import analyze_landscape
 
@@ -69,48 +56,25 @@ result = optimize(
     use_landscape_analysis=analysis  # Reuse analysis
 )`
 
-  const privateLearningAdvanced = `from sematryx import optimize, PrivateLearningStore
-
-# Initialize Private Learning Store
-store = PrivateLearningStore(
-    api_key='your-api-key',
-    store_id='my-org-store'
-)
-
-# Configure learning behavior
-store.configure(
-    read_from_public=True,       # Benefit from public patterns
-    write_to_public=False,       # Keep your patterns private
-    similarity_threshold=0.85,   # Match threshold for recall
-    max_patterns_per_query=10    # Limit patterns retrieved
-)
+  const privateLearningAdvanced = `from sematryx import optimize
 
 # Optimization with private learning
 result = optimize(
     objective_function=proprietary_function,
     bounds=bounds,
-    learning_store=store,
     
     # Learning configuration
-    learning_config={
-        'problem_signature': 'quarterly_planning',
-        'store_result': True,
-        'store_intermediate': False,    # Don't store every iteration
-        'anonymize': True               # Strip sensitive details before storing
+    learning={
+        'read_from_public': True,    # Benefit from public patterns
+        'read_from_private': True,   # Use your private patterns
+        'write_to_public': False,    # Keep your patterns private
+        'write_to_private': True     # Save to private store
     }
 )
 
-# Query your learning store directly
-similar_problems = store.query(
-    signature='quarterly_planning',
-    time_range='last_90_days',
-    min_similarity=0.8
-)
-
-for problem in similar_problems:
-    print(f"Similar problem: {problem['timestamp']}")
-    print(f"Strategy used: {problem['strategy']}")
-    print(f"Convergence: {problem['convergence_iterations']}")`
+# Check learning operations
+if result.learning_operations:
+    print(f"Learning operations: {result.learning_operations}")`
 
   const performanceTuning = `from sematryx import optimize
 
@@ -119,35 +83,17 @@ result = optimize(
     objective_function=fast_function,
     bounds=bounds,
     
-    # Parallel evaluation (for expensive functions)
-    parallel=True,
-    n_workers=8,               # Parallel function evaluations
-    
-    # Caching (for deterministic functions)
-    cache_evaluations=True,
-    cache_size=10000,
-    
-    # Early termination
-    early_stopping={
-        'patience': 50,           # Stop if no improvement for 50 evals
-        'min_delta': 1e-8,        # Minimum improvement threshold
-        'target_value': 0.001     # Stop if we reach this value
-    },
-    
     # Resource limits
     max_evaluations=5000,
-    max_time_seconds=60,
     
-    # Memory optimization
-    store_history=False,        # Don't keep full iteration history
-    explanation_level=1         # Minimal explanations for speed
+    # Minimal explanations for speed
+    explanation_level=1
 )
 
 # Performance metrics
-print(f"Evaluations: {result['evaluations']}")
-print(f"Wall time: {result['duration_seconds']:.2f}s")
-print(f"Evaluations/second: {result['evals_per_second']:.1f}")
-print(f"Cache hits: {result.get('cache_hits', 0)}")`
+print(f"Evaluations: {result.evaluations_used}")
+print(f"Duration: {result.duration_seconds:.2f}s")
+print(f"Strategy: {result.strategy_used}")`
 
   const batchOptimization = `from sematryx import batch_optimize
 import asyncio
@@ -229,7 +175,11 @@ result = response.json()
 # result['explanation']['natural_language'] contains
 # human-readable explanation agents can relay to users`
 
-  const callbacksAndMonitoring = `from sematryx import optimize
+  const callbacksAndMonitoring = `from sematryx import Sematryx
+
+# For advanced monitoring, use the client API
+client = Sematryx(api_key="sk-...")
+result = client.optimize(
 
 # Real-time monitoring with callbacks
 def progress_callback(iteration, current_best, improvement):
@@ -262,43 +212,30 @@ result = optimize(
     stream_interval=10          # Emit updates every 10 iterations
 )`
 
-  const debuggingTips = `from sematryx import optimize, set_log_level
+  const debuggingTips = `from sematryx import optimize
 
-# Enable detailed logging for debugging
-set_log_level('DEBUG')
-
-# Debug configuration
+# Debug configuration with maximum explanations
 result = optimize(
     objective_function=problematic_function,
     bounds=bounds,
     
-    # Debug mode
-    debug=True,
+    # Maximum explanations for debugging
+    explanation_level=4,  # Full audit trail
     
-    # Store everything for analysis
-    store_history=True,
-    store_all_evaluations=True,
-    
-    # Maximum explanations
-    explanation_level=5,
-    
-    # Validate inputs
-    validate_bounds=True,
-    validate_function=True,      # Test function before optimizing
-    test_points=10               # Evaluate 10 random points first
+    # Additional debugging info
+    max_evaluations=1000
 )
 
 # Access debug information
-if not result['success']:
-    print(f"Failure reason: {result['failure_reason']}")
-    print(f"Last good solution: {result['last_valid_solution']}")
-    
-    # Iteration history
-    for i, state in enumerate(result['history']):
-        print(f"Iter {i}: fitness={state['fitness']}, valid={state['feasible']}")
+if not result.success:
+    print(f"Optimization failed")
+    print(f"Explanation: {result.explanation}")
+    if result.raw_response:
+        print(f"Raw response: {result.raw_response}")
 
-# Export for analysis
-result.export_debug_report('debug_report.json')`
+# Check audit trail
+if result.audit_id:
+    print(f"Audit ID: {result.audit_id}")`
 
   return (
     <main className="bg-base min-h-screen">

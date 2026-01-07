@@ -17,7 +17,7 @@ export default function ProblemSetupTutorial() {
 result = optimize(
     objective_function=cost_function,
     bounds=bounds,
-    minimize=True  # default
+    objective="minimize"  # default
 )
 
 # MAXIMIZATION
@@ -25,7 +25,7 @@ result = optimize(
 result = optimize(
     objective_function=profit_function,
     bounds=bounds,
-    minimize=False  # maximize instead
+    objective="maximize"  # maximize instead
 )`
 
   const boundsExample = `from sematryx import optimize
@@ -33,19 +33,23 @@ result = optimize(
 # Define bounds for each dimension
 # Each element is [lower_bound, upper_bound]
 bounds = [
-    [0, 100],      # x1: between 0 and 100
-    [-50, 50],     # x2: between -50 and 50
-    [0.001, 10],   # x3: between 0.001 and 10
-    [1, 1000],     # x4: between 1 and 1000
+    [0, 100],      # x0: between 0 and 100
+    [-50, 50],     # x1: between -50 and 50
+    [0.001, 10],   # x2: between 0.001 and 10
+    [1, 1000],     # x3: between 1 and 1000
 ]
 
-# Integer bounds (for discrete optimization)
-integer_dims = [0, 3]  # x1 and x4 must be integers
+# Or use variables format for more control
+variables = [
+    {"name": "x0", "bounds": (0, 100), "type": "integer"},
+    {"name": "x1", "bounds": (-50, 50)},
+    {"name": "x2", "bounds": (0.001, 10)},
+    {"name": "x3", "bounds": (1, 1000), "type": "integer"}
+]
 
 result = optimize(
     objective_function=my_function,
-    bounds=bounds,
-    integer_dimensions=integer_dims
+    bounds=bounds  # or use variables=variables
 )`
 
   const constraintExample = `from sematryx import optimize
@@ -55,25 +59,22 @@ def production_cost(x):
     labor, materials, energy = x
     return 50*labor + 30*materials + 20*energy
 
-def constraint_output(x):
-    """Constraint: Must produce at least 1000 units"""
-    labor, materials, energy = x
-    output = 10*labor + 5*materials + 2*energy
-    return output - 1000  # >= 0 means satisfied
-
-def constraint_budget(x):
-    """Constraint: Budget cannot exceed $50,000"""
-    labor, materials, energy = x
-    total = 50*labor + 30*materials + 20*energy
-    return 50000 - total  # >= 0 means satisfied
+# Constraints as string expressions
+constraints = [
+    {
+        "expression": "10*x0 + 5*x1 + 2*x2 >= 1000",  # Must produce at least 1000 units
+        "type": "inequality"
+    },
+    {
+        "expression": "50*x0 + 30*x1 + 20*x2 <= 50000",  # Budget cannot exceed $50,000
+        "type": "inequality"
+    }
+]
 
 result = optimize(
     objective_function=production_cost,
     bounds=[[0, 100], [0, 200], [0, 500]],
-    constraints=[
-        {'type': 'inequality', 'fun': constraint_output},
-        {'type': 'inequality', 'fun': constraint_budget},
-    ]
+    constraints=constraints
 )`
 
   const equalityConstraint = `from sematryx import optimize
@@ -88,16 +89,18 @@ def portfolio_variance(weights):
     ])
     return np.dot(weights, np.dot(cov_matrix, weights))
 
-def weights_sum_to_one(weights):
-    """Equality constraint: weights must sum to 1"""
-    return sum(weights) - 1  # == 0 means satisfied
+# Equality constraint: weights must sum to 1
+constraints = [
+    {
+        "expression": "x0 + x1 + x2 == 1",
+        "type": "equality"
+    }
+]
 
 result = optimize(
     objective_function=portfolio_variance,
     bounds=[[0, 1], [0, 1], [0, 1]],  # Each weight 0-100%
-    constraints=[
-        {'type': 'equality', 'fun': weights_sum_to_one}
-    ]
+    constraints=constraints
 )`
 
   const multiObjective = `from sematryx import optimize
@@ -115,12 +118,10 @@ def multi_objective(x):
     # So we minimize cost and minimize negative quality
     return 0.6 * cost - 0.4 * quality
 
-# Or use Pareto optimization for true multi-objective
+# Use scalarization for multi-objective optimization
 result = optimize(
-    objective_function=my_function,
-    bounds=bounds,
-    multi_objective=True,
-    objectives=['minimize_cost', 'maximize_quality']
+    objective_function=multi_objective,
+    bounds=bounds
 )`
 
   const penaltyMethod = `from sematryx import optimize
@@ -146,7 +147,10 @@ def objective_with_penalties(x):
 result = optimize(
     objective_function=objective_with_penalties,
     bounds=[[-10, 10], [-10, 10], [-10, 10]]
-)`
+)
+
+print(f"Solution: {result.solution}")
+print(f"Value: {result.objective_value}")`
 
   return (
     <main className="bg-base min-h-screen">

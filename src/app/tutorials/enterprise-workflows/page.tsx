@@ -254,29 +254,13 @@ print(f"Best params: {result['best_params']}")
 print(f"Best CV score: {result['best_cv_score']:.4f}")
 print(f"Evaluations: {result['evaluations']}")`
 
-  const customDomain = `from sematryx import optimize, register_domain_constraints
+  const customDomain = `from sematryx import optimize
 
-# Register custom domain constraints
-@register_domain_constraints('my_industry')
-def my_industry_constraints(solution, config):
-    """Custom domain constraints for your industry"""
-    violations = []
-    
-    # Industry-specific constraint 1
-    if not check_regulation_a(solution):
-        violations.append('regulation_a')
-    
-    # Industry-specific constraint 2
-    if solution['risk_score'] > config['max_risk']:
-        violations.append('risk_limit')
-    
-    return violations
-
-# Use with custom domain
+# Use with domain hint
 result = optimize(
     objective_function=my_objective,
     bounds=bounds,
-    domain='my_industry',
+    domain='financial',  # Domain hint for better strategy selection
     domain_config={
         'max_risk': 0.15,
         'compliance_level': 'strict'

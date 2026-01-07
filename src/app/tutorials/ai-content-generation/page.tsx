@@ -18,28 +18,22 @@ result = optimize(
     objective_function=complex_function,
     bounds=bounds,
     
-    # Agentic configuration
-    use_agentic=True,
-    agentic_config={
-        'strategy_selection': 'consensus',  # Agents vote on strategy
-        'exploration_weight': 0.3,          # Balance exploration vs exploitation
-        'agent_timeout': 30                 # Max seconds for agent deliberation
-    }
+    # Agentic configuration (via explanation level)
+    explanation_level=3  # Higher levels include agent reasoning
 )
 
-# The result includes agent reasoning
-print(f"Strategy selected: {result['strategy_used']}")
-print(f"Agent rationale: {result['explanation']['agent_reasoning']}")`
+# The result includes strategy and explanation
+print(f"Strategy selected: {result.strategy_used}")
+print(f"Explanation: {result.explanation}")`
 
   const interpretableLevels = `from sematryx import optimize
 
 # Explanation levels control detail and compute cost
 # Level 0: No explanations (fastest)
 # Level 1: Basic summary
-# Level 2: Strategy rationale
-# Level 3: Detailed analysis (default)
+# Level 2: Strategy rationale (default)
+# Level 3: Detailed analysis
 # Level 4: Full audit trail
-# Level 5: Research-grade analysis
 
 # Minimal explanations (production speed)
 result = optimize(
@@ -47,7 +41,7 @@ result = optimize(
     bounds=bounds,
     explanation_level=1
 )
-print(result['explanation']['summary'])
+print(result.explanation)
 # "Optimization converged in 234 evaluations using CMA-ES"
 
 # Full audit trail (compliance/debugging)
@@ -56,8 +50,8 @@ result = optimize(
     bounds=bounds,
     explanation_level=4
 )
-print(result['explanation']['audit_trail'])
-# Detailed log of every decision made`
+print(result.explanation)
+# Detailed explanation of optimization decisions`
 
   const interpretableOutput = `{
   "explanation": {
@@ -87,40 +81,37 @@ result = optimize(
     objective_function=my_function,
     bounds=bounds,
     
-    # Adaptive configuration
-    use_learning=True,
-    learning_config={
-        'store_result': True,              # Save to learning store
-        'problem_signature': 'portfolio',   # Tag for retrieval
-        'learning_weight': 0.5              # How much to trust past experience
+    # Learning configuration
+    learning={
+        'read_from_public': True,   # Learn from public patterns
+        'write_to_private': True,    # Save to private learning store
+        'read_from_private': True    # Use your private patterns
     }
 )
 
-# Check if past experience was used
-if result['learning_context']['prior_experience_used']:
-    print(f"Leveraged {result['learning_context']['similar_problems_found']} similar problems")
-    print(f"Estimated speedup: {result['learning_context']['speedup_factor']}x")`
+# Check learning operations
+if result.learning_operations:
+    print(f"Learning operations: {result.learning_operations}")`
 
-  const privateLearning = `from sematryx import optimize, configure_learning
+  const privateLearning = `from sematryx import optimize
 
 # Configure Private Learning Store
 # Your optimization knowledge stays private to your organization
-configure_learning(
-    api_key='your-api-key',
-    private_store=True,       # Use private store (not shared)
-    read_from_public=True,    # Still benefit from public patterns
-    write_to_public=False     # Don't share your patterns
-)
-
-# Optimizations now use your private learning store
 result = optimize(
     objective_function=proprietary_function,
     bounds=bounds,
-    use_learning=True
+    
+    # Private learning configuration
+    learning={
+        'read_from_public': True,    # Still benefit from public patterns
+        'read_from_private': True,   # Use your private patterns
+        'write_to_public': False,    # Don't share your patterns
+        'write_to_private': True     # Save to private store
+    }
 )
 
 # Your competitive insights stay private
-print(f"Private patterns used: {result['learning_context']['private_patterns_matched']}")`
+print(f"Learning operations: {result.learning_operations}")`
 
   const fullConfig = `from sematryx import optimize
 
@@ -129,29 +120,23 @@ result = optimize(
     objective_function=enterprise_function,
     bounds=bounds,
     
-    # === AGENTIC ===
-    use_agentic=True,
-    agentic_config={
-        'strategy_selection': 'consensus',
-        'exploration_weight': 0.3
-    },
-    
     # === INTERPRETABLE ===
     explanation_level=4,  # Full audit trail
     
     # === ADAPTIVE ===
-    use_learning=True,
-    learning_config={
-        'store_result': True,
-        'problem_signature': 'production_scheduling'
+    learning={
+        'read_from_public': True,
+        'read_from_private': True,
+        'write_to_private': True
     }
 )
 
 # Rich, explainable results
-print(f"Strategy: {result['strategy_used']}")
-print(f"Agent reasoning: {result['explanation']['agent_reasoning']}")
-print(f"Audit ID: {result['explanation']['audit_id']}")
-print(f"Learning speedup: {result['learning_context']['speedup_factor']}x")`
+print(f"Strategy: {result.strategy_used}")
+print(f"Explanation: {result.explanation}")
+print(f"Audit ID: {result.audit_id}")
+if result.learning_operations:
+    print(f"Learning: {result.learning_operations}")`
 
   return (
     <main className="bg-base min-h-screen">

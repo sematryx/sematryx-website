@@ -51,42 +51,38 @@ result = optimize(
 )
 
 # === Core Results ===
-print(f"Success: {result['success']}")
-print(f"Best solution: {result['best_solution']}")
-print(f"Objective value: {result['best_fitness']}")
+print(f"Success: {result.success}")
+print(f"Best solution: {result.solution}")
+print(f"Objective value: {result.objective_value}")
 
 # === Performance Metrics ===
-print(f"Evaluations: {result['evaluations']}")
-print(f"Duration: {result['duration_seconds']}s")
-print(f"Strategy: {result['strategy_used']}")
-
-# === Convergence Analysis ===
-conv = result['convergence']
-print(f"Converged: {conv['converged']}")
-print(f"Iterations: {conv['iterations']}")
-print(f"Improvement rate: {conv['improvement_rate']}")
+print(f"Evaluations: {result.evaluations_used}")
+print(f"Duration: {result.duration_seconds}s")
+print(f"Strategy: {result.strategy_used}")
 
 # === Explanations ===
-exp = result['explanation']
-print(f"Summary: {exp['summary']}")
-print(f"Rationale: {exp['rationale']}")
-print(f"Audit ID: {exp['audit_id']}")`
+print(f"Explanation: {result.explanation}")
+if result.explanation_detail:
+    print(f"Rationale: {result.explanation_detail.rationale}")
+    print(f"Confidence: {result.explanation_detail.confidence_score}")
+print(f"Audit ID: {result.audit_id}")`
 
-  const convergenceMetrics = `# Convergence tells you HOW the optimization performed
-convergence = result['convergence']
-
-# Did it converge?
-if convergence['converged']:
-    print("✓ Optimization found a stable solution")
+  const convergenceMetrics = `# Check optimization success
+if result.success:
+    print("✓ Optimization found a solution")
 else:
-    print("⚠ Optimization did not fully converge")
-    print(f"  Reason: {convergence['termination_reason']}")
+    print("⚠ Optimization did not succeed")
+    print(f"  Check explanation: {result.explanation}")
 
-# Improvement rate indicates landscape difficulty
-# - "exponential": Easy problem, smooth landscape
-# - "linear": Moderate difficulty
-# - "sublinear": Hard problem, likely multimodal
-# - "stagnant": May be stuck in local optimum
+# Performance metrics
+print(f"Evaluations used: {result.evaluations_used}")
+print(f"Duration: {result.duration_seconds:.2f}s")
+print(f"Strategy: {result.strategy_used}")
+
+# Detailed explanation if available
+if result.explanation_detail:
+    print(f"Convergence: {result.explanation_detail.convergence_reason}")
+    print(f"Confidence: {result.explanation_detail.confidence_score}")
 print(f"Improvement rate: {convergence['improvement_rate']}")
 
 # Stagnation indicates potential local optima

@@ -6,45 +6,42 @@ import CollapsibleSection from '@/components/CollapsibleSection'
 export default function PythonSDKPage() {
   const installCode = `pip install sematryx`
 
-  const basicUsage = `from sematryx import sematryx
+  const basicUsage = `from sematryx import optimize
 
 # Define your objective function
 def sphere(x):
     return sum(xi**2 for xi in x)
 
-# Run optimization
-result = sematryx(
+# Run optimization (cloud API - requires API key)
+result = optimize(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
-    max_evaluations=1000
+    max_evaluations=1000,
+    api_key="sk-..."  # or set SEMATRYX_API_KEY env var
 )
 
-print(f"Best solution: {result['best_solution']}")
-print(f"Best fitness: {result['best_fitness']}")`
+print(f"Best solution: {result.solution}")
+print(f"Best value: {result.objective_value}")`
 
-  const intelligenceConfig = `from sematryx import sematryx, SematryxIntelligenceConfig
+  const intelligenceConfig = `from sematryx import optimize
 
-# Option 1: Use preset configuration
-result = sematryx(
+# Configure optimization with intelligence features
+result = optimize(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
-    preset="production"  # development, production, research, enterprise, minimal
-)
-
-# Option 2: Enable specific core pillars
-result = sematryx(
-    objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
-    use_agentic_intelligence=True,      # Multi-agent coordination
-    use_adaptive_intelligence=True,     # Self-improvement
-    explanation_level=3                 # Detailed explanations
-)
-
-# Option 3: Complete custom configuration
-config = SematryxIntelligenceConfig.enterprise()
-config.interpretable.explanation_level = 4
-config.agentic.max_agents_per_problem = 5
-result = sematryx(objective_function=sphere, bounds=[[-5, 5], [-5, 5]], config=config)`
+    
+    # Explanation level (0-4, higher = more detailed)
+    explanation_level=3,
+    
+    # Learning configuration
+    learning={
+        "read_from_public": True,
+        "write_to_private": True
+    },
+    
+    # Strategy selection
+    strategy="auto"  # auto, bayesian, evolutionary, gradient
+)`
 
   const domainOptimization = `from sematryx import financial_optimize, healthcare_optimize, supply_chain_optimize
 
@@ -78,25 +75,30 @@ result = supply_chain_optimize(
     }
 )`
 
-  const apiClient = `from sematryx import SematryxClient
+  const apiClient = `from sematryx import Sematryx
 
-# Initialize API client
-client = SematryxClient(
-    api_url="https://api.sematryx.com",
-    api_key="your-api-key"
+# Initialize client for advanced features
+client = Sematryx(
+    api_key="sk-..."  # or set SEMATRYX_API_KEY env var
 )
 
-# Authenticate
-client.authenticate()
-
-# Run optimization via API
+# Run optimization
 result = client.optimize(
-    objective_function=sphere,
-    bounds=[[-5, 5], [-5, 5]],
+    objective="minimize",
+    variables=[
+        {"name": "x", "bounds": (-5, 5)},
+        {"name": "y", "bounds": (-5, 5)}
+    ],
+    objective_function="x**2 + y**2",
     max_evaluations=1000
-)`
+)
 
-  const errorHandling = `from sematryx.exceptions import (
+# Access results
+print(f"Solution: {result.solution}")
+print(f"Value: {result.objective_value}")`
+
+  const errorHandling = `from sematryx import optimize
+from sematryx.exceptions import (
     SematryxError, 
     AuthenticationError, 
     RateLimitError,
@@ -104,13 +106,14 @@ result = client.optimize(
 )
 
 try:
-    result = sematryx(
+    result = optimize(
         objective_function=sphere,
         bounds=[[-5, 5], [-5, 5]],
-        max_evaluations=1000
+        max_evaluations=1000,
+        api_key="sk-..."
     )
 except AuthenticationError:
-    print('Invalid API key')
+    print('Invalid API key. Get your key at https://sematryx.com/api-keys')
 except RateLimitError:
     print('Rate limit exceeded. Please wait and retry.')
 except OptimizationError as e:
@@ -122,70 +125,72 @@ except SematryxError as e:
 from sematryx import AsyncSematryx
 
 async def main():
-    client = AsyncSematryx(api_key='your-api-key')
+    client = AsyncSematryx(api_key='sk-...')
     
     # Run multiple optimizations concurrently
     results = await asyncio.gather(
-        client.optimize(objective1, bounds1, max_evaluations=1000),
-        client.optimize(objective2, bounds2, max_evaluations=1000),
-        client.optimize(objective3, bounds3, max_evaluations=1000)
+        client.optimize(
+            objective="minimize",
+            variables=[{"name": "x", "bounds": (-5, 5)}],
+            objective_function="x**2",
+            max_evaluations=1000
+        ),
+        client.optimize(
+            objective="minimize",
+            variables=[{"name": "y", "bounds": (-5, 5)}],
+            objective_function="y**2",
+            max_evaluations=1000
+        )
     )
     
     return results
 
 asyncio.run(main())`
 
-  const advancedFeatures = `from sematryx import sematryx
+  const advancedFeatures = `from sematryx import Sematryx
 
-# GPU acceleration
-result = sematryx(
-    objective_function=complex_function,
-    bounds=[[-10, 10]] * 100,  # High-dimensional
-    use_gpu_acceleration=True
+client = Sematryx(api_key="sk-...")
+
+# High-dimensional optimization
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": f"x{i}", "bounds": (-10, 10)} for i in range(100)],
+    objective_function="sum(xi**2 for xi in [x0, x1, x2, ...])",
+    max_evaluations=5000
 )
 
-# Visual intelligence
-result = sematryx(
-    objective_function=landscape_function,
-    bounds=[[-5, 5], [-5, 5]],
-    use_visual_intelligence=True,
-    explanation_level=4
+# Detailed explanations
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
+    objective_function="x**2 + y**2",
+    explanation_level=4  # Maximum detail
 )
 
-# Neural-symbolic reasoning
-result = sematryx(
-    objective_function=hybrid_function,
-    bounds=[[-5, 5], [-5, 5]],
-    use_neural_symbolic=True
+# Custom learning configuration
+result = client.optimize(
+    objective="minimize",
+    variables=[{"name": "x", "bounds": (-5, 5)}],
+    objective_function="x**2",
+    learning={
+        "read_from_public": True,
+        "write_to_private": True
+    }
 )`
 
-  const identityManagement = `from sematryx import SematryxClient
+  const identityManagement = `from sematryx import Sematryx
 
-client = SematryxClient(api_url="https://api.sematryx.com", api_key="your-api-key")
+client = Sematryx(api_key="sk-...")
 
-# Create client identity
-identity = client.register_with_identity(
-    email="user@example.com",
-    organization_id="org_123",
-    privacy_level=PrivacyLevel.AGGREGATED,
-    subscription_tier=SubscriptionTier.PROFESSIONAL
-)
+# API key automatically identifies your account
+# Get your API key and manage settings at https://sematryx.com/api-keys
 
-# Get privacy status
-privacy_status = client.get_privacy_status()
-print(f"Privacy level: {privacy_status['privacy_level']}")
-
-# Get usage quotas
-quotas = client.get_usage_quotas()
-print(f"Optimizations used: {quotas['current_usage']['optimizations_per_day']}")
-print(f"Quota: {quotas['api_quotas']['optimizations_per_day']}")
-
-# Configure data sharing
-client.configure_data_sharing({
-    'optimization_results': True,
-    'performance_metrics': True,
-    'problem_signatures': False
-})`
+# Check your account status
+# Visit https://sematryx.com/dashboard for:
+# - Usage quotas and limits
+# - Privacy settings
+# - Subscription management
+# - Data sharing preferences`
 
   const batchOperations = `from sematryx import SematryxClient
 
