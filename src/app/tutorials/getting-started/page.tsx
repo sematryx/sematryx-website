@@ -1,5 +1,3 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
 import { Metadata } from 'next'
@@ -94,18 +92,9 @@ print(f"Risk value: {result.objective_value:.6f}")
 print(f"Explanation: {result.explanation}")`
 
   return (
-    <main className="bg-base min-h-screen">
-      <Header />
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mb-8">
-          <Link 
-            href="/tutorials" 
-            className="text-brand-primary hover:text-brand-primary/80 font-medium mb-4 inline-flex items-center"
-          >
-            ← Back to Tutorials
-          </Link>
-          <div className="flex items-center gap-4 mb-6 mt-4">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="mb-8">
+        <div className="flex items-center gap-4 mb-6">
             <span className="bg-emerald-500/15 text-emerald-400 text-xs font-medium px-3 py-1 rounded-full border border-emerald-500/30">
               Beginner
             </span>
@@ -324,8 +313,5 @@ print(f"Explanation: {result.explanation}")`
           </section>
         </div>
       </div>
-
-      <Footer />
-    </main>
   )
 }
