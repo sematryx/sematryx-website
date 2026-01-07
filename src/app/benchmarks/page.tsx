@@ -542,11 +542,17 @@ export default function BenchmarksPage() {
               </div>
             </div>
             <div className="mt-6 pt-6 border-t border-elevated-3 text-center">
-              <p className="text-sm text-text-tertiary">
+              <p className="text-sm text-text-tertiary mb-4">
                 Last updated: December 2024. Benchmarks run on Sematryx v3.2.
                 <br />
                 Full methodology and raw data available upon request.
               </p>
+              <Link 
+                href="/benchmarks/comprehensive"
+                className="inline-flex items-center text-brand-primary hover:text-brand-primary-hover font-semibold text-sm transition-colors"
+              >
+                View Comprehensive Benchmark Results →
+              </Link>
             </div>
           </div>
 

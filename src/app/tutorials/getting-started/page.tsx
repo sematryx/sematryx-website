@@ -20,29 +20,25 @@ def sphere(x):
     return sum(xi**2 for xi in x)
 
 # Run optimization
+# API key can be provided or set via SEMATRYX_API_KEY env var
 result = optimize(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],  # 2D problem
-    max_evaluations=1000
+    max_evaluations=1000,
+    api_key="sk-..."  # or set SEMATRYX_API_KEY environment variable
 )
 
-print(f"Best solution: {result['best_solution']}")
-print(f"Best fitness: {result['best_fitness']}")
-print(f"Evaluations used: {result['evaluations']}")`
+print(f"Best solution: {result.solution}")
+print(f"Best value: {result.objective_value}")
+print(f"Evaluations used: {result.evaluations_used}")`
 
-  const resultExample = `{
-  "success": true,
-  "best_solution": [0.001, -0.002],
-  "best_fitness": 0.000005,
-  "evaluations": 847,
-  "duration_seconds": 1.23,
-  "strategy_used": "cma_es",
-  "explanation": {
-    "rationale": "CMA-ES selected for smooth, continuous landscape",
-    "convergence": "Converged in 847 evaluations",
-    "confidence": 0.98
-  }
-}`
+  const resultExample = `result.solution        # {'x0': 0.001, 'x1': -0.002}
+result.objective_value  # 0.000005
+result.evaluations_used # 847
+result.duration_seconds # 1.23
+result.strategy_used    # "cma_es"
+result.explanation      # "Converged to global minimum..."
+result.success         # True`
 
   const intelligenceExample = `from sematryx import optimize
 
@@ -51,14 +47,14 @@ result = optimize(
     objective_function=sphere,
     bounds=[[-5, 5], [-5, 5]],
     
-    # Agentic: Multi-agent strategy selection
-    use_agentic=True,
-    
     # Interpretable: Get detailed explanations
     explanation_level=3,
     
-    # Adaptive: Learn from this optimization
-    use_learning=True
+    # Learning: Enable private learning store
+    learning={
+        "read_from_public": True,
+        "write_to_private": True
+    }
 )`
 
   const realWorldExample = `from sematryx import optimize
@@ -93,8 +89,9 @@ result = optimize(
     explanation_level=2  # Get rationale
 )
 
-print(f"Optimal allocation: {result['best_solution']}")
-print(f"Explanation: {result['explanation']['rationale']}")`
+print(f"Optimal allocation: {result.solution}")
+print(f"Risk value: {result.objective_value:.6f}")
+print(f"Explanation: {result.explanation}")`
 
   return (
     <main className="bg-base min-h-screen">
@@ -224,7 +221,7 @@ print(f"Explanation: {result['explanation']['rationale']}")`
               Step 3: Understanding the Results
             </h2>
             <p className="text-text-secondary mb-4">
-              Sematryx returns a dictionary with optimization results and explanations:
+              Sematryx returns an OptimizationResult object with optimization results and explanations:
             </p>
             <CodeBlock
               code={resultExample}
@@ -234,11 +231,12 @@ print(f"Explanation: {result['explanation']['rationale']}")`
             <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
               <h3 className="text-lg font-semibold text-text-primary mb-3">Result Fields</h3>
               <ul className="space-y-3 text-text-secondary">
-                <li><strong className="text-text-primary">best_solution:</strong> Optimal parameter values found</li>
-                <li><strong className="text-text-primary">best_fitness:</strong> Best objective value achieved</li>
-                <li><strong className="text-text-primary">evaluations:</strong> Number of function evaluations used</li>
-                <li><strong className="text-text-primary">strategy_used:</strong> Which optimization algorithm Sematryx selected</li>
-                <li><strong className="text-text-primary">explanation:</strong> Why this strategy was chosen and how it performed</li>
+                <li><strong className="text-text-primary">result.solution:</strong> Dictionary of optimal parameter values (e.g., <code className="text-text-tertiary">{`{'x0': 0.001, 'x1': -0.002}`}</code>)</li>
+                <li><strong className="text-text-primary">result.objective_value:</strong> Best objective value achieved</li>
+                <li><strong className="text-text-primary">result.evaluations_used:</strong> Number of function evaluations used</li>
+                <li><strong className="text-text-primary">result.strategy_used:</strong> Which optimization algorithm Sematryx selected</li>
+                <li><strong className="text-text-primary">result.explanation:</strong> Why this strategy was chosen and how it performed</li>
+                <li><strong className="text-text-primary">result.success:</strong> Whether optimization succeeded</li>
               </ul>
             </div>
           </section>

@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, UserButton, useAuth } from '@clerk/nextjs'
 import Logo from './Logo'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const { isLoaded } = useAuth()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,25 +49,39 @@ export default function Header() {
                 MCP
               </Link>
               
-              <SignedOut>
-                <Link href="/sign-up" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
-                  Get Started
-                </Link>
-              </SignedOut>
-              
-              <SignedIn>
-                <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
-                  Dashboard
-                </Link>
-                <UserButton 
-                  afterSignOutUrl="/"
-                  appearance={{
-                    elements: {
-                      avatarBox: 'h-8 w-8',
-                    }
-                  }}
-                />
-              </SignedIn>
+              {isLoaded ? (
+                <>
+                  <SignedOut>
+                    <div className="flex items-center gap-3">
+                      <Link href="/sign-in" className="text-text-secondary hover:text-text-primary px-4 py-2 rounded-md text-sm font-medium border border-elevated-3 hover:border-elevated-2 transition-colors">
+                        Sign In
+                      </Link>
+                      <Link href="/sign-up" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
+                        Get Started
+                      </Link>
+                    </div>
+                  </SignedOut>
+                  
+                  <SignedIn>
+                    <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
+                      Dashboard
+                    </Link>
+                    <UserButton 
+                      afterSignOutUrl="/"
+                      appearance={{
+                        elements: {
+                          avatarBox: 'h-8 w-8',
+                        }
+                      }}
+                    />
+                  </SignedIn>
+                </>
+              ) : (
+                <div className="flex items-center gap-3 min-w-[180px]">
+                  <div className="h-9 w-20 bg-elevated-2 rounded-md animate-pulse"></div>
+                  <div className="h-9 w-24 bg-elevated-2 rounded-md animate-pulse"></div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -115,17 +130,31 @@ export default function Header() {
                 MCP
               </Link>
               
-              <SignedOut>
-                <Link href="/sign-up" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium">
-                  Get Started
-                </Link>
-              </SignedOut>
-              
-              <SignedIn>
-                <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium">
-                  Dashboard
-                </Link>
-              </SignedIn>
+              {isLoaded ? (
+                <>
+                  <SignedOut>
+                    <div className="space-y-2">
+                      <Link href="/sign-in" className="text-text-secondary hover:text-text-primary block px-3 py-2 rounded-md text-base font-medium border border-elevated-3 hover:border-elevated-2 transition-colors text-center">
+                        Sign In
+                      </Link>
+                      <Link href="/sign-up" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium text-center">
+                        Get Started
+                      </Link>
+                    </div>
+                  </SignedOut>
+                  
+                  <SignedIn>
+                    <Link href="/dashboard" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium">
+                      Dashboard
+                    </Link>
+                  </SignedIn>
+                </>
+              ) : (
+                <div className="space-y-2">
+                  <div className="h-10 bg-elevated-2 rounded-md animate-pulse"></div>
+                  <div className="h-10 bg-elevated-2 rounded-md animate-pulse"></div>
+                </div>
+              )}
             </div>
           </div>
         )}
