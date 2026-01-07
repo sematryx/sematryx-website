@@ -57,7 +57,6 @@ const docsSections: NavSection[] = [
   {
     title: 'API Reference',
     items: [
-      { title: 'Intelligence Configuration', href: '/docs/api/intelligence-config', icon: Brain },
       { title: 'Analytics', href: '/docs/api/analytics', icon: BarChart3 },
       { title: 'Webhooks', href: '/docs/api/webhooks', icon: Settings },
       { title: 'Automation', href: '/docs/api/automation', icon: Settings },
@@ -97,6 +96,9 @@ interface DocsNavProps {
 
 export default function DocsNav({ isCollapsed = false, onToggle, isMobile = false, onMobileClose }: DocsNavProps) {
   const pathname = usePathname()
+  
+  // Track which hrefs we've already highlighted to prevent multiple highlights for same page
+  const highlightedHrefs = new Set<string>()
 
   return (
     <nav className="h-full">
@@ -112,13 +114,17 @@ export default function DocsNav({ isCollapsed = false, onToggle, isMobile = fals
             <ul className="space-y-1">
               {section.items.map((item, itemIndex) => {
                 const IconComponent = item.icon
+                const isActive = pathname === item.href && !highlightedHrefs.has(item.href)
+                if (isActive) {
+                  highlightedHrefs.add(item.href)
+                }
                 return (
                   <li key={itemIndex}>
                     <Link
                       href={item.href}
                       onClick={isMobile ? onMobileClose : undefined}
                       className={`flex items-center gap-2 ${isCollapsed ? 'px-2 py-2 justify-center' : 'px-3 py-2'} rounded-md text-sm transition-colors ${
-                        pathname === item.href
+                        isActive
                           ? 'bg-primary-600/20 text-primary-400 font-medium'
                           : 'text-gray-400 hover:bg-[#242b3d] hover:text-white'
                       }`}
