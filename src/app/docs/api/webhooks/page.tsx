@@ -6,21 +6,22 @@ export default function WebhooksPage() {
   -H "Content-Type: application/json" \\
   -d '{
     "url": "https://your-app.com/webhooks/sematryx",
-    "events": ["automation.completed", "automation.failed"],
+    "events": ["optimization.completed", "optimization.failed", "optimization.started"],
     "secret": "your-webhook-secret"
   }'`
 
   const webhookPayload = `{
   "id": "evt_1234567890",
-  "type": "automation.completed",
+  "type": "optimization.completed",
   "created_at": "2024-01-01T00:00:00Z",
   "data": {
-    "automation_id": "auto_1234567890",
-    "execution_id": "exec_1234567890",
+    "optimization_id": "opt_1234567890",
     "status": "completed",
     "result": {
-      "output": "processed_data.csv",
-      "records_processed": 1250
+      "best_solution": [0.001, -0.002, 0.003],
+      "best_fitness": 0.000014,
+      "evaluations": 847,
+      "duration_seconds": 2.34
     }
   }
 }`
@@ -49,12 +50,14 @@ def verify_webhook_signature(payload, signature, secret):
     return hmac.compare_digest(signature, expected_signature)`
 
   const events = [
-    { name: "automation.completed", description: "Triggered when an automation execution completes successfully" },
-    { name: "automation.failed", description: "Triggered when an automation execution fails" },
-    { name: "automation.started", description: "Triggered when an automation execution starts" },
-    { name: "automation.paused", description: "Triggered when an automation is paused" },
-    { name: "automation.resumed", description: "Triggered when a paused automation is resumed" },
-    { name: "optimization.completed", description: "Triggered when an optimization job completes" },
+    { name: "optimization.started", description: "Triggered when an optimization job starts" },
+    { name: "optimization.completed", description: "Triggered when an optimization job completes successfully" },
+    { name: "optimization.failed", description: "Triggered when an optimization job fails" },
+    { name: "optimization.cancelled", description: "Triggered when an optimization job is cancelled" },
+    { name: "optimization.stagnated", description: "Triggered when an optimization has stagnated (no improvement for extended period)" },
+    { name: "optimization.timeout", description: "Triggered when an optimization exceeds its time limit" },
+    { name: "strategy.changed", description: "Triggered when the optimization strategy changes during execution" },
+    { name: "context.updated", description: "Triggered when optimization context or metadata is updated" },
   ]
 
   return (
@@ -64,7 +67,8 @@ def verify_webhook_signature(payload, signature, secret):
           Webhooks
         </h1>
         <p className="text-xl text-gray-400">
-          Receive real-time notifications about events in your Sematryx account via webhooks.
+          Receive real-time notifications about optimization events in your Sematryx account via webhooks. 
+          Get notified when optimizations start, complete, fail, or when important status changes occur.
         </p>
       </div>
 
@@ -74,8 +78,14 @@ def verify_webhook_signature(payload, signature, secret):
             Overview
           </h2>
           <p className="text-gray-400 mb-4">
-            Webhooks allow you to receive real-time notifications when events occur in your Sematryx account. 
+            Webhooks allow you to receive real-time notifications when optimization events occur in your Sematryx account. 
             Instead of polling the API, Sematryx will send HTTP POST requests to your specified URL when events happen.
+          </p>
+          <p className="text-gray-400 mb-4">
+            <strong className="text-gray-200">What events are available?</strong> Webhooks notify you about optimization lifecycle events:
+            when optimizations start, complete successfully, fail, get cancelled, stagnate (no improvement), timeout, 
+            when the strategy changes during execution, or when context/metadata is updated. This enables you to build 
+            reactive systems that respond immediately to optimization status changes without constant polling.
           </p>
           <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
             <h3 className="text-lg font-semibold text-gray-200 mb-3">Benefits</h3>
@@ -127,7 +137,7 @@ def verify_webhook_signature(payload, signature, secret):
             <h3 className="text-lg font-semibold text-gray-200 mb-3">Payload Structure</h3>
             <ul className="space-y-2 text-gray-400">
               <li><strong>id:</strong> Unique event identifier</li>
-              <li><strong>type:</strong> Event type (e.g., "automation.completed")</li>
+              <li><strong>type:</strong> Event type (e.g., "optimization.completed")</li>
               <li><strong>created_at:</strong> ISO 8601 timestamp of when the event occurred</li>
               <li><strong>data:</strong> Event-specific data object</li>
             </ul>
@@ -139,7 +149,7 @@ def verify_webhook_signature(payload, signature, secret):
             Verifying Webhook Signatures
           </h2>
           <p className="text-gray-400 mb-4">
-            Always verify webhook signatures to ensure requests are from Sematryx. The signature is sent in the <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded">X-Sematryx-Signature</code> header.
+            Always verify webhook signatures to ensure requests are from Sematryx. The signature is sent in the <code className="bg-gray-800 text-gray-300 px-2 py-1 rounded text-sm">X-Sematryx-Signature</code> header.
           </p>
           <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
             Node.js Example
@@ -167,7 +177,7 @@ def verify_webhook_signature(payload, signature, secret):
             {events.map((event, index) => (
               <div key={index} className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-gray-200 mb-2">
-                  <code className="bg-gray-200 px-2 py-1 rounded text-sm">{event.name}</code>
+                  <code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">{event.name}</code>
                 </h3>
                 <p className="text-gray-400">{event.description}</p>
               </div>

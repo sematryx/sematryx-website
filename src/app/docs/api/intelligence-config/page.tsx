@@ -118,7 +118,7 @@ console.log(result.explanation)`
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div className="bg-sky-950/40 border border-sky-800/50 rounded-lg p-6">
+            <div id="agentic-intelligence" className="bg-sky-950/40 border border-sky-800/50 rounded-lg p-6 scroll-mt-20">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🤖</span>
                 <h3 className="text-xl font-bold text-sky-400">Agentic Intelligence</h3>
@@ -134,7 +134,7 @@ console.log(result.explanation)`
               </ul>
             </div>
 
-            <div className="bg-green-950/40 border border-green-800/50 rounded-lg p-6">
+            <div id="interpretable-intelligence" className="bg-green-950/40 border border-green-800/50 rounded-lg p-6 scroll-mt-20">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">📖</span>
                 <h3 className="text-xl font-bold text-green-400">Interpretable Intelligence</h3>
@@ -151,7 +151,7 @@ console.log(result.explanation)`
               </ul>
             </div>
 
-            <div className="bg-pink-950/40 border border-pink-800/50 rounded-lg p-6">
+            <div id="adaptive-intelligence" className="bg-pink-950/40 border border-pink-800/50 rounded-lg p-6 scroll-mt-20">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🧠</span>
                 <h3 className="text-xl font-bold text-pink-400">Adaptive Intelligence</h3>

@@ -144,17 +144,17 @@ def make_request_with_retry(func, max_retries=3):
           <h2 className="text-2xl font-semibold text-gray-200 mb-4">
             Error Codes
           </h2>
-          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+          <div className="bg-[#1a1f2e] rounded-lg border border-gray-700 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-[#1a1f2e] border border-gray-700">
+                <thead className="bg-[#1a1f2e] border-b border-gray-700">
                   <tr>
                     <th className="px-6 py-3 text-left text-sm font-medium text-gray-200">Code</th>
                     <th className="px-6 py-3 text-left text-sm font-medium text-gray-200">HTTP Status</th>
                     <th className="px-6 py-3 text-left text-sm font-medium text-gray-200">Description</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-gray-700">
                   {errorCodes.map((error, index) => (
                     <tr key={index}>
                       <td className="px-6 py-4">
@@ -163,11 +163,11 @@ def make_request_with_retry(func, max_retries=3):
                         </code>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="px-2 py-1 bg-red-100 text-red-800 rounded text-sm font-medium">
+                        <span className="px-2 py-1 bg-red-900/30 text-red-400 rounded text-sm font-medium">
                           {error.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-400">
+                      <td className="px-6 py-4 text-sm text-gray-300">
                         {error.description}
                       </td>
                     </tr>

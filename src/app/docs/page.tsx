@@ -213,7 +213,7 @@ print(f"Sharpe Ratio: {result.metrics['sharpe_ratio']}")`
                 Detailed documentation for all optimization APIs and intelligence configuration.
               </p>
               <a 
-                href="/docs/api/automation" 
+                href="/docs/api/intelligence-config" 
                 className="text-primary-400 hover:text-primary-300 font-medium"
               >
                 API Reference →

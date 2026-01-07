@@ -45,29 +45,34 @@ const docsSections: NavSection[] = [
     ]
   },
   {
-    title: 'Guides / Concepts',
+    title: 'Concepts & Guides',
     items: [
-      { title: 'Agentic Intelligence', href: '/docs/api/intelligence-config', icon: Bot },
-      { title: 'Interpretable Intelligence', href: '/docs/api/intelligence-config', icon: BookOpen },
-      { title: 'Adaptive Intelligence', href: '/docs/api/intelligence-config', icon: Brain },
+      { title: 'Intelligence Configuration', href: '/docs/api/intelligence-config', icon: Settings },
+      { title: 'Agentic Intelligence', href: '/docs/api/intelligence-config#agentic-intelligence', icon: Bot },
+      { title: 'Interpretable Intelligence', href: '/docs/api/intelligence-config#interpretable-intelligence', icon: BookOpen },
+      { title: 'Adaptive Intelligence', href: '/docs/api/intelligence-config#adaptive-intelligence', icon: Brain },
       { title: 'Conversational Optimization', href: '/docs/conversational-optimization', icon: MessageSquare },
       { title: 'Domain Libraries', href: '/docs/domain-libraries', icon: Building2 },
     ]
   },
   {
-    title: 'API Reference',
+    title: 'API Endpoints',
     items: [
       { title: 'Analytics', href: '/docs/api/analytics', icon: BarChart3 },
       { title: 'Webhooks', href: '/docs/api/webhooks', icon: Settings },
-      { title: 'Automation', href: '/docs/api/automation', icon: Settings },
     ]
   },
   {
-    title: 'Integrations / SDKs',
+    title: 'SDKs',
     items: [
       { title: 'JavaScript SDK', href: '/docs/sdks/javascript', icon: Package },
       { title: 'Python SDK', href: '/docs/sdks/python', icon: Code },
       { title: 'REST API', href: '/docs/sdks/rest', icon: Globe },
+    ]
+  },
+  {
+    title: 'Integrations',
+    items: [
       { title: 'Agent Integrations (MCP)', href: '/docs/integrations/mcp', icon: Plug },
     ]
   },
@@ -114,9 +119,11 @@ export default function DocsNav({ isCollapsed = false, onToggle, isMobile = fals
             <ul className="space-y-1">
               {section.items.map((item, itemIndex) => {
                 const IconComponent = item.icon
-                const isActive = pathname === item.href && !highlightedHrefs.has(item.href)
+                // For anchor links, check if we're on the base page
+                const baseHref = item.href.split('#')[0]
+                const isActive = pathname === baseHref && !highlightedHrefs.has(baseHref)
                 if (isActive) {
-                  highlightedHrefs.add(item.href)
+                  highlightedHrefs.add(baseHref)
                 }
                 return (
                   <li key={itemIndex}>

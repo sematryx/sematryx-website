@@ -635,44 +635,44 @@ console.log('Components:', detailedHealth.components)`
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-200 mb-3">Sematryx Class</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">new Sematryx(apiKey, options?)</code> - Initialize the SDK</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.optimize(config)</code> - Run an optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.financial</code> - Financial domain optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.healthcare</code> - Healthcare domain optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.supplyChain</code> - Supply chain optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.identity</code> - Identity management</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.batch</code> - Batch operations</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.learning</code> - Learning system</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.advanced</code> - Advanced optimization</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.context</code> - Context intelligence</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.dataLake</code> - Data lake operations</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.analytics</code> - Analytics and metrics</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.config</code> - Configuration</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">sematryx.health</code> - Health checks</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">new Sematryx(apiKey, options?)</code> - Initialize the SDK</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.optimize(config)</code> - Run an optimization</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.financial</code> - Financial domain optimization</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.healthcare</code> - Healthcare domain optimization</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.supplyChain</code> - Supply chain optimization</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.identity</code> - Identity management</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.batch</code> - Batch operations</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.learning</code> - Learning system</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.advanced</code> - Advanced optimization</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.context</code> - Context intelligence</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.dataLake</code> - Data lake operations</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.analytics</code> - Analytics and metrics</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.config</code> - Configuration</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">sematryx.health</code> - Health checks</li>
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-200 mb-3">Optimization Config</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">objective_function</code> - Function to optimize (required)</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">bounds</code> - Search bounds (required)</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">max_evaluations</code> - Max function evaluations</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">preset</code> - Preset configuration</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_agentic_intelligence</code> - Enable agentic pillar</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_interpretable_intelligence</code> - Enable interpretable pillar</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_adaptive_intelligence</code> - Enable adaptive pillar</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">explanation_level</code> - Explanation detail (0-5)</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_gpu_acceleration</code> - Enable GPU</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">use_visual_intelligence</code> - Enable visual analysis</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">objective_function</code> - Function to optimize (required)</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">bounds</code> - Search bounds (required)</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">max_evaluations</code> - Max function evaluations</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">preset</code> - Preset configuration</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">use_agentic_intelligence</code> - Enable agentic pillar</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">use_interpretable_intelligence</code> - Enable interpretable pillar</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">use_adaptive_intelligence</code> - Enable adaptive pillar</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">explanation_level</code> - Explanation detail (0-5)</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">use_gpu_acceleration</code> - Enable GPU</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">use_visual_intelligence</code> - Enable visual analysis</li>
               </ul>
             </div>
             <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-gray-200 mb-3">Configuration Options</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-200 px-2 py-1 rounded">apiUrl</code> - Custom API base URL (default: https://api.sematryx.com)</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">timeout</code> - Request timeout in milliseconds (default: 30000)</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">retries</code> - Number of retry attempts (default: 3)</li>
-                <li><code className="bg-gray-200 px-2 py-1 rounded">retryDelay</code> - Delay between retries in milliseconds (default: 1000)</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">apiUrl</code> - Custom API base URL (default: https://api.sematryx.com)</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">timeout</code> - Request timeout in milliseconds (default: 30000)</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">retries</code> - Number of retry attempts (default: 3)</li>
+                <li><code className="bg-gray-800 text-gray-200 px-2 py-1 rounded text-sm">retryDelay</code> - Delay between retries in milliseconds (default: 1000)</li>
               </ul>
             </div>
           </div>
