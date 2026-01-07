@@ -19,7 +19,8 @@ import {
   Timer,
   AlertTriangle,
   CheckCircle,
-  MessageSquare
+  MessageSquare,
+  Bot
 } from 'lucide-react'
 
 interface NavItem {
@@ -46,6 +47,9 @@ const docsSections: NavSection[] = [
   {
     title: 'Guides / Concepts',
     items: [
+      { title: 'Agentic Intelligence', href: '/docs/api/intelligence-config', icon: Bot },
+      { title: 'Interpretable Intelligence', href: '/docs/api/intelligence-config', icon: BookOpen },
+      { title: 'Adaptive Intelligence', href: '/docs/api/intelligence-config', icon: Brain },
       { title: 'Conversational Optimization', href: '/docs/conversational-optimization', icon: MessageSquare },
       { title: 'Domain Libraries', href: '/docs/domain-libraries', icon: Building2 },
     ]

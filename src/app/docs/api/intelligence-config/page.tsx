@@ -56,7 +56,6 @@ result = client.optimize(
       "use_agentic_intelligence": true,
       "use_interpretable_intelligence": true,
       "use_adaptive_intelligence": true,
-      "use_domain_extension": true,
       "explanation_level": 3,
       "agentic": {
         "max_agents_per_problem": 5
@@ -103,22 +102,22 @@ console.log(result.explanation)`
           Intelligence Configuration
         </h1>
         <p className="text-xl text-gray-400">
-          Configure Sematryx's 3 Core Pillars: Agentic, Interpretable, and Adaptive intelligence, plus Domain Extension libraries. 
+          Configure Sematryx's 3 Core Pillars: Agentic, Interpretable, and Adaptive intelligence. 
           Control compute cost vs capability trade-offs with granular configuration options.
         </p>
       </div>
 
       <div className="space-y-12">
-        {/* The 3 Core Pillars + Domain Extension Overview */}
+        {/* The 3 Core Pillars Overview */}
         <section>
           <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            The 3 Core Pillars + Domain Extension
+            The 3 Core Pillars
           </h2>
           <p className="text-gray-400 mb-6">
-            Sematryx is built on three core pillars of intelligence that work together to provide enterprise-grade optimization, plus Domain Extension libraries that leverage the engine:
+            Sematryx is built on three core pillars of intelligence that work together to provide enterprise-grade optimization:
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <div className="bg-sky-950/40 border border-sky-800/50 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-3xl">🤖</span>
@@ -166,23 +165,6 @@ console.log(result.explanation)`
                 <li>• Cross-problem learning</li>
                 <li>• Performance memory</li>
                 <li>• Meta-learning capabilities</li>
-              </ul>
-            </div>
-
-            <div className="bg-orange-950/40 border border-orange-800/50 rounded-lg p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-3xl">🏗️</span>
-                <h3 className="text-xl font-bold text-orange-400">Domain Extension</h3>
-              </div>
-              <p className="text-orange-200/80 mb-3">
-                Business domain libraries that leverage the core engine for rapid enterprise adoption. Separate from the engine itself, Domain Extension enables core optimization algorithms across 13+ business domains.
-              </p>
-              <ul className="space-y-1 text-sm text-orange-400">
-                <li>• 13+ business domains</li>
-                <li>• Automatic code generation</li>
-                <li>• FastAPI deployment</li>
-                <li>• Pattern recommendations</li>
-                <li>• Production-ready templates</li>
               </ul>
             </div>
           </div>
@@ -242,7 +224,6 @@ console.log(result.explanation)`
               <li><strong className="text-gray-200">use_agentic_intelligence</strong> (bool): Enable multi-agent coordination</li>
               <li><strong className="text-gray-200">use_interpretable_intelligence</strong> (bool): Enable explainability</li>
               <li><strong className="text-gray-200">use_adaptive_intelligence</strong> (bool): Enable learning system</li>
-              <li><strong className="text-gray-200">use_domain_extension</strong> (bool): Enable domain libraries (default: True)</li>
               <li><strong className="text-gray-200">explanation_level</strong> (int, 0-5): Detail level for explanations (0=off, 5=comprehensive)</li>
             </ul>
           </div>
@@ -288,14 +269,6 @@ console.log(result.explanation)`
                   <li>• cross_problem_learning: Learn across different problems</li>
                   <li>• memory_retention: How long to retain learned patterns</li>
                   <li>• meta_learning: Enable meta-learning capabilities</li>
-                </ul>
-              </div>
-              <div>
-                <strong className="text-gray-200">Domain Extension Configuration:</strong>
-                <ul className="ml-4 mt-1 space-y-1 text-sm">
-                  <li>• use_domain_libraries: Enable domain-specific libraries</li>
-                  <li>• auto_code_generation: Generate domain code automatically</li>
-                  <li>• domain_patterns: Enable pattern recommendations</li>
                 </ul>
               </div>
             </div>
@@ -357,7 +330,6 @@ console.log(result.explanation)`
                 <ul className="text-sm text-gray-500 space-y-1 ml-4">
                   <li>• Agentic + Interpretable enabled</li>
                   <li>• Adaptive disabled (no learning overhead)</li>
-                  <li>• Domain Extension enabled</li>
                   <li>• Explanation level 2-3</li>
                 </ul>
               </div>
@@ -368,7 +340,6 @@ console.log(result.explanation)`
                   <li>• All core pillars enabled</li>
                   <li>• Maximum agents, full learning</li>
                   <li>• Explanation level 4-5</li>
-                  <li>• All domain libraries active</li>
                 </ul>
               </div>
             </div>
