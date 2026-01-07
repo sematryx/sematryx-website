@@ -34,7 +34,21 @@ export default function UniversalLayoutWrapper({ children }: UniversalLayoutWrap
     return ''
   }
 
-  const shouldShowSidebar = pathname.startsWith('/docs') || pathname.startsWith('/tutorials')
+  // Marketing pages that should not show sidebar
+  const marketingPages = [
+    '/docs/conversational-optimization',
+    '/docs/domain-libraries',
+    '/docs/integrations/mcp',
+    '/docs/api/intelligence-config'
+  ]
+  
+  // Determine if sidebar should be shown
+  const shouldShowSidebar = 
+    (pathname.startsWith('/docs') && !marketingPages.includes(pathname)) ||
+    pathname.startsWith('/tutorials') ||
+    pathname.startsWith('/why-sematryx/agentic-intelligence') ||
+    pathname.startsWith('/why-sematryx/interpretable-intelligence') ||
+    pathname.startsWith('/why-sematryx/adaptive-intelligence')
 
   return (
     <>

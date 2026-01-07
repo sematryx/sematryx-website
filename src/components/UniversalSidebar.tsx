@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation'
 import DocsNav from './DocsNav'
 import TutorialsNav from './TutorialsNav'
+import PillarsNav from './PillarsNav'
 
 interface UniversalSidebarProps {
   isCollapsed?: boolean
@@ -19,8 +20,7 @@ export default function UniversalSidebar({
 }: UniversalSidebarProps) {
   const pathname = usePathname()
 
-  // Only show left nav for /docs/* and /tutorials/* sections
-  // Exclude marketing-focused pages that shouldn't have left nav
+  // Marketing pages that should not show left nav
   const marketingPages = [
     '/docs/conversational-optimization',
     '/docs/domain-libraries',
@@ -28,7 +28,22 @@ export default function UniversalSidebar({
     '/docs/api/intelligence-config' // Three Intelligence Pillars overview page
   ]
   
-  // Exclude all /why-sematryx/* pages (marketing pages)
+  // Show PillarsNav for individual pillar pages
+  if (
+    pathname.startsWith('/why-sematryx/agentic-intelligence') ||
+    pathname.startsWith('/why-sematryx/interpretable-intelligence') ||
+    pathname.startsWith('/why-sematryx/adaptive-intelligence')
+  ) {
+    return (
+      <PillarsNav 
+        isCollapsed={isCollapsed} 
+        isMobile={isMobile} 
+        onMobileClose={onMobileClose} 
+      />
+    )
+  }
+  
+  // Exclude other /why-sematryx/* pages (marketing pages without nav)
   if (pathname.startsWith('/why-sematryx')) {
     return null
   }
