@@ -384,7 +384,6 @@ else:
             </div>
           </section>
         </div>
-      </div>
     </div>
   )
 }

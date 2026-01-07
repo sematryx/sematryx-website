@@ -470,7 +470,6 @@ async with stdio_client(server_params) as (read, write):
             </div>
           </section>
         </div>
-      </div>
     </div>
   )
 }

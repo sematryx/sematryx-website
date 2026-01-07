@@ -396,7 +396,6 @@ Would you like to adjust these constraints, or explore what happens with differe
             </section>
           </div>
         </div>
-      </div>
     </div>
   )
 }

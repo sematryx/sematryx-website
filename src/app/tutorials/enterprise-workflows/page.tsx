@@ -448,7 +448,6 @@ result = optimize(
             </div>
           </section>
         </div>
-      </div>
     </div>
   )
 }

@@ -338,7 +338,6 @@ if result.learning_operations:
             </div>
           </section>
         </div>
-      </div>
     </div>
   )
 }

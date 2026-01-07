@@ -436,7 +436,6 @@ if result.audit_id:
             </div>
           </section>
         </div>
-      </div>
     </div>
   )
 }

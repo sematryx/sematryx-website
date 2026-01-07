@@ -365,7 +365,6 @@ print(f"Value: {result.objective_value}")`
             </div>
           </section>
         </div>
-      </div>
     </div>
   )
 }
