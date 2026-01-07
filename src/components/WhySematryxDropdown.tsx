@@ -18,7 +18,7 @@ const whySematryxMenu: DropdownGroup[] = [
     title: 'Key Capabilities',
     items: [
       { title: 'Overview', href: '/why-sematryx', icon: Sparkles },
-      { title: 'Intelligence Configuration', href: '/docs/api/intelligence-config', icon: Code },
+      { title: 'Three Intelligence Pillars', href: '/docs/api/intelligence-config', icon: Code },
       { title: 'Conversational Optimization', href: '/docs/conversational-optimization', icon: MessageSquare },
       { title: 'Domain Libraries', href: '/docs/domain-libraries', icon: Building2 },
       { title: 'Agent Integrations (MCP)', href: '/docs/integrations/mcp', icon: Plug },

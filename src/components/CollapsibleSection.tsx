@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 interface CollapsibleSectionProps {
   title: string
@@ -9,37 +9,25 @@ interface CollapsibleSectionProps {
   defaultOpen?: boolean
 }
 
-const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({ 
-  title, 
-  children, 
-  defaultOpen = true 
-}) => {
+export default function CollapsibleSection({ title, children, defaultOpen = false }: CollapsibleSectionProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen)
 
   return (
-    <section className="mb-6">
+    <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg overflow-hidden">
       <button
-        className="flex justify-between items-center w-full p-4 bg-[#242b3d] rounded-lg hover:bg-[#2a3347] transition-colors text-left focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-[#0f1419]"
         onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-4 text-left hover:bg-[#242b3d] transition-colors"
       >
-        <h2 className="text-2xl font-semibold text-white">
-          {title}
-        </h2>
-        {isOpen ? (
-          <ChevronUp className="h-6 w-6 text-gray-400 flex-shrink-0" />
-        ) : (
-          <ChevronDown className="h-6 w-6 text-gray-400 flex-shrink-0" />
-        )}
+        <h3 className="text-lg font-semibold text-gray-200">{title}</h3>
+        <ChevronDown 
+          className={`w-5 h-5 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+        />
       </button>
       {isOpen && (
-        <div className="mt-4">
+        <div className="px-4 pb-4 border-t border-gray-700">
           {children}
         </div>
       )}
-    </section>
+    </div>
   )
 }
-
-export default CollapsibleSection
-
-

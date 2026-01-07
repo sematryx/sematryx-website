@@ -1,94 +1,7 @@
-import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, MessageSquare, Bot, CheckCircle2, Zap, Users } from 'lucide-react'
 
 export default function ConversationalOptimizationPage() {
-  const createConversation = `curl -X POST https://api.sematryx.com/v1/domains/conversational/create \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "description": "I want to optimize my marketing budget across Google, Facebook, and LinkedIn to maximize ROI"
-  }'`
-
-  const pythonCreate = `from sematryx.client.sdk import SematryxClient
-
-client = SematryxClient(api_key="YOUR_API_KEY")
-
-# Start a conversation
-result = client.start_conversational_optimization(
-    description="I want to optimize my marketing budget for maximum ROI"
-)
-
-conversation_id = result["conversation_id"]
-print(f"Conversation started: {conversation_id}")`
-
-  const getStatus = `curl -X GET https://api.sematryx.com/v1/domains/conversational/status/CONVERSATION_ID \\
-  -H "Authorization: Bearer YOUR_API_KEY"`
-
-  const continueConversation = `curl -X POST https://api.sematryx.com/v1/domains/conversational/continue/CONVERSATION_ID \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "response": "$50000"
-  }'`
-
-  const completeOptimization = `curl -X POST https://api.sematryx.com/v1/domains/conversational/complete/CONVERSATION_ID \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "max_evaluations": 2000,
-    "mode": "balanced"
-  }'`
-
-  const fullExample = `from sematryx.client.sdk import SematryxClient
-import time
-
-client = SematryxClient(api_key="YOUR_API_KEY")
-
-# Start conversation
-result = client.start_conversational_optimization(
-    description="I want to optimize my marketing budget for maximum ROI"
-)
-conversation_id = result["conversation_id"]
-
-# Interactive loop
-while True:
-    status = client.get_conversation_status(conversation_id)
-    
-    if status["status"] == "waiting_for_input":
-        print(f"Agent: {status.get('question')}")
-        # Get user response
-        response = input("Your response: ")
-        client.continue_conversation(conversation_id, response)
-        
-    elif status["status"] == "ready_to_optimize":
-        print("All parameters collected! Ready to optimize.")
-        break
-        
-    else:
-        time.sleep(1)
-
-# Complete and optimize
-result = client.complete_conversational_optimization(conversation_id)
-print(f"Optimization started: {result['optimization_id']}")`
-
-  const statusResponse = `{
-  "conversation_id": "conv_abc123",
-  "status": "waiting_for_input",
-  "turn_number": 1,
-  "question": "What is your total marketing budget?",
-  "question_type": "parameter_collection",
-  "parameter_name": "budget",
-  "parameter_type": "float",
-  "examples": ["$10000", "$50000", "$100000"],
-  "progress": {
-    "parameters_collected": 0,
-    "parameters_total": 5,
-    "percentage": 0
-  },
-  "detected_domain": "marketing"
-}`
-
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
       <div className="mb-12">
@@ -103,222 +16,217 @@ print(f"Optimization started: {result['optimization_id']}")`
           Conversational Optimization
         </h1>
         <p className="text-xl text-gray-400">
-          Create optimization problems through natural language conversation with an AI agent.
+          Create optimization problems through natural language conversation with an AI agent. 
+          No technical expertise required—just describe what you want to optimize.
         </p>
       </div>
 
-      <div className="space-y-8">
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            Overview
-          </h2>
-          <p className="text-gray-400 mb-4">
-            Conversational Optimization allows you to describe optimization problems in natural language
-            and have an AI agent guide you through collecting all required parameters, validating inputs,
-            and executing the optimization.
+      <div className="space-y-12">
+        {/* Value Proposition */}
+        <section className="bg-gradient-to-br from-blue-950/40 to-purple-950/40 border border-blue-800/50 rounded-xl p-8">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="bg-blue-500/20 p-3 rounded-lg">
+              <MessageSquare className="w-8 h-8 text-blue-400" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-200">
+              Optimization Made Simple
+            </h2>
+          </div>
+          <p className="text-lg text-gray-300 mb-6">
+            Conversational Optimization removes the technical barriers to optimization. Instead of 
+            learning complex APIs, writing code, or understanding optimization algorithms, you simply 
+            describe your problem in natural language. An AI agent guides you through the process, 
+            asking clarifying questions and ensuring everything is set up correctly.
           </p>
-          <div className="bg-blue-900/20 border border-blue-700 rounded-lg p-4 mb-4">
-            <p className="text-blue-200">
-              <strong>Perfect for:</strong> Users who want to optimize but aren't familiar with technical
-              optimization concepts, or when you want a guided experience to ensure all parameters are
-              correctly specified.
-            </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-[#1a1f2e]/50 rounded-lg p-4">
+              <h3 className="font-semibold text-gray-200 mb-2">For Non-Technical Users</h3>
+              <p className="text-sm text-gray-400">
+                Perfect for business analysts, product managers, and domain experts who understand 
+                their problems but not the technical implementation.
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e]/50 rounded-lg p-4">
+              <h3 className="font-semibold text-gray-200 mb-2">For Rapid Prototyping</h3>
+              <p className="text-sm text-gray-400">
+                Quickly test optimization ideas without writing code. Validate concepts before 
+                investing in full implementation.
+              </p>
+            </div>
           </div>
         </section>
 
+        {/* Key Benefits */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            Key Features
+          <h2 className="text-2xl font-semibold text-gray-200 mb-6">
+            Why Conversational Optimization?
           </h2>
-          <ul className="space-y-2 text-gray-400">
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span><strong>Natural Language Understanding:</strong> Describe your problem in plain English</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span><strong>Interactive Guidance:</strong> Agent asks clarifying questions to collect all required parameters</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span><strong>Automatic Validation:</strong> Inputs are validated in real-time with helpful error messages</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span><strong>Domain Detection:</strong> Automatically detects the problem domain (marketing, financial, etc.)</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span><strong>Extension Building:</strong> Can create custom domain extensions when no existing domain matches</span>
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            API Endpoints
-          </h2>
-
-          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
-            1. Create Conversation
-          </h3>
-          <p className="text-gray-400 mb-4">
-            Start a new conversational optimization problem creation.
-          </p>
-          <CodeBlock
-            code={createConversation}
-            language="bash"
-            title="POST /v1/domains/conversational/create"
-          />
-          <CodeBlock
-            code={pythonCreate}
-            language="python"
-            title="Using Python SDK"
-          />
-
-          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
-            2. Get Conversation Status
-          </h3>
-          <p className="text-gray-400 mb-4">
-            Check the current status of a conversation. Returns a question if the agent is waiting for input.
-          </p>
-          <CodeBlock
-            code={getStatus}
-            language="bash"
-            title="GET /v1/domains/conversational/status/{conversation_id}"
-          />
-          <CodeBlock
-            code={statusResponse}
-            language="json"
-            title="Example Response"
-          />
-
-          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
-            3. Continue Conversation
-          </h3>
-          <p className="text-gray-400 mb-4">
-            Provide a response to the agent's question.
-          </p>
-          <CodeBlock
-            code={continueConversation}
-            language="bash"
-            title="POST /v1/domains/conversational/continue/{conversation_id}"
-          />
-
-          <h3 className="text-xl font-semibold text-gray-200 mb-3 mt-6">
-            4. Complete and Optimize
-          </h3>
-          <p className="text-gray-400 mb-4">
-            Complete the conversation and execute the optimization once all parameters are collected.
-          </p>
-          <CodeBlock
-            code={completeOptimization}
-            language="bash"
-            title="POST /v1/domains/conversational/complete/{conversation_id}"
-          />
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            Complete Example
-          </h2>
-          <p className="text-gray-400 mb-4">
-            Here's a complete example showing the full conversational flow:
-          </p>
-          <CodeBlock
-            code={fullExample}
-            language="python"
-            title="Full Conversational Flow"
-          />
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            Conversation Status Values
-          </h2>
-          <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
-            <ul className="space-y-3 text-gray-400">
-              <li>
-                <code className="bg-gray-800 text-primary-400 px-2 py-1 rounded">processing</code> - 
-                Agent is analyzing the problem description
-              </li>
-              <li>
-                <code className="bg-gray-800 text-primary-400 px-2 py-1 rounded">waiting_for_input</code> - 
-                Agent has a question ready (check the <code className="bg-gray-800 text-gray-300 px-1 py-0.5 rounded">question</code> field)
-              </li>
-              <li>
-                <code className="bg-gray-800 text-primary-400 px-2 py-1 rounded">ready_to_optimize</code> - 
-                All parameters collected, ready to execute optimization
-              </li>
-              <li>
-                <code className="bg-gray-800 text-primary-400 px-2 py-1 rounded">optimizing</code> - 
-                Optimization is currently running
-              </li>
-              <li>
-                <code className="bg-gray-800 text-primary-400 px-2 py-1 rounded">completed</code> - 
-                Optimization finished successfully
-              </li>
-              <li>
-                <code className="bg-gray-800 text-primary-400 px-2 py-1 rounded">failed</code> - 
-                An error occurred
-              </li>
-            </ul>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <Bot className="w-6 h-6 text-blue-400" />
+                <h3 className="text-lg font-semibold text-gray-200">Intelligent Guidance</h3>
+              </div>
+              <p className="text-gray-400 text-sm">
+                The AI agent understands your problem domain and asks the right questions to collect 
+                all necessary parameters. No guessing what information is needed.
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <CheckCircle2 className="w-6 h-6 text-green-400" />
+                <h3 className="text-lg font-semibold text-gray-200">Automatic Validation</h3>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Inputs are validated in real-time with helpful error messages. The agent ensures 
+                your problem is well-formed before optimization begins.
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <Zap className="w-6 h-6 text-yellow-400" />
+                <h3 className="text-lg font-semibold text-gray-200">Domain Detection</h3>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Automatically detects your problem domain (marketing, finance, supply chain, etc.) 
+                and applies domain-specific best practices and constraints.
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <Users className="w-6 h-6 text-purple-400" />
+                <h3 className="text-lg font-semibold text-gray-200">Accessible to Everyone</h3>
+              </div>
+              <p className="text-gray-400 text-sm">
+                No coding required. Team members across your organization can create and run 
+                optimizations without technical training.
+              </p>
+            </div>
           </div>
         </section>
 
+        {/* Use Cases */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            Best Practices
+          <h2 className="text-2xl font-semibold text-gray-200 mb-6">
+            Common Use Cases
           </h2>
-          <ul className="space-y-2 text-gray-400">
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span>Poll the status endpoint every 2-3 seconds when status is "processing"</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span>Provide clear, specific responses to the agent's questions</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span>Use the examples provided in the status response as guidance</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span>Conversations timeout after 1 hour of inactivity</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary-400 mr-2">•</span>
-              <span>Maximum conversation length is 20 turns to prevent runaway costs</span>
-            </li>
-          </ul>
+          <div className="space-y-4">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-2">Marketing Budget Optimization</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                "I want to optimize my marketing budget across Google, Facebook, and LinkedIn to maximize ROI"
+              </p>
+              <p className="text-gray-500 text-xs">
+                The agent asks about your total budget, channel performance data, and ROI targets, 
+                then optimizes allocation automatically.
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-2">Resource Allocation</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                "I need to allocate my team of 50 engineers across 10 projects to maximize delivery value"
+              </p>
+              <p className="text-gray-500 text-xs">
+                The agent collects project priorities, skill requirements, and constraints, then 
+                finds the optimal team allocation.
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-200 mb-2">Portfolio Optimization</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                "Optimize my investment portfolio to achieve 8% annual return with maximum 12% risk"
+              </p>
+              <p className="text-gray-500 text-xs">
+                The agent understands financial constraints, risk measures, and regulatory requirements, 
+                then optimizes your portfolio allocation.
+              </p>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-200 mb-4">
-            Learn More
+        {/* How It Works */}
+        <section className="bg-[#1a1f2e] border border-gray-700 rounded-xl p-8">
+          <h2 className="text-2xl font-semibold text-gray-200 mb-6">
+            How It Works
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 font-bold">
+                1
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-200 mb-1">Describe Your Problem</h3>
+                <p className="text-gray-400 text-sm">
+                  Start by describing what you want to optimize in plain English. The agent analyzes 
+                  your description and identifies key components.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 font-bold">
+                2
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-200 mb-1">Answer Questions</h3>
+                <p className="text-gray-400 text-sm">
+                  The agent asks clarifying questions one at a time, with examples to guide your responses. 
+                  Each answer is validated immediately.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 font-bold">
+                3
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-200 mb-1">Automatic Optimization</h3>
+                <p className="text-gray-400 text-sm">
+                  Once all parameters are collected, the agent executes the optimization using Sematryx's 
+                  intelligent optimization engine.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400 font-bold">
+                4
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-200 mb-1">Get Results</h3>
+                <p className="text-gray-400 text-sm">
+                  Receive optimized solutions with natural language explanations of why those solutions 
+                  were chosen and how they perform.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Next Steps */}
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-200 mb-6">
+            Get Started
+          </h2>
+          <div className="grid md:grid-cols-2 gap-4">
             <Link
               href="/tutorials/conversational-optimization"
-              className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 hover:border-primary-500 transition-colors"
+              className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 hover:border-blue-500 transition-colors group"
             >
-              <h3 className="text-lg font-semibold text-gray-200 mb-2">
+              <h3 className="text-lg font-semibold text-gray-200 mb-2 group-hover:text-blue-400 transition-colors">
                 Interactive Tutorial
               </h3>
               <p className="text-gray-400 text-sm">
-                Step-by-step tutorial with interactive examples
+                Step-by-step guide with examples showing how to use conversational optimization
               </p>
             </Link>
             <Link
-              href="/docs/sdks/python"
-              className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 hover:border-primary-500 transition-colors"
+              href="/conversational-optimization"
+              className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 hover:border-blue-500 transition-colors group"
             >
-              <h3 className="text-lg font-semibold text-gray-200 mb-2">
-                Python SDK Guide
+              <h3 className="text-lg font-semibold text-gray-200 mb-2 group-hover:text-blue-400 transition-colors">
+                Learn More
               </h3>
               <p className="text-gray-400 text-sm">
-                Learn more about the Python SDK methods
+                Explore the full capabilities and use cases for conversational optimization
               </p>
             </Link>
           </div>
@@ -327,4 +235,3 @@ print(f"Optimization started: {result['optimization_id']}")`
     </div>
   )
 }
-

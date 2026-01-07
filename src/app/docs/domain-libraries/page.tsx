@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
-import CodeBlock from '@/components/CodeBlock'
-import { Briefcase, Heart, Truck, Factory, Zap, FlaskConical, Building2, ArrowLeft } from 'lucide-react'
+import { Briefcase, Heart, Truck, Factory, Zap, FlaskConical, Building2, ArrowLeft, CheckCircle2, Shield, Rocket } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Domain Libraries - Production-Ready Optimization Solutions | Sematryx',
@@ -14,104 +13,73 @@ export default function DomainLibrariesPage() {
       name: 'Financial Services',
       icon: Briefcase,
       description: 'Portfolio optimization, risk management, trading strategies, and regulatory compliance.',
-      codeExample: `from sematryx.domains import finance
-
-result = finance.optimize_portfolio(
-    returns=asset_returns,
-    covariance=cov_matrix,
-    constraints={
-        'max_position': 0.30,
-        'min_return': 0.08,
-        'regulatory': 'basel_iii'
-    },
-    risk_measure='cvar',
-    explanation_level=4
-)`,
+      useCases: [
+        'Portfolio allocation across multiple asset classes',
+        'Risk-adjusted return optimization',
+        'Regulatory compliance (Basel III, Solvency II)',
+        'Trading strategy optimization',
+      ],
     },
     {
       name: 'Healthcare',
       icon: Heart,
       description: 'Clinical optimization, resource allocation, treatment protocols, and patient safety.',
-      codeExample: `from sematryx.domains import healthcare
-
-result = healthcare.optimize_scheduling(
-    resources={'nurses': 50, 'doctors': 20},
-    demand_forecast=weekly_demand,
-    constraints={
-        'min_nurse_patient_ratio': 0.25,
-        'max_consecutive_shifts': 2,
-        'safety_constraints': 'always'
-    }
-)`,
+      useCases: [
+        'Nurse and doctor scheduling optimization',
+        'Operating room allocation',
+        'Treatment protocol optimization',
+        'Resource allocation for patient care',
+      ],
     },
     {
       name: 'Supply Chain',
       icon: Truck,
       description: 'Logistics optimization, inventory management, vehicle routing, and warehouse operations.',
-      codeExample: `from sematryx.domains import supply_chain
-
-result = supply_chain.optimize_routing(
-    locations=delivery_locations,
-    vehicles=vehicle_fleet,
-    constraints={
-        'time_windows': time_windows,
-        'capacity': vehicle_capacities,
-        'driver_hours': max_hours
-    }
-)`,
+      useCases: [
+        'Vehicle routing and delivery optimization',
+        'Inventory level optimization',
+        'Warehouse layout and operations',
+        'Multi-echelon supply chain optimization',
+      ],
     },
     {
       name: 'Manufacturing',
       icon: Factory,
       description: 'Production scheduling, resource allocation, quality optimization, and safety compliance.',
-      codeExample: `from sematryx.domains import manufacturing
-
-result = manufacturing.optimize_production(
-    orders=production_orders,
-    machines=machine_capacities,
-    constraints={
-        'safety_margins': 0.15,
-        'quality_standards': 'iso_9001',
-        'maintenance_windows': maintenance_schedule
-    }
-)`,
+      useCases: [
+        'Production line scheduling',
+        'Resource allocation across machines',
+        'Quality control optimization',
+        'Maintenance scheduling',
+      ],
     },
     {
       name: 'AI/ML Research',
       icon: FlaskConical,
       description: 'Neural architecture search, hyperparameter tuning, and model optimization.',
-      codeExample: `from sematryx.domains import ai_ml
-
-result = ai_ml.optimize_hyperparameters(
-    model_class=NeuralNetwork,
-    training_data=train_data,
-    validation_data=val_data,
-    search_space=hyperparameter_space,
-    objective='validation_accuracy',
-    max_evaluations=1000
-)`,
+      useCases: [
+        'Hyperparameter optimization for ML models',
+        'Neural architecture search',
+        'Feature selection optimization',
+        'Model ensemble optimization',
+      ],
     },
     {
       name: 'Energy & Utilities',
       icon: Zap,
       description: 'Grid optimization, renewable energy integration, and resource allocation.',
-      codeExample: `from sematryx.domains import energy
-
-result = energy.optimize_grid(
-    demand_forecast=hourly_demand,
-    generation_capacity=renewable_capacity,
-    constraints={
-        'reliability': 0.99,
-        'renewable_target': 0.40,
-        'storage_capacity': battery_capacity
-    }
-)`,
+      useCases: [
+        'Power grid load balancing',
+        'Renewable energy integration',
+        'Energy storage optimization',
+        'Demand response optimization',
+      ],
     },
   ]
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
-      <div className="mb-8">
+      <div className="mb-12">
         <Link 
           href="/domains" 
           className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary mb-6 transition-colors"
@@ -123,87 +91,211 @@ result = energy.optimize_grid(
           Domain Libraries
         </h1>
         <p className="text-xl text-gray-400">
-          Production-ready optimization solutions for specific industries and use cases.
+          Production-ready optimization solutions tailored to your industry. 
+          Built-in constraints, compliance requirements, and best practices—so you can focus on your problem, not implementation.
         </p>
       </div>
 
-      <div className="prose prose-invert max-w-none mb-12">
-        <p className="text-gray-300 leading-relaxed">
-          Sematryx Domain Libraries provide pre-built optimization solutions tailored to specific industries.
-          Each library includes industry-specific constraints, compliance requirements, and best practices
-          built-in, so you can focus on your problem rather than implementation details.
-        </p>
-      </div>
+      <div className="space-y-12">
+        {/* Value Proposition */}
+        <section className="bg-gradient-to-br from-purple-950/40 to-blue-950/40 border border-purple-800/50 rounded-xl p-8">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="bg-purple-500/20 p-3 rounded-lg">
+              <Building2 className="w-8 h-8 text-purple-400" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-200">
+              Industry-Specific Optimization
+            </h2>
+          </div>
+          <p className="text-lg text-gray-300 mb-6">
+            Domain Libraries eliminate the need to implement industry-specific constraints, compliance 
+            requirements, and optimization patterns from scratch. Each library is production-ready, 
+            battle-tested, and includes everything you need for your industry.
+          </p>
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="bg-[#1a1f2e]/50 rounded-lg p-4">
+              <h3 className="font-semibold text-gray-200 mb-2">Pre-Built Constraints</h3>
+              <p className="text-sm text-gray-400">
+                Industry-specific constraints and validation rules built-in
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e]/50 rounded-lg p-4">
+              <h3 className="font-semibold text-gray-200 mb-2">Compliance Ready</h3>
+              <p className="text-sm text-gray-400">
+                Regulatory requirements and standards automatically enforced
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e]/50 rounded-lg p-4">
+              <h3 className="font-semibold text-gray-200 mb-2">Best Practices</h3>
+              <p className="text-sm text-gray-400">
+                Proven optimization patterns for your industry
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <div className="space-y-8 mb-12">
-        {domains.map((domain) => {
-          const IconComponent = domain.icon
-          return (
-            <div key={domain.name} className="bg-elevated border border-elevated-3 rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-brand-primary/10 p-2 rounded-lg">
-                  <IconComponent className="w-6 h-6 text-brand-primary" />
+        {/* Key Benefits */}
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-200 mb-6">
+            Why Use Domain Libraries?
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <Rocket className="w-6 h-6 text-purple-400" />
+                <h3 className="text-lg font-semibold text-gray-200">Faster Time to Value</h3>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Get started in minutes instead of weeks. No need to research industry constraints, 
+                implement validation logic, or learn domain-specific optimization patterns.
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <Shield className="w-6 h-6 text-green-400" />
+                <h3 className="text-lg font-semibold text-gray-200">Compliance Built-In</h3>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Regulatory requirements are automatically enforced. Basel III for finance, 
+                patient safety standards for healthcare, ISO standards for manufacturing—all handled automatically.
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <CheckCircle2 className="w-6 h-6 text-blue-400" />
+                <h3 className="text-lg font-semibold text-gray-200">Production-Ready</h3>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Each library is battle-tested in production environments. Comprehensive testing, 
+                documentation, and support for edge cases included.
+              </p>
+            </div>
+            <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <Building2 className="w-6 h-6 text-yellow-400" />
+                <h3 className="text-lg font-semibold text-gray-200">Domain Expertise</h3>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Leverage optimization strategies specifically designed for your industry. 
+                No generic solutions—each library understands your domain's unique challenges.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Available Domains */}
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-200 mb-6">
+            Available Domain Libraries
+          </h2>
+          <div className="space-y-6">
+            {domains.map((domain) => {
+              const IconComponent = domain.icon
+              return (
+                <div key={domain.name} className="bg-[#1a1f2e] border border-gray-700 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="bg-purple-500/10 p-2 rounded-lg">
+                      <IconComponent className="w-6 h-6 text-purple-400" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-gray-200">{domain.name}</h3>
+                  </div>
+                  <p className="text-gray-400 mb-4">{domain.description}</p>
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-300 mb-2">Common Use Cases:</h4>
+                    <ul className="space-y-1">
+                      {domain.useCases.map((useCase, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-400">
+                          <span className="text-purple-400 mt-1">•</span>
+                          <span>{useCase}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <h2 className="text-2xl font-semibold text-text-primary">{domain.name}</h2>
-              </div>
-              <p className="text-text-secondary mb-4">{domain.description}</p>
-              <CodeBlock code={domain.codeExample} language="python" />
-            </div>
-          )
-        })}
-      </div>
+              )
+            })}
+          </div>
+        </section>
 
-      <div className="bg-blue-900/20 border border-blue-700 rounded-lg p-6 mb-8">
-        <h3 className="text-lg font-semibold text-blue-200 mb-2">Production-Ready</h3>
-        <p className="text-blue-200/80">
-          All domain libraries are production-ready with comprehensive testing, documentation, and
-          industry-specific compliance built-in. They're used in production environments across
-          finance, healthcare, supply chain, and more.
-        </p>
-      </div>
+        {/* Production Ready */}
+        <section className="bg-blue-900/20 border border-blue-700 rounded-xl p-6">
+          <h3 className="text-lg font-semibold text-blue-200 mb-2">Production-Ready & Battle-Tested</h3>
+          <p className="text-blue-200/80">
+            All domain libraries are production-ready with comprehensive testing, documentation, and
+            industry-specific compliance built-in. They're used in production environments across
+            finance, healthcare, supply chain, and more. Each library includes:
+          </p>
+          <ul className="mt-4 space-y-2 text-blue-200/80 text-sm">
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+              <span>Comprehensive test coverage</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+              <span>Full documentation and examples</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+              <span>Edge case handling</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle2 className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+              <span>Performance optimization</span>
+            </li>
+          </ul>
+        </section>
 
-      <div className="border-t border-elevated-3 pt-8">
-        <h2 className="text-2xl font-semibold text-text-primary mb-4">Next Steps</h2>
-        <div className="space-y-4">
-          <Link
-            href="/domains"
-            className="block p-4 bg-elevated border border-elevated-3 rounded-lg hover:bg-elevated-2 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="font-semibold text-text-primary">View Domain Libraries Overview</div>
-                <div className="text-sm text-text-secondary">See all available domains and use cases</div>
+        {/* Next Steps */}
+        <section>
+          <h2 className="text-2xl font-semibold text-gray-200 mb-6">
+            Get Started
+          </h2>
+          <div className="space-y-4">
+            <Link
+              href="/domains"
+              className="block p-6 bg-[#1a1f2e] border border-gray-700 rounded-lg hover:border-purple-500 transition-colors group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="font-semibold text-gray-200 mb-1 group-hover:text-purple-400 transition-colors">
+                    View Domain Libraries Overview
+                  </div>
+                  <div className="text-sm text-gray-400">See all available domains and use cases</div>
+                </div>
+                <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
               </div>
-              <ArrowLeft className="w-5 h-5 text-text-secondary" />
-            </div>
-          </Link>
-          <Link
-            href="/tutorials/domain-specific-optimization"
-            className="block p-4 bg-elevated border border-elevated-3 rounded-lg hover:bg-elevated-2 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="font-semibold text-text-primary">Domain-Specific Optimization Tutorial</div>
-                <div className="text-sm text-text-secondary">Learn how to use domain libraries in practice</div>
+            </Link>
+            <Link
+              href="/tutorials/domain-specific-optimization"
+              className="block p-6 bg-[#1a1f2e] border border-gray-700 rounded-lg hover:border-purple-500 transition-colors group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="font-semibold text-gray-200 mb-1 group-hover:text-purple-400 transition-colors">
+                    Domain-Specific Optimization Tutorial
+                  </div>
+                  <div className="text-sm text-gray-400">Learn how to use domain libraries in practice</div>
+                </div>
+                <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
               </div>
-              <ArrowLeft className="w-5 h-5 text-text-secondary" />
-            </div>
-          </Link>
-          <Link
-            href="/tutorials/extending-domain-libraries"
-            className="block p-4 bg-elevated border border-elevated-3 rounded-lg hover:bg-elevated-2 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="font-semibold text-text-primary">Extending Domain Libraries</div>
-                <div className="text-sm text-text-secondary">Create custom domain extensions</div>
+            </Link>
+            <Link
+              href="/tutorials/extending-domain-libraries"
+              className="block p-6 bg-[#1a1f2e] border border-gray-700 rounded-lg hover:border-purple-500 transition-colors group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="font-semibold text-gray-200 mb-1 group-hover:text-purple-400 transition-colors">
+                    Extending Domain Libraries
+                  </div>
+                  <div className="text-sm text-gray-400">Create custom domain extensions for your specific needs</div>
+                </div>
+                <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
               </div>
-              <ArrowLeft className="w-5 h-5 text-text-secondary" />
-            </div>
-          </Link>
-        </div>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   )
 }
-

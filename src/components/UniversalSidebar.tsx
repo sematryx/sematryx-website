@@ -20,7 +20,14 @@ export default function UniversalSidebar({
   const pathname = usePathname()
 
   // Only show left nav for /docs/* and /tutorials/* sections
-  if (pathname.startsWith('/docs')) {
+  // Exclude marketing-focused pages that shouldn't have left nav
+  const marketingPages = [
+    '/docs/conversational-optimization',
+    '/docs/domain-libraries',
+    '/docs/integrations/mcp'
+  ]
+  
+  if (pathname.startsWith('/docs') && !marketingPages.includes(pathname)) {
     return (
       <DocsNav 
         isCollapsed={isCollapsed} 

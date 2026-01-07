@@ -34,24 +34,19 @@ const tutorialSections: TutorialSection[] = [
   {
     title: 'START HERE',
     items: [
-  { title: 'Getting Started', href: '/tutorials/getting-started', icon: Zap },
+      { title: 'Getting Started', href: '/tutorials/getting-started', icon: Zap },
+    ]
+  },
+  {
+    title: 'TUTORIALS',
+    items: [
       { title: 'Conversational Optimization', href: '/tutorials/conversational-optimization', icon: MessageSquare },
-    ]
-  },
-  {
-    title: 'AGENTS',
-    items: [
-      { title: 'MCP Agent Demo', href: '/tutorials/mcp-agent-demo', icon: Plug },
-    ]
-  },
-  {
-    title: 'CORE WORKFLOWS',
-    items: [
-      { title: 'Data Transformation', href: '/tutorials/data-transformation', icon: Settings },
-      { title: 'Monitoring & Alerts', href: '/tutorials/monitoring-alerts', icon: BarChart3 },
+      { title: 'Configuring Intelligence', href: '/tutorials/ai-content-generation', icon: Settings },
+      { title: 'Problem Setup', href: '/tutorials/data-transformation', icon: Settings },
+      { title: 'Understanding Results', href: '/tutorials/monitoring-alerts', icon: BarChart3 },
       { title: 'Webhook Automation', href: '/tutorials/webhook-automation', icon: Webhook },
-      { title: 'AI Content Generation', href: '/tutorials/ai-content-generation', icon: BookOpen },
       { title: 'Enterprise Workflows', href: '/tutorials/enterprise-workflows', icon: Building2 },
+      { title: 'MCP Agent Demo', href: '/tutorials/mcp-agent-demo', icon: Plug },
     ]
   },
   {

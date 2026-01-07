@@ -1,5 +1,3 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
 import { Metadata } from 'next'
@@ -190,10 +188,7 @@ else:
     print("✗ WARNING: Audit trail may have been tampered")`
 
   return (
-    <main className="bg-base min-h-screen">
-      <Header />
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
           <Link 
             href="/tutorials" 
@@ -390,8 +385,6 @@ else:
           </section>
         </div>
       </div>
-
-      <Footer />
-    </main>
+    </div>
   )
 }

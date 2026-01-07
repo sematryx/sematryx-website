@@ -1,5 +1,3 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
 import { Metadata } from 'next'
@@ -204,9 +202,7 @@ Agent: "Great question! While Google has the highest ROI, I applied risk diversi
 Would you like to adjust these constraints, or explore what happens with different risk tolerance levels?"`
 
   return (
-    <>
-      <Header />
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
         <div className="max-w-5xl mx-auto px-6 py-16">
           <div className="mb-12 text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-500/20 rounded-full mb-6">
@@ -401,8 +397,7 @@ Would you like to adjust these constraints, or explore what happens with differe
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   )
 }
 
