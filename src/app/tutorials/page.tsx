@@ -239,32 +239,6 @@ export default function TutorialsPage() {
               </a>
             </div>
           </div>
-
-          <div className="mt-16 text-center">
-            <div className="bg-elevated rounded-xl p-8 max-w-2xl mx-auto border border-elevated-3">
-              <h2 className="text-2xl font-semibold text-text-primary mb-4">
-                New to Optimization?
-              </h2>
-              <p className="text-text-secondary mb-6">
-                Start with our Getting Started tutorial to understand the basics, 
-                then explore the documentation for API reference and advanced concepts.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/tutorials/getting-started"
-                  className="bg-cta-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-cta-primary-hover transition-colors"
-                >
-                  Start Tutorial →
-                </Link>
-                <Link
-                  href="/docs"
-                  className="border border-elevated-3 text-text-primary px-6 py-3 rounded-lg font-semibold hover:bg-elevated-2 transition-colors"
-                >
-                  View Documentation
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
