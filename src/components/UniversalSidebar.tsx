@@ -24,8 +24,14 @@ export default function UniversalSidebar({
   const marketingPages = [
     '/docs/conversational-optimization',
     '/docs/domain-libraries',
-    '/docs/integrations/mcp'
+    '/docs/integrations/mcp',
+    '/docs/api/intelligence-config' // Three Intelligence Pillars overview page
   ]
+  
+  // Exclude all /why-sematryx/* pages (marketing pages)
+  if (pathname.startsWith('/why-sematryx')) {
+    return null
+  }
   
   if (pathname.startsWith('/docs') && !marketingPages.includes(pathname)) {
     return (

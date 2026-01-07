@@ -59,13 +59,27 @@ export default function DevelopersDropdown({ isMobile = false, onMobileClose }: 
   if (isMobile) {
     return (
       <div className="space-y-2">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-[#242b3d] transition-colors"
-        >
-          <span>Developers</span>
-          <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-        </button>
+        <div className="w-full flex items-center">
+          <Link
+            href="/docs"
+            onClick={() => {
+              setIsOpen(false)
+              if (onMobileClose) {
+                onMobileClose()
+              }
+            }}
+            className="flex-1 px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-text-primary hover:bg-[#242b3d] transition-colors"
+          >
+            Developers
+          </Link>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="px-2 py-2 rounded-md text-text-secondary hover:text-text-primary hover:bg-[#242b3d] transition-colors"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          >
+            <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+          </button>
+        </div>
         {isOpen && (
           <div className="pl-4 space-y-4">
             {developersMenu.map((group, groupIndex) => (
@@ -99,14 +113,14 @@ export default function DevelopersDropdown({ isMobile = false, onMobileClose }: 
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
+      <Link
+        href="/docs"
         onMouseEnter={() => setIsOpen(true)}
         className="text-text-secondary hover:text-text-primary px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1 transition-colors"
       >
         Developers
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
+      </Link>
 
       {isOpen && (
         <>
