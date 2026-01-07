@@ -88,31 +88,19 @@ interface DocsNavProps {
 
 export default function DocsNav({ isCollapsed = false, onToggle, isMobile = false, onMobileClose }: DocsNavProps) {
   const pathname = usePathname()
-  const [currentHash, setCurrentHash] = useState('')
   
   // Track which hrefs we've already highlighted to prevent multiple highlights for same page
   const highlightedHrefs = new Set<string>()
 
-  // Three Intelligence Pillars sub-items
+  // Three Intelligence Pillars sub-items - now link to separate developer guide pages
   const pillars = [
-    { title: 'Agentic Intelligence', href: '/docs/api/intelligence-config#agentic-intelligence', icon: Bot, color: 'text-sky-400', hash: 'agentic-intelligence' },
-    { title: 'Interpretable Intelligence', href: '/docs/api/intelligence-config#interpretable-intelligence', icon: MessageSquare, color: 'text-green-400', hash: 'interpretable-intelligence' },
-    { title: 'Adaptive Intelligence', href: '/docs/api/intelligence-config#adaptive-intelligence', icon: Brain, color: 'text-pink-400', hash: 'adaptive-intelligence' },
+    { title: 'Agentic Intelligence', href: '/docs/concepts/agentic-intelligence', icon: Bot, color: 'text-sky-400' },
+    { title: 'Interpretable Intelligence', href: '/docs/concepts/interpretable-intelligence', icon: MessageSquare, color: 'text-green-400' },
+    { title: 'Adaptive Intelligence', href: '/docs/concepts/adaptive-intelligence', icon: Brain, color: 'text-pink-400' },
   ]
 
   const isIntelligenceConfigPage = pathname === '/docs/api/intelligence-config'
-
-  // Track hash changes for active pillar highlighting
-  useEffect(() => {
-    if (typeof window !== 'undefined' && isIntelligenceConfigPage) {
-      const updateHash = () => {
-        setCurrentHash(window.location.hash.slice(1))
-      }
-      updateHash()
-      window.addEventListener('hashchange', updateHash)
-      return () => window.removeEventListener('hashchange', updateHash)
-    }
-  }, [isIntelligenceConfigPage])
+  const isPillarPage = pathname.startsWith('/docs/concepts/')
 
   return (
     <nav className="h-full">
@@ -135,8 +123,8 @@ export default function DocsNav({ isCollapsed = false, onToggle, isMobile = fals
                   highlightedHrefs.add(baseHref)
                 }
 
-                // Special handling for Three Intelligence Pillars - show sub-items when on that page
-                if (item.href === '/docs/api/intelligence-config' && isIntelligenceConfigPage && !isCollapsed) {
+                // Special handling for Three Intelligence Pillars - show sub-items when on that page or pillar pages
+                if (item.href === '/docs/api/intelligence-config' && (isIntelligenceConfigPage || isPillarPage) && !isCollapsed) {
                   return (
                     <li key={itemIndex}>
                       <div>
@@ -155,7 +143,7 @@ export default function DocsNav({ isCollapsed = false, onToggle, isMobile = fals
                         <ul className="ml-7 mt-1 space-y-1 border-l border-gray-700 pl-3">
                           {pillars.map((pillar, pillarIndex) => {
                             const PillarIcon = pillar.icon
-                            const isPillarActive = currentHash === pillar.hash
+                            const isPillarActive = pathname === pillar.href
                             return (
                               <li key={pillarIndex}>
                                 <Link
