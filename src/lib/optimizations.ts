@@ -128,7 +128,7 @@ export async function listOptimizations(
   // Get aggregated stats
   const statsQuery = supabaseAdmin
     .from('optimization_results')
-    .select('status, execution_time, evaluations_used')
+    .select('status, execution_time, evaluations_used, success')
     .eq('user_id', userId)
 
   const { data: allResults } = await statsQuery

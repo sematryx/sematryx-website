@@ -33,7 +33,13 @@ export default function OptimizationsPage() {
   const searchParams = useSearchParams()
   
   // Get initial state from URL params
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<{
+    status?: string
+    strategy?: string
+    startDate?: string
+    endDate?: string
+    search?: string
+  }>({
     status: searchParams.get('status') || undefined,
     strategy: searchParams.get('strategy') || undefined,
     startDate: searchParams.get('startDate') || undefined,

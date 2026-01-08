@@ -14,7 +14,7 @@ import { listApiKeys } from '@/lib/api-keys'
  */
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { userId: clerkUserId } = await auth()
@@ -39,7 +39,8 @@ export async function GET(
       user.firstName
     )
 
-    const operationId = params.id
+    const { id } = await params
+    const operationId = id
 
     // Try to get from database first
     let optimization = await getOptimization(dbUser.id, operationId)
