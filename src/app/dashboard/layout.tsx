@@ -3,11 +3,12 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { UserButton } from '@clerk/nextjs'
-import { Key, LayoutDashboard, BarChart3, Settings, CreditCard, BookOpen } from 'lucide-react'
+import { Key, LayoutDashboard, BarChart3, Settings, CreditCard, BookOpen, Target } from 'lucide-react'
 import Logo from '@/components/Logo'
 
 const navigation = [
   { name: 'Overview', href: '/dashboard', icon: LayoutDashboard },
+  { name: 'Optimizations', href: '/dashboard/optimizations', icon: Target },
   { name: 'API Keys', href: '/dashboard/keys', icon: Key },
   { name: 'Usage', href: '/dashboard/usage', icon: BarChart3 },
   { name: 'Billing', href: '/dashboard/billing', icon: CreditCard },

@@ -59,3 +59,43 @@ export interface ApiKeyUsage {
   user_agent: string | null
   timestamp: string
 }
+
+export interface OptimizationResult {
+  id: string
+  user_id: string
+  operation_id: string
+  problem_id: string | null
+  optimal_solution: number[] | null
+  optimal_value: number | null
+  strategy_used: string | null
+  evaluations_used: number | null
+  convergence_history: number[] | null
+  execution_time: number | null
+  iterations: number | null
+  status: 'completed' | 'failed' | 'running' | 'cancelled'
+  success: boolean | null
+  error_message: string | null
+  learning_applied: boolean
+  learning_insights: {
+    similar_problems?: string[]
+    patterns_identified?: string[]
+    recommendations?: string[]
+  } | null
+  public_recall_count: number
+  private_recall_count: number
+  stored_to_public: boolean
+  stored_to_private: boolean
+  strategy_explanation: string | null
+  created_at: string
+  completed_at: string | null
+  configuration: {
+    bounds?: number[][]
+    variables?: number
+    domain?: string
+    max_evaluations?: number
+    [key: string]: any
+  } | null
+  ai_reasoning_used: boolean
+  context_intelligence_used: boolean
+  domain: string | null
+}
