@@ -41,7 +41,8 @@ export interface ApiKey {
   user_id: string
   name: string
   key_prefix: string // First 12 chars for display (e.g., "smtrx_abc123")
-  key_hash: string // SHA-256 hash of full key
+  key_hash: string // SHA-256 hash of full key (for validation)
+  key_encrypted?: string | null // AES-256-GCM encrypted key (for retrieval, server-side only)
   last_used_at: string | null
   created_at: string
   revoked_at: string | null

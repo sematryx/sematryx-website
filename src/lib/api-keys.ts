@@ -1,6 +1,50 @@
 import { supabaseAdmin, isSupabaseConfigured } from './supabase'
 import crypto from 'crypto'
 
+// Encryption/Decryption utilities for API keys
+// Uses AES-256-GCM for authenticated encryption
+function getEncryptionKey(): Buffer {
+  const key = process.env.API_KEY_ENCRYPTION_KEY
+  if (!key) {
+    throw new Error('API_KEY_ENCRYPTION_KEY environment variable is not set')
+  }
+  // Use SHA-256 to derive a 32-byte key from the env var
+  return crypto.createHash('sha256').update(key).digest()
+}
+
+function encryptApiKey(plaintext: string): string {
+  const key = getEncryptionKey()
+  const iv = crypto.randomBytes(16) // 128-bit IV for GCM
+  const cipher = crypto.createCipheriv('aes-256-gcm', key, iv)
+  
+  let encrypted = cipher.update(plaintext, 'utf8', 'hex')
+  encrypted += cipher.final('hex')
+  const authTag = cipher.getAuthTag()
+  
+  // Return: iv:authTag:encrypted (all hex)
+  return `${iv.toString('hex')}:${authTag.toString('hex')}:${encrypted}`
+}
+
+function decryptApiKeyInternal(encrypted: string): string {
+  const key = getEncryptionKey()
+  const parts = encrypted.split(':')
+  if (parts.length !== 3) {
+    throw new Error('Invalid encrypted API key format')
+  }
+  
+  const iv = Buffer.from(parts[0], 'hex')
+  const authTag = Buffer.from(parts[1], 'hex')
+  const encryptedText = parts[2]
+  
+  const decipher = crypto.createDecipheriv('aes-256-gcm', key, iv)
+  decipher.setAuthTag(authTag)
+  
+  let decrypted = decipher.update(encryptedText, 'hex', 'utf8')
+  decrypted += decipher.final('utf8')
+  
+  return decrypted
+}
+
 // Generate a secure API key
 export function generateApiKey(): { key: string; prefix: string; hash: string } {
   const prefix = 'smtrx_'
@@ -20,6 +64,16 @@ export async function createApiKey(userId: string, name: string) {
   
   const { key, prefix, hash } = generateApiKey()
   
+  // Encrypt the key for storage (if encryption key is available)
+  let encryptedKey: string | null = null
+  try {
+    encryptedKey = encryptApiKey(key)
+  } catch (error) {
+    // If encryption key is not set, log warning but continue
+    // This allows the system to work without encryption (less secure)
+    console.warn('API key encryption not available - keys will not be retrievable for syncing')
+  }
+  
   const { data, error } = await supabaseAdmin
     .from('api_keys')
     .insert({
@@ -27,6 +81,7 @@ export async function createApiKey(userId: string, name: string) {
       name,
       key_prefix: prefix,
       key_hash: hash,
+      key_encrypted: encryptedKey, // Store encrypted version
       is_active: true,
     })
     .select()
@@ -99,6 +154,51 @@ export async function validateApiKey(key: string) {
     .eq('id', data.id)
   
   return data
+}
+
+// Decrypt an API key (for syncing operations)
+// Only call this in secure server-side contexts (API routes)
+export function getDecryptedKey(encryptedKey: string | null): string | null {
+  if (!encryptedKey) {
+    return null
+  }
+  
+  try {
+    return decryptApiKeyInternal(encryptedKey)
+  } catch (error) {
+    console.error('Failed to decrypt API key:', error)
+    return null
+  }
+}
+
+// Get decrypted API key for a user (server-side only)
+export async function getDecryptedApiKey(userId: string, keyId?: string): Promise<string | null> {
+  if (!isSupabaseConfigured()) {
+    return null
+  }
+  
+  try {
+    let query = supabaseAdmin
+      .from('api_keys')
+      .select('key_encrypted')
+      .eq('user_id', userId)
+      .eq('is_active', true)
+    
+    if (keyId) {
+      query = query.eq('id', keyId)
+    }
+    
+    const { data, error } = await query.order('created_at', { ascending: false }).limit(1).single()
+    
+    if (error || !data || !data.key_encrypted) {
+      return null
+    }
+    
+    return getDecryptedKey(data.key_encrypted)
+  } catch (error) {
+    console.error('Failed to get decrypted API key:', error)
+    return null
+  }
 }
 
 // Get or create user from Clerk data

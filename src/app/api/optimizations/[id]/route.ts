@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth, currentUser } from '@clerk/nextjs/server'
-import { getOptimization } from '@/lib/optimizations'
+import { getOptimization, storeOptimizationResult } from '@/lib/optimizations'
 import { syncOptimizationToDB } from '@/lib/optimizations/sync'
 import { isSupabaseConfigured } from '@/lib/supabase'
-import { getOrCreateUser } from '@/lib/api-keys'
-import { listApiKeys } from '@/lib/api-keys'
+import { getOrCreateUser, getDecryptedApiKey } from '@/lib/api-keys'
 
 /**
  * GET /api/optimizations/[id]
@@ -47,22 +46,29 @@ export async function GET(
 
     // If not found in database, try to fetch from API and cache it
     if (!optimization) {
-      // Get user's API keys to use for fetching
-      const apiKeys = await listApiKeys(dbUser.id)
-      const activeKey = apiKeys.find((k) => k.is_active)
+      // Get decrypted API key for syncing
+      const apiKey = await getDecryptedApiKey(dbUser.id)
 
-      if (activeKey) {
-        // Note: We need the actual API key to fetch from Sematryx API
-        // For now, we'll return 404 and let the frontend handle it
-        // In production, you might want to store encrypted API keys or
-        // use a service account to fetch on behalf of users
-        return NextResponse.json(
-          {
-            error: 'Optimization not found',
-            message: 'Optimization not found in cache. Please ensure the optimization exists and try again.',
-          },
-          { status: 404 }
-        )
+      if (apiKey) {
+        try {
+          // Sync from API to database
+          const syncedResult = await syncOptimizationToDB(
+            apiKey,
+            operationId,
+            dbUser.id,
+            async (userId, opId, data) => {
+              return await storeOptimizationResult(userId, opId, data)
+            }
+          )
+
+          if (syncedResult) {
+            // Fetch the newly synced result
+            optimization = await getOptimization(dbUser.id, operationId)
+          }
+        } catch (error) {
+          console.error('Error syncing optimization:', error)
+          // Continue to return 404 if sync fails
+        }
       }
     }
 
