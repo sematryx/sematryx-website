@@ -76,11 +76,23 @@ export async function POST(req: NextRequest) {
 
     const key = await createApiKey(dbUser.id, name)
     
+    // Log encryption status for debugging
+    console.log('API key created:', {
+      id: key.id,
+      name: key.name,
+      has_encryption: !!key.key_encrypted,
+      encryption_key_set: !!process.env.API_KEY_ENCRYPTION_KEY
+    })
+    
     return NextResponse.json(key)
   } catch (error) {
     console.error('Error creating API key:', error)
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace')
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { 
+        error: 'Internal server error',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     )
   }

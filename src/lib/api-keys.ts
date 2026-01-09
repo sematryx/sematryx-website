@@ -68,10 +68,19 @@ export async function createApiKey(userId: string, name: string) {
   let encryptedKey: string | null = null
   try {
     encryptedKey = encryptApiKey(key)
+    console.log('✅ API key encrypted successfully')
   } catch (error) {
+    // Log the actual error for debugging
+    console.error('❌ API key encryption failed:', error)
+    console.error('Error details:', error instanceof Error ? error.message : String(error))
+    console.error('API_KEY_ENCRYPTION_KEY is set:', !!process.env.API_KEY_ENCRYPTION_KEY)
     // If encryption key is not set, log warning but continue
     // This allows the system to work without encryption (less secure)
-    console.warn('API key encryption not available - keys will not be retrievable for syncing')
+    console.warn('⚠️ API key encryption not available - keys will not be retrievable for syncing')
+    // Re-throw if it's a critical error (not just missing env var)
+    if (error instanceof Error && !error.message.includes('environment variable is not set')) {
+      throw error
+    }
   }
   
   const { data, error } = await supabaseAdmin
