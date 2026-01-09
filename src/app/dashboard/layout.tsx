@@ -6,6 +6,9 @@ import { UserButton } from '@clerk/nextjs'
 import { Key, LayoutDashboard, BarChart3, Settings, CreditCard, BookOpen, Target } from 'lucide-react'
 import Logo from '@/components/Logo'
 
+// Force dynamic rendering to avoid static generation issues with Clerk
+export const dynamic = 'force-dynamic'
+
 const navigation = [
   { name: 'Overview', href: '/dashboard', icon: LayoutDashboard },
   { name: 'Optimizations', href: '/dashboard/optimizations', icon: Target },

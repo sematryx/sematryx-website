@@ -5,6 +5,9 @@ import { useSearchParams } from 'next/navigation'
 import { CreditCard, Receipt, TrendingUp, Zap, Database, Check, HardDrive } from 'lucide-react'
 import { Suspense } from 'react'
 
+// Force dynamic rendering to avoid static generation issues
+export const dynamic = 'force-dynamic'
+
 interface SubscriptionData {
   plan: 'free' | 'starter' | 'growth' | 'pro' | 'enterprise'
   limits: {

@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react'
 import { Key, Plus, Copy, Trash2, Eye, EyeOff, AlertTriangle, Check } from 'lucide-react'
 
+// Force dynamic rendering to avoid static generation issues with Clerk
+export const dynamic = 'force-dynamic'
+
 interface ApiKey {
   id: string
   name: string

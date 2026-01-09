@@ -3,6 +3,9 @@
 import { useState } from 'react'
 import { BarChart3, TrendingUp, Clock, Zap } from 'lucide-react'
 
+// Force dynamic rendering to avoid static generation issues
+export const dynamic = 'force-dynamic'
+
 export default function UsagePage() {
   const [timeRange, setTimeRange] = useState('7d')
 
