@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Key, Zap, TrendingUp, Clock, ArrowRight, Plus } from 'lucide-react'
 
+// Force dynamic rendering to avoid static generation issues with Clerk
+export const dynamic = 'force-dynamic'
+
 interface DashboardStats {
   totalKeys: number
   activeKeys: number

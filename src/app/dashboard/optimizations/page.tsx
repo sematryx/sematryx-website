@@ -9,6 +9,9 @@ import OptimizationStatsCards from '@/components/optimizations/OptimizationStats
 import { Target, Plus } from 'lucide-react'
 import Link from 'next/link'
 
+// Force dynamic rendering to avoid static generation issues with Clerk
+export const dynamic = 'force-dynamic'
+
 interface OptimizationListResponse {
   data: any[]
   pagination: {

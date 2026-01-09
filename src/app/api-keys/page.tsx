@@ -8,6 +8,9 @@ import Footer from '@/components/Footer'
 import Link from 'next/link'
 import { Key, Zap, Shield, ArrowRight } from 'lucide-react'
 
+// Force dynamic rendering to avoid static generation issues with Clerk
+export const dynamic = 'force-dynamic'
+
 export default function ApiKeysPage() {
   const { isSignedIn, isLoaded } = useUser()
   const router = useRouter()

@@ -25,6 +25,11 @@ const nextConfig = {
       },
     ]
   },
+  // Skip static generation for pages that use Clerk
+  // This prevents build errors when Clerk keys aren't available during build
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 }
 
 module.exports = nextConfig
