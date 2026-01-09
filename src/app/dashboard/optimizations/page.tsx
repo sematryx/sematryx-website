@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import OptimizationResultsTable from '@/components/optimizations/OptimizationResultsTable'
 import OptimizationFilters from '@/components/optimizations/OptimizationFilters'
@@ -31,7 +31,7 @@ interface OptimizationListResponse {
   availableStrategies: string[]
 }
 
-export default function OptimizationsPage() {
+function OptimizationsContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   
@@ -217,5 +217,17 @@ export default function OptimizationsPage() {
 
       {/* Empty State (handled by table component) */}
     </div>
+  )
+}
+
+export default function OptimizationsPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-500"></div>
+      </div>
+    }>
+      <OptimizationsContent />
+    </Suspense>
   )
 }

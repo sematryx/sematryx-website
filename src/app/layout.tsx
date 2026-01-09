@@ -32,29 +32,32 @@ export default function RootLayout({
   // Get Clerk publishable key from environment
   const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
 
+  // ClerkProvider configuration
+  const clerkConfig = {
+    publishableKey: clerkPublishableKey,
+    appearance: {
+      baseTheme: dark,
+      variables: {
+        colorPrimary: '#6366f1',
+        colorBackground: '#1a1f2e',
+        colorInputBackground: '#0f1419',
+        colorInputText: '#ffffff',
+      },
+      elements: {
+        formButtonPrimary: 'bg-primary-600 hover:bg-primary-500',
+        card: 'bg-[#1a1f2e] border border-gray-700',
+        headerTitle: 'text-white',
+        headerSubtitle: 'text-gray-400',
+        socialButtonsBlockButton: 'bg-[#242b3d] border-gray-600 text-white hover:bg-[#2d3548]',
+        formFieldLabel: 'text-gray-300',
+        formFieldInput: 'bg-[#0f1419] border-gray-600 text-white',
+        footerActionLink: 'text-primary-400 hover:text-primary-300',
+      },
+    },
+  }
+
   return (
-    <ClerkProvider
-      publishableKey={clerkPublishableKey}
-      appearance={{
-        baseTheme: dark,
-        variables: {
-          colorPrimary: '#6366f1',
-          colorBackground: '#1a1f2e',
-          colorInputBackground: '#0f1419',
-          colorInputText: '#ffffff',
-        },
-        elements: {
-          formButtonPrimary: 'bg-primary-600 hover:bg-primary-500',
-          card: 'bg-[#1a1f2e] border border-gray-700',
-          headerTitle: 'text-white',
-          headerSubtitle: 'text-gray-400',
-          socialButtonsBlockButton: 'bg-[#242b3d] border-gray-600 text-white hover:bg-[#2d3548]',
-          formFieldLabel: 'text-gray-300',
-          formFieldInput: 'bg-[#0f1419] border-gray-600 text-white',
-          footerActionLink: 'text-primary-400 hover:text-primary-300',
-        },
-      }}
-    >
+    <ClerkProvider {...clerkConfig}>
       <html lang="en">
         <body className={inter.className}>
           {children}
