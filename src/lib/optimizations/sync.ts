@@ -12,7 +12,7 @@ export async function fetchOptimizationFromAPI(
   apiKey: string,
   operationId: string
 ): Promise<any> {
-  const response = await fetch(`${SEMATRYX_API_URL}/v1/optimization/result/${operationId}`, {
+  const response = await fetch(`${SEMATRYX_API_URL}/optimization/result/${operationId}`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
@@ -37,7 +37,7 @@ export async function fetchOptimizationStatus(
   apiKey: string,
   operationId: string
 ): Promise<any> {
-  const response = await fetch(`${SEMATRYX_API_URL}/v1/optimization/status/${operationId}`, {
+  const response = await fetch(`${SEMATRYX_API_URL}/optimization/status/${operationId}`, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
@@ -68,7 +68,7 @@ export async function listOptimizationsFromAPI(
   const { limit = 100, offset = 0 } = options
 
   const response = await fetch(
-    `${SEMATRYX_API_URL}/v1/optimization/?limit=${limit}&offset=${offset}`,
+    `${SEMATRYX_API_URL}/optimization/?limit=${limit}&offset=${offset}`,
     {
       method: 'GET',
       headers: {
