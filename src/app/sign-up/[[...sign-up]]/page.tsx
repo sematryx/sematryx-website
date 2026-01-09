@@ -4,6 +4,9 @@ import { SignUp } from '@clerk/nextjs'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
+// Force dynamic rendering to avoid static generation issues with Clerk
+export const dynamic = 'force-dynamic'
+
 export default function SignUpPage() {
   return (
     <main>

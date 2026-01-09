@@ -29,23 +29,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-
-  // Only render ClerkProvider if key is available (prevents build errors)
-  if (!clerkPublishableKey) {
-    return (
-      <html lang="en">
-        <body className={inter.className}>
-          {children}
-          <FeedbackButton />
-        </body>
-      </html>
-    )
-  }
-
   return (
     <ClerkProvider
-      publishableKey={clerkPublishableKey}
       appearance={{
         baseTheme: dark,
         variables: {
