@@ -12,7 +12,10 @@ export async function fetchOptimizationFromAPI(
   apiKey: string,
   operationId: string
 ): Promise<any> {
-  const response = await fetch(`${SEMATRYX_API_URL}/optimization/result/${operationId}`, {
+  const url = `${SEMATRYX_API_URL}/optimization/result/${operationId}`
+  console.log('[DEBUG SYNC] Fetching optimization result:', { url, operationId, apiKeyPrefix: apiKey.substring(0, 10) })
+  
+  const response = await fetch(url, {
     method: 'GET',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
@@ -20,14 +23,26 @@ export async function fetchOptimizationFromAPI(
     },
   })
 
+  console.log('[DEBUG SYNC] Result fetch response:', { ok: response.ok, status: response.status, statusText: response.statusText })
+
   if (!response.ok) {
     if (response.status === 404) {
+      console.log('[DEBUG SYNC] Optimization not found (404):', operationId)
       return null
     }
+    const errorText = await response.text()
+    console.error('[DEBUG SYNC] Failed to fetch optimization:', { status: response.status, statusText: response.statusText, errorText })
     throw new Error(`Failed to fetch optimization: ${response.statusText}`)
   }
 
-  return await response.json()
+  const result = await response.json()
+  console.log('[DEBUG SYNC] Optimization result received:', { 
+    operationId: result.operation_id || result.problem_id,
+    status: result.status,
+    hasOptimalValue: result.optimal_value !== undefined,
+    strategy: result.strategy_used
+  })
+  return result
 }
 
 /**
@@ -85,17 +100,30 @@ export async function listOptimizationsFromAPI(
   }
 
   const data = await response.json()
+  console.log('[DEBUG SYNC] API response received:', { 
+    isArray: Array.isArray(data),
+    hasOperations: !!data.operations,
+    hasResults: !!data.results,
+    keys: Object.keys(data),
+    operationsCount: data.operations?.length || 0,
+    sample: data.operations?.slice(0, 2) || data.slice?.(0, 2) || 'N/A'
+  })
+  
   // Handle different response formats
+  let result: any[] = []
   if (Array.isArray(data)) {
-    return data
+    result = data
   } else if (data.operations && Array.isArray(data.operations)) {
-    return data.operations
+    result = data.operations
   } else if (data.results && Array.isArray(data.results)) {
-    return data.results
+    result = data.results
   } else {
-    console.warn('Unexpected API response format:', data)
-    return []
+    console.warn('[DEBUG SYNC] Unexpected API response format:', data)
+    result = []
   }
+  
+  console.log('[DEBUG SYNC] Returning optimizations:', { count: result.length, operationIds: result.map((op: any) => op.operation_id || op.problem_id || 'NO_ID') })
+  return result
 }
 
 /**
