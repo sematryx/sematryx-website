@@ -6,7 +6,7 @@ import OptimizationResultsTable from '@/components/optimizations/OptimizationRes
 import OptimizationFilters from '@/components/optimizations/OptimizationFilters'
 import OptimizationPagination from '@/components/optimizations/OptimizationPagination'
 import OptimizationStatsCards from '@/components/optimizations/OptimizationStatsCards'
-import { Target, Plus } from 'lucide-react'
+import { Target, Plus, RefreshCw } from 'lucide-react'
 import Link from 'next/link'
 
 // Force dynamic rendering to avoid static generation issues with Clerk
@@ -86,6 +86,7 @@ function OptimizationsContent() {
   const [data, setData] = useState<OptimizationListResponse | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
+  const [isSyncing, setIsSyncing] = useState(false)
 
   // Fetch data
   useEffect(() => {
@@ -139,6 +140,36 @@ function OptimizationsContent() {
     setPage(1) // Reset to first page when limit changes
   }
 
+  const handleSync = async () => {
+    setIsSyncing(true)
+    setError(null)
+    
+    try {
+      // Trigger sync by adding ?sync=true to the query
+      const syncUrl = `/api/optimizations?${queryString ? queryString + '&' : ''}sync=true`
+      const res = await fetch(syncUrl)
+      
+      if (!res.ok) {
+        throw new Error('Failed to sync optimizations')
+      }
+      
+      // Refetch data after sync
+      const apiUrl = `/api/optimizations?${queryString}`
+      const dataRes = await fetch(apiUrl)
+      
+      if (!dataRes.ok) {
+        throw new Error('Failed to fetch optimizations after sync')
+      }
+      
+      const result = await dataRes.json()
+      setData(result)
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Unknown error'))
+    } finally {
+      setIsSyncing(false)
+    }
+  }
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -152,13 +183,23 @@ function OptimizationsContent() {
             View and analyze your optimization history
           </p>
         </div>
-        <Link
-          href="/docs"
-          className="hidden sm:flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-500 transition-colors"
-        >
-          <Plus className="h-4 w-4" />
-          Run Optimization
-        </Link>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleSync}
+            disabled={isSyncing || isLoading}
+            className="hidden sm:flex items-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <RefreshCw className={`h-4 w-4 ${isSyncing ? 'animate-spin' : ''}`} />
+            {isSyncing ? 'Syncing...' : 'Sync'}
+          </button>
+          <Link
+            href="/docs"
+            className="hidden sm:flex items-center gap-2 bg-primary-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-500 transition-colors"
+          >
+            <Plus className="h-4 w-4" />
+            Run Optimization
+          </Link>
+        </div>
       </div>
 
       {/* Stats Cards */}
