@@ -90,6 +90,7 @@ export async function GET(req: NextRequest) {
     })
 
     // Sync if requested or if no results found
+    let syncDebugInfo: any = null
     console.log('[DEBUG API] Sync check:', { shouldSync, existingTotal: existingResult.pagination.total, userId: dbUser.id })
     if (shouldSync || existingResult.pagination.total === 0) {
       // #region agent log
@@ -102,8 +103,14 @@ export async function GET(req: NextRequest) {
         console.log('[DEBUG API] API key check:', { hasApiKey: !!apiKey, apiKeyLength: apiKey?.length || 0, apiKeyPrefix: apiKey?.substring(0, 10) || 'none' });
         fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/optimizations/route.ts:api-key-check',message:'API key retrieved',data:{hasApiKey:!!apiKey,apiKeyLength:apiKey?.length||0},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
         // #endregion
+        syncDebugInfo = {
+          syncTriggered: true,
+          hasApiKey: !!apiKey,
+          apiKeyLength: apiKey?.length || 0,
+        }
         if (!apiKey) {
           console.warn('⚠️ No decryptable API key found for syncing')
+          syncDebugInfo.error = 'No decryptable API key found'
         } else {
           console.log('🔄 Syncing optimizations from API...')
           // Fetch recent optimizations from API (last 100)
@@ -163,6 +170,10 @@ export async function GET(req: NextRequest) {
           console.log('[DEBUG API] Sync summary:', { syncedCount, skippedCount, errorCount, totalProcessed: syncedCount + skippedCount + errorCount });
           fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/optimizations/route.ts:sync-complete',message:'Sync completed',data:{syncedCount,skippedCount,errorCount},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
           // #endregion
+          syncDebugInfo.apiOptimizationsCount = apiOptimizations.length
+          syncDebugInfo.syncedCount = syncedCount
+          syncDebugInfo.skippedCount = skippedCount
+          syncDebugInfo.errorCount = errorCount
         }
       } catch (error) {
         // #region agent log
@@ -170,6 +181,8 @@ export async function GET(req: NextRequest) {
         fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/optimizations/route.ts:sync-error',message:'Sync error caught',data:{errorMessage:error instanceof Error ? error.message : String(error),errorName:error instanceof Error ? error.name : 'Unknown'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
         // #endregion
         console.error('❌ Error during auto-sync:', error)
+        syncDebugInfo = syncDebugInfo || { syncTriggered: true }
+        syncDebugInfo.error = error instanceof Error ? error.message : String(error)
         // Continue to return results even if sync fails
       }
     } else {
@@ -192,10 +205,21 @@ export async function GET(req: NextRequest) {
     // Get available strategies for filter dropdown
     const strategies = await getStrategiesForUser(dbUser.id)
 
-    return NextResponse.json({
+    // Include debug info in response if sync was requested
+    const response: any = {
       ...result,
       availableStrategies: strategies,
-    })
+    }
+    
+    if (shouldSync && syncDebugInfo) {
+      response._debug = {
+        ...syncDebugInfo,
+        existingTotalBeforeSync: existingResult.pagination.total,
+        finalTotal: result.pagination.total,
+      }
+    }
+
+    return NextResponse.json(response)
   } catch (error) {
     console.error('Error fetching optimizations:', error)
     return NextResponse.json(
