@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth, currentUser } from '@clerk/nextjs/server'
-import { listOptimizations, getStrategiesForUser, getUserIdFromClerkId } from '@/lib/optimizations'
+import { listOptimizations, getStrategiesForUser, getUserIdFromClerkId, getOptimization } from '@/lib/optimizations'
 import { isSupabaseConfigured } from '@/lib/supabase'
-import { getOrCreateUser } from '@/lib/api-keys'
+import { getOrCreateUser, getDecryptedApiKey } from '@/lib/api-keys'
+import { listOptimizationsFromAPI, syncOptimizationToDB } from '@/lib/optimizations/sync'
+import { storeOptimizationResult } from '@/lib/optimizations'
 
 /**
  * GET /api/optimizations
@@ -72,8 +74,66 @@ export async function GET(req: NextRequest) {
     const sortBy = (searchParams.get('sortBy') ||
       'created_at') as 'created_at' | 'optimal_value' | 'evaluations_used'
     const sortOrder = (searchParams.get('sortOrder') || 'desc') as 'asc' | 'desc'
+    const shouldSync = searchParams.get('sync') === 'true'
 
-    // Fetch optimizations
+    // Auto-sync: If list is empty or sync is requested, fetch from API and sync
+    const existingResult = await listOptimizations(dbUser.id, {
+      page: 1,
+      limit: 1,
+      status: status || undefined,
+      strategy,
+      startDate,
+      endDate,
+      search,
+      sortBy,
+      sortOrder,
+    })
+
+    // Sync if requested or if no results found
+    if (shouldSync || existingResult.pagination.total === 0) {
+      try {
+        const apiKey = await getDecryptedApiKey(dbUser.id)
+        if (apiKey) {
+          console.log('🔄 Syncing optimizations from API...')
+          // Fetch recent optimizations from API (last 100)
+          const apiOptimizations = await listOptimizationsFromAPI(apiKey, { limit: 100, offset: 0 })
+          
+          // Sync each optimization that we don't have
+          let syncedCount = 0
+          for (const apiOpt of apiOptimizations) {
+            const operationId = apiOpt.operation_id || apiOpt.problem_id
+            if (!operationId) continue
+
+            try {
+              // Check if we already have this optimization
+              const existing = await getOptimization(dbUser.id, operationId)
+
+              // Only sync if we don't have it
+              if (!existing) {
+                await syncOptimizationToDB(
+                  apiKey,
+                  operationId,
+                  dbUser.id,
+                  async (userId, opId, data) => {
+                    return await storeOptimizationResult(userId, opId, data)
+                  }
+                )
+                syncedCount++
+              }
+            } catch (error) {
+              console.error(`Error syncing optimization ${operationId}:`, error)
+              // Continue with other optimizations
+            }
+          }
+          console.log(`✅ Synced ${syncedCount} new optimizations`)
+        }
+      } catch (error) {
+        console.error('Error during auto-sync:', error)
+        // Continue to return results even if sync fails
+      }
+    }
+
+    // Fetch optimizations (after sync)
     const result = await listOptimizations(dbUser.id, {
       page,
       limit,
