@@ -4,8 +4,17 @@ import crypto from 'crypto'
 // Encryption/Decryption utilities for API keys
 // Uses AES-256-GCM for authenticated encryption
 function getEncryptionKey(): Buffer {
-  const key = process.env.API_KEY_ENCRYPTION_KEY
+  // Try multiple possible variable names (in case of typos or Vercel issues)
+  const key = process.env.API_KEY_ENCRYPTION_KEY 
+    || process.env['API_KEY_ENCRYPTION_KEY'] 
+    || (process.env as any)['API_KEY_ENCRYPTION_KEY']
+  
   if (!key) {
+    // Log all env vars for debugging (first 100 chars of each)
+    const envKeys = Object.keys(process.env).filter(k => 
+      k.includes('API') || k.includes('ENCRYPTION') || k.includes('KEY')
+    )
+    console.error('API_KEY_ENCRYPTION_KEY not found. Available related vars:', envKeys)
     throw new Error('API_KEY_ENCRYPTION_KEY environment variable is not set')
   }
   // Use SHA-256 to derive a 32-byte key from the env var
