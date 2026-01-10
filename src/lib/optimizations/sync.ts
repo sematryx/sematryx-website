@@ -82,20 +82,22 @@ export async function listOptimizationsFromAPI(
 ): Promise<any[]> {
   const { limit = 100, offset = 0 } = options
 
-  const response = await fetch(
-    `${SEMATRYX_API_URL}/optimization/?limit=${limit}&offset=${offset}`,
-    {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-    }
-  )
+  const url = `${SEMATRYX_API_URL}/optimization/?limit=${limit}&offset=${offset}`
+  console.log('[DEBUG SYNC] Calling Sematryx API:', { url, apiKeyPrefix: apiKey.substring(0, 10) })
+  
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+  })
+
+  console.log('[DEBUG SYNC] API response status:', { ok: response.ok, status: response.status, statusText: response.statusText })
 
   if (!response.ok) {
     const errorText = await response.text()
-    console.error(`Failed to list optimizations: ${response.status} ${response.statusText}`, errorText)
+    console.error('[DEBUG SYNC] API error:', { status: response.status, statusText: response.statusText, errorText })
     throw new Error(`Failed to list optimizations: ${response.statusText}`)
   }
 
@@ -106,7 +108,9 @@ export async function listOptimizationsFromAPI(
     hasResults: !!data.results,
     keys: Object.keys(data),
     operationsCount: data.operations?.length || 0,
-    sample: data.operations?.slice(0, 2) || data.slice?.(0, 2) || 'N/A'
+    totalCount: data.total_count || 'N/A',
+    sample: data.operations?.slice(0, 2) || data.slice?.(0, 2) || 'N/A',
+    fullResponse: data
   })
   
   // Handle different response formats
@@ -122,7 +126,19 @@ export async function listOptimizationsFromAPI(
     result = []
   }
   
-  console.log('[DEBUG SYNC] Returning optimizations:', { count: result.length, operationIds: result.map((op: any) => op.operation_id || op.problem_id || 'NO_ID') })
+  console.log('[DEBUG SYNC] Returning optimizations:', { 
+    count: result.length, 
+    operationIds: result.map((op: any) => op.operation_id || op.problem_id || 'NO_ID'),
+    isEmpty: result.length === 0
+  })
+  
+  if (result.length === 0) {
+    console.warn('[DEBUG SYNC] ⚠️ API returned 0 optimizations. This could mean:')
+    console.warn('[DEBUG SYNC]   1. Server was restarted and in-memory operations were lost')
+    console.warn('[DEBUG SYNC]   2. No operations exist for this API key')
+    console.warn('[DEBUG SYNC]   3. Operations are stored elsewhere (database)')
+  }
+  
   return result
 }
 
