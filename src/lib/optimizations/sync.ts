@@ -94,10 +94,16 @@ export async function listOptimizationsFromAPI(
   })
 
   console.log('[DEBUG SYNC] API response status:', { ok: response.ok, status: response.status, statusText: response.statusText })
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'sync.ts:listOptimizationsFromAPI:response-status',message:'API response status',data:{ok:response.ok,status:response.status,statusText:response.statusText,url},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+  // #endregion
 
   if (!response.ok) {
     const errorText = await response.text()
     console.error('[DEBUG SYNC] API error:', { status: response.status, statusText: response.statusText, errorText })
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'sync.ts:listOptimizationsFromAPI:error',message:'API error response',data:{status:response.status,statusText:response.statusText,errorText:errorText.substring(0,500)},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+    // #endregion
     // Don't throw - return empty array so sync can continue (operations may still be fetchable individually)
     console.warn('[DEBUG SYNC] List endpoint failed, returning empty array. Individual operations may still be accessible.')
     return []
@@ -114,6 +120,9 @@ export async function listOptimizationsFromAPI(
     sample: data.operations?.slice(0, 2) || data.slice?.(0, 2) || 'N/A',
     fullResponse: data
   })
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'sync.ts:listOptimizationsFromAPI:response-data',message:'API response data',data:{isArray:Array.isArray(data),hasOperations:!!data.operations,hasResults:!!data.results,keys:Object.keys(data),operationsCount:data.operations?.length||0,totalCount:data.total_count||'N/A',operationsSample:data.operations?.slice(0,2)||data.slice?.(0,2)||null},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+  // #endregion
   
   // Handle different response formats
   let result: any[] = []

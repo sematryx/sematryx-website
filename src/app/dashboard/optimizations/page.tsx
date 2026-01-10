@@ -174,8 +174,8 @@ function OptimizationsContent() {
       
       const syncResult = await res.json()
       // #region agent log
-      console.log('[DEBUG] Sync response received:', { hasData: !!syncResult, keys: Object.keys(syncResult || {}), syncResult });
-      fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:sync-success',message:'Sync response received',data:{hasData:!!syncResult,keys:Object.keys(syncResult||{})},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+      console.log('[DEBUG] Sync response received:', { hasData: !!syncResult, keys: Object.keys(syncResult || {}), syncResult, debugInfo: syncResult._debug });
+      fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:sync-success',message:'Sync response received',data:{hasData:!!syncResult,keys:Object.keys(syncResult||{}),hasDebug:!!syncResult._debug,debugInfo:syncResult._debug},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
       // #endregion
       console.log('✅ Sync response:', syncResult)
       
