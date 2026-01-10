@@ -141,22 +141,37 @@ function OptimizationsContent() {
   }
 
   const handleSync = async () => {
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:entry',message:'handleSync called',data:{queryString,isSyncing,isLoading},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+    // #endregion
     setIsSyncing(true)
     setError(null)
     
     try {
       // Trigger sync by adding ?sync=true to the query
       const syncUrl = `/api/optimizations?${queryString ? queryString + '&' : ''}sync=true`
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:before-fetch',message:'About to fetch sync URL',data:{syncUrl},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+      // #endregion
       console.log('🔄 Triggering sync:', syncUrl)
       const res = await fetch(syncUrl)
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:after-fetch',message:'Fetch response received',data:{ok:res.ok,status:res.status,statusText:res.statusText},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+      // #endregion
       
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({ error: res.statusText }))
+        // #region agent log
+        fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:error',message:'Sync fetch failed',data:{errorData,status:res.status},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+        // #endregion
         console.error('❌ Sync failed:', errorData)
         throw new Error(errorData.error || errorData.message || 'Failed to sync optimizations')
       }
       
       const syncResult = await res.json()
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:sync-success',message:'Sync response received',data:{hasData:!!syncResult,keys:Object.keys(syncResult||{})},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+      // #endregion
       console.log('✅ Sync response:', syncResult)
       
       // Refetch data after sync
@@ -168,13 +183,22 @@ function OptimizationsContent() {
       }
       
       const result = await dataRes.json()
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:refetch-success',message:'Data refetched after sync',data:{resultCount:result?.data?.length||0,total:result?.pagination?.total||0},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+      // #endregion
       console.log('📊 Fetched data after sync:', result)
       setData(result)
     } catch (err) {
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:catch',message:'Exception caught',data:{errorMessage:err instanceof Error ? err.message : String(err),errorName:err instanceof Error ? err.name : 'Unknown'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+      // #endregion
       console.error('❌ Sync error:', err)
       setError(err instanceof Error ? err : new Error('Unknown error'))
     } finally {
       setIsSyncing(false)
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:handleSync:finally',message:'handleSync completed',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+      // #endregion
     }
   }
 
@@ -193,7 +217,12 @@ function OptimizationsContent() {
         </div>
         <div className="flex items-center gap-3">
           <button
-            onClick={handleSync}
+            onClick={(e) => {
+              // #region agent log
+              fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'optimizations/page.tsx:button:onClick',message:'Sync button clicked',data:{isSyncing,isLoading,disabled:isSyncing || isLoading},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+              // #endregion
+              handleSync()
+            }}
             disabled={isSyncing || isLoading}
             className="hidden sm:flex items-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
