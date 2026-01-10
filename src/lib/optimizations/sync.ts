@@ -203,24 +203,40 @@ export async function syncOptimizationToDB(
   userId: string,
   storeOptimization: (userId: string, operationId: string, data: any) => Promise<any>
 ): Promise<any> {
+  console.log('[DEBUG SYNC] syncOptimizationToDB called:', { operationId, userId })
   try {
     // Try to get result first (for completed optimizations)
     let apiData = await fetchOptimizationFromAPI(apiKey, operationId)
+    console.log('[DEBUG SYNC] fetchOptimizationFromAPI result:', { hasData: !!apiData, operationId })
 
     // If result not found, try status endpoint (for running optimizations)
     if (!apiData) {
+      console.log('[DEBUG SYNC] Result not found, trying status endpoint')
       apiData = await fetchOptimizationStatus(apiKey, operationId)
+      console.log('[DEBUG SYNC] fetchOptimizationStatus result:', { hasData: !!apiData, operationId })
     }
 
     if (!apiData) {
+      console.warn('[DEBUG SYNC] No data found for operation:', operationId)
       return null
     }
 
     // Transform and store
+    console.log('[DEBUG SYNC] Transforming API response')
     const transformed = transformAPIResponseToDB(apiData, userId)
-    return await storeOptimization(userId, operationId, transformed)
+    console.log('[DEBUG SYNC] Transformed data:', { 
+      operationId, 
+      status: transformed.status, 
+      hasOptimalValue: transformed.optimal_value !== undefined,
+      strategy: transformed.strategy_used 
+    })
+    
+    console.log('[DEBUG SYNC] Calling storeOptimization')
+    const result = await storeOptimization(userId, operationId, transformed)
+    console.log('[DEBUG SYNC] storeOptimization completed:', { success: !!result, operationId })
+    return result
   } catch (error) {
-    console.error(`Error syncing optimization ${operationId}:`, error)
+    console.error(`[DEBUG SYNC] Error syncing optimization ${operationId}:`, error)
     throw error
   }
 }

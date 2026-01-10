@@ -227,40 +227,53 @@ export async function storeOptimizationResult(
     completed_at?: string
   }
 ): Promise<OptimizationResult> {
+  console.log('[DEBUG STORE] storeOptimizationResult called:', { userId, operationId, status: result.status, hasOptimalValue: result.optimal_value !== undefined })
+  
   if (!isSupabaseConfigured()) {
+    console.error('[DEBUG STORE] Supabase not configured')
     throw new Error('Supabase is not configured')
   }
+
+  const insertData = {
+    user_id: userId,
+    operation_id: operationId,
+    problem_id: result.problem_id || null,
+    optimal_solution: result.optimal_solution || null,
+    optimal_value: result.optimal_value || null,
+    strategy_used: result.strategy_used || null,
+    evaluations_used: result.evaluations_used || null,
+    convergence_history: result.convergence_history || null,
+    execution_time: result.execution_time || null,
+    iterations: result.iterations || null,
+    status: result.status,
+    success: result.success ?? null,
+    error_message: result.error_message || null,
+    learning_applied: result.learning_applied || false,
+    learning_insights: result.learning_insights || null,
+    public_recall_count: result.public_recall_count || 0,
+    private_recall_count: result.private_recall_count || 0,
+    stored_to_public: result.stored_to_public || false,
+    stored_to_private: result.stored_to_private || false,
+    strategy_explanation: result.strategy_explanation || null,
+    configuration: result.configuration || null,
+    ai_reasoning_used: result.ai_reasoning_used || false,
+    context_intelligence_used: result.context_intelligence_used || false,
+    domain: result.domain || null,
+    completed_at: result.completed_at || null,
+  }
+  
+  console.log('[DEBUG STORE] Inserting data:', { 
+    operationId, 
+    userId, 
+    status: insertData.status,
+    hasOptimalValue: insertData.optimal_value !== null,
+    strategy: insertData.strategy_used 
+  })
 
   const { data, error } = await supabaseAdmin
     .from('optimization_results')
     .upsert(
-      {
-        user_id: userId,
-        operation_id: operationId,
-        problem_id: result.problem_id || null,
-        optimal_solution: result.optimal_solution || null,
-        optimal_value: result.optimal_value || null,
-        strategy_used: result.strategy_used || null,
-        evaluations_used: result.evaluations_used || null,
-        convergence_history: result.convergence_history || null,
-        execution_time: result.execution_time || null,
-        iterations: result.iterations || null,
-        status: result.status,
-        success: result.success ?? null,
-        error_message: result.error_message || null,
-        learning_applied: result.learning_applied || false,
-        learning_insights: result.learning_insights || null,
-        public_recall_count: result.public_recall_count || 0,
-        private_recall_count: result.private_recall_count || 0,
-        stored_to_public: result.stored_to_public || false,
-        stored_to_private: result.stored_to_private || false,
-        strategy_explanation: result.strategy_explanation || null,
-        configuration: result.configuration || null,
-        ai_reasoning_used: result.ai_reasoning_used || false,
-        context_intelligence_used: result.context_intelligence_used || false,
-        domain: result.domain || null,
-        completed_at: result.completed_at || null,
-      },
+      insertData,
       {
         onConflict: 'operation_id',
       }
@@ -268,8 +281,12 @@ export async function storeOptimizationResult(
     .select()
     .single()
 
-  if (error) throw error
+  if (error) {
+    console.error('[DEBUG STORE] Database error:', { error: error.message, code: error.code, details: error.details, hint: error.hint })
+    throw error
+  }
 
+  console.log('[DEBUG STORE] Successfully stored:', { operationId, id: data?.id })
   return data as OptimizationResult
 }
 
