@@ -270,12 +270,15 @@ export async function storeOptimizationResult(
     strategy: insertData.strategy_used 
   })
 
+  // Use upsert with proper conflict resolution
+  // Since operation_id is UNIQUE, we can use it for conflict resolution
   const { data, error } = await supabaseAdmin
     .from('optimization_results')
     .upsert(
       insertData,
       {
         onConflict: 'operation_id',
+        ignoreDuplicates: false, // Update if exists
       }
     )
     .select()

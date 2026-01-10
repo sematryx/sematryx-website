@@ -121,15 +121,13 @@ export async function GET(req: NextRequest) {
           // #endregion
           console.log(`📥 Fetched ${apiOptimizations.length} optimizations from API`)
           
-          // If API returns empty, try to sync known operation IDs from recent test runs
-          // This is a workaround for in-memory operations being lost on server restart
+          // If API returns empty, log warning but continue (operations may still be fetchable individually)
           if (apiOptimizations.length === 0) {
-            console.warn('[DEBUG API] ⚠️ API returned 0 optimizations. This likely means:')
-            console.warn('[DEBUG API]   1. Server was restarted and in-memory operations were lost')
-            console.warn('[DEBUG API]   2. Operations are not persisted in the API')
-            console.warn('[DEBUG API]   → Try syncing specific operation IDs manually using /api/optimizations/sync')
+            console.warn('[DEBUG API] ⚠️ API list endpoint returned 0 optimizations')
+            console.warn('[DEBUG API]   This may mean the server restarted and in-memory operations were lost')
+            console.warn('[DEBUG API]   Individual operations may still be accessible via /optimization/result/{id}')
             syncDebugInfo.apiReturnedEmpty = true
-            syncDebugInfo.warning = 'API returned empty list - operations may have been lost on server restart'
+            syncDebugInfo.warning = 'List endpoint returned empty - individual operations may still be accessible'
           }
           
           // Sync each optimization that we don't have

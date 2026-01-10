@@ -98,7 +98,9 @@ export async function listOptimizationsFromAPI(
   if (!response.ok) {
     const errorText = await response.text()
     console.error('[DEBUG SYNC] API error:', { status: response.status, statusText: response.statusText, errorText })
-    throw new Error(`Failed to list optimizations: ${response.statusText}`)
+    // Don't throw - return empty array so sync can continue (operations may still be fetchable individually)
+    console.warn('[DEBUG SYNC] List endpoint failed, returning empty array. Individual operations may still be accessible.')
+    return []
   }
 
   const data = await response.json()
