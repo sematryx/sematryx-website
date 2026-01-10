@@ -79,11 +79,23 @@ export async function listOptimizationsFromAPI(
   )
 
   if (!response.ok) {
+    const errorText = await response.text()
+    console.error(`Failed to list optimizations: ${response.status} ${response.statusText}`, errorText)
     throw new Error(`Failed to list optimizations: ${response.statusText}`)
   }
 
   const data = await response.json()
-  return Array.isArray(data) ? data : data.results || []
+  // Handle different response formats
+  if (Array.isArray(data)) {
+    return data
+  } else if (data.operations && Array.isArray(data.operations)) {
+    return data.operations
+  } else if (data.results && Array.isArray(data.results)) {
+    return data.results
+  } else {
+    console.warn('Unexpected API response format:', data)
+    return []
+  }
 }
 
 /**

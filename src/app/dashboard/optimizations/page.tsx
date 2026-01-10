@@ -147,11 +147,17 @@ function OptimizationsContent() {
     try {
       // Trigger sync by adding ?sync=true to the query
       const syncUrl = `/api/optimizations?${queryString ? queryString + '&' : ''}sync=true`
+      console.log('🔄 Triggering sync:', syncUrl)
       const res = await fetch(syncUrl)
       
       if (!res.ok) {
-        throw new Error('Failed to sync optimizations')
+        const errorData = await res.json().catch(() => ({ error: res.statusText }))
+        console.error('❌ Sync failed:', errorData)
+        throw new Error(errorData.error || errorData.message || 'Failed to sync optimizations')
       }
+      
+      const syncResult = await res.json()
+      console.log('✅ Sync response:', syncResult)
       
       // Refetch data after sync
       const apiUrl = `/api/optimizations?${queryString}`
@@ -162,8 +168,10 @@ function OptimizationsContent() {
       }
       
       const result = await dataRes.json()
+      console.log('📊 Fetched data after sync:', result)
       setData(result)
     } catch (err) {
+      console.error('❌ Sync error:', err)
       setError(err instanceof Error ? err : new Error('Unknown error'))
     } finally {
       setIsSyncing(false)

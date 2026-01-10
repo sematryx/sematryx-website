@@ -93,16 +93,25 @@ export async function GET(req: NextRequest) {
     if (shouldSync || existingResult.pagination.total === 0) {
       try {
         const apiKey = await getDecryptedApiKey(dbUser.id)
-        if (apiKey) {
+        if (!apiKey) {
+          console.warn('⚠️ No decryptable API key found for syncing')
+        } else {
           console.log('🔄 Syncing optimizations from API...')
           // Fetch recent optimizations from API (last 100)
           const apiOptimizations = await listOptimizationsFromAPI(apiKey, { limit: 100, offset: 0 })
+          console.log(`📥 Fetched ${apiOptimizations.length} optimizations from API`)
           
           // Sync each optimization that we don't have
           let syncedCount = 0
+          let skippedCount = 0
+          let errorCount = 0
+          
           for (const apiOpt of apiOptimizations) {
             const operationId = apiOpt.operation_id || apiOpt.problem_id
-            if (!operationId) continue
+            if (!operationId) {
+              console.warn('⚠️ Skipping optimization without operation_id:', apiOpt)
+              continue
+            }
 
             try {
               // Check if we already have this optimization
@@ -110,6 +119,7 @@ export async function GET(req: NextRequest) {
 
               // Only sync if we don't have it
               if (!existing) {
+                console.log(`📥 Syncing optimization ${operationId}...`)
                 await syncOptimizationToDB(
                   apiKey,
                   operationId,
@@ -119,16 +129,19 @@ export async function GET(req: NextRequest) {
                   }
                 )
                 syncedCount++
+              } else {
+                skippedCount++
               }
             } catch (error) {
-              console.error(`Error syncing optimization ${operationId}:`, error)
+              console.error(`❌ Error syncing optimization ${operationId}:`, error)
+              errorCount++
               // Continue with other optimizations
             }
           }
-          console.log(`✅ Synced ${syncedCount} new optimizations`)
+          console.log(`✅ Sync complete: ${syncedCount} synced, ${skippedCount} skipped, ${errorCount} errors`)
         }
       } catch (error) {
-        console.error('Error during auto-sync:', error)
+        console.error('❌ Error during auto-sync:', error)
         // Continue to return results even if sync fails
       }
     }
