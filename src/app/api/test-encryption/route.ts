@@ -16,13 +16,25 @@ export async function GET(req: NextRequest) {
 
     const encryptionKey = process.env.API_KEY_ENCRYPTION_KEY
     
+    // Debug: List all env vars that start with API_KEY (safely)
+    const apiKeyEnvVars = Object.keys(process.env)
+      .filter(key => key.includes('API_KEY') || key.includes('ENCRYPTION'))
+      .reduce((acc, key) => {
+        acc[key] = process.env[key] ? `Set (length: ${process.env[key]!.length})` : 'Not set'
+        return acc
+      }, {} as Record<string, string>)
+    
     // Test encryption
     let encryptionTest = {
       envVarSet: !!encryptionKey,
       envVarLength: encryptionKey?.length || 0,
       canEncrypt: false,
       canDecrypt: false,
-      error: null as string | null
+      error: null as string | null,
+      // Debug info
+      allEnvVarsWithAPI: apiKeyEnvVars,
+      nodeEnv: process.env.NODE_ENV,
+      vercelEnv: process.env.VERCEL_ENV,
     }
 
     if (encryptionKey) {
