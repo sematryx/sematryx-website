@@ -76,18 +76,26 @@ export async function createApiKey(userId: string, name: string) {
   // Encrypt the key for storage (if encryption key is available)
   let encryptedKey: string | null = null
   try {
+    // Verify env var is accessible
+    const envKey = process.env.API_KEY_ENCRYPTION_KEY
+    if (!envKey) {
+      throw new Error('API_KEY_ENCRYPTION_KEY environment variable is not accessible in createApiKey function')
+    }
+    console.log('Encrypting API key, env var length:', envKey.length)
     encryptedKey = encryptApiKey(key)
-    console.log('✅ API key encrypted successfully')
+    console.log('✅ API key encrypted successfully, encrypted length:', encryptedKey.length)
   } catch (error) {
     // Log the actual error for debugging
     console.error('❌ API key encryption failed:', error)
     console.error('Error details:', error instanceof Error ? error.message : String(error))
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack')
     console.error('API_KEY_ENCRYPTION_KEY is set:', !!process.env.API_KEY_ENCRYPTION_KEY)
+    console.error('API_KEY_ENCRYPTION_KEY length:', process.env.API_KEY_ENCRYPTION_KEY?.length || 0)
     // If encryption key is not set, log warning but continue
     // This allows the system to work without encryption (less secure)
     console.warn('⚠️ API key encryption not available - keys will not be retrievable for syncing')
     // Re-throw if it's a critical error (not just missing env var)
-    if (error instanceof Error && !error.message.includes('environment variable is not set')) {
+    if (error instanceof Error && !error.message.includes('environment variable is not set') && !error.message.includes('not accessible')) {
       throw error
     }
   }
