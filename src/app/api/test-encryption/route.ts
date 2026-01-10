@@ -16,13 +16,27 @@ export async function GET(req: NextRequest) {
 
     const encryptionKey = process.env.API_KEY_ENCRYPTION_KEY
     
-    // Debug: List all env vars that start with API_KEY (safely)
+    // Debug: List all env vars (safely, first 50)
+    const allEnvVarKeys = Object.keys(process.env).slice(0, 50)
     const apiKeyEnvVars = Object.keys(process.env)
-      .filter(key => key.includes('API_KEY') || key.includes('ENCRYPTION'))
+      .filter(key => key.includes('API_KEY') || key.includes('ENCRYPTION') || key.includes('CLERK') || key.includes('STRIPE'))
       .reduce((acc, key) => {
         acc[key] = process.env[key] ? `Set (length: ${process.env[key]!.length})` : 'Not set'
         return acc
       }, {} as Record<string, string>)
+    
+    // Check for common variations
+    const variations = [
+      'API_KEY_ENCRYPTION_KEY',
+      'API_KEY_ENCRYPTION_KEY ',
+      ' API_KEY_ENCRYPTION_KEY',
+      'API_KEY_ENCRYPTION_KEY\n',
+      'API_KEY_ENCRYPTION_KEY\r',
+    ]
+    const variationChecks = variations.reduce((acc, variant) => {
+      acc[variant] = !!process.env[variant.trim()]
+      return acc
+    }, {} as Record<string, boolean>)
     
     // Test encryption
     let encryptionTest = {
@@ -33,8 +47,12 @@ export async function GET(req: NextRequest) {
       error: null as string | null,
       // Debug info
       allEnvVarsWithAPI: apiKeyEnvVars,
+      allEnvVarCount: Object.keys(process.env).length,
+      sampleEnvVars: allEnvVarKeys.slice(0, 10),
+      variationChecks: variationChecks,
       nodeEnv: process.env.NODE_ENV,
       vercelEnv: process.env.VERCEL_ENV,
+      vercelUrl: process.env.VERCEL_URL,
     }
 
     if (encryptionKey) {
