@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import OptimizationResultsTable from '@/components/optimizations/OptimizationResultsTable'
 import OptimizationFilters from '@/components/optimizations/OptimizationFilters'
@@ -87,15 +87,28 @@ function OptimizationsContent() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
   const [isSyncing, setIsSyncing] = useState(false)
+  
+  // Track if we've synced on this page load (using ref to persist across renders)
+  const hasSyncedRef = useRef(false)
+  const isInitialMountRef = useRef(true)
 
-  // Fetch data
+  // Fetch data with automatic sync on initial load/refresh
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true)
       setError(null)
       
       try {
-        const apiUrl = `/api/optimizations?${queryString}`
+        // On initial load (first render or page refresh), automatically sync
+        // Only sync once per page load, not on filter/sort changes
+        const shouldSync = isInitialMountRef.current && !hasSyncedRef.current
+        
+        if (shouldSync) {
+          setIsSyncing(true)
+          hasSyncedRef.current = true
+        }
+        
+        const apiUrl = `/api/optimizations?${queryString}${shouldSync ? '&sync=true' : ''}`
         const res = await fetch(apiUrl)
         
         if (!res.ok) {
@@ -108,11 +121,21 @@ function OptimizationsContent() {
         setError(err instanceof Error ? err : new Error('Unknown error'))
       } finally {
         setIsLoading(false)
+        setIsSyncing(false)
+        isInitialMountRef.current = false
       }
     }
 
     fetchData()
   }, [queryString])
+  
+  // Reset sync flag when component unmounts (page navigation away)
+  useEffect(() => {
+    return () => {
+      hasSyncedRef.current = false
+      isInitialMountRef.current = true
+    }
+  }, [])
 
   const mutate = () => {
     // Trigger refetch by updating a dependency
