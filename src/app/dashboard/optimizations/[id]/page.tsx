@@ -169,11 +169,11 @@ export default async function OptimizationDetailPage({ params }: PageProps) {
           </div>
         )}
 
-        <div className="bg-[#1a1f2e] rounded-lg p-6 border border-gray-800">
-          <h2 className="text-lg font-semibold mb-4 text-gray-200">Full Details</h2>
+        <div className="bg-[#1a1f2e] rounded-lg p-4 border border-gray-800">
+          <h2 className="text-lg font-semibold mb-2 text-gray-200">Full Details</h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <tbody className="divide-y divide-gray-700">
+            <table className="w-full text-xs">
+              <tbody className="divide-y divide-gray-700/50">
                 {Object.entries(optimization).map(([key, value]) => {
                   // Format the key for display
                   const displayKey = key
@@ -191,21 +191,21 @@ export default async function OptimizationDetailPage({ params }: PageProps) {
                     } else if (typeof value[0] === 'number') {
                       // Array of numbers - show compactly
                       displayValue = (
-                        <span className="font-mono text-gray-300">
-                          [{value.map((v: number) => v.toExponential(4)).join(', ')}]
+                        <span className="font-mono text-gray-300 text-xs">
+                          [{value.map((v: number) => v.toExponential(3)).join(', ')}]
                         </span>
                       )
                     } else {
                       displayValue = (
-                        <pre className="text-xs text-gray-300 whitespace-pre-wrap">
-                          {JSON.stringify(value, null, 2)}
+                        <pre className="text-xs text-gray-300 whitespace-pre-wrap leading-tight">
+                          {JSON.stringify(value, null, 1)}
                         </pre>
                       )
                     }
                   } else if (typeof value === 'object') {
                     displayValue = (
-                      <pre className="text-xs text-gray-300 whitespace-pre-wrap">
-                        {JSON.stringify(value, null, 2)}
+                      <pre className="text-xs text-gray-300 whitespace-pre-wrap leading-tight">
+                        {JSON.stringify(value, null, 1)}
                       </pre>
                     )
                   } else if (typeof value === 'boolean') {
@@ -219,15 +219,16 @@ export default async function OptimizationDetailPage({ params }: PageProps) {
                     if (key.includes('time') || key.includes('Time')) {
                       displayValue = <span className="font-mono text-gray-300">{value.toFixed(3)}s</span>
                     } else if (Math.abs(value) < 0.001 || Math.abs(value) > 1000000) {
-                      displayValue = <span className="font-mono text-gray-300">{value.toExponential(4)}</span>
+                      displayValue = <span className="font-mono text-gray-300">{value.toExponential(3)}</span>
                     } else {
                       displayValue = <span className="font-mono text-gray-300">{value.toLocaleString()}</span>
                     }
                   } else if (typeof value === 'string' && value.match(/^\d{4}-\d{2}-\d{2}T/)) {
-                    // ISO date string
+                    // ISO date string - more compact format
+                    const date = new Date(value)
                     displayValue = (
                       <span className="text-gray-300">
-                        {new Date(value).toLocaleString()}
+                        {date.toLocaleDateString()} {date.toLocaleTimeString()}
                       </span>
                     )
                   } else {
@@ -236,10 +237,10 @@ export default async function OptimizationDetailPage({ params }: PageProps) {
                   
                   return (
                     <tr key={key} className="hover:bg-gray-800/50 transition-colors">
-                      <td className="py-3 px-4 text-gray-400 font-medium align-top w-1/3">
+                      <td className="py-1 px-3 text-gray-400 font-medium align-top w-2/5">
                         {displayKey}
                       </td>
-                      <td className="py-3 px-4 text-gray-300 align-top">
+                      <td className="py-1 px-3 text-gray-300 align-top">
                         {displayValue}
                       </td>
                     </tr>
