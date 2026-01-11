@@ -171,9 +171,83 @@ export default async function OptimizationDetailPage({ params }: PageProps) {
 
         <div className="bg-[#1a1f2e] rounded-lg p-6 border border-gray-800">
           <h2 className="text-lg font-semibold mb-4 text-gray-200">Full Details</h2>
-          <pre className="text-xs text-gray-300 overflow-auto">
-            {JSON.stringify(optimization, null, 2)}
-          </pre>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <tbody className="divide-y divide-gray-700">
+                {Object.entries(optimization).map(([key, value]) => {
+                  // Format the key for display
+                  const displayKey = key
+                    .split('_')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ')
+                  
+                  // Format the value based on type
+                  let displayValue: string | JSX.Element
+                  if (value === null || value === undefined) {
+                    displayValue = <span className="text-gray-500 italic">null</span>
+                  } else if (Array.isArray(value)) {
+                    if (value.length === 0) {
+                      displayValue = <span className="text-gray-500 italic">[]</span>
+                    } else if (typeof value[0] === 'number') {
+                      // Array of numbers - show compactly
+                      displayValue = (
+                        <span className="font-mono text-gray-300">
+                          [{value.map((v: number) => v.toExponential(4)).join(', ')}]
+                        </span>
+                      )
+                    } else {
+                      displayValue = (
+                        <pre className="text-xs text-gray-300 whitespace-pre-wrap">
+                          {JSON.stringify(value, null, 2)}
+                        </pre>
+                      )
+                    }
+                  } else if (typeof value === 'object') {
+                    displayValue = (
+                      <pre className="text-xs text-gray-300 whitespace-pre-wrap">
+                        {JSON.stringify(value, null, 2)}
+                      </pre>
+                    )
+                  } else if (typeof value === 'boolean') {
+                    displayValue = (
+                      <span className={value ? 'text-green-400' : 'text-red-400'}>
+                        {value.toString()}
+                      </span>
+                    )
+                  } else if (typeof value === 'number') {
+                    // Format numbers nicely
+                    if (key.includes('time') || key.includes('Time')) {
+                      displayValue = <span className="font-mono text-gray-300">{value.toFixed(3)}s</span>
+                    } else if (Math.abs(value) < 0.001 || Math.abs(value) > 1000000) {
+                      displayValue = <span className="font-mono text-gray-300">{value.toExponential(4)}</span>
+                    } else {
+                      displayValue = <span className="font-mono text-gray-300">{value.toLocaleString()}</span>
+                    }
+                  } else if (typeof value === 'string' && value.match(/^\d{4}-\d{2}-\d{2}T/)) {
+                    // ISO date string
+                    displayValue = (
+                      <span className="text-gray-300">
+                        {new Date(value).toLocaleString()}
+                      </span>
+                    )
+                  } else {
+                    displayValue = <span className="text-gray-300">{String(value)}</span>
+                  }
+                  
+                  return (
+                    <tr key={key} className="hover:bg-gray-800/50 transition-colors">
+                      <td className="py-3 px-4 text-gray-400 font-medium align-top w-1/3">
+                        {displayKey}
+                      </td>
+                      <td className="py-3 px-4 text-gray-300 align-top">
+                        {displayValue}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
