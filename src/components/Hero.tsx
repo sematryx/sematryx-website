@@ -9,26 +9,23 @@ export default function Hero() {
           
           {/* Left Column: Text Content */}
           <div className="text-left z-10">
-            <div className="text-brand-primary font-mono text-sm tracking-[0.2em] uppercase mb-6 animate-fade-in font-semibold">
-              Logic • Math • Language • Learning
+            <div className="text-brand-primary font-mono text-sm tracking-[0.2em] uppercase mb-4 animate-fade-in font-semibold">
+              AI-Powered Optimization API
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6 leading-tight tracking-tight">
-              Optimize problems that <span className="text-brand-primary">break traditional solvers</span>—and explain how
+              Solve complex resource allocation problems—<span className="text-brand-primary">with full explanations</span>
             </h1>
             
             <div className="mb-8 max-w-xl">
-              <p className="text-xl text-brand-primary/90 font-medium mb-3 leading-snug font-mono">
-                One API call. Landscape mapped. Strategy selected. Logic explained. Lessons learned.
+              <p className="text-xl text-gray-300 leading-relaxed mb-4">
+                <strong className="text-text-primary">Sematryx is an AI-powered optimization API</strong> that helps businesses solve complex resource allocation problems—like distributing marketing budgets, scheduling staff, allocating inventory, or optimizing portfolios—with full explanations for compliance and audit requirements.
               </p>
-              <p className="text-lg text-gray-300 leading-relaxed mb-3">
-                Sematryx handles the optimization problems that break conventional tools—with full audit trails for regulated industries.
-              </p>
-              <p className="text-sm text-text-tertiary mb-2">
-                Built to be your AI agents' optimization backend.
+              <p className="text-lg text-text-secondary leading-relaxed mb-3">
+                Use our REST API or Python SDK for programmatic access, or describe your problem in natural language—no code required.
               </p>
               <p className="text-sm text-brand-primary/80 font-medium">
-                Or describe your problem in natural language—no code required.
+                Built for regulated industries that need explainable, auditable optimization decisions.
               </p>
             </div>
 
