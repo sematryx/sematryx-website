@@ -5,7 +5,7 @@ export default function Features() {
   const enginePillars = [
     { 
       title: "Agentic Core", 
-      description: "Uses Meta-Policy Learning to dynamically select and coordinate solvers (CMA-ES, Bayesian, Differential Evolution) based on problem topology.",
+      description: "Uses Meta-Policy Learning to dynamically select and coordinate multiple optimization solvers based on problem topology and landscape characteristics.",
       icon: Bot,
       features: ["Meta-Strategy Selection", "Multi-Agent Coordination", "Dynamic Constraint Handling"]
     },
