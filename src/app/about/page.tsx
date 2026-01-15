@@ -93,7 +93,7 @@ export default function AboutPage() {
               Our Team
             </h2>
             <p className="text-xl text-text-secondary mb-12 text-center">
-              Built by experienced data scientists and engineers with deep expertise in optimization, machine learning, and enterprise systems.
+              Built by an experienced data scientist and engineer with deep expertise in optimization, machine learning, and enterprise systems.
             </p>
 
             <div className="bg-base rounded-xl border border-elevated-3 p-8">
