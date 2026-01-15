@@ -116,10 +116,10 @@ export default function AboutPage() {
 
             <div className="bg-base rounded-xl border border-elevated-3 p-8">
               <div className="flex items-start gap-6">
-                {/* Profile Picture - Censored/Placeholder */}
+                {/* Profile Picture - Stealth Mode/Placeholder */}
                 <div className="relative flex-shrink-0">
                   <div className="w-24 h-24 rounded-full bg-gradient-to-br from-brand-primary/30 to-brand-primary/10 flex items-center justify-center border-2 border-brand-primary/20 overflow-hidden relative">
-                    {/* Placeholder image with blur/censor effect */}
+                    {/* Placeholder image with blur/stealth effect */}
                     <div className="w-full h-full bg-gradient-to-br from-brand-primary/40 to-elevated-2 flex items-center justify-center">
                       <div className="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -128,15 +128,15 @@ export default function AboutPage() {
                         </div>
                       </div>
                     </div>
-                    {/* Censored overlay text */}
+                    {/* Stealth mode overlay */}
                     <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <span className="text-xs text-white/30 font-mono">CENSORED</span>
+                      <span className="text-xs text-white/30 font-mono">STEALTH</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="mb-3">
-                    {/* Name - Censored/Placeholder */}
+                    {/* Name - Stealth Mode/Placeholder */}
                     <div className="text-lg font-semibold text-text-primary mb-1">
                       Founder
                     </div>
@@ -144,7 +144,7 @@ export default function AboutPage() {
                       <h3 className="text-2xl font-bold text-text-primary">
                         Founder & Lead Engineer
                       </h3>
-                      {/* LinkedIn Profile - Censored/Placeholder */}
+                      {/* LinkedIn Profile - Stealth Mode/Placeholder */}
                       <a 
                         href="https://www.linkedin.com/company/sematryx" 
                         target="_blank" 
