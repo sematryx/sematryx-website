@@ -2,11 +2,11 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { Code, Database, Cloud, Brain, Users, Target, Rocket, CheckCircle, Linkedin, Bot } from 'lucide-react'
+import { Brain, Users, Target, Rocket, CheckCircle, Linkedin, Bot } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About Sematryx - Enterprise Optimization Platform',
-  description: 'Learn about Sematryx, our mission to solve complex optimization problems, our team, and our technology infrastructure.',
+  description: 'Learn about Sematryx, our mission to solve complex optimization problems, our team, and our product development.',
 }
 
 export default function AboutPage() {
@@ -227,67 +227,6 @@ export default function AboutPage() {
                 >
                   Get Started Free →
                 </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technology & Infrastructure */}
-      <section className="py-20 bg-elevated border-t border-elevated-3">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-8">
-              Technology & Infrastructure
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-base p-6 rounded-xl border border-elevated-3">
-                <Code className="w-8 h-8 text-brand-primary mb-4" />
-                <h3 className="text-xl font-bold text-text-primary mb-3">Core Technology</h3>
-                <ul className="space-y-2 text-text-secondary">
-                  <li>• Python-based optimization engine with meta-policy learning</li>
-                  <li>• Multi-agent AI orchestration (CMA-ES, Bayesian, Differential Evolution)</li>
-                  <li>• Vector memory (Qdrant) and knowledge graphs (Neo4j)</li>
-                  <li>• Computer vision-based landscape analysis</li>
-                  <li>• Explainability engine with natural language generation</li>
-                </ul>
-              </div>
-
-              <div className="bg-base p-6 rounded-xl border border-elevated-3">
-                <Cloud className="w-8 h-8 text-brand-primary mb-4" />
-                <h3 className="text-xl font-bold text-text-primary mb-3">Cloud Infrastructure</h3>
-                <ul className="space-y-2 text-text-secondary">
-                  <li>• Kubernetes-based deployment on Google Cloud Platform</li>
-                  <li>• Auto-scaling API infrastructure</li>
-                  <li>• Multi-region availability</li>
-                  <li>• Enterprise-grade security and compliance</li>
-                  <li>• Real-time monitoring and observability</li>
-                </ul>
-              </div>
-
-              <div className="bg-base p-6 rounded-xl border border-elevated-3">
-                <Database className="w-8 h-8 text-brand-primary mb-4" />
-                <h3 className="text-xl font-bold text-text-primary mb-3">Data & APIs</h3>
-                <ul className="space-y-2 text-text-secondary">
-                  <li>• REST API with comprehensive documentation</li>
-                  <li>• Python SDK with type hints</li>
-                  <li>• JavaScript/TypeScript SDK</li>
-                  <li>• MCP server for AI agent integration</li>
-                  <li>• Webhook support for real-time notifications</li>
-                </ul>
-              </div>
-
-              <div className="bg-base p-6 rounded-xl border border-elevated-3">
-                <Brain className="w-8 h-8 text-brand-primary mb-4" />
-                <h3 className="text-xl font-bold text-text-primary mb-3">AI & Learning</h3>
-                <ul className="space-y-2 text-text-secondary">
-                  <li>• Adaptive learning from historical optimizations</li>
-                  <li>• Transfer learning across problem domains</li>
-                  <li>• LangChain integration for agentic workflows</li>
-                  <li>• OpenAI and Anthropic API integrations</li>
-                  <li>• Patent-pending optimization intelligence</li>
-                </ul>
               </div>
             </div>
           </div>
