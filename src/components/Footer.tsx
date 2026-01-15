@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a0d12] text-white border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="mb-4 block">
               <Logo size="small" />
@@ -22,6 +22,13 @@ export default function Footer() {
               <li><Link href="/tutorials" className="text-gray-400 hover:text-white transition-colors">Tutorials</Link></li>
               <li><Link href="/benchmarks" className="text-gray-400 hover:text-white transition-colors">Benchmarks</Link></li>
               <li><Link href="/mcp" className="text-gray-400 hover:text-white transition-colors">MCP</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Company</h4>
+            <ul className="space-y-2">
+              <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About</Link></li>
             </ul>
           </div>
 
