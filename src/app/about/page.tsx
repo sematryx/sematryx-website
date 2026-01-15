@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { Code, Database, Cloud, Brain, Users, Target, Rocket, CheckCircle, Linkedin } from 'lucide-react'
+import { Code, Database, Cloud, Brain, Users, Target, Rocket, CheckCircle, Linkedin, Bot } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About Sematryx - Enterprise Optimization Platform',
@@ -46,8 +46,40 @@ export default function AboutPage() {
               </p>
               
               <p>
-                <strong className="text-text-primary">Our Target Audience:</strong> We serve data science teams, operations managers, and technical leaders at mid-to-large enterprises in financial services, healthcare, manufacturing, supply chain, and energy sectors. Our customers need optimization solutions that can handle complexity, provide explanations, and maintain compliance with industry regulations.
+                <strong className="text-text-primary">Our Target Customers:</strong> We serve three primary customer segments:
               </p>
+              
+              <div className="space-y-4">
+                {/* Highlighted card for Agent Tool Customers */}
+                <div className="bg-gradient-to-r from-brand-primary/20 to-brand-primary/5 border-2 border-brand-primary/30 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-brand-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Bot className="w-6 h-6 text-brand-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <strong className="text-text-primary text-lg">1. AI Agent & Tool Builders</strong>
+                        <span className="text-xs px-2 py-0.5 rounded bg-brand-primary/30 text-brand-primary border border-brand-primary/40 font-semibold">
+                          STRONG GROWTH
+                        </span>
+                      </div>
+                      <p className="text-text-secondary leading-relaxed">
+                        Developers building AI agents, autonomous systems, and agentic tools that need optimization capabilities. Our <strong className="text-text-primary">MCP (Model Context Protocol) integration</strong> makes Sematryx a powerful optimization backend for AI agents, allowing them to solve complex resource allocation problems as part of their workflows. This is one of our <strong className="text-text-primary">strongest and fastest-growing customer segments</strong>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="ml-4 space-y-4">
+                  <div>
+                    <strong className="text-text-primary">2. Enterprise Data & Operations Teams:</strong> Data science teams, operations managers, and technical leaders at mid-to-large enterprises in financial services, healthcare, manufacturing, supply chain, and energy sectors. These customers need optimization solutions that can handle complexity, provide explanations, and maintain compliance with industry regulations.
+                  </div>
+                  
+                  <div>
+                    <strong className="text-text-primary">3. Domain Experts & Business Users:</strong> Marketing managers, supply chain coordinators, portfolio managers, and other business professionals who need to solve optimization problems but may not have deep technical expertise. Our conversational optimization interface allows them to describe problems in natural language without writing code.
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
