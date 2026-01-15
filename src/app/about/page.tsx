@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { Code, Database, Cloud, Brain, Users, Target, Rocket, CheckCircle } from 'lucide-react'
+import { Code, Database, Cloud, Brain, Users, Target, Rocket, CheckCircle, Linkedin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'About Sematryx - Enterprise Optimization Platform',
@@ -84,15 +84,49 @@ export default function AboutPage() {
 
             <div className="bg-base rounded-xl border border-elevated-3 p-8">
               <div className="flex items-start gap-6">
-                <div className="w-20 h-20 rounded-full bg-brand-primary/20 flex items-center justify-center flex-shrink-0">
-                  <Users className="w-10 h-10 text-brand-primary" />
+                {/* Profile Picture - Censored/Placeholder */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-brand-primary/30 to-brand-primary/10 flex items-center justify-center border-2 border-brand-primary/20 overflow-hidden relative">
+                    {/* Placeholder image with blur/censor effect */}
+                    <div className="w-full h-full bg-gradient-to-br from-brand-primary/40 to-elevated-2 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-16 bg-black/30 rounded-full flex items-center justify-center border-2 border-white/20">
+                          <Users className="w-8 h-8 text-white/40" />
+                        </div>
+                      </div>
+                    </div>
+                    {/* Censored overlay text */}
+                    <div className="absolute inset-0 flex items-center justify-center z-20">
+                      <span className="text-xs text-white/30 font-mono">CENSORED</span>
+                    </div>
+                  </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-text-primary mb-2">
-                    Founder & Lead Engineer
-                  </h3>
+                  <div className="mb-3">
+                    {/* Name - Censored/Placeholder */}
+                    <div className="text-lg font-semibold text-text-primary mb-1">
+                      Founder
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-2xl font-bold text-text-primary">
+                        Founder & Lead Engineer
+                      </h3>
+                      {/* LinkedIn Profile - Censored/Placeholder */}
+                      <a 
+                        href="https://www.linkedin.com/company/sematryx" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-text-tertiary hover:text-brand-primary transition-colors"
+                        aria-label="LinkedIn Profile"
+                        title="LinkedIn Profile"
+                      >
+                        <Linkedin className="w-5 h-5" />
+                      </a>
+                    </div>
+                  </div>
                   <p className="text-text-secondary mb-4 leading-relaxed">
-                    Strategic data leader with 10+ years of experience building enterprise-scale analytics systems and optimization solutions. Previously architected data platforms at Amazon processing 20MM+ queries annually, co-founded an AI fintech startup that secured institutional funding, and led analytics teams delivering $1MM+ in revenue impact through optimization initiatives.
+                    Strategic data leader who has architected enterprise-scale analytics systems at Amazon, co-founded an AI fintech startup that secured institutional funding, and holds a Master's in Business Analytics and AI from NYU Stern. Deep expertise in real-world optimization, product management, and data engineering.
                   </p>
                   <div className="flex flex-wrap gap-2 mt-4">
                     <span className="text-xs font-medium bg-elevated-2 px-3 py-1 rounded-full text-text-tertiary border border-elevated-3">
@@ -105,7 +139,7 @@ export default function AboutPage() {
                       Optimization
                     </span>
                     <span className="text-xs font-medium bg-elevated-2 px-3 py-1 rounded-full text-text-tertiary border border-elevated-3">
-                      Agentic AI
+                      Product Management
                     </span>
                     <span className="text-xs font-medium bg-elevated-2 px-3 py-1 rounded-full text-text-tertiary border border-elevated-3">
                       Cloud Architecture
