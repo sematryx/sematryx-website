@@ -1,83 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth, currentUser } from '@clerk/nextjs/server'
-import stripe from '@/lib/stripe'
+import stripe, { createCreditPackCheckout, createPaymentMethodSetup } from '@/lib/stripe'
 import { supabaseAdmin, isSupabaseConfigured } from '@/lib/supabase'
 import { getOrCreateUser } from '@/lib/api-keys'
 
-// Map plan IDs to Stripe price IDs from environment
-const getPriceIdMap = () => ({
-  starter: process.env.STRIPE_STARTER_PRICE_ID,
-  growth: process.env.STRIPE_GROWTH_PRICE_ID,
-  pro: process.env.STRIPE_PRO_PRICE_ID,
-  enterprise: process.env.STRIPE_ENTERPRISE_PRICE_ID,
-})
-
-// GET handler - for links from pricing page
+// GET handler - for links from pricing page / dashboard
+// Supports ?type=credit_pack (default) or ?type=payg_setup
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
-  const planId = searchParams.get('plan')
+  const checkoutType = searchParams.get('type') || 'credit_pack'
 
-  if (!planId) {
-    return NextResponse.redirect(new URL('/pricing', req.url))
-  }
-
-  // Check if user is authenticated
   const { userId } = await auth()
-  
+
   if (!userId) {
-    // Redirect to sign-up with return URL
-    const returnUrl = `/api/stripe/checkout?plan=${planId}`
+    const returnUrl = `/api/stripe/checkout?type=${checkoutType}`
     return NextResponse.redirect(
       new URL(`/sign-up?redirect_url=${encodeURIComponent(returnUrl)}`, req.url)
     )
   }
 
-  // User is authenticated, create checkout session
-  return createCheckoutForUser(req, planId, userId)
+  return handleCheckout(req, checkoutType, userId)
 }
 
 // POST handler - for API calls from dashboard
 export async function POST(req: NextRequest) {
   try {
-    const { planId } = await req.json()
-
-    if (!planId) {
-      return NextResponse.json(
-        { error: 'Missing plan ID' },
-        { status: 400 }
-      )
-    }
+    const body = await req.json()
+    const checkoutType = body.type || 'credit_pack'
 
     const { userId } = await auth()
-    
+
     if (!userId) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    return createCheckoutForUser(req, planId, userId)
+    return handleCheckout(req, checkoutType, userId)
   } catch (error) {
     console.error('Stripe checkout error:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
-async function createCheckoutForUser(req: NextRequest, planId: string, clerkUserId: string) {
+async function handleCheckout(req: NextRequest, checkoutType: string, clerkUserId: string) {
   try {
-    const priceIdMap = getPriceIdMap()
-    const priceId = priceIdMap[planId as keyof typeof priceIdMap]
-
-    if (!priceId) {
-      console.error(`Invalid plan or missing price ID for plan: ${planId}`)
-      return NextResponse.redirect(new URL('/pricing?error=invalid_plan', req.url))
-    }
-
-    // Get user details from Clerk
     const user = await currentUser()
     if (!user) {
       return NextResponse.redirect(new URL('/sign-in', req.url))
@@ -109,7 +74,6 @@ async function createCheckoutForUser(req: NextRequest, planId: string, clerkUser
       })
       stripeCustomerId = customer.id
 
-      // Save Stripe customer ID to Supabase
       if (isSupabaseConfigured() && dbUser) {
         await supabaseAdmin
           .from('users')
@@ -119,48 +83,35 @@ async function createCheckoutForUser(req: NextRequest, planId: string, clerkUser
     }
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://sematryx.com'
-    
-    // Create Stripe checkout session
-    const session = await stripe.checkout.sessions.create({
-      customer: stripeCustomerId,
-      payment_method_types: ['card'],
-      mode: 'subscription',
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
-      metadata: {
-        clerk_id: clerkUserId,
-        supabase_user_id: dbUser?.id || '',
-        plan_id: planId,
-      },
-      subscription_data: {
-        metadata: {
-          clerk_id: clerkUserId,
-          supabase_user_id: dbUser?.id || '',
-          plan_id: planId,
-        },
-      },
-      success_url: `${baseUrl}/dashboard/billing?success=true&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/pricing?canceled=true`,
-      allow_promotion_codes: true,
-    })
+    const metadata = {
+      clerk_id: clerkUserId,
+      supabase_user_id: dbUser?.id || '',
+    }
 
-    // For GET requests, redirect to Stripe
+    const isGetRequest = req.method === 'GET'
+
+    if (checkoutType === 'payg_setup') {
+      // SetupIntent for adding a payment method (metered billing)
+      const setupIntent = await createPaymentMethodSetup(stripeCustomerId, metadata)
+      return NextResponse.json({ clientSecret: setupIntent.client_secret })
+    }
+
+    // Default: credit pack purchase
+    const session = await createCreditPackCheckout(
+      stripeCustomerId,
+      `${baseUrl}/dashboard/billing?success=true&session_id={CHECKOUT_SESSION_ID}`,
+      `${baseUrl}/pricing?canceled=true`,
+      metadata,
+    )
+
     if (!session.url) {
       return NextResponse.redirect(new URL('/pricing?error=checkout_failed', req.url))
     }
 
-    // Check if this is a GET or POST request
-    const isGetRequest = req.method === 'GET'
-    
     if (isGetRequest) {
       return NextResponse.redirect(session.url)
-    } else {
-      return NextResponse.json({ url: session.url })
     }
+    return NextResponse.json({ url: session.url })
   } catch (error) {
     console.error('Stripe checkout error:', error)
     return NextResponse.redirect(new URL('/pricing?error=checkout_failed', req.url))

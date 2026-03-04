@@ -4,66 +4,45 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2023-10-16',
 })
 
-// Plan limits for reference
+// ---------------------------------------------------------------------------
+// Pay-per-solve pricing (March 2026)
+// ---------------------------------------------------------------------------
+
+/** Free tier: 100 solves/month, no CC required */
+export const FREE_TIER_MONTHLY_LIMIT = 100
+
+/** Credit pack: 5,000 solves for $75 (prepaid, never expire) */
+export const CREDIT_PACK_SOLVES = 5_000
+export const CREDIT_PACK_PRICE_CENTS = 7_500 // $75.00
+
+/** Cost per solve by complexity tier */
+export const SOLVE_PRICING = [
+  { label: 'Small',  maxDims: 10,  maxEvals: 1_000,  costCents: 1  },
+  { label: 'Medium', maxDims: 50,  maxEvals: 5_000,  costCents: 3  },
+  { label: 'Large',  maxDims: 100, maxEvals: 10_000, costCents: 5  },
+] as const
+
+/** Private learning: available to all PAYG users, single metered rate */
+export const PRIVATE_LEARNING = {
+  accessPer1000: 0.50,
+  storageOveragePerGb: 0.50,
+  includedStorageMb: 2048,
+  includedAccessPerMonth: 5_000,
+}
+
+// Legacy compatibility — referenced by subscription API route
 export const planLimits = {
   free: {
-    optimizations: 10,
-    apiCalls: 100,
-    concurrent: 1,
-    privateStorage: 0,
-    privateAccess: 0,
-    overageRate: null, // No overage on free
+    optimizations: FREE_TIER_MONTHLY_LIMIT,
+    overageRate: null,
   },
-  starter: {
-    optimizations: 100,
-    apiCalls: 1000,
-    concurrent: 1,
-    privateStorage: 0, // No private storage on starter
-    privateAccess: 0,
-    overageRate: {
-      optimization: 0.25,
-      privateAccess: null,
-      storage: null,
-    },
-  },
-  growth: {
-    optimizations: 1000,
-    apiCalls: 10000,
-    concurrent: 3,
-    privateStorage: 500 * 1024 * 1024, // 500 MB in bytes
-    privateAccess: 2000,
-    overageRate: {
-      optimization: 0.10,
-      privateAccess: 1.00, // per 1K
-      storage: 1.00, // per GB
-    },
-  },
-  pro: {
-    optimizations: 10000,
-    apiCalls: 100000,
-    concurrent: 10,
-    privateStorage: 2 * 1024 * 1024 * 1024, // 2 GB in bytes
-    privateAccess: 10000,
-    overageRate: {
-      optimization: 0.05,
-      privateAccess: 0.50, // per 1K
-      storage: 0.50, // per GB
-    },
-  },
-  enterprise: {
-    optimizations: 100000,
-    apiCalls: 1000000,
-    concurrent: 50,
-    privateStorage: 10 * 1024 * 1024 * 1024, // 10 GB in bytes
-    privateAccess: 50000,
-    overageRate: {
-      optimization: 0.02,
-      privateAccess: 0.25, // per 1K
-      storage: 0, // Included
-    },
+  payg: {
+    optimizations: Infinity,
+    overageRate: SOLVE_PRICING,
   },
 }
 
+// Pricing display plans (used on pricing page)
 export const pricingPlans = [
   {
     id: 'free',
@@ -72,101 +51,84 @@ export const pricingPlans = [
     period: 'forever',
     description: 'Get started with optimization basics',
     features: [
-      '10 optimizations/month',
-      '100 API calls/day',
+      '100 solves/month',
       'Public learning pool access',
-      'Community support'
-    ]
+      'Community support',
+      'No credit card required',
+    ],
   },
   {
-    id: 'starter',
-    name: 'Starter',
-    price: 29,
-    period: '/month',
-    description: 'For individual developers',
-    features: [
-      '100 optimizations/month',
-      '1,000 API calls/day',
-      'Public learning pool access',
-      'Email support',
-      '$0.25/optimization overage'
-    ]
-  },
-  {
-    id: 'growth',
-    name: 'Growth',
-    price: 79,
-    period: '/month',
-    description: 'For small teams',
+    id: 'payg',
+    name: 'Pay-as-you-go',
+    price: null, // variable
+    period: 'per solve',
+    description: 'Pay only for what you use',
     popular: true,
     features: [
-      '1,000 optimizations/month',
-      '10,000 API calls/day',
-      'Private Learning Store (500MB)',
-      'Priority email support',
-      '$0.10/optimization overage'
-    ]
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    price: 299,
-    period: '/month',
-    description: 'For growing teams and power users',
-    features: [
-      '10,000 optimizations/month',
-      '100,000 API calls/day',
-      'Private Learning Store (2GB)',
+      'Unlimited solves',
+      '$0.01–$0.05 per solve by complexity',
+      'Private Learning Store included',
       'Priority support',
-      '$0.05/optimization overage'
-    ]
+      'Credit packs available (save ~50%)',
+    ],
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
-    price: 999,
-    period: '+/month',
+    price: null,
+    period: 'custom',
     description: 'For large organizations',
     features: [
-      '100,000+ optimizations/month',
-      '1,000,000 API calls/day',
-      'Private Learning Store (10GB)',
-      'Dedicated support',
-      '$0.02/optimization overage'
-    ]
-  }
+      'Volume discounts',
+      'Dedicated support & SLA',
+      'SSO & audit logs',
+      'Custom integrations',
+    ],
+  },
 ]
 
-export async function createCheckoutSession(
-  priceId: string,
+// ---------------------------------------------------------------------------
+// Stripe helpers
+// ---------------------------------------------------------------------------
+
+/** Create a Stripe Checkout for a credit pack purchase */
+export async function createCreditPackCheckout(
   customerId: string,
   successUrl: string,
-  cancelUrl: string
+  cancelUrl: string,
+  metadata: Record<string, string> = {},
 ) {
-  const session = await stripe.checkout.sessions.create({
+  const priceId = process.env.STRIPE_PRICE_CREDIT_PACK
+  if (!priceId) throw new Error('STRIPE_PRICE_CREDIT_PACK not configured')
+
+  return stripe.checkout.sessions.create({
     customer: customerId,
     payment_method_types: ['card'],
-    mode: 'subscription',
-    line_items: [
-      {
-        price: priceId,
-        quantity: 1,
-      },
-    ],
+    mode: 'payment',
+    line_items: [{ price: priceId, quantity: 1 }],
+    metadata: { ...metadata, type: 'credit_pack', pack_solves: String(CREDIT_PACK_SOLVES) },
     success_url: successUrl,
     cancel_url: cancelUrl,
   })
+}
 
-  return session
+/** Create a Stripe SetupIntent for adding a payment method (PAYG metered billing) */
+export async function createPaymentMethodSetup(
+  customerId: string,
+  metadata: Record<string, string> = {},
+) {
+  return stripe.setupIntents.create({
+    customer: customerId,
+    payment_method_types: ['card'],
+    metadata: { ...metadata, type: 'payg_setup' },
+  })
 }
 
 export async function createCustomerPortalSession(customerId: string, returnUrl: string) {
-  const session = await stripe.billingPortal.sessions.create({
+  return stripe.billingPortal.sessions.create({
     customer: customerId,
     return_url: returnUrl,
   })
-
-  return session
 }
 
 export default stripe

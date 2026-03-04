@@ -27,8 +27,10 @@ export interface User {
   name: string | null
   stripe_customer_id: string | null
   stripe_subscription_id: string | null
-  subscription_status: 'free' | 'starter' | 'growth' | 'pro' | 'enterprise'
+  subscription_status: 'free' | 'payg'
   subscription_ends_at: string | null
+  credit_balance_cents: number
+  has_payment_method: boolean
   private_storage_used_bytes: number
   private_access_count_month: number
   private_access_reset_at: string

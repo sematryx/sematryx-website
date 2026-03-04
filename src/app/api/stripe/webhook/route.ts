@@ -1,20 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import stripe from '@/lib/stripe'
+import stripe, { CREDIT_PACK_SOLVES } from '@/lib/stripe'
 import { supabaseAdmin, isSupabaseConfigured } from '@/lib/supabase'
 
 export const maxDuration = 30
-
-// Map Stripe price IDs back to plan names
-const getPlanFromPriceId = (priceId: string): 'starter' | 'growth' | 'pro' | 'enterprise' | 'free' => {
-  const priceIdMap: Record<string, 'starter' | 'growth' | 'pro' | 'enterprise'> = {
-    [process.env.STRIPE_STARTER_PRICE_ID || '']: 'starter',
-    [process.env.STRIPE_GROWTH_PRICE_ID || '']: 'growth',
-    [process.env.STRIPE_PRO_PRICE_ID || '']: 'pro',
-    [process.env.STRIPE_ENTERPRISE_PRICE_ID || '']: 'enterprise',
-  }
-  return priceIdMap[priceId] || 'free'
-}
 
 export async function POST(req: NextRequest) {
   const body = await req.text()
@@ -43,17 +32,12 @@ export async function POST(req: NextRequest) {
         await handleCheckoutCompleted(event.data.object as Stripe.Checkout.Session)
         break
 
-      case 'customer.subscription.created':
-      case 'customer.subscription.updated':
-        await handleSubscriptionUpdated(event.data.object as Stripe.Subscription)
+      case 'setup_intent.succeeded':
+        await handleSetupIntentSucceeded(event.data.object as Stripe.SetupIntent)
         break
 
       case 'customer.subscription.deleted':
         await handleSubscriptionDeleted(event.data.object as Stripe.Subscription)
-        break
-
-      case 'invoice.paid':
-        await handleInvoicePaid(event.data.object as Stripe.Invoice)
         break
 
       case 'invoice.payment_failed':
@@ -67,13 +51,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ received: true })
   } catch (error) {
     console.error('Webhook handler error:', error)
-    return NextResponse.json(
-      { error: 'Webhook handler failed' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Webhook handler failed' }, { status: 500 })
   }
 }
 
+/**
+ * Handle credit pack purchase completion.
+ * Adds credits to user's balance and upgrades to PAYG if on free tier.
+ */
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   console.log('Checkout completed:', session.id)
 
@@ -82,78 +67,80 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     return
   }
 
-  const clerkId = session.metadata?.clerk_id
   const supabaseUserId = session.metadata?.supabase_user_id
-  const planId = session.metadata?.plan_id as 'starter' | 'pro' | 'enterprise' | undefined
   const customerId = session.customer as string
-  const subscriptionId = session.subscription as string
+  const checkoutType = session.metadata?.type
 
-  if (!clerkId && !supabaseUserId) {
-    console.error('No user ID in checkout session metadata')
-    return
-  }
+  if (checkoutType === 'credit_pack') {
+    // Credit pack purchased — add credits and set status to payg
+    const packSolves = parseInt(session.metadata?.pack_solves || String(CREDIT_PACK_SOLVES), 10)
+    // Credit pack value in cents: $75 for 5000 solves = 7500 cents
+    const creditCents = Math.round((packSolves / CREDIT_PACK_SOLVES) * 7500)
 
-  // Update user with subscription info
-  const updateData: Record<string, any> = {
-    stripe_customer_id: customerId,
-    stripe_subscription_id: subscriptionId,
-    subscription_status: planId || 'starter',
-  }
+    // Get current balance
+    const identifier = supabaseUserId
+      ? { column: 'id' as const, value: supabaseUserId }
+      : { column: 'stripe_customer_id' as const, value: customerId }
 
-  // Get subscription details for end date
-  if (subscriptionId) {
-    const subscription = await stripe.subscriptions.retrieve(subscriptionId)
-    updateData.subscription_ends_at = new Date(subscription.current_period_end * 1000).toISOString()
-  }
+    const { data: user } = await supabaseAdmin
+      .from('users')
+      .select('credit_balance_cents')
+      .eq(identifier.column, identifier.value)
+      .single()
 
-  // Update by supabase_user_id or clerk_id
-  if (supabaseUserId) {
+    const currentBalance = user?.credit_balance_cents || 0
+    const newBalance = currentBalance + creditCents
+
     await supabaseAdmin
       .from('users')
-      .update(updateData)
-      .eq('id', supabaseUserId)
-  } else if (clerkId) {
-    await supabaseAdmin
-      .from('users')
-      .update(updateData)
-      .eq('clerk_id', clerkId)
-  }
+      .update({
+        credit_balance_cents: newBalance,
+        subscription_status: 'payg',
+        stripe_customer_id: customerId,
+      })
+      .eq(identifier.column, identifier.value)
 
-  console.log(`User subscription updated to ${planId}`)
+    console.log(`Credit pack purchased: +${creditCents}c, new balance: ${newBalance}c`)
+  } else {
+    // Legacy or generic checkout — update customer ID
+    if (supabaseUserId) {
+      await supabaseAdmin
+        .from('users')
+        .update({ stripe_customer_id: customerId })
+        .eq('id', supabaseUserId)
+    }
+  }
 }
 
-async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
-  console.log('Subscription updated:', subscription.id)
+/**
+ * Handle SetupIntent succeeded — user added a payment method for metered billing.
+ */
+async function handleSetupIntentSucceeded(setupIntent: Stripe.SetupIntent) {
+  console.log('SetupIntent succeeded:', setupIntent.id)
 
   if (!isSupabaseConfigured()) return
 
-  const clerkId = subscription.metadata?.clerk_id
-  const supabaseUserId = subscription.metadata?.supabase_user_id
-  const customerId = subscription.customer as string
-
-  // Get plan from price ID
-  const priceId = subscription.items.data[0]?.price.id
-  const planId = priceId ? getPlanFromPriceId(priceId) : 'free'
+  const customerId = setupIntent.customer as string
+  const supabaseUserId = setupIntent.metadata?.supabase_user_id
 
   const updateData = {
-    stripe_subscription_id: subscription.id,
-    subscription_status: planId,
-    subscription_ends_at: new Date(subscription.current_period_end * 1000).toISOString(),
+    has_payment_method: true,
+    subscription_status: 'payg' as const,
   }
 
-  // Try to find user by various means
   if (supabaseUserId) {
     await supabaseAdmin.from('users').update(updateData).eq('id', supabaseUserId)
-  } else if (clerkId) {
-    await supabaseAdmin.from('users').update(updateData).eq('clerk_id', clerkId)
-  } else {
-    // Fall back to customer ID
+  } else if (customerId) {
     await supabaseAdmin.from('users').update(updateData).eq('stripe_customer_id', customerId)
   }
 
-  console.log(`Subscription ${subscription.id} updated to ${planId}`)
+  console.log(`Payment method added for customer ${customerId}`)
 }
 
+/**
+ * Handle subscription deletion — downgrade to free.
+ * Kept for graceful degradation of any remaining legacy subscriptions.
+ */
 async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
   console.log('Subscription deleted:', subscription.id)
 
@@ -161,47 +148,20 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
 
   const customerId = subscription.customer as string
 
-  // Downgrade to free
-  const updateData = {
-    subscription_status: 'free',
-    stripe_subscription_id: null,
-    subscription_ends_at: null,
-  }
-
   await supabaseAdmin
     .from('users')
-    .update(updateData)
+    .update({
+      subscription_status: 'free',
+      stripe_subscription_id: null,
+      subscription_ends_at: null,
+    })
     .eq('stripe_customer_id', customerId)
 
   console.log(`Customer ${customerId} downgraded to free`)
 }
 
-async function handleInvoicePaid(invoice: Stripe.Invoice) {
-  console.log('Invoice paid:', invoice.id)
-
-  if (!isSupabaseConfigured()) return
-
-  const customerId = invoice.customer as string
-  const subscriptionId = invoice.subscription as string
-
-  if (subscriptionId) {
-    // Get subscription to update end date
-    const subscription = await stripe.subscriptions.retrieve(subscriptionId)
-    
-    await supabaseAdmin
-      .from('users')
-      .update({
-        subscription_ends_at: new Date(subscription.current_period_end * 1000).toISOString(),
-      })
-      .eq('stripe_customer_id', customerId)
-  }
-}
-
 async function handlePaymentFailed(invoice: Stripe.Invoice) {
   console.log('Payment failed:', invoice.id)
-  
-  // You could send an email notification here
-  // For now, just log it - Stripe will retry automatically
   const customerId = invoice.customer as string
   console.log(`Payment failed for customer: ${customerId}`)
 }

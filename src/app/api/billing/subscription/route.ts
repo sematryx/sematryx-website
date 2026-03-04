@@ -1,30 +1,29 @@
 import { NextResponse } from 'next/server'
-import { auth, currentUser } from '@clerk/nextjs/server'
+import { auth } from '@clerk/nextjs/server'
 import { supabaseAdmin, isSupabaseConfigured } from '@/lib/supabase'
-import { planLimits } from '@/lib/stripe'
+import { FREE_TIER_MONTHLY_LIMIT } from '@/lib/stripe'
 
 export async function GET() {
   try {
     const { userId } = await auth()
-    
+
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
+    const defaultResponse = {
+      plan: 'free' as const,
+      creditBalanceCents: 0,
+      hasPaymentMethod: false,
+      solvesThisMonth: 0,
+      costThisMonthCents: 0,
+      freeTierLimit: FREE_TIER_MONTHLY_LIMIT,
+      subscription: null,
+      stripeCustomerId: null,
+    }
+
     if (!isSupabaseConfigured()) {
-      // Return default free plan data if Supabase isn't configured
-      return NextResponse.json({
-        plan: 'free',
-        limits: planLimits.free,
-        usage: {
-          optimizations: 0,
-          apiCalls: 0,
-          privateStorageBytes: 0,
-          privateAccessCount: 0,
-        },
-        subscription: null,
-        hasPaymentMethod: false,
-      })
+      return NextResponse.json(defaultResponse)
     }
 
     // Get user from Supabase
@@ -35,46 +34,47 @@ export async function GET() {
       .single()
 
     if (error || !user) {
-      // User not found, return free plan defaults
-      return NextResponse.json({
-        plan: 'free',
-        limits: planLimits.free,
-        usage: {
-          optimizations: 0,
-          apiCalls: 0,
-          privateStorageBytes: 0,
-          privateAccessCount: 0,
-        },
-        subscription: null,
-        hasPaymentMethod: false,
-      })
+      return NextResponse.json(defaultResponse)
     }
 
-    const plan = (user.subscription_status || 'free') as keyof typeof planLimits
-    const limits = planLimits[plan] || planLimits.free
+    // Query usage_events for this month
+    const now = new Date()
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString()
+
+    const { count: solvesThisMonth } = await supabaseAdmin
+      .from('usage_events')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', user.id)
+      .gte('created_at', monthStart)
+
+    const { data: costData } = await supabaseAdmin
+      .from('usage_events')
+      .select('cost_cents')
+      .eq('user_id', user.id)
+      .gte('created_at', monthStart)
+
+    const costThisMonthCents = (costData || []).reduce(
+      (sum: number, row: { cost_cents: number }) => sum + (row.cost_cents || 0),
+      0,
+    )
+
+    const plan = (user.subscription_status === 'free') ? 'free' : 'payg'
 
     return NextResponse.json({
       plan,
-      limits,
-      usage: {
-        optimizations: 0, // TODO: Track actual usage
-        apiCalls: 0, // TODO: Track actual usage
-        privateStorageBytes: user.private_storage_used_bytes || 0,
-        privateAccessCount: user.private_access_count_month || 0,
-      },
+      creditBalanceCents: user.credit_balance_cents || 0,
+      hasPaymentMethod: user.has_payment_method || false,
+      solvesThisMonth: solvesThisMonth || 0,
+      costThisMonthCents,
+      freeTierLimit: FREE_TIER_MONTHLY_LIMIT,
       subscription: user.stripe_subscription_id ? {
         id: user.stripe_subscription_id,
         endsAt: user.subscription_ends_at,
       } : null,
-      hasPaymentMethod: !!user.stripe_customer_id,
       stripeCustomerId: user.stripe_customer_id,
     })
   } catch (error) {
     console.error('Error fetching subscription:', error)
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
-
