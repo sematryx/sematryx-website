@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { BarChart3, TrendingUp, Clock, Zap, Coins } from 'lucide-react'
+import { BarChart3, TrendingUp, Clock, Zap, DollarSign } from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
 
@@ -100,7 +100,7 @@ export default function UsagePage() {
           <div className="flex items-center justify-between mb-4">
             <span className="text-gray-400 text-sm font-medium">Credit Balance</span>
             <div className="bg-yellow-500/10 p-2 rounded-lg">
-              <Coins className="h-5 w-5 text-yellow-400" />
+              <DollarSign className="h-5 w-5 text-yellow-400" />
             </div>
           </div>
           <div className="text-3xl font-bold text-white">

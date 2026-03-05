@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { CreditCard, Receipt, TrendingUp, Zap, Check, Coins } from 'lucide-react'
+import { CreditCard, Receipt, TrendingUp, Zap, Check, DollarSign } from 'lucide-react'
 import { Suspense } from 'react'
 
 export const dynamic = 'force-dynamic'
@@ -144,7 +144,7 @@ function BillingContent() {
 
         <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6">
           <div className="flex items-center gap-3 mb-2">
-            <Coins className="h-5 w-5 text-yellow-400" />
+            <DollarSign className="h-5 w-5 text-yellow-400" />
             <span className="text-gray-400 text-sm">Credit Balance</span>
           </div>
           <div className="text-2xl font-bold text-white">
