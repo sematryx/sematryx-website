@@ -88,14 +88,6 @@ export async function listOptimizationsFromAPI(
   }
 
   const data = await response.json()
-    hasOperations: !!data.operations,
-    hasResults: !!data.results,
-    keys: Object.keys(data),
-    operationsCount: data.operations?.length || 0,
-    totalCount: data.total_count || 'N/A',
-    sample: data.operations?.slice(0, 2) || data.slice?.(0, 2) || 'N/A',
-    fullResponse: data
-  })
   
   // Handle different response formats
   let result: any[] = []
