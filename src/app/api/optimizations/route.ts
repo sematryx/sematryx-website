@@ -91,18 +91,9 @@ export async function GET(req: NextRequest) {
 
     // Sync if requested or if no results found
     let syncDebugInfo: any = null
-    console.log('[DEBUG API] Sync check:', { shouldSync, existingTotal: existingResult.pagination.total, userId: dbUser.id })
     if (shouldSync || existingResult.pagination.total === 0) {
-      // #region agent log
-      console.log('[DEBUG API] Sync condition met, starting sync process');
-      fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/optimizations/route.ts:sync-check',message:'Sync condition met',data:{shouldSync,existingTotal:existingResult.pagination.total,userId:dbUser.id},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-      // #endregion
       try {
         const apiKey = await getDecryptedApiKey(dbUser.id)
-        // #region agent log
-        console.log('[DEBUG API] API key check:', { hasApiKey: !!apiKey, apiKeyLength: apiKey?.length || 0, apiKeyPrefix: apiKey?.substring(0, 10) || 'none' });
-        fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/optimizations/route.ts:api-key-check',message:'API key retrieved',data:{hasApiKey:!!apiKey,apiKeyLength:apiKey?.length||0},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-        // #endregion
         syncDebugInfo = {
           syncTriggered: true,
           hasApiKey: !!apiKey,
@@ -115,17 +106,11 @@ export async function GET(req: NextRequest) {
           console.log('🔄 Syncing optimizations from API...')
           // Fetch recent optimizations from API (last 100)
           const apiOptimizations = await listOptimizationsFromAPI(apiKey, { limit: 100, offset: 0 })
-          // #region agent log
-          console.log('[DEBUG API] Fetched optimizations from API:', { count: apiOptimizations.length, firstOpId: apiOptimizations[0]?.operation_id || null, sample: apiOptimizations.slice(0, 3) });
-          fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/optimizations/route.ts:api-fetch',message:'API optimizations fetched',data:{count:apiOptimizations.length,firstOpId:apiOptimizations[0]?.operation_id||null},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-          // #endregion
           console.log(`📥 Fetched ${apiOptimizations.length} optimizations from API`)
           
           // If API returns empty, log warning but continue (operations may still be fetchable individually)
           if (apiOptimizations.length === 0) {
-            console.warn('[DEBUG API] ⚠️ API list endpoint returned 0 optimizations')
-            console.warn('[DEBUG API]   This may mean the server restarted and in-memory operations were lost')
-            console.warn('[DEBUG API]   Individual operations may still be accessible via /optimization/result/{id}')
+
             syncDebugInfo.apiReturnedEmpty = true
             syncDebugInfo.warning = 'List endpoint returned empty - individual operations may still be accessible'
           }
@@ -158,14 +143,11 @@ export async function GET(req: NextRequest) {
                       return await storeOptimizationResult(userId, opId, data)
                     }
                   )
-                  console.log(`[DEBUG API] Sync result for ${operationId}:`, { success: !!syncResult })
                   syncedCount++
                 } catch (syncError) {
-                  console.error(`[DEBUG API] Sync error for ${operationId}:`, syncError)
                   errorCount++
                 }
               } else {
-                console.log(`[DEBUG API] Skipping ${operationId} - already exists`)
                 skippedCount++
               }
             } catch (error) {
@@ -175,27 +157,18 @@ export async function GET(req: NextRequest) {
             }
           }
           console.log(`✅ Sync complete: ${syncedCount} synced, ${skippedCount} skipped, ${errorCount} errors`)
-          // #region agent log
-          console.log('[DEBUG API] Sync summary:', { syncedCount, skippedCount, errorCount, totalProcessed: syncedCount + skippedCount + errorCount });
-          fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/optimizations/route.ts:sync-complete',message:'Sync completed',data:{syncedCount,skippedCount,errorCount},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-          // #endregion
           syncDebugInfo.apiOptimizationsCount = apiOptimizations.length
           syncDebugInfo.syncedCount = syncedCount
           syncDebugInfo.skippedCount = skippedCount
           syncDebugInfo.errorCount = errorCount
         }
       } catch (error) {
-        // #region agent log
-        console.error('[DEBUG API] Sync error caught:', { errorMessage: error instanceof Error ? error.message : String(error), errorName: error instanceof Error ? error.name : 'Unknown', error });
-        fetch('http://127.0.0.1:7242/ingest/371d178b-fba6-4436-b7b8-d3382d948264',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'api/optimizations/route.ts:sync-error',message:'Sync error caught',data:{errorMessage:error instanceof Error ? error.message : String(error),errorName:error instanceof Error ? error.name : 'Unknown'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-        // #endregion
         console.error('❌ Error during auto-sync:', error)
         syncDebugInfo = syncDebugInfo || { syncTriggered: true }
         syncDebugInfo.error = error instanceof Error ? error.message : String(error)
         // Continue to return results even if sync fails
       }
     } else {
-      console.log('[DEBUG API] Sync condition not met - skipping sync')
     }
 
     // Fetch optimizations (after sync)
