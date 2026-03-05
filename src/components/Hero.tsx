@@ -20,10 +20,10 @@ export default function Hero() {
 
             <div className="mb-8 max-w-xl">
               <p className="text-xl text-gray-300 leading-relaxed mb-4">
-                <strong className="text-text-primary">Sematryx is an MCP server</strong> that gives Claude, Cline, and any AI agent expert-level optimization — hyperparameter tuning, resource allocation, scheduling — with natural language explanations agents can reason about.
+                <strong className="text-text-primary">Sematryx gives your AI agents a powerful tool to offload optimization problems.</strong> It analyzes each problem, selects and configures the right solver, explains why, and learns from every solve. Your agents save tokens, stay focused, and get clear explanations they can reason about and present to users.
               </p>
               <p className="text-lg text-text-secondary leading-relaxed mb-3">
-                One tool call. Real math. Full explanation.
+                No black boxes. No guesswork. No sidetracks.
               </p>
               <div className="flex flex-wrap gap-4 mt-4">
                 <div className="flex items-center gap-1.5 text-sm text-text-secondary">
