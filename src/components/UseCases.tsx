@@ -1,26 +1,34 @@
-import { BarChart3, Truck, Heart, Factory } from 'lucide-react'
+import { Brain, CalendarClock, BarChart3, Cpu } from 'lucide-react'
 
 export default function UseCases() {
   const useCases = [
     {
-      title: "Portfolio Optimization",
-      description: "Balance risk, return, and regulatory limits with explainable allocation decisions that satisfy compliance teams.",
-      icon: BarChart3
+      title: "Hyperparameter Tuning",
+      agentVerb: "AI agents use Sematryx to find optimal learning rates, batch sizes, and regularization — without hand-coding grid search or random sampling.",
+      example: "lr=0.00312, dropout=0.18 → 2.3% better validation accuracy",
+      icon: Brain,
+      tag: "ML / Training"
     },
     {
-      title: "Supply Chain & Logistics",
-      description: "Route optimization, inventory allocation, and demand planning with real-world constraints like driver hours and weather.",
-      icon: Truck
+      title: "Resource Allocation",
+      agentVerb: "AI agents use Sematryx to distribute budgets, staff, inventory, or compute across competing objectives with hard constraints.",
+      example: "Budget allocation across 8 channels → 23% higher ROI within cap",
+      icon: BarChart3,
+      tag: "Finance / Operations"
     },
     {
-      title: "Healthcare Resource Allocation",
-      description: "Staff scheduling, bed management, and treatment planning with patient safety constraints and audit requirements.",
-      icon: Heart
+      title: "Scheduling & Routing",
+      agentVerb: "AI agents use Sematryx to build conflict-free schedules and minimize routing cost across multi-variable constraint systems.",
+      example: "Staff schedule across 40 shifts → 18% fewer overtime hours",
+      icon: CalendarClock,
+      tag: "Ops / Logistics"
     },
     {
-      title: "Manufacturing & Operations",
-      description: "Production scheduling, quality optimization, and maintenance planning across complex multi-site operations.",
-      icon: Factory
+      title: "Model & System Configuration",
+      agentVerb: "AI agents use Sematryx to tune infrastructure configs, model serving parameters, and pipeline settings for throughput or cost.",
+      example: "Replica count + batch size → 40% cost reduction at same latency",
+      icon: Cpu,
+      tag: "Infrastructure"
     }
   ]
 
@@ -28,12 +36,12 @@ export default function UseCases() {
     <div className="py-20 md:py-24 bg-base">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <p className="text-sm font-semibold text-brand-primary uppercase tracking-wide mb-2">What You Can Solve</p>
+          <p className="text-sm font-semibold text-brand-primary uppercase tracking-wide mb-2">Agent Use Cases</p>
           <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-            Problems that need more than math
+            What agents solve with Sematryx
           </h2>
           <p className="text-xl text-text-secondary max-w-2xl">
-            When constraints are fuzzy, objectives conflict, or regulators want to know why—Sematryx delivers.
+            When an AI agent hits a combinatorial or continuous optimization problem, it calls Sematryx. Here&apos;s what that looks like in practice.
           </p>
         </div>
 
@@ -41,18 +49,26 @@ export default function UseCases() {
           {useCases.map((useCase, index) => {
             const IconComponent = useCase.icon
             return (
-            <div key={index} className="bg-elevated p-8 rounded-xl border border-elevated-3 hover:border-elevated-4 hover:bg-elevated-2 transition-all duration-200 group cursor-default">
-              <div className="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200">
-                <IconComponent className="w-6 h-6 text-brand-primary" />
+              <div key={index} className="bg-elevated p-8 rounded-xl border border-elevated-3 hover:border-elevated-4 hover:bg-elevated-2 transition-all duration-200 group cursor-default">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="w-12 h-12 rounded-lg bg-brand-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <IconComponent className="w-6 h-6 text-brand-primary" />
+                  </div>
+                  <span className="text-xs font-mono text-text-tertiary bg-elevated-2 border border-elevated-3 px-2 py-1 rounded-full">
+                    {useCase.tag}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-text-primary mb-3">
+                  {useCase.title}
+                </h3>
+                <p className="text-text-secondary leading-relaxed mb-4">
+                  {useCase.agentVerb}
+                </p>
+                <div className="bg-base border border-elevated-3 rounded-lg px-4 py-2.5">
+                  <span className="font-mono text-xs text-emerald-400">{useCase.example}</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-text-primary mb-3">
-                {useCase.title}
-              </h3>
-              <p className="text-text-secondary leading-relaxed">
-                {useCase.description}
-              </p>
-            </div>
-          )
+            )
           })}
         </div>
       </div>

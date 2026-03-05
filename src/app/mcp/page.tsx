@@ -1,328 +1,245 @@
-import CodeBlock from '@/components/CodeBlock'
 import Link from 'next/link'
-import { Link2, Brain, Wrench, Bot, Zap, Lock, BookOpen, GraduationCap, ArrowRight } from 'lucide-react'
+import { Bot, Zap, Brain, BarChart3, CalendarClock, Cpu, ArrowRight, BookOpen, GraduationCap } from 'lucide-react'
 
 export default function MCPPage() {
-  const mcpIntegrationCode = `import { MCPClient } from '@sematryx/mcp-client'
-import { Sematryx } from '@sematryx/javascript-sdk'
 
-// Initialize Sematryx with MCP support
-const sematryx = new Sematryx('your-api-key', {
-  mcp: {
-    enabled: true,
-    version: '2024-11-05'
-  }
-})
-
-// Connect to MCP server
-const mcpClient = new MCPClient({
-  serverUrl: 'https://api.sematryx.com/mcp',
-  transport: 'stdio'
-})
-
-await mcpClient.connect()`
-
-  const contextSharingCode = `// Share context between Sematryx and AI models
-const automation = await sematryx.automations.create({
-  name: 'ai-enhanced-processor',
-  trigger: {
-    type: 'webhook'
-  },
-  actions: [
+  const tools = [
     {
-      type: 'mcp_process',
-      config: {
-        model: 'claude-3-sonnet',
-        context: {
-          include_history: true,
-          max_tokens: 4000,
-          tools: ['web_search', 'code_interpreter']
-        },
-        prompt: 'Process the incoming data and provide insights'
-      }
-    }
-  ]
-})`
-
-  const toolsCode = `// MCP Tools available in Sematryx
-const mcpTools = [
-  {
-    name: 'web_search',
-    description: 'Search the web for real-time information',
-    parameters: {
-      query: 'string',
-      max_results: 'number'
-    }
-  },
-  {
-    name: 'code_interpreter',
-    description: 'Execute and analyze code in multiple languages',
-    parameters: {
-      code: 'string',
-      language: 'python|javascript|sql'
-    }
-  },
-  {
-    name: 'data_analyzer',
-    description: 'Analyze structured data and generate insights',
-    parameters: {
-      data: 'object',
-      analysis_type: 'statistical|predictive|descriptive'
-    }
-  }
-]`
-
-  const features = [
-    {
-      title: 'Standardized Communication',
-      description: 'Use the industry-standard MCP protocol for seamless AI model integration',
-      icon: Link2
+      name: 'sematryx_optimize',
+      description: 'Solve any continuous or mixed-integer optimization problem. Describe the objective and bounds in natural language or structured JSON — Sematryx selects the best solver automatically.',
+      returns: 'Optimal parameters, objective value, solver used, explanation',
+      color: 'blue'
     },
     {
-      title: 'Context Preservation',
-      description: 'Maintain conversation context across automation steps and model interactions',
+      name: 'sematryx_explain',
+      description: 'Get a deeper post-solve explanation: sensitivity analysis per variable, basin confidence, why this solution was preferred over alternatives.',
+      returns: 'Sensitivity chart, confidence assessment, narrative rationale',
+      color: 'green'
+    },
+    {
+      name: 'sematryx_compare',
+      description: 'Compare an agent-generated answer against the mathematically optimal solution. Surfaces how far off the agent was and where improvement is possible.',
+      returns: 'Gap analysis, optimal vs agent solution, suboptimality %',
+      color: 'purple'
+    }
+  ]
+
+  const agentUseCases = [
+    {
+      title: 'Hyperparameter Tuning',
+      description: 'Agent tunes ML models — calls Sematryx with loss landscape bounds, gets optimal lr/dropout/batch size back with explanation of the trade-offs.',
       icon: Brain
     },
     {
-      title: 'Tool Integration',
-      description: 'Access web search, code execution, and data analysis tools through MCP',
-      icon: Wrench
+      title: 'Resource Allocation',
+      description: 'Agent distributes budget, compute, or staff across competing objectives with hard constraints — no manual gradient coding required.',
+      icon: BarChart3
     },
     {
-      title: 'Multi-Model Support',
-      description: 'Connect with Claude, GPT, and other AI models using the same protocol',
-      icon: Bot
+      title: 'Scheduling & Routing',
+      description: 'Agent builds conflict-free schedules or minimizes routing cost across multi-variable systems with real-world constraints.',
+      icon: CalendarClock
     },
     {
-      title: 'Real-time Streaming',
-      description: 'Stream responses and maintain persistent connections with AI models',
-      icon: Zap
-    },
-    {
-      title: 'Secure Context Sharing',
-      description: 'Share context and data securely with encryption and access controls',
-      icon: Lock
-    }
-  ]
-
-  const useCases = [
-    {
-      title: 'Intelligent Data Processing',
-      description: 'Use AI models to analyze, transform, and enrich your automation data with natural language understanding.',
-      example: 'Process customer feedback → AI analysis → Automated response generation'
-    },
-    {
-      title: 'Dynamic Workflow Adaptation',
-      description: 'Let AI models modify automation workflows based on real-time conditions and historical patterns.',
-      example: 'Market data → AI strategy adjustment → Automated trading decisions'
-    },
-    {
-      title: 'Code Generation & Review',
-      description: 'Generate, review, and optimize automation scripts using AI-powered code analysis.',
-      example: 'Requirements → AI code generation → Automated testing & deployment'
-    },
-    {
-      title: 'Advanced Content Creation',
-      description: 'Create sophisticated content that adapts to context, audience, and business objectives.',
-      example: 'User data → AI content personalization → Multi-channel distribution'
+      title: 'Config & Infrastructure Tuning',
+      description: 'Agent finds optimal replica counts, batch sizes, cache settings — Sematryx handles the math so the agent can reason about the result.',
+      icon: Cpu
     }
   ]
 
   return (
     <div className="bg-gradient-to-b from-[#0f1419] to-[#1a1f2e] py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Model Context Protocol
-            </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Integrate AI models seamlessly with your automations using the Model Context Protocol (MCP). 
-              Share context, use tools, and build intelligent workflows.
-            </p>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Features Grid */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              MCP Features in Sematryx
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, index) => {
-                const IconComponent = feature.icon
-                return (
-                <div key={index} className="bg-[#1a1f2e] rounded-xl p-6 border border-gray-700">
-                  <div className="mb-4">
-                    <IconComponent className="w-8 h-8 text-brand-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
+        {/* Hero */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-accent-agentic/10 border border-accent-agentic/30 rounded-full px-4 py-1.5 mb-6">
+            <Bot className="w-4 h-4 text-accent-agentic" />
+            <span className="text-accent-agentic font-mono text-xs tracking-wide font-semibold uppercase">Model Context Protocol</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Sematryx as an MCP Server
+          </h1>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+            Add Sematryx to Claude Desktop, Cline, or any MCP-compatible agent in two minutes.
+            Your agent gains expert optimization capability — call one tool, get an optimal answer with full explanation.
+          </p>
+          <div className="flex justify-center gap-4">
+            <Link
+              href="/docs/integrations/mcp"
+              className="inline-flex items-center gap-2 bg-brand-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-primary/90 transition-colors"
+            >
+              <BookOpen className="w-5 h-5" />
+              Quickstart Guide
+            </Link>
+            <Link
+              href="/tutorials/mcp-agent-demo"
+              className="inline-flex items-center gap-2 border border-gray-600 text-gray-300 px-6 py-3 rounded-lg font-semibold hover:border-gray-400 hover:text-white transition-colors"
+            >
+              <GraduationCap className="w-5 h-5" />
+              See Demo
+            </Link>
+          </div>
+        </div>
+
+        {/* How it works */}
+        <div className="mb-20">
+          <h2 className="text-3xl font-bold text-white mb-4 text-center">How It Works</h2>
+          <p className="text-gray-400 text-center mb-10 max-w-2xl mx-auto">
+            Sematryx runs as an MCP server. Your agent connects to it like any other MCP tool provider.
+            No optimization library to install. No scipy to debug. Just a tool call.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {[
+              { step: '1', title: 'Add to your agent', body: 'Add the Sematryx MCP server to claude_desktop_config.json or your Cline settings. Takes 2 minutes — see the quickstart.' },
+              { step: '2', title: 'Agent calls a tool', body: 'When your agent encounters an optimization problem, it calls sematryx_optimize with the objective and bounds in natural language or JSON.' },
+              { step: '3', title: 'Get optimal + explanation', body: 'Sematryx returns the optimal parameters, the solver used, and a natural language explanation your agent can reason about and present to users.' }
+            ].map(({ step, title, body }) => (
+              <div key={step} className="bg-[#1a1f2e] border border-gray-700 rounded-xl p-6">
+                <div className="w-10 h-10 rounded-full bg-brand-primary/20 flex items-center justify-center text-brand-primary font-bold text-lg mb-4">
+                  {step}
                 </div>
-              )
-              })}
-            </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
+                <p className="text-gray-400 text-sm">{body}</p>
+              </div>
+            ))}
           </div>
 
-          {/* Code Examples */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Getting Started with MCP
-            </h2>
-            
-            <div className="space-y-8">
-              <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  1. Initialize MCP Connection
-                </h3>
-                <p className="text-gray-400 mb-6">
-                  Connect <span className="text-primary-400">Sematryx</span> to the Model Context Protocol to enable AI model integration:
-                </p>
-                <CodeBlock
-                  code={mcpIntegrationCode}
-                  language="javascript"
-                  title="Initialize MCP with Sematryx"
-                />
-              </div>
-
-              <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  2. Create AI-Enhanced Automations
-                </h3>
-                <p className="text-gray-400 mb-6">
-                  Build automations that leverage AI models with shared context:
-                </p>
-                <CodeBlock
-                  code={contextSharingCode}
-                  language="javascript"
-                  title="AI-Enhanced Automation"
-                />
-              </div>
-
-              <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  3. Available MCP Tools
-                </h3>
-                <p className="text-gray-400 mb-6">
-                  Access powerful tools through the MCP interface:
-                </p>
-                <CodeBlock
-                  code={toolsCode}
-                  language="javascript"
-                  title="MCP Tools Configuration"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Use Cases */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Real-World Use Cases
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {useCases.map((useCase, index) => (
-                <div key={index} className="bg-[#1a1f2e] rounded-xl p-8 border border-gray-700">
-                  <h3 className="text-xl font-semibold text-white mb-4">
-                    {useCase.title}
-                  </h3>
-                  <p className="text-gray-400 mb-4">
-                    {useCase.description}
-                  </p>
-                  <div className="bg-primary-900/30 rounded-lg p-4 border border-primary-700">
-                    <span className="text-sm font-medium text-primary-400">Example Flow:</span>
-                    <p className="text-primary-300 mt-1">{useCase.example}</p>
-                  </div>
+          {/* Flow diagram */}
+          <div className="bg-[#141418] border border-elevated-3 rounded-xl p-6 max-w-3xl mx-auto">
+            <div className="flex items-center justify-between gap-4 text-sm">
+              <div className="text-center flex-1">
+                <div className="bg-violet-500/20 border border-violet-500/30 rounded-lg px-3 py-2 mb-2 font-mono text-violet-300">
+                  Claude / Cline
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Protocol Details */}
-          <div className="bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
-            <h2 className="text-3xl font-bold text-white mb-6 text-center">
-              MCP Protocol Details
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  Supported Transports
-                </h3>
-                <ul className="space-y-2 text-gray-400">
-                  <li>• <strong className="text-gray-200">STDIO:</strong> Standard input/output communication</li>
-                  <li>• <strong className="text-gray-200">HTTP/SSE:</strong> Server-sent events for real-time updates</li>
-                  <li>• <strong className="text-gray-200">WebSocket:</strong> Bidirectional persistent connections</li>
-                  <li>• <strong className="text-gray-200">Custom:</strong> Plugin support for custom transports</li>
-                </ul>
+                <div className="text-gray-500 text-xs">Your AI agent</div>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  Security Features
-                </h3>
-                <ul className="space-y-2 text-gray-400">
-                  <li>• <strong className="text-gray-200">TLS Encryption:</strong> All communications encrypted</li>
-                  <li>• <strong className="text-gray-200">API Key Auth:</strong> Secure authentication mechanism</li>
-                  <li>• <strong className="text-gray-200">Rate Limiting:</strong> Prevents abuse and ensures stability</li>
-                  <li>• <strong className="text-gray-200">Context Isolation:</strong> Secure context boundaries</li>
-                </ul>
+              <div className="flex-shrink-0 text-gray-600 font-mono text-xs text-center">
+                <div className="mb-1">MCP tool call</div>
+                <div>&#8594;</div>
               </div>
-            </div>
-            
-            <div className="mt-8 bg-blue-900/30 border border-blue-700 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-400 mb-3">
-                MCP Version Support
-              </h3>
-              <p className="text-blue-300 mb-3">
-                <span className="text-primary-400">Sematryx</span> supports MCP version 2024-11-05 and maintains backward compatibility with earlier versions.
-              </p>
-              <div className="text-sm text-blue-400">
-                <strong>Current Version:</strong> 2024-11-05 | 
-                <strong> Next Version:</strong> 2024-12-01 (Preview Available)
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Section */}
-          <div className="mt-16 bg-[#1a1f2e] rounded-2xl border border-gray-700 p-8">
-            <h2 className="text-3xl font-bold text-white mb-6 text-center">
-              Ready to Integrate?
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link
-                href="/docs/integrations/mcp"
-                className="bg-elevated border border-elevated-3 rounded-lg p-6 hover:bg-elevated-2 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-semibold text-text-primary flex items-center gap-2 mb-2">
-                      <BookOpen className="w-5 h-5" />
-                      View Integration Docs
-                    </div>
-                    <div className="text-sm text-text-secondary">
-                      Technical guide for MCP integration
-                    </div>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-text-secondary" />
+              <div className="text-center flex-1">
+                <div className="bg-brand-primary/20 border border-brand-primary/30 rounded-lg px-3 py-2 mb-2 font-mono text-brand-primary">
+                  mcp.sematryx.com
                 </div>
-              </Link>
-              <Link
-                href="/tutorials/mcp-agent-demo"
-                className="bg-elevated border border-elevated-3 rounded-lg p-6 hover:bg-elevated-2 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-semibold text-text-primary flex items-center gap-2 mb-2">
-                      <GraduationCap className="w-5 h-5" />
-                      Run the Agent Demo
-                    </div>
-                    <div className="text-sm text-text-secondary">
-                      Interactive tutorial with examples
-                    </div>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-text-secondary" />
+                <div className="text-gray-500 text-xs">Sematryx MCP server</div>
+              </div>
+              <div className="flex-shrink-0 text-gray-600 font-mono text-xs text-center">
+                <div className="mb-1">optimal + rationale</div>
+                <div>&#8592;</div>
+              </div>
+              <div className="text-center flex-1">
+                <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-lg px-3 py-2 mb-2 font-mono text-emerald-300">
+                  SematryxOptimizer
                 </div>
-              </Link>
+                <div className="text-gray-500 text-xs">CMA-ES, DE, SHGO...</div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Available Tools */}
+        <div className="mb-20">
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">MCP Tools</h2>
+          <div className="space-y-4">
+            {tools.map((tool) => (
+              <div key={tool.name} className="bg-[#1a1f2e] border border-gray-700 rounded-xl p-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-brand-primary/10 px-3 py-1.5 rounded-lg flex-shrink-0">
+                    <span className="font-mono text-sm text-brand-primary font-semibold">{tool.name}</span>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-gray-300 mb-3">{tool.description}</p>
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <Zap className="w-3.5 h-3.5 text-brand-primary" />
+                      <span>Returns: {tool.returns}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Agent use cases */}
+        <div className="mb-20">
+          <h2 className="text-3xl font-bold text-white mb-4 text-center">What Agents Solve</h2>
+          <p className="text-gray-400 text-center mb-10 max-w-xl mx-auto">
+            Any problem where the agent needs to find the best configuration within constraints.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {agentUseCases.map((useCase, index) => {
+              const IconComponent = useCase.icon
+              return (
+                <div key={index} className="bg-[#1a1f2e] border border-gray-700 rounded-xl p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+                      <IconComponent className="w-5 h-5 text-brand-primary" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-white">{useCase.title}</h3>
+                  </div>
+                  <p className="text-gray-400 text-sm">{useCase.description}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Pricing callout */}
+        <div className="bg-gradient-to-r from-brand-primary/10 to-purple-500/10 border border-brand-primary/30 rounded-2xl p-8 text-center mb-16">
+          <h3 className="text-2xl font-bold text-white mb-2">Pay per solve, not per month</h3>
+          <p className="text-gray-400 mb-6 max-w-xl mx-auto">
+            100 solves/month free. After that, $0.01&ndash;$0.05 per solve based on complexity.
+            No subscriptions. Credits never expire.
+          </p>
+          <div className="flex justify-center gap-4">
+            <Link href="/api-keys" className="bg-brand-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-primary/90 transition-colors">
+              Get Free API Key
+            </Link>
+            <Link href="/#pricing" className="border border-gray-600 text-gray-300 px-6 py-3 rounded-lg font-semibold hover:border-gray-400 hover:text-white transition-colors">
+              See Pricing
+            </Link>
+          </div>
+        </div>
+
+        {/* Next Steps */}
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">Get Started</h2>
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            <Link
+              href="/docs/integrations/mcp"
+              className="block p-6 bg-[#1a1f2e] border border-gray-700 rounded-xl hover:border-brand-primary/50 transition-colors group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="font-semibold text-white mb-1 flex items-center gap-2">
+                    <BookOpen className="w-5 h-5 text-brand-primary" />
+                    MCP Quickstart
+                  </div>
+                  <div className="text-sm text-gray-400">Claude Desktop + Cline setup in 2 minutes</div>
+                </div>
+                <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-brand-primary transition-colors" />
+              </div>
+            </Link>
+            <Link
+              href="/tutorials/mcp-agent-demo"
+              className="block p-6 bg-[#1a1f2e] border border-gray-700 rounded-xl hover:border-brand-primary/50 transition-colors group"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="font-semibold text-white mb-1 flex items-center gap-2">
+                    <GraduationCap className="w-5 h-5 text-brand-primary" />
+                    Agent Demo Tutorial
+                  </div>
+                  <div className="text-sm text-gray-400">See an agent solve portfolio optimization</div>
+                </div>
+                <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-brand-primary transition-colors" />
+              </div>
+            </Link>
+          </div>
+        </div>
       </div>
+    </div>
   )
 }
