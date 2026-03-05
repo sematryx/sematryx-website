@@ -14,8 +14,8 @@ export default function BillingPage() {
 usage = get_usage()
 
 print(f"Solves this month: {usage['solves_this_month']}")
-print(f"Cost this month: ${usage['cost_this_month_cents'] / 100:.2f}")
-print(f"Credit balance: ${usage['credit_balance_cents'] / 100:.2f}")
+print(f"Cost this month: \${usage['cost_this_month_cents'] / 100:.2f}")
+print(f"Credit balance: \${usage['credit_balance_cents'] / 100:.2f}")
 print(f"Plan: {usage['plan']}")`
 
   const usageResponse = `{
