@@ -100,12 +100,6 @@ export async function listOptimizationsFromAPI(
   } else {
     result = []
   }
-    isEmpty: result.length === 0
-  })
-  
-  if (result.length === 0) {
-
-  }
   
   return result
 }
