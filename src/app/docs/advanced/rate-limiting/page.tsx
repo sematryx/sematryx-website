@@ -84,7 +84,7 @@ for attempt in range(max_retries):
             Rate Limits by Tier
           </h2>
           <p className="text-text-secondary mb-4">
-            Rate limits are applied per minute and vary by subscription tier:
+            Rate limits are applied per minute and vary by plan:
           </p>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
@@ -93,6 +93,7 @@ for attempt in range(max_retries):
                   <th className="text-left py-3 px-4 text-text-primary font-semibold">Tier</th>
                   <th className="text-center py-3 px-4 text-text-secondary font-semibold">Requests/Minute</th>
                   <th className="text-center py-3 px-4 text-text-secondary font-semibold">Burst Limit</th>
+                  <th className="text-center py-3 px-4 text-text-secondary font-semibold">Monthly Solves</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-elevated-3">
@@ -100,21 +101,13 @@ for attempt in range(max_retries):
                   <td className="py-3 px-4 text-text-primary">Free</td>
                   <td className="py-3 px-4 text-center text-text-secondary">10</td>
                   <td className="py-3 px-4 text-center text-text-secondary">15</td>
+                  <td className="py-3 px-4 text-center text-text-secondary">100</td>
                 </tr>
                 <tr className="bg-elevated/50">
-                  <td className="py-3 px-4 text-text-primary">Starter</td>
-                  <td className="py-3 px-4 text-center text-text-secondary">60</td>
-                  <td className="py-3 px-4 text-center text-text-secondary">90</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 text-brand-primary font-medium">Pro</td>
-                  <td className="py-3 px-4 text-center text-brand-primary font-medium">300</td>
-                  <td className="py-3 px-4 text-center text-brand-primary font-medium">450</td>
-                </tr>
-                <tr className="bg-elevated/50">
-                  <td className="py-3 px-4 text-text-primary">Enterprise</td>
-                  <td className="py-3 px-4 text-center text-text-secondary">Custom</td>
-                  <td className="py-3 px-4 text-center text-text-secondary">Custom</td>
+                  <td className="py-3 px-4 text-brand-primary font-medium">Pay-as-you-go</td>
+                  <td className="py-3 px-4 text-center text-brand-primary font-medium">60</td>
+                  <td className="py-3 px-4 text-center text-brand-primary font-medium">90</td>
+                  <td className="py-3 px-4 text-center text-brand-primary font-medium">Unlimited</td>
                 </tr>
               </tbody>
             </table>
@@ -235,18 +228,18 @@ for attempt in range(max_retries):
           </p>
           <div className="space-y-4">
             <div className="bg-elevated border border-elevated-3 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-text-primary mb-2">Upgrade Your Plan</h3>
+              <h3 className="text-lg font-semibold text-text-primary mb-2">Upgrade to Pay-as-you-go</h3>
               <p className="text-text-secondary text-sm mb-3">
-                Pro tier offers 30x the rate limit of Free tier. Enterprise offers custom limits.
+                Pay-as-you-go tier offers 6x the rate limit of Free tier with unlimited monthly solves.
               </p>
               <Link href="/pricing" className="text-brand-primary hover:underline text-sm">
                 View plans →
               </Link>
             </div>
             <div className="bg-elevated border border-elevated-3 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-text-primary mb-2">Enterprise Custom Limits</h3>
+              <h3 className="text-lg font-semibold text-text-primary mb-2">High-Volume Needs</h3>
               <p className="text-text-secondary text-sm">
-                Enterprise customers can request custom rate limits based on usage patterns and requirements.
+                Need higher rate limits? Contact us at <a href="mailto:hello@sematryx.com" className="text-brand-primary hover:underline">hello@sematryx.com</a> to discuss your requirements.
               </p>
             </div>
           </div>

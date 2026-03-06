@@ -1,6 +1,5 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import ConversationalOptimization from '@/components/ConversationalOptimization'
 import Features from '@/components/Features'
 import UseCases from '@/components/UseCases'
 import AgentReady from '@/components/AgentReady'
@@ -14,7 +13,6 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      <ConversationalOptimization />
       <UseCases />
       <AgentReady />
       <Features />

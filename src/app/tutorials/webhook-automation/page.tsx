@@ -24,35 +24,7 @@ print(f"Strategy used: {result.strategy_used}")
 print(f"Solution: {result.solution}")
 print(f"Value: {result.objective_value}")`
 
-  const landscapeAnalysis = `from sematryx import analyze_landscape
 
-# Analyze problem landscape before optimization
-# Helps choose the right strategy
-analysis = analyze_landscape(
-    objective_function=my_function,
-    bounds=bounds,
-    n_samples=500,          # Sample points for analysis
-    analysis_depth='full'   # 'quick', 'standard', 'full'
-)
-
-# Landscape characteristics
-print(f"Dimensionality: {analysis['dimensions']}")
-print(f"Modality: {analysis['modality']}")          # unimodal, multimodal
-print(f"Smoothness: {analysis['smoothness']}")       # smooth, rugged, discontinuous
-print(f"Separability: {analysis['separability']}")   # separable, non-separable
-print(f"Conditioning: {analysis['condition_number']}")
-
-# Strategy recommendations
-print(f"Recommended strategies: {analysis['recommended_strategies']}")
-print(f"Expected difficulty: {analysis['difficulty_score']}")
-
-# Use recommendations
-result = optimize(
-    objective_function=my_function,
-    bounds=bounds,
-    strategy=analysis['recommended_strategies'][0],
-    use_landscape_analysis=analysis  # Reuse analysis
-)`
 
   const privateLearningAdvanced = `from sematryx import optimize
 
@@ -93,66 +65,26 @@ print(f"Evaluations: {result.evaluations_used}")
 print(f"Duration: {result.duration_seconds:.2f}s")
 print(f"Strategy: {result.strategy_used}")`
 
-  const batchOptimization = `from sematryx import batch_optimize
-import asyncio
 
-# Batch optimization for multiple related problems
-problems = [
-    {'id': 'region_north', 'objective': obj_north, 'bounds': bounds_north},
-    {'id': 'region_south', 'objective': obj_south, 'bounds': bounds_south},
-    {'id': 'region_east', 'objective': obj_east, 'bounds': bounds_east},
-    {'id': 'region_west', 'objective': obj_west, 'bounds': bounds_west},
-]
-
-# Run all optimizations concurrently
-results = await batch_optimize(
-    problems=problems,
-    
-    # Shared configuration
-    shared_config={
-        'max_evaluations': 1000,
-        'explanation_level': 2,
-        'use_learning': True
-    },
-    
-    # Batch settings
-    max_concurrent=4,           # Run 4 at once
-    priority='balanced',        # 'speed', 'balanced', 'cost'
-    
-    # Cross-problem learning
-    share_learning=True,        # Problems can learn from each other
-    learning_weight=0.3         # Weight for cross-problem knowledge
-)
-
-# Aggregate results
-for result in results:
-    print(f"{result['problem_id']}: {result['best_fitness']}")`
 
   const agentIntegration = `# MCP Integration for AI Agents
-# Your AI agents can call Sematryx directly
+# Your AI agents can call Sematryx directly via MCP or REST
 
-# Example: Claude calling Sematryx via MCP
+# Example: Claude using sematryx_optimize via MCP
 """
-User: Optimize my portfolio to minimize risk while targeting 8% return
+User: Find the minimum of f(x,y) = x² + y² - x*y in [-5, 5]
 
-Claude (via MCP): 
+Claude (via MCP):
 <tool_call>
-sematryx.optimize_portfolio({
-  returns: [0.12, 0.08, 0.15, 0.10],
-  covariance: [...],
-  constraints: {
-    min_return: 0.08,
-    max_position: 0.30
-  },
-  explanation_level: 3
+sematryx_optimize({
+  "expression": "x**2 + y**2 - x*y",
+  "variables": ["x", "y"],
+  "bounds": [[-5, 5], [-5, 5]],
+  "max_evaluations": 1000
 })
 </tool_call>
 
-Result includes natural language explanation:
-"Recommended allocation: 35% Asset A, 28% Asset B, 22% Asset C, 15% Asset D.
-This achieves 8.2% expected return with CVaR of 12.3%. The allocation 
-favors Asset A due to its superior risk-adjusted return (Sharpe 1.2)
-while satisfying all position limits."
+Result: {"optimal_value": 0.0, "optimal_solution": {"x": 0.0, "y": 0.0}, ...}
 """
 
 # REST API for any AI system
@@ -162,53 +94,65 @@ response = requests.post(
     'https://api.sematryx.com/v1/optimize',
     headers={'Authorization': f'Bearer {api_key}'},
     json={
-        'objective_function_code': objective_code,  # Or use preset
-        'bounds': bounds,
-        'explanation_level': 3,
-        'explanation_format': 'natural_language'    # For agent consumption
+        'objective_function': 'sphere',
+        'variables': ['x1', 'x2', 'x3'],
+        'bounds': [[-5.0, 5.0], [-5.0, 5.0], [-5.0, 5.0]],
+        'max_evaluations': 2000,
+        'strategy': 'auto'
     }
 )
 
 result = response.json()
-# result['explanation']['natural_language'] contains
-# human-readable explanation agents can relay to users`
+print(f"Optimal value: {result['optimal_value']}")
+print(f"Solution: {result['optimal_solution']}")
+if 'explanation' in result:
+    print(f"Explanation: {result['explanation']}")`
 
-  const callbacksAndMonitoring = `from sematryx import Sematryx
+  const callbacksAndMonitoring = `import requests, time
 
-# For advanced monitoring, use the client API
-client = Sematryx(api_key="sk-...")
-result = client.optimize(
+API_KEY = "smtrx_..."
+BASE = "https://api.sematryx.com"
+headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
 
-# Real-time monitoring with callbacks
-def progress_callback(iteration, current_best, improvement):
-    """Called after each iteration"""
-    print(f"Iteration {iteration}: best={current_best:.6f}, improved={improvement}")
+# Start a long-running optimization
+resp = requests.post(f"{BASE}/v1/optimize", headers=headers, json={
+    "objective_function": "rastrigin",
+    "variables": ["x1", "x2", "x3", "x4", "x5"],
+    "bounds": [[-5.12, 5.12]] * 5,
+    "max_evaluations": 10000,
+    "strategy": "auto"
+})
+resp.raise_for_status()
+op_id = resp.json()["operation_id"]
+print(f"Started: {op_id}")
+
+# Poll for progress with early stopping
+start_time = time.time()
+prev_evals = 0
+
+while True:
+    result = requests.get(
+        f"{BASE}/v1/optimize/result/{op_id}", headers=headers
+    ).json()
     
-    # Return False to stop early
-    if current_best < target_value:
-        return False
-    return True
-
-def strategy_callback(strategy_name, reason):
-    """Called when strategy changes"""
-    print(f"Strategy switched to {strategy_name}: {reason}")
-
-result = optimize(
-    objective_function=my_function,
-    bounds=bounds,
+    status = result.get("status")
+    evals = result.get("evaluations_used", 0)
     
-    # Callbacks
-    callbacks={
-        'on_iteration': progress_callback,
-        'on_strategy_change': strategy_callback,
-        'on_constraint_violation': violation_callback,
-        'on_improvement': improvement_callback
-    },
+    if evals > prev_evals:
+        best = result.get("optimal_value")
+        elapsed = time.time() - start_time
+        print(f"  [{elapsed:.1f}s] {evals} evals, best={best}")
+        prev_evals = evals
     
-    # Streaming results (for long-running optimizations)
-    stream_results=True,
-    stream_interval=10          # Emit updates every 10 iterations
-)`
+    if status in ("completed", "failed"):
+        break
+    
+    time.sleep(2)
+
+if result["status"] == "completed":
+    print(f"Done: {result['optimal_value']} at {result['optimal_solution']}")
+else:
+    print(f"Failed: {result.get('error')}")`
 
   const debuggingTips = `from sematryx import optimize
 
@@ -274,28 +218,7 @@ if result.audit_id:
             />
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-text-primary mb-4">
-              Landscape Analysis
-            </h2>
-            <p className="text-text-secondary mb-4">
-              Analyze your problem's landscape before optimization to choose the right strategy:
-            </p>
-            <CodeBlock
-              code={landscapeAnalysis}
-              language="python"
-              title="Problem landscape analysis"
-            />
-            <div className="bg-elevated border border-elevated-3 rounded-xl p-6 mt-6">
-              <h3 className="text-lg font-semibold text-text-primary mb-3">Landscape Types</h3>
-              <div className="space-y-2 text-text-secondary text-sm">
-                <div><strong className="text-text-primary">Unimodal + Smooth:</strong> CMA-ES, BFGS, gradient methods</div>
-                <div><strong className="text-text-primary">Multimodal + Smooth:</strong> Differential Evolution, SHGO</div>
-                <div><strong className="text-text-primary">Rugged/Discontinuous:</strong> Genetic algorithms, simulated annealing</div>
-                <div><strong className="text-text-primary">High-dimensional:</strong> Bayesian optimization, CMA-ES with restarts</div>
-              </div>
-            </div>
-          </section>
+
 
           <section>
             <h2 className="text-2xl font-semibold text-text-primary mb-4">
@@ -325,19 +248,7 @@ if result.audit_id:
             />
           </section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-text-primary mb-4">
-              Batch Optimization
-            </h2>
-            <p className="text-text-secondary mb-4">
-              Run multiple related optimizations concurrently with cross-problem learning:
-            </p>
-            <CodeBlock
-              code={batchOptimization}
-              language="python"
-              title="Batch optimization"
-            />
-          </section>
+
 
           <section>
             <h2 className="text-2xl font-semibold text-text-primary mb-4">
@@ -410,7 +321,7 @@ if result.audit_id:
                 <li>✓ Set up optimization problems with constraints</li>
                 <li>✓ Configure Sematryx Intelligence</li>
                 <li>✓ Interpret results and explanations</li>
-                <li>✓ Use domain-specific libraries</li>
+                <li>✓ Use the REST API for real integrations</li>
                 <li>✓ Apply advanced strategies for complex problems</li>
               </ul>
               <div className="space-y-2">

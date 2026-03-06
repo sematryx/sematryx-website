@@ -193,11 +193,11 @@ export default function AboutPage() {
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" />
-                        <span>Conversational optimization interface for non-technical users</span>
+                        <span>REST API and MCP server for programmatic and agent access</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" />
-                        <span>Domain libraries for finance, healthcare, supply chain, and manufacturing</span>
+                        <span>Private Learning Store for organization-specific optimization knowledge</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" />
@@ -209,7 +209,7 @@ export default function AboutPage() {
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" />
-                        <span>Pay-per-execution billing with free tier (10 optimizations/month)</span>
+                        <span>Pay-per-execution billing with free tier (100 solves/month)</span>
                       </li>
                     </ul>
                   </div>
@@ -219,7 +219,7 @@ export default function AboutPage() {
               <div className="bg-elevated p-8 rounded-xl border border-elevated-3">
                 <h3 className="text-xl font-bold text-text-primary mb-3">Try It Now</h3>
                 <p className="text-text-secondary mb-6 leading-relaxed">
-                  You can start using Sematryx today. Sign up for a free API key and get 10 optimizations per month at no cost. No credit card required.
+                  You can start using Sematryx today. Sign up for a free API key and get 100 solves per month at no cost. No credit card required.
                 </p>
                 <Link 
                   href="/api-keys" 

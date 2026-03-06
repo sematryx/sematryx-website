@@ -41,14 +41,6 @@ export default function TutorialsPage() {
       category: 'Results Analysis'
     },
     {
-      id: 'enterprise-workflows',
-      title: 'Domain-Specific Optimization',
-      description: 'Use specialized libraries for finance, healthcare, supply chain, and manufacturing',
-      difficulty: 'Advanced',
-      duration: '45 min',
-      category: 'Domain Libraries'
-    },
-    {
       id: 'webhook-automation',
       title: 'Advanced Optimization Strategies',
       description: 'Multi-strategy optimization, Private Learning Store, and performance tuning',
@@ -64,14 +56,7 @@ export default function TutorialsPage() {
       duration: '15 min',
       category: 'Agent Integration'
     },
-    {
-      id: 'conversational-optimization',
-      title: 'Conversational Optimization',
-      description: 'Create optimization problems through natural language conversation with an AI agent',
-      difficulty: 'Beginner',
-      duration: '20 min',
-      category: 'Problem Setup'
-    }
+
   ]
 
   const getDifficultyStyles = (difficulty: string) => {

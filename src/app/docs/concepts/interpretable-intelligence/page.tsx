@@ -21,19 +21,14 @@ print(result.explanation)  # Human-readable explanation of the solution`
 
 client = Sematryx(api_key="sk-your-api-key")
 
-# Advanced Interpretable Intelligence configuration
+# Advanced configuration: choose your explanation detail level
 result = client.optimize(
     objective="minimize",
     variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
     objective_function=sphere,
     intelligence_config={
         "use_interpretable_intelligence": True,
-        "interpretable": {
-            "explanation_level": 3,  # 0-5 detail level
-            "async_explanations": True,  # Background processing (22-26% faster)
-            "include_visualizations": True,  # Generate visual diagnostics
-            "natural_language": True  # Enable NLP summaries
-        }
+        "explanation_level": 3  # 0=none, 1=basic, 2=detailed, 3=comprehensive, 4=full audit
     }
 )`
 
@@ -41,42 +36,29 @@ result = client.optimize(
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "objective_function_id": "func_1234567890",
+    "objective_function": "sphere",
+    "variables": ["x", "y"],
     "bounds": [[-10, 10], [-10, 10]],
     "max_evaluations": 2000,
-    "intelligence_config": {
-      "use_interpretable_intelligence": true,
-      "explanation_level": 3,
-      "interpretable": {
-        "async_explanations": true,
-        "include_visualizations": true,
-        "natural_language": true
-      }
-    }
+    "explanation_level": 3
   }'`
 
-  const javascriptConfig = `import { Sematryx } from '@sematryx/javascript-sdk'
-
-const client = new Sematryx('sk-your-api-key')
-
-// Enable Interpretable Intelligence
-const result = await client.optimize({
-  objective: 'minimize',
-  variables: [
-    { name: 'x', bounds: [-5, 5] },
-    { name: 'y', bounds: [-5, 5] }
-  ],
-  objectiveFunction: sphere,
-  explanationLevel: 3,
-  intelligenceConfig: {
-    interpretable: {
-      asyncExplanations: true,
-      includeVisualizations: true,
-      naturalLanguage: true
-    }
-  }
+  const javascriptConfig = `// REST API via fetch (JavaScript SDK coming soon)
+const response = await fetch('https://api.sematryx.com/v1/optimize', {
+  method: 'POST',
+  headers: {
+    'Authorization': \`Bearer \${apiKey}\`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    objective_function: 'sphere',
+    variables: ['x', 'y'],
+    bounds: [[-5, 5], [-5, 5]],
+    max_evaluations: 2000,
+    explanation_level: 3
+  })
 })
-
+const result = await response.json()
 console.log(result.explanation)`
 
   const explanationLevels = `# Explanation Levels
@@ -141,8 +123,8 @@ Level 5: Maximum detail
           </h2>
           <p className="text-gray-400 mb-4">
             Interpretable Intelligence provides comprehensive explanations of all optimization decisions. 
-            Explanations are processed asynchronously by default, providing a 22-26% performance boost 
-            while still delivering detailed insights.
+            Use the <code>explanation_level</code> parameter to control detail — from a one-line summary 
+            up to a full audit trail suitable for compliance reporting.
           </p>
           <div className="bg-green-950/40 border border-green-800/50 rounded-lg p-6">
             <h3 className="text-lg font-semibold text-green-400 mb-3">What You Get</h3>
@@ -157,7 +139,7 @@ Level 5: Maximum detail
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-400 mt-1">•</span>
-                <span><strong className="text-gray-200">Interactive visualizations:</strong> Visual diagnostics of optimization process (optional)</span>
+                <span><strong className="text-gray-200">Structured decision logs:</strong> Machine-readable decision records parseable by downstream systems</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-400 mt-1">•</span>
@@ -214,20 +196,12 @@ Level 5: Maximum detail
             <h3 className="text-lg font-semibold text-gray-200 mb-3">Configuration Options</h3>
             <ul className="space-y-3 text-sm text-gray-400">
               <li>
-                <strong className="text-gray-200">explanation_level</strong> (int, 0-5, default: 2)
-                <p className="text-gray-500 mt-1">Detail level for explanations. Higher levels provide more information but increase compute cost.</p>
+                <strong className="text-gray-200">explanation_level</strong> (int, 0-4, default: 0)
+                <p className="text-gray-500 mt-1">Detail level for explanations. Higher levels provide more information. Pass as a top-level parameter or inside <code>intelligence_config</code>.</p>
               </li>
               <li>
-                <strong className="text-gray-200">async_explanations</strong> (bool, default: True)
-                <p className="text-gray-500 mt-1">Process explanations asynchronously in the background. Provides 22-26% performance boost.</p>
-              </li>
-              <li>
-                <strong className="text-gray-200">include_visualizations</strong> (bool, default: False)
-                <p className="text-gray-500 mt-1">Generate visual diagnostics of the optimization process. Useful for debugging and presentations.</p>
-              </li>
-              <li>
-                <strong className="text-gray-200">natural_language</strong> (bool, default: True)
-                <p className="text-gray-500 mt-1">Enable natural language processing for human-readable summaries. Disable for technical-only logs.</p>
+                <strong className="text-gray-200">use_interpretable_intelligence</strong> (bool, default: false)
+                <p className="text-gray-500 mt-1">Enable interpretable intelligence mode, which provides structured explanations of strategy selection and optimization decisions.</p>
               </li>
             </ul>
           </div>
@@ -271,7 +245,7 @@ Level 5: Maximum detail
           <ul className="space-y-3 text-gray-400">
             <li className="flex items-start gap-2">
               <span className="text-green-400 mt-1">•</span>
-              <span><strong className="text-gray-200">Use async_explanations:</strong> Always enable async processing for the 22-26% performance boost with no downside.</span>
+              <span><strong className="text-gray-200">Start with level 1-2:</strong> For most production use, level 1 (basic) or level 2 (detailed) gives useful context without added overhead.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-400 mt-1">•</span>
@@ -279,11 +253,11 @@ Level 5: Maximum detail
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-400 mt-1">•</span>
-              <span><strong className="text-gray-200">Enable visualizations for debugging:</strong> Turn on visualizations when troubleshooting optimization issues.</span>
+              <span><strong className="text-gray-200">Use level 3-4 for debugging:</strong> When an optimization behaves unexpectedly, higher explanation levels expose the full decision trace.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-400 mt-1">•</span>
-              <span><strong className="text-gray-200">Natural language for stakeholders:</strong> Keep natural_language enabled when explanations need to be shared with non-technical stakeholders.</span>
+              <span><strong className="text-gray-200">Level 4 for compliance:</strong> Use explanation_level=4 when you need complete audit trails for regulated industries.</span>
             </li>
           </ul>
         </section>

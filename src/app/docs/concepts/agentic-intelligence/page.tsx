@@ -19,18 +19,15 @@ result = client.optimize(
 
 client = Sematryx(api_key="sk-your-api-key")
 
-# Advanced Agentic Intelligence configuration
+# Advanced configuration: AI reasoning + automatic strategy selection
 result = client.optimize(
     objective="minimize",
     variables=[{"name": "x", "bounds": (-5, 5)}, {"name": "y", "bounds": (-5, 5)}],
     objective_function=sphere,
     intelligence_config={
         "use_agentic_intelligence": True,
-        "agentic": {
-            "max_agents_per_problem": 5,  # Maximum number of agents (default: 3)
-            "consensus_threshold": 0.67,  # Agreement threshold for strategy selection
-            "agent_timeout": 30  # Timeout for agent responses in seconds
-        }
+        "use_ai_reasoning": True,   # Enable AI-driven strategy selection
+        "strategy": "auto"          # Let the system choose the best strategy
     }
 )`
 
@@ -38,40 +35,32 @@ result = client.optimize(
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "objective_function_id": "func_1234567890",
+    "objective_function": "sphere",
+    "variables": ["x", "y"],
     "bounds": [[-10, 10], [-10, 10]],
     "max_evaluations": 2000,
-    "intelligence_config": {
-      "use_agentic_intelligence": true,
-      "agentic": {
-        "max_agents_per_problem": 5,
-        "consensus_threshold": 0.67,
-        "agent_timeout": 30
-      }
-    }
+    "strategy": "auto",
+    "use_ai_reasoning": true
   }'`
 
-  const javascriptConfig = `import { Sematryx } from '@sematryx/javascript-sdk'
-
-const client = new Sematryx('sk-your-api-key')
-
-// Enable Agentic Intelligence
-const result = await client.optimize({
-  objective: 'minimize',
-  variables: [
-    { name: 'x', bounds: [-5, 5] },
-    { name: 'y', bounds: [-5, 5] }
-  ],
-  objectiveFunction: sphere,
-  intelligenceConfig: {
-    useAgenticIntelligence: true,
-    agentic: {
-      maxAgentsPerProblem: 5,
-      consensusThreshold: 0.67,
-      agentTimeout: 30
-    }
-  }
-})`
+  const javascriptConfig = `// REST API via fetch (JavaScript SDK coming soon)
+const response = await fetch('https://api.sematryx.com/v1/optimize', {
+  method: 'POST',
+  headers: {
+    'Authorization': \`Bearer \${apiKey}\`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    objective_function: 'sphere',
+    variables: ['x', 'y'],
+    bounds: [[-5, 5], [-5, 5]],
+    max_evaluations: 2000,
+    strategy: 'auto',
+    use_ai_reasoning: true
+  })
+})
+const result = await response.json()
+console.log(result.optimal_value, result.optimal_solution)`
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
@@ -163,16 +152,16 @@ const result = await client.optimize({
             <h3 className="text-lg font-semibold text-gray-200 mb-3">Configuration Options</h3>
             <ul className="space-y-3 text-sm text-gray-400">
               <li>
-                <strong className="text-gray-200">max_agents_per_problem</strong> (int, default: 3)
-                <p className="text-gray-500 mt-1">Maximum number of agents that will collaborate on strategy selection. More agents provide better consensus but increase latency.</p>
+                <strong className="text-gray-200">use_agentic_intelligence</strong> (bool, default: false)
+                <p className="text-gray-500 mt-1">Enable AI-assisted strategy selection for your optimization problem.</p>
               </li>
               <li>
-                <strong className="text-gray-200">consensus_threshold</strong> (float, default: 0.67)
-                <p className="text-gray-500 mt-1">Minimum agreement percentage required before a strategy is approved. Range: 0.5 to 1.0. Higher values require more agreement but may be more conservative.</p>
+                <strong className="text-gray-200">use_ai_reasoning</strong> (bool, default: false)
+                <p className="text-gray-500 mt-1">Enable deeper AI reasoning about problem structure to guide strategy selection.</p>
               </li>
               <li>
-                <strong className="text-gray-200">agent_timeout</strong> (int, default: 30)
-                <p className="text-gray-500 mt-1">Timeout in seconds for agent responses. If an agent doesn't respond within this time, it's excluded from consensus.</p>
+                <strong className="text-gray-200">strategy</strong> (string, default: "auto")
+                <p className="text-gray-500 mt-1">Set to "auto" to let the system choose the best strategy, or specify a strategy name directly.</p>
               </li>
             </ul>
           </div>
@@ -220,15 +209,15 @@ const result = await client.optimize({
             </li>
             <li className="flex items-start gap-2">
               <span className="text-sky-400 mt-1">•</span>
-              <span><strong className="text-gray-200">Balance agents vs latency:</strong> More agents provide better consensus but increase decision time. Use 3-5 agents for most cases.</span>
+              <span><strong className="text-gray-200">Use strategy=auto:</strong> Let the system select the best algorithm for your problem type—it uses learned heuristics from thousands of problems.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-sky-400 mt-1">•</span>
-              <span><strong className="text-gray-200">Adjust consensus threshold:</strong> Higher thresholds (0.75+) are more conservative but may reject valid strategies. Lower thresholds (0.6) are faster but less rigorous.</span>
+              <span><strong className="text-gray-200">Enable for complex problems:</strong> Agentic Intelligence is most valuable for high-dimensional or multimodal problems where manual strategy selection is difficult.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-sky-400 mt-1">•</span>
-              <span><strong className="text-gray-200">Monitor agent timeouts:</strong> If agents frequently timeout, consider increasing the timeout value or reducing the number of agents.</span>
+              <span><strong className="text-gray-200">Combine with private learning:</strong> Use <code>read_from_private: True</code> to benefit from your organization's historical optimization data alongside AI reasoning.</span>
             </li>
           </ul>
         </section>

@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-This is the AEAO (AI-Enhanced Automation Operations) website - a comprehensive SaaS landing page with documentation, tutorials, benchmarks, and API key management.
+This is the Sematryx optimization platform website - a comprehensive SaaS landing page with documentation, tutorials, benchmarks, and API key management.
 
 ## Technology Stack
 - **Framework**: Next.js 14 with App Router
@@ -14,7 +14,7 @@ This is the AEAO (AI-Enhanced Automation Operations) website - a comprehensive S
 - **Package Manager**: npm
 
 ## Repository Information
-- **Purpose**: SaaS website for AEAO platform
+- **Purpose**: SaaS website for Sematryx optimization platform
 - **Organization**: smartofficialintelligence
 - **Author**: Patrick Kuehn <patrick.kuehn@stern.nyu.edu>
 - **Main Branch**: master
