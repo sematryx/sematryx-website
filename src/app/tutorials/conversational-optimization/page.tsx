@@ -394,6 +394,84 @@ Would you like to adjust these constraints, or explore what happens with differe
                 </Link>
               </div>
             </section>
+
+            {/* MCP Integration */}
+            <section className="bg-gradient-to-r from-violet-900/20 to-purple-900/20 border border-violet-700/50 rounded-xl p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="bg-violet-500/20 p-3 rounded-lg">
+                  <Bot className="w-8 h-8 text-violet-400" />
+                </div>
+                <h2 className="text-2xl font-semibold text-gray-200">
+                  Conversational Optimization via MCP
+                </h2>
+              </div>
+              <p className="text-gray-300 mb-6">
+                Use conversational optimization directly in Claude Desktop, Cline, or any MCP-compatible agent. 
+                The agent will guide you through the entire formulation process—no SDK required.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="bg-[#1a1f2e]/60 rounded-lg p-5">
+                  <h3 className="font-semibold text-gray-200 mb-3 flex items-center gap-2">
+                    <span className="text-violet-400">1.</span> Start the conversation
+                  </h3>
+                  <blockquote className="border-l-4 border-violet-500 pl-4 text-gray-300 italic mb-3">
+                    "Use sematryx_formulate to help me optimize my marketing budget across 3 channels"
+                  </blockquote>
+                  <p className="text-sm text-gray-400">
+                    Claude will call <code className="font-mono bg-[#141418] px-1.5 py-0.5 rounded text-violet-400">sematryx_formulate</code> 
+                    {' '}and start the interactive conversation.
+                  </p>
+                </div>
+
+                <div className="bg-[#1a1f2e]/60 rounded-lg p-5">
+                  <h3 className="font-semibold text-gray-200 mb-3 flex items-center gap-2">
+                    <span className="text-violet-400">2.</span> Answer agent questions
+                  </h3>
+                  <p className="text-gray-300 mb-2">The agent will ask clarifying questions like:</p>
+                  <ul className="space-y-2 text-sm text-gray-400">
+                    <li className="flex items-start gap-2">
+                      <span className="text-violet-400 mt-0.5">•</span>
+                      <span>"What's your total budget?"</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-violet-400 mt-0.5">•</span>
+                      <span>"What are the min/max spend constraints per channel?"</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-violet-400 mt-0.5">•</span>
+                      <span>"Are you maximizing conversions, revenue, or ROI?"</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-[#1a1f2e]/60 rounded-lg p-5">
+                  <h3 className="font-semibold text-gray-200 mb-3 flex items-center gap-2">
+                    <span className="text-violet-400">3.</span> Automatic optimization
+                  </h3>
+                  <p className="text-gray-300">
+                    Once all parameters are collected, Claude will call{' '}
+                    <code className="font-mono bg-[#141418] px-1.5 py-0.5 rounded text-violet-400">sematryx_formulate_complete</code>
+                    {' '}to execute the optimization and return results with full explanation.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 flex items-start gap-3 bg-violet-500/10 border border-violet-500/30 rounded-lg p-4">
+                <Zap className="w-5 h-5 text-violet-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-violet-200 mb-1">Zero setup required</h4>
+                  <p className="text-sm text-violet-200/80">
+                    Just{' '}
+                    <Link href="/docs/integrations/mcp" className="underline hover:text-violet-100">
+                      add Sematryx to Claude Desktop
+                    </Link>
+                    {' '}and start optimizing. The conversational flow handles all complexity for you.
+                  </p>
+                </div>
+              </div>
+            </section>
+
           </div>
         </div>
     </div>
