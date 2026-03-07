@@ -121,7 +121,7 @@ export default function MCPIntegrationPage() {
                   Quit and reopen Claude Desktop. You should see Sematryx tools in the tool picker (hammer icon).
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {['sematryx_optimize', 'sematryx_explain', 'sematryx_compare'].map(tool => (
+                  {['sematryx_optimize', 'sematryx_explain', 'sematryx_compare', 'sematryx_formulate', 'sematryx_formulate_continue', 'sematryx_formulate_status', 'sematryx_formulate_complete'].map(tool => (
                     <span key={tool} className="font-mono text-xs bg-brand-primary/10 text-brand-primary border border-brand-primary/20 px-2.5 py-1 rounded-full">
                       {tool}
                     </span>
@@ -215,9 +215,14 @@ export default function MCPIntegrationPage() {
               <pre className="p-5 font-mono text-sm text-gray-300 overflow-x-auto">{`{
   "mcpServers": {
     "sematryx": {
-      "url": "https://mcp.sematryx.com/sse",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_KEY_HERE"
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/client-sse"
+      ],
+      "env": {
+        "SSE_URL": "https://mcp.sematryx.com/sse",
+        "AUTHORIZATION": "Bearer YOUR_API_KEY_HERE"
       }
     }
   }
