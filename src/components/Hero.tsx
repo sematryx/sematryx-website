@@ -46,16 +46,16 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Link
-                href="/docs/integrations/mcp"
+                href="/waitlist"
                 className="bg-cta-primary text-white hover:bg-cta-primary-hover px-8 py-3.5 rounded-lg text-base font-semibold transition-colors duration-200 shadow-lg shadow-brand-primary/30 text-center"
               >
-                Connect Your Agent &rarr;
+                Join Waitlist &rarr;
               </Link>
               <Link
-                href="/api-keys"
+                href="/docs/integrations/mcp"
                 className="border-2 border-cta-secondary-border bg-cta-secondary-bg text-text-primary hover:bg-elevated-2 hover:text-white px-8 py-3.5 rounded-lg text-base font-semibold transition-colors duration-200 text-center"
               >
-                Get API Key Free
+                View Documentation
               </Link>
             </div>
 

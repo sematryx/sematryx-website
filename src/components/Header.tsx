@@ -47,8 +47,8 @@ export default function Header() {
               {isLoaded ? (
                 <>
               <SignedOut>
-                    <Link href="/sign-in" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
-                      Sign In
+                    <Link href="/waitlist" className="bg-cta-primary text-white hover:bg-cta-primary-hover px-4 py-2 rounded-md text-sm font-medium">
+                      Join Waitlist
                 </Link>
               </SignedOut>
               
@@ -113,8 +113,8 @@ export default function Header() {
               {isLoaded ? (
                 <>
               <SignedOut>
-                    <Link href="/sign-in" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium text-center">
-                      Sign In
+                    <Link href="/waitlist" className="bg-cta-primary text-white hover:bg-cta-primary-hover block px-3 py-2 rounded-md text-base font-medium text-center">
+                      Join Waitlist
                 </Link>
               </SignedOut>
               

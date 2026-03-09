@@ -10,6 +10,24 @@ export default function Pricing() {
   return (
     <section className="py-24 bg-gradient-to-b from-bg-primary to-bg-secondary" id="pricing">
       <div className="container mx-auto px-6">
+        {/* Waitlist Banner */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 rounded-xl p-6 text-center">
+            <p className="text-white text-lg font-semibold mb-2">
+              🚀 Early Access Opening March 2026
+            </p>
+            <p className="text-gray-300 mb-4">
+              Join the waitlist to be notified when sign-ups open
+            </p>
+            <a 
+              href="/waitlist" 
+              className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 px-6 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all"
+            >
+              Join Waitlist →
+            </a>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">
@@ -42,8 +60,8 @@ export default function Pricing() {
                 </li>
               ))}
             </ul>
-            <a href="/sign-up" className="block w-full py-3 px-4 rounded-lg text-center text-sm font-semibold transition-all bg-[#374151] text-white hover:bg-[#4B5563] border border-gray-600">
-              Get Started
+            <a href="/waitlist" className="block w-full py-3 px-4 rounded-lg text-center text-sm font-semibold transition-all bg-[#374151] text-white hover:bg-[#4B5563] border border-gray-600">
+              Join Waitlist
             </a>
           </div>
 
