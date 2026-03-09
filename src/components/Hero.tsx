@@ -100,13 +100,15 @@ export default function Hero() {
 
               {/* Code Body */}
               <div className="p-5 font-mono text-sm leading-relaxed overflow-x-auto text-gray-300">
-                <div className="text-text-tertiary text-xs mb-3">{'// Agent calls Sematryx via MCP'}</div>
+                <div className="text-text-tertiary text-xs mb-3">{'// Agent describes the optimization problem conversationally'}</div>
                 <div><span className="text-sky-300">sematryx_optimize</span><span className="text-text-tertiary">(</span></div>
-                <div>&nbsp;&nbsp;<span className="text-amber-300">&quot;minimize training loss&quot;</span>,</div>
-                <div>&nbsp;&nbsp;<span className="text-sky-300">bounds</span>=<span className="text-text-tertiary">{'{'}</span></div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-emerald-300">lr</span>: <span className="text-text-tertiary">[</span><span className="text-amber-300">1e-5</span>, <span className="text-amber-300">0.1</span><span className="text-text-tertiary">]</span>,</div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-emerald-300">dropout</span>: <span className="text-text-tertiary">[</span><span className="text-amber-300">0.0</span>, <span className="text-amber-300">0.5</span><span className="text-text-tertiary">]</span></div>
-                <div>&nbsp;&nbsp;<span className="text-text-tertiary">{'}'}</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">&quot;&quot;&quot;</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">Minimize validation loss for this model.</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">Tune:</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">- learning rate between 1e-5 and 0.1</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">- dropout between 0 and 0.5</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">Keep training stable.</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">&quot;&quot;&quot;</span></div>
                 <div><span className="text-text-tertiary">)</span></div>
                 <div className="mt-3 pt-3 border-t border-elevated-3">
                   <div className="text-text-tertiary text-xs mb-2">{'// Result with explanation'}</div>
@@ -114,7 +116,7 @@ export default function Hero() {
                   <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;lr&quot;</span>: <span className="text-amber-300">0.00312</span>,</div>
                   <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;dropout&quot;</span>: <span className="text-amber-300">0.18</span>,</div>
                   <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;solver&quot;</span>: <span className="text-emerald-300">&quot;CMA-ES&quot;</span>,</div>
-                  <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;explanation&quot;</span>: <span className="text-emerald-300">&quot;Low lr+moderate...&quot;</span></div>
+                  <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;explanation&quot;</span>: <span className="text-emerald-300">&quot;Low learning rate stabilizes training while moderate dropout helps prevent overfitting.&quot;</span></div>
                   <div><span className="text-text-tertiary">{'}'}</span></div>
                 </div>
               </div>
