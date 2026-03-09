@@ -21,12 +21,12 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg text-text-secondary leading-relaxed mb-6 max-w-xl">
-              Translate conversational problem descriptions into formal optimization models automatically.
+              Describe your problem. Get a class-leading solution.
             </p>
 
             <div className="mb-8 max-w-xl">
               <p className="text-xl text-gray-300 leading-relaxed mb-4">
-                Sematryx lets AI agents formulate optimization problems conversationally and offload them for solving. It clarifies constraints and objectives to formulate the problem, selects the appropriate solver, tunes hyperparameters, and returns a class-leading result with a clear explanation—so agents can focus on reasoning instead of numerical optimization.
+                Tell Sematryx what you&apos;re trying to optimize. It figures out the constraints, picks the right solver, tunes it, and returns results that outperform leading optimization libraries. You get the answer and a clear explanation of why it works.
               </p>
               <div className="flex flex-wrap gap-4 mt-4">
                 <div className="flex items-center gap-1.5 text-sm text-text-secondary">
