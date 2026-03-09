@@ -26,7 +26,7 @@ export default function Hero() {
 
             <div className="mb-8 max-w-xl">
               <p className="text-xl text-gray-300 leading-relaxed mb-4">
-                Sematryx lets AI agents formulate optimization problems conversationally and offload them for solving. It analyzes the problem, selects the appropriate solver, tunes hyperparameters, and returns clear explanations—so agents can focus on reasoning instead of numerical optimization.
+                Sematryx lets AI agents formulate optimization problems conversationally and offload them for solving. It clarifies constraints and objectives to formulate the problem, selects the appropriate solver, tunes hyperparameters, and returns a class-leading result with a clear explanation—so agents can focus on reasoning instead of numerical optimization.
               </p>
               <div className="flex flex-wrap gap-4 mt-4">
                 <div className="flex items-center gap-1.5 text-sm text-text-secondary">
@@ -100,14 +100,12 @@ export default function Hero() {
 
               {/* Code Body */}
               <div className="p-5 font-mono text-sm leading-relaxed overflow-x-auto text-gray-300">
-                <div className="text-text-tertiary text-xs mb-3">{'// Agent describes the optimization problem conversationally'}</div>
+                <div className="text-text-tertiary text-xs mb-3">{'// Agent forwards the user\'s request in plain language'}</div>
                 <div><span className="text-sky-300">sematryx_optimize</span><span className="text-text-tertiary">(</span></div>
                 <div>&nbsp;&nbsp;<span className="text-amber-300">&quot;&quot;&quot;</span></div>
-                <div>&nbsp;&nbsp;<span className="text-amber-300">Minimize validation loss for this model.</span></div>
-                <div>&nbsp;&nbsp;<span className="text-amber-300">Tune:</span></div>
-                <div>&nbsp;&nbsp;<span className="text-amber-300">- learning rate between 1e-5 and 0.1</span></div>
-                <div>&nbsp;&nbsp;<span className="text-amber-300">- dropout between 0 and 0.5</span></div>
-                <div>&nbsp;&nbsp;<span className="text-amber-300">Keep training stable.</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">We need to tune a training run to minimize validation loss.</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">Free variables: learning rate between 1e-5 and 0.1,</span></div>
+                <div>&nbsp;&nbsp;<span className="text-amber-300">dropout between 0 and 0.5. Prefer stable training, avoid overfitting.</span></div>
                 <div>&nbsp;&nbsp;<span className="text-amber-300">&quot;&quot;&quot;</span></div>
                 <div><span className="text-text-tertiary">)</span></div>
                 <div className="mt-3 pt-3 border-t border-elevated-3">
@@ -116,7 +114,7 @@ export default function Hero() {
                   <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;lr&quot;</span>: <span className="text-amber-300">0.00312</span>,</div>
                   <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;dropout&quot;</span>: <span className="text-amber-300">0.18</span>,</div>
                   <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;solver&quot;</span>: <span className="text-emerald-300">&quot;CMA-ES&quot;</span>,</div>
-                  <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;explanation&quot;</span>: <span className="text-emerald-300">&quot;Low learning rate stabilizes training while moderate dropout helps prevent overfitting.&quot;</span></div>
+                  <div>&nbsp;&nbsp;<span className="text-sky-300">&quot;explanation&quot;</span>: <span className="text-emerald-300">&quot;Low lr stabilizes training; moderate dropout reduces overfitting.&quot;</span></div>
                   <div><span className="text-text-tertiary">{'}'}</span></div>
                 </div>
               </div>
