@@ -15,15 +15,18 @@ export default function Hero() {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6 leading-tight tracking-tight">
-              Your AI Agent&apos;s<br /><span className="text-brand-primary">Optimization Copilot</span>
+              <span className="text-text-primary">Conversational Optimization Infrastructure</span>
+              <br />
+              <span className="text-brand-primary">for AI Agents</span>
             </h1>
+
+            <p className="text-lg text-text-secondary leading-relaxed mb-6 max-w-xl">
+              Translate conversational problem descriptions into formal optimization models automatically.
+            </p>
 
             <div className="mb-8 max-w-xl">
               <p className="text-xl text-gray-300 leading-relaxed mb-4">
-                <strong className="text-text-primary">Sematryx gives your AI agents a powerful tool to offload optimization problems.</strong> It analyzes each problem, selects and configures the right solver, explains why, and learns from every solve. Your agents save tokens, stay focused, and get clear explanations they can reason about and present to users.
-              </p>
-              <p className="text-lg text-text-secondary leading-relaxed mb-3">
-                No black boxes. No guesswork. No sidetracks.
+                Sematryx lets AI agents formulate optimization problems conversationally and offload them for solving. It analyzes the problem, selects the appropriate solver, tunes hyperparameters, and returns clear explanations—so agents can focus on reasoning instead of numerical optimization.
               </p>
               <div className="flex flex-wrap gap-4 mt-4">
                 <div className="flex items-center gap-1.5 text-sm text-text-secondary">
