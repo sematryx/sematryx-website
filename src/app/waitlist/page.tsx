@@ -6,8 +6,8 @@ import Logo from '@/components/Logo';
 
 export default function WaitlistPage() {
   const [email, setEmail] = useState('');
-  const [useCases, setUseCases] = useState<string[]>([]);
-  const [features, setFeatures] = useState<string[]>([]);
+  const [useCase, setUseCase] = useState('');
+  const [feature, setFeature] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
@@ -21,8 +21,8 @@ export default function WaitlistPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
-          useCase: useCases.join(', '),
-          features: features.join(', ')
+          useCase,
+          feature
         })
       });
       
@@ -37,7 +37,7 @@ export default function WaitlistPage() {
 
   if (submitted) {
     return (
-      <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
+      <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center">
           <div className="text-6xl mb-4">✓</div>
           <h2 className="text-2xl font-bold text-white mb-4">You're on the waitlist!</h2>
@@ -46,7 +46,7 @@ export default function WaitlistPage() {
           </p>
           <Link 
             href="/"
-            className="inline-block text-purple-300 hover:text-purple-200 underline"
+            className="inline-block text-blue-300 hover:text-blue-200 underline"
           >
             ← Back to home
           </Link>
@@ -56,7 +56,7 @@ export default function WaitlistPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
+    <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -131,21 +131,17 @@ export default function WaitlistPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-white font-semibold mb-2 text-sm">
-                What would you optimize? (Optional - select all that apply)
-              </label>
               <select
-                multiple
-                size={5}
-                value={useCases}
-                onChange={(e) => setUseCases(Array.from(e.target.selectedOptions, option => option.value))}
-                className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 [&>option]:bg-slate-800 [&>option]:py-1.5 [&>option]:px-2"
+                value={useCase}
+                onChange={(e) => setUseCase(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 [&>option]:bg-slate-800"
               >
+                <option value="">What would you optimize? (optional)</option>
                 <option value="Delivery routing">Delivery routing</option>
                 <option value="Workforce scheduling">Workforce scheduling</option>
                 <option value="Supply chain / inventory">Supply chain / inventory</option>
@@ -157,28 +153,22 @@ export default function WaitlistPage() {
                 <option value="Energy efficiency">Energy efficiency</option>
                 <option value="Other">Other</option>
               </select>
-              <p className="text-xs text-gray-400 mt-1.5">Hold Ctrl/Cmd to select multiple</p>
             </div>
 
             <div>
-              <label className="block text-white font-semibold mb-2 text-sm">
-                Which features appeal to you? (Optional - select all that apply)
-              </label>
               <select
-                multiple
-                size={6}
-                value={features}
-                onChange={(e) => setFeatures(Array.from(e.target.selectedOptions, option => option.value))}
-                className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 [&>option]:bg-slate-800 [&>option]:py-1.5 [&>option]:px-2"
+                value={feature}
+                onChange={(e) => setFeature(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 [&>option]:bg-slate-800"
               >
+                <option value="">Which feature appeals most? (optional)</option>
                 <option value="Conversational problem formulation">Conversational problem formulation</option>
-                <option value="Transfer learning (gets smarter over time)">Transfer learning (gets smarter over time)</option>
-                <option value="9-level explainability">9-level explainability</option>
+                <option value="Transfer learning">Transfer learning (gets smarter over time)</option>
+                <option value="Explainability">9-level explainability</option>
                 <option value="Multi-objective optimization">Multi-objective optimization</option>
                 <option value="AI agent integration (MCP)">AI agent integration (MCP)</option>
                 <option value="Portfolio of 16+ solvers">Portfolio of 16+ solvers</option>
               </select>
-              <p className="text-xs text-gray-400 mt-1.5">Hold Ctrl/Cmd to select multiple</p>
             </div>
 
             {error && (
@@ -189,7 +179,7 @@ export default function WaitlistPage() {
 
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg"
+              className="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg"
             >
               Join Waitlist
             </button>
@@ -202,7 +192,7 @@ export default function WaitlistPage() {
 
         {/* Footer */}
         <div className="text-center mt-8 text-gray-500 text-sm">
-          <p>© 2026 Sematryx • <Link href="/" className="hover:text-gray-400">Back to home</Link></p>
+          <p>© 2026 Sematryx • Technology Patent Pending • <Link href="/" className="hover:text-gray-400">Back to home</Link></p>
         </div>
       </div>
     </main>
