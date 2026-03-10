@@ -1,15 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
 
 export default function WaitlistPage() {
   const [email, setEmail] = useState('');
-  const [useCase, setUseCase] = useState('');
-  const [feature, setFeature] = useState('');
+  const [useCases, setUseCases] = useState<string[]>([]);
+  const [features, setFeatures] = useState<string[]>([]);
+  const [useCaseOpen, setUseCaseOpen] = useState(false);
+  const [featureOpen, setFeatureOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const useCaseRef = useRef<HTMLDivElement>(null);
+  const featureRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (useCaseRef.current && !useCaseRef.current.contains(e.target as Node)) setUseCaseOpen(false);
+      if (featureRef.current && !featureRef.current.contains(e.target as Node)) setFeatureOpen(false);
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  const toggle = (item: string, list: string[], setList: (v: string[]) => void) => {
+    setList(list.includes(item) ? list.filter(i => i !== item) : [...list, item]);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,8 +38,8 @@ export default function WaitlistPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
-          useCase,
-          feature
+          useCases,
+          features
         })
       });
       
@@ -135,40 +152,84 @@ export default function WaitlistPage() {
               />
             </div>
 
-            <div>
-              <select
-                value={useCase}
-                onChange={(e) => setUseCase(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 [&>option]:bg-slate-800"
+            {/* Use case multi-select dropdown */}
+            <div ref={useCaseRef} className="relative">
+              <button
+                type="button"
+                onClick={() => { setUseCaseOpen(!useCaseOpen); setFeatureOpen(false); }}
+                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center justify-between"
               >
-                <option value="">What would you optimize? (optional)</option>
-                <option value="Delivery routing">Delivery routing</option>
-                <option value="Workforce scheduling">Workforce scheduling</option>
-                <option value="Supply chain / inventory">Supply chain / inventory</option>
-                <option value="ML hyperparameters">ML hyperparameters</option>
-                <option value="System configuration">System configuration</option>
-                <option value="Pricing / revenue optimization">Pricing / revenue optimization</option>
-                <option value="Resource allocation">Resource allocation</option>
-                <option value="Engineering / design parameters">Engineering / design parameters</option>
-                <option value="Energy efficiency">Energy efficiency</option>
-                <option value="Other">Other</option>
-              </select>
+                <span className={useCases.length ? 'text-white' : 'text-gray-400'}>
+                  {useCases.length ? `${useCases.length} selected` : 'What would you optimize? (optional)'}
+                </span>
+                <svg className={`w-4 h-4 text-gray-400 transition-transform ${useCaseOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              </button>
+              {useCaseOpen && (
+                <div className="absolute z-10 mt-1 w-full rounded-lg bg-slate-800 border border-white/20 shadow-xl max-h-60 overflow-y-auto">
+                  {[
+                    'Delivery routing',
+                    'Workforce scheduling',
+                    'Supply chain / inventory',
+                    'ML hyperparameters',
+                    'System configuration',
+                    'Pricing / revenue optimization',
+                    'Resource allocation',
+                    'Engineering / design parameters',
+                    'Energy efficiency',
+                    'Other',
+                  ].map((item) => (
+                    <label key={item} className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/10 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={useCases.includes(item)}
+                        onChange={() => toggle(item, useCases, setUseCases)}
+                        className="w-4 h-4 rounded border-white/30 bg-white/20 text-blue-500 focus:ring-blue-500"
+                      />
+                      <span className="text-sm text-gray-200">{item}</span>
+                    </label>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div>
-              <select
-                value={feature}
-                onChange={(e) => setFeature(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 [&>option]:bg-slate-800"
+            {/* Feature interest multi-select dropdown */}
+            <div ref={featureRef} className="relative">
+              <button
+                type="button"
+                onClick={() => { setFeatureOpen(!featureOpen); setUseCaseOpen(false); }}
+                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center justify-between"
               >
-                <option value="">Which feature appeals most? (optional)</option>
-                <option value="Conversational problem formulation">Conversational problem formulation</option>
-                <option value="Transfer learning">Transfer learning (gets smarter over time)</option>
-                <option value="Explainability">9-level explainability</option>
-                <option value="Multi-objective optimization">Multi-objective optimization</option>
-                <option value="AI agent integration (MCP)">AI agent integration (MCP)</option>
-                <option value="Portfolio of 16+ solvers">Portfolio of 16+ solvers</option>
-              </select>
+                <span className={features.length ? 'text-white' : 'text-gray-400'}>
+                  {features.length ? `${features.length} selected` : 'Which features interest you? (optional)'}
+                </span>
+                <svg className={`w-4 h-4 text-gray-400 transition-transform ${featureOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              </button>
+              {featureOpen && (
+                <div className="absolute z-10 mt-1 w-full rounded-lg bg-slate-800 border border-white/20 shadow-xl max-h-60 overflow-y-auto">
+                  {[
+                    'Describe problems in plain English (no math required)',
+                    'Gets smarter with every problem you solve',
+                    'Optimize multiple goals at once (cost vs speed, quality vs time)',
+                    'See why each solution works (full explanation & audit trail)',
+                    'Works with AI agents (ChatGPT, Claude, custom bots)',
+                    'Picks the right algorithm automatically (no guessing)',
+                    'Pay only for what you use (no subscription)',
+                    'More accurate than standard optimization libraries',
+                    'Visual problem landscape (see your optimization space)',
+                    'Free tier: 100 solves per month',
+                  ].map((item) => (
+                    <label key={item} className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/10 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={features.includes(item)}
+                        onChange={() => toggle(item, features, setFeatures)}
+                        className="w-4 h-4 rounded border-white/30 bg-white/20 text-blue-500 focus:ring-blue-500"
+                      />
+                      <span className="text-sm text-gray-200">{item}</span>
+                    </label>
+                  ))}
+                </div>
+              )}
             </div>
 
             {error && (
