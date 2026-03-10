@@ -16,13 +16,18 @@
   - Select: **Text** → **Email**
 
 ### Field 2: Use Case
-- Question type: **Multiple choice**
+- Question type: **Checkboxes** (multiple selection)
 - Question: "What would you optimize?"
 - Options:
   - Delivery routing
   - Workforce scheduling
+  - Supply chain / inventory
   - ML hyperparameters
   - System configuration
+  - Pricing / revenue optimization
+  - Resource allocation
+  - Engineering / design parameters
+  - Energy efficiency
   - Other
 - Toggle **Required** ON
 
