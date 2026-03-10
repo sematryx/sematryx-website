@@ -59,7 +59,7 @@ export default function WaitlistPage() {
           <div className="text-6xl mb-4">✓</div>
           <h2 className="text-2xl font-bold text-white mb-4">You're on the waitlist!</h2>
           <p className="text-gray-300 mb-6">
-            We'll notify you when early access opens in March 2026.
+            We'll notify you when early access is available.
           </p>
           <Link 
             href="/"
@@ -247,7 +247,7 @@ export default function WaitlistPage() {
           </form>
 
           <p className="text-center text-gray-400 text-sm mt-6">
-            Early access opening March 2026
+            Early access opening soon
           </p>
         </div>
 

@@ -14,7 +14,7 @@ export default function Pricing() {
         <div className="max-w-4xl mx-auto mb-12">
           <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 rounded-xl p-6 text-center">
             <p className="text-white text-lg font-semibold mb-2">
-              🚀 Early Access Opening March 2026
+              🚀 Early Access Opening Soon
             </p>
             <p className="text-gray-300 mb-4">
               Join the waitlist to be notified when sign-ups open
