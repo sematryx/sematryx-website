@@ -6,19 +6,40 @@ export default function WaitlistPage() {
   const [email, setEmail] = useState('');
   const [useCase, setUseCase] = useState('');
   const [otherUseCase, setOtherUseCase] = useState('');
+  const [features, setFeatures] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     
-    // TODO: Wire to actual backend (Airtable, Google Sheets, or custom API)
-    console.log('Waitlist signup:', { 
-      email, 
-      useCase: useCase === 'other' ? otherUseCase : useCase,
-      timestamp: new Date().toISOString()
-    });
-    
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          useCase: useCase === 'other' ? otherUseCase : useCase,
+          features
+        })
+      });
+      
+      if (!response.ok) throw new Error('Submission failed');
+      
+      setSubmitted(true);
+    } catch (err) {
+      setError('Failed to submit. Please try again.');
+      console.error('Waitlist error:', err);
+    }
+  };
+
+  const toggleFeature = (feature: string) => {
+    setFeatures(prev => 
+      prev.includes(feature) 
+        ? prev.filter(f => f !== feature)
+        : [...prev, feature]
+    );
   };
 
   if (submitted) {
@@ -131,6 +152,40 @@ export default function WaitlistPage() {
                   required
                   className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
+              </div>
+            )}
+
+            <div>
+              <label className="block text-white font-semibold mb-3">
+                Which features appeal to you? (Select all that apply)
+              </label>
+              <div className="space-y-2">
+                {[
+                  'Conversational problem formulation',
+                  'Transfer learning (gets smarter over time)',
+                  '9-level explainability',
+                  'Multi-objective optimization',
+                  'AI agent integration (MCP)',
+                  'Portfolio of 16+ solvers'
+                ].map((feature) => (
+                  <label key={feature} className="flex items-start gap-3 cursor-pointer group">
+                    <input
+                      type="checkbox"
+                      checked={features.includes(feature)}
+                      onChange={() => toggleFeature(feature)}
+                      className="mt-0.5 w-4 h-4 rounded border-white/30 bg-white/20 text-purple-600 focus:ring-2 focus:ring-purple-500"
+                    />
+                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                      {feature}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {error && (
+              <div className="text-red-400 text-sm text-center">
+                {error}
               </div>
             )}
 
