@@ -26,7 +26,7 @@ export default function Hero() {
 
             <div className="mb-8 max-w-xl">
               <p className="text-xl text-gray-300 leading-relaxed mb-4">
-                Tell Sematryx what you&apos;re trying to optimize. It figures out the constraints, picks the right solver, tunes it, and returns results that outperform leading optimization libraries. You get the optimal solution and an explanation of why it works.
+                Tell Sematryx what you&apos;re trying to optimize. It figures out the constraints, picks the right solver, tunes it, and returns results that outperform leading optimization libraries. You get the optimal solution and an explanation of how it was found.
               </p>
               <div className="flex flex-wrap gap-4 mt-4">
                 <div className="flex items-center gap-1.5 text-sm text-text-secondary">
