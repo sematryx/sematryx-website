@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
+import Logo from '@/components/Logo';
 
 export default function WaitlistPage() {
   const [email, setEmail] = useState('');
   const [useCases, setUseCases] = useState<string[]>([]);
-  const [otherUseCase, setOtherUseCase] = useState('');
   const [features, setFeatures] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
@@ -20,10 +21,8 @@ export default function WaitlistPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
-          useCases: useCases.includes('other')
-            ? [...useCases.filter(u => u !== 'other'), otherUseCase].filter(Boolean)
-            : useCases,
-          features
+          useCase: useCases.join(', '),
+          features: features.join(', ')
         })
       });
       
@@ -36,47 +35,34 @@ export default function WaitlistPage() {
     }
   };
 
-  const toggleItem = (item: string, list: string[], setList: (v: string[]) => void) => {
-    setList(
-      list.includes(item)
-        ? list.filter(i => i !== item)
-        : [...list, item]
-    );
-  };
-
   if (submitted) {
     return (
-      <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
+      <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-center">
           <div className="text-6xl mb-4">✓</div>
           <h2 className="text-2xl font-bold text-white mb-4">You're on the waitlist!</h2>
           <p className="text-gray-300 mb-6">
             We'll notify you when early access opens in March 2026.
           </p>
-          <a 
+          <Link 
             href="/"
-            className="inline-block text-blue-300 hover:text-blue-200 underline"
+            className="inline-block text-purple-300 hover:text-purple-200 underline"
           >
             ← Back to home
-          </a>
+          </Link>
         </div>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
-        {/* Logo/Brand */}
+        {/* Logo */}
         <div className="text-center mb-8">
-          <a href="/" className="inline-block">
-            <h1 className="text-5xl font-bold text-white mb-3 tracking-tight hover:text-blue-200 transition-colors">
-              Sematryx
-            </h1>
-          </a>
-          <div className="text-blue-300 text-sm font-medium tracking-widest">
-            AI-NATIVE OPTIMIZATION
-          </div>
+          <Link href="/" className="inline-block">
+            <Logo size="normal" />
+          </Link>
         </div>
 
         {/* Main Card */}
@@ -91,46 +77,46 @@ export default function WaitlistPage() {
           </div>
 
           {/* Features */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
             <div className="text-center">
-              <div className="text-4xl mb-3">💬</div>
-              <h3 className="text-white font-semibold mb-2">Conversational</h3>
-              <p className="text-gray-400 text-sm">
+              <div className="text-3xl mb-2">💬</div>
+              <h3 className="text-white font-semibold text-sm mb-1">Conversational</h3>
+              <p className="text-gray-400 text-xs">
                 Describe your problem in plain English
               </p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">🤖</div>
-              <h3 className="text-white font-semibold mb-2">Built for AI Agents</h3>
-              <p className="text-gray-400 text-sm">
+              <div className="text-3xl mb-2">🤖</div>
+              <h3 className="text-white font-semibold text-sm mb-1">Built for AI Agents</h3>
+              <p className="text-gray-400 text-xs">
                 MCP server lets any AI agent optimize via hosted compute
               </p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">🎯</div>
-              <h3 className="text-white font-semibold mb-2">Auto-Tuned</h3>
-              <p className="text-gray-400 text-sm">
+              <div className="text-3xl mb-2">🎯</div>
+              <h3 className="text-white font-semibold text-sm mb-1">Auto-Tuned</h3>
+              <p className="text-gray-400 text-xs">
                 Identifies the right solver and hyperparameters
               </p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">🧠</div>
-              <h3 className="text-white font-semibold mb-2">Gets Smarter</h3>
-              <p className="text-gray-400 text-sm">
+              <div className="text-3xl mb-2">🧠</div>
+              <h3 className="text-white font-semibold text-sm mb-1">Gets Smarter</h3>
+              <p className="text-gray-400 text-xs">
                 Transfer learning improves over time
               </p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">📊</div>
-              <h3 className="text-white font-semibold mb-2">Explainable</h3>
-              <p className="text-gray-400 text-sm">
+              <div className="text-3xl mb-2">📊</div>
+              <h3 className="text-white font-semibold text-sm mb-1">Explainable</h3>
+              <p className="text-gray-400 text-xs">
                 Audit-ready explanations for every decision
               </p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">🔌</div>
-              <h3 className="text-white font-semibold mb-2">REST API & SDK</h3>
-              <p className="text-gray-400 text-sm">
+              <div className="text-3xl mb-2">🔌</div>
+              <h3 className="text-white font-semibold text-sm mb-1">REST API & SDK</h3>
+              <p className="text-gray-400 text-xs">
                 Integrate optimization into any workflow
               </p>
             </div>
@@ -141,85 +127,58 @@ export default function WaitlistPage() {
             <div>
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Enter your email *"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
 
             <div>
-              <label className="block text-white font-semibold mb-3">
-                What would you optimize? (Select all that apply)
+              <label className="block text-white font-semibold mb-2 text-sm">
+                What would you optimize? (Optional - select all that apply)
               </label>
-              <div className="space-y-2">
-                {[
-                  { value: 'delivery-routing', label: 'Delivery routing' },
-                  { value: 'workforce-scheduling', label: 'Workforce scheduling' },
-                  { value: 'supply-chain', label: 'Supply chain / inventory' },
-                  { value: 'ml-hyperparameters', label: 'ML hyperparameters' },
-                  { value: 'system-configuration', label: 'System configuration' },
-                  { value: 'pricing-revenue', label: 'Pricing / revenue optimization' },
-                  { value: 'resource-allocation', label: 'Resource allocation' },
-                  { value: 'engineering-design', label: 'Engineering / design parameters' },
-                  { value: 'energy-efficiency', label: 'Energy efficiency' },
-                  { value: 'other', label: 'Other (specify below)' },
-                ].map(({ value, label }) => (
-                  <label key={value} className="flex items-start gap-3 cursor-pointer group">
-                    <input
-                      type="checkbox"
-                      checked={useCases.includes(value)}
-                      onChange={() => toggleItem(value, useCases, setUseCases)}
-                      className="mt-0.5 w-4 h-4 rounded border-white/30 bg-white/20 text-blue-500 focus:ring-2 focus:ring-blue-500"
-                    />
-                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
-                      {label}
-                    </span>
-                  </label>
-                ))}
-              </div>
+              <select
+                multiple
+                size={5}
+                value={useCases}
+                onChange={(e) => setUseCases(Array.from(e.target.selectedOptions, option => option.value))}
+                className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 [&>option]:bg-slate-800 [&>option]:py-1.5 [&>option]:px-2"
+              >
+                <option value="Delivery routing">Delivery routing</option>
+                <option value="Workforce scheduling">Workforce scheduling</option>
+                <option value="Supply chain / inventory">Supply chain / inventory</option>
+                <option value="ML hyperparameters">ML hyperparameters</option>
+                <option value="System configuration">System configuration</option>
+                <option value="Pricing / revenue optimization">Pricing / revenue optimization</option>
+                <option value="Resource allocation">Resource allocation</option>
+                <option value="Engineering / design parameters">Engineering / design parameters</option>
+                <option value="Energy efficiency">Energy efficiency</option>
+                <option value="Other">Other</option>
+              </select>
+              <p className="text-xs text-gray-400 mt-1.5">Hold Ctrl/Cmd to select multiple</p>
             </div>
 
-            {useCases.includes('other') && (
-              <div>
-                <input
-                  type="text"
-                  placeholder="What would you optimize?"
-                  value={otherUseCase}
-                  onChange={(e) => setOtherUseCase(e.target.value)}
-                  required
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-            )}
-
             <div>
-              <label className="block text-white font-semibold mb-3">
-                Which features appeal to you? (Select all that apply)
+              <label className="block text-white font-semibold mb-2 text-sm">
+                Which features appeal to you? (Optional - select all that apply)
               </label>
-              <div className="space-y-2">
-                {[
-                  'Conversational problem formulation',
-                  'Transfer learning (gets smarter over time)',
-                  '9-level explainability',
-                  'Multi-objective optimization',
-                  'AI agent integration (MCP)',
-                  'Portfolio of 16+ solvers'
-                ].map((feature) => (
-                  <label key={feature} className="flex items-start gap-3 cursor-pointer group">
-                    <input
-                      type="checkbox"
-                      checked={features.includes(feature)}
-                      onChange={() => toggleItem(feature, features, setFeatures)}
-                      className="mt-0.5 w-4 h-4 rounded border-white/30 bg-white/20 text-blue-500 focus:ring-2 focus:ring-blue-500"
-                    />
-                    <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
-                      {feature}
-                    </span>
-                  </label>
-                ))}
-              </div>
+              <select
+                multiple
+                size={6}
+                value={features}
+                onChange={(e) => setFeatures(Array.from(e.target.selectedOptions, option => option.value))}
+                className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 [&>option]:bg-slate-800 [&>option]:py-1.5 [&>option]:px-2"
+              >
+                <option value="Conversational problem formulation">Conversational problem formulation</option>
+                <option value="Transfer learning (gets smarter over time)">Transfer learning (gets smarter over time)</option>
+                <option value="9-level explainability">9-level explainability</option>
+                <option value="Multi-objective optimization">Multi-objective optimization</option>
+                <option value="AI agent integration (MCP)">AI agent integration (MCP)</option>
+                <option value="Portfolio of 16+ solvers">Portfolio of 16+ solvers</option>
+              </select>
+              <p className="text-xs text-gray-400 mt-1.5">Hold Ctrl/Cmd to select multiple</p>
             </div>
 
             {error && (
@@ -230,7 +189,7 @@ export default function WaitlistPage() {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg"
+              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg"
             >
               Join Waitlist
             </button>
@@ -243,7 +202,7 @@ export default function WaitlistPage() {
 
         {/* Footer */}
         <div className="text-center mt-8 text-gray-500 text-sm">
-          <p>© 2026 Sematryx • Technology Patent Pending • <a href="/" className="hover:text-gray-400">Back to home</a></p>
+          <p>© 2026 Sematryx • <Link href="/" className="hover:text-gray-400">Back to home</Link></p>
         </div>
       </div>
     </main>
