@@ -1,36 +1,123 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { BarChart3, TrendingUp, Clock, Zap, DollarSign } from 'lucide-react'
+import { Zap, TrendingUp, DollarSign, Clock, AlertTriangle, CheckCircle, XCircle } from 'lucide-react'
+import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
 
-interface UsageStats {
-  solvesThisMonth: number
-  costThisMonthCents: number
-  creditBalanceCents: number
-  plan: 'free' | 'payg'
-  freeTierLimit: number
+interface UsageData {
+  billingPeriod: { start: string; end: string }
+  account: {
+    type: 'free' | 'payg'
+    creditBalanceCents: number
+    hasPaymentMethod: boolean
+  }
+  usage: {
+    solvesThisPeriod: number
+    totalCallsThisPeriod: number
+    failedThisPeriod: number
+    monthlyLimit: number | null
+    remaining: number | null
+    costThisPeriodCents: number
+    costThisPeriodUsd: number
+  }
+  quotaStatus: 'ok' | 'nearing_limit' | 'exceeded'
+  recentSolves: {
+    timestamp: string
+    tool: string
+    status: 'success' | 'failure'
+    costCents: number
+    durationMs: number | null
+    expression: string | null
+    dimensions: number | null
+  }[]
 }
 
 function formatCents(cents: number): string {
   return `$${(cents / 100).toFixed(2)}`
 }
 
+function formatDuration(ms: number | null): string {
+  if (!ms) return '-'
+  if (ms < 1000) return `${ms}ms`
+  return `${(ms / 1000).toFixed(1)}s`
+}
+
+function formatTimestamp(ts: string): string {
+  const d = new Date(ts)
+  const now = new Date()
+  const diffMs = now.getTime() - d.getTime()
+  const diffMins = Math.floor(diffMs / 60000)
+  if (diffMins < 1) return 'just now'
+  if (diffMins < 60) return `${diffMins}m ago`
+  const diffHours = Math.floor(diffMins / 60)
+  if (diffHours < 24) return `${diffHours}h ago`
+  const diffDays = Math.floor(diffHours / 24)
+  if (diffDays < 7) return `${diffDays}d ago`
+  return d.toLocaleDateString()
+}
+
+function QuotaBanner({ status, remaining, limit }: { status: string; remaining: number | null; limit: number | null }) {
+  if (status === 'ok' || !limit) return null
+
+  if (status === 'exceeded') {
+    return (
+      <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-start gap-3">
+        <AlertTriangle className="h-5 w-5 text-red-400 mt-0.5 shrink-0" />
+        <div>
+          <p className="text-red-300 font-medium">Free tier limit reached</p>
+          <p className="text-red-400/80 text-sm mt-1">
+            You've used all {limit} free solves this month.{' '}
+            <Link href="/dashboard/billing" className="underline hover:text-red-300">
+              Buy credits or upgrade
+            </Link>{' '}
+            to continue.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
+  if (status === 'nearing_limit') {
+    return (
+      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 flex items-start gap-3">
+        <AlertTriangle className="h-5 w-5 text-yellow-400 mt-0.5 shrink-0" />
+        <div>
+          <p className="text-yellow-300 font-medium">Nearing free tier limit</p>
+          <p className="text-yellow-400/80 text-sm mt-1">
+            {remaining} of {limit} free solves remaining.{' '}
+            <Link href="/dashboard/billing" className="underline hover:text-yellow-300">
+              Buy credits
+            </Link>{' '}
+            to avoid interruption.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
+  return null
+}
+
 export default function UsagePage() {
-  const [timeRange, setTimeRange] = useState('30d')
-  const [stats, setStats] = useState<UsageStats | null>(null)
+  const [data, setData] = useState<UsageData | null>(null)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchUsage() {
       try {
-        const response = await fetch('/api/billing/subscription')
-        if (response.ok) {
-          setStats(await response.json())
+        const response = await fetch('/api/usage/me')
+        if (!response.ok) {
+          const body = await response.json().catch(() => ({}))
+          setError(body.error || `Error ${response.status}`)
+          return
         }
-      } catch (error) {
-        console.error('Failed to fetch usage:', error)
+        setData(await response.json())
+      } catch (err) {
+        setError('Failed to load usage data')
+        console.error(err)
       } finally {
         setLoading(false)
       }
@@ -38,33 +125,56 @@ export default function UsagePage() {
     fetchUsage()
   }, [])
 
-  const solvesThisMonth = stats?.solvesThisMonth || 0
-  const costThisMonthCents = stats?.costThisMonthCents || 0
-  const creditBalanceCents = stats?.creditBalanceCents || 0
-  const plan = stats?.plan || 'free'
-  const freeTierLimit = stats?.freeTierLimit || 100
+  if (loading) {
+    return (
+      <div className="space-y-8">
+        <div>
+          <h1 className="text-3xl font-bold text-white">Usage</h1>
+          <p className="text-gray-400 mt-1">Loading...</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6 animate-pulse h-32" />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="space-y-8">
+        <div>
+          <h1 className="text-3xl font-bold text-white">Usage</h1>
+          <p className="text-red-400 mt-1">{error}</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!data) return null
+
+  const { account, usage, quotaStatus, recentSolves } = data
+  const avgCost = usage.solvesThisPeriod > 0
+    ? Math.round(usage.costThisPeriodCents / usage.solvesThisPeriod)
+    : 0
 
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-white">Usage Analytics</h1>
-          <p className="text-gray-400 mt-1">
-            Monitor your solve usage and costs
-          </p>
-        </div>
-        <select
-          value={timeRange}
-          onChange={(e) => setTimeRange(e.target.value)}
-          className="bg-[#1a1f2e] border border-gray-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-primary-500"
-        >
-          <option value="24h">Last 24 hours</option>
-          <option value="7d">Last 7 days</option>
-          <option value="30d">Last 30 days</option>
-          <option value="90d">Last 90 days</option>
-        </select>
+      <div>
+        <h1 className="text-3xl font-bold text-white">Usage</h1>
+        <p className="text-gray-400 mt-1">
+          {account.type === 'free' ? 'Free tier' : 'Pay-as-you-go'} &middot; Current billing period
+        </p>
       </div>
+
+      {/* Quota banner */}
+      <QuotaBanner
+        status={quotaStatus}
+        remaining={usage.remaining}
+        limit={usage.monthlyLimit}
+      />
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -76,11 +186,27 @@ export default function UsagePage() {
             </div>
           </div>
           <div className="text-3xl font-bold text-white">
-            {loading ? '...' : solvesThisMonth.toLocaleString()}
+            {usage.solvesThisPeriod.toLocaleString()}
           </div>
           <div className="text-sm text-gray-500 mt-1">
-            {plan === 'free' ? `of ${freeTierLimit} free` : 'pay-as-you-go'}
+            {account.type === 'free'
+              ? `of ${usage.monthlyLimit} free`
+              : 'pay-as-you-go'}
           </div>
+          {account.type === 'free' && usage.monthlyLimit && (
+            <div className="mt-3">
+              <div className="w-full bg-gray-700 rounded-full h-1.5">
+                <div
+                  className={`h-1.5 rounded-full ${
+                    quotaStatus === 'exceeded' ? 'bg-red-500' :
+                    quotaStatus === 'nearing_limit' ? 'bg-yellow-500' :
+                    'bg-blue-500'
+                  }`}
+                  style={{ width: `${Math.min(100, (usage.solvesThisPeriod / usage.monthlyLimit) * 100)}%` }}
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6">
@@ -91,7 +217,7 @@ export default function UsagePage() {
             </div>
           </div>
           <div className="text-3xl font-bold text-white">
-            {loading ? '...' : formatCents(costThisMonthCents)}
+            {formatCents(usage.costThisPeriodCents)}
           </div>
           <div className="text-sm text-gray-500 mt-1">from solve usage</div>
         </div>
@@ -104,9 +230,15 @@ export default function UsagePage() {
             </div>
           </div>
           <div className="text-3xl font-bold text-white">
-            {loading ? '...' : formatCents(creditBalanceCents)}
+            {formatCents(account.creditBalanceCents)}
           </div>
-          <div className="text-sm text-gray-500 mt-1">prepaid credits remaining</div>
+          <div className="text-sm text-gray-500 mt-1">
+            {account.creditBalanceCents > 0 ? 'prepaid credits' : (
+              <Link href="/dashboard/billing" className="text-primary-400 hover:text-primary-300">
+                Buy credits
+              </Link>
+            )}
+          </div>
         </div>
 
         <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6">
@@ -117,33 +249,84 @@ export default function UsagePage() {
             </div>
           </div>
           <div className="text-3xl font-bold text-white">
-            {loading || solvesThisMonth === 0
-              ? '$0.00'
-              : formatCents(Math.round(costThisMonthCents / solvesThisMonth))}
+            {usage.solvesThisPeriod === 0 ? '$0.00' : formatCents(avgCost)}
           </div>
-          <div className="text-sm text-gray-500 mt-1">this month</div>
+          <div className="text-sm text-gray-500 mt-1">
+            {usage.failedThisPeriod > 0
+              ? `${usage.failedThisPeriod} failed call${usage.failedThisPeriod > 1 ? 's' : ''}`
+              : 'this month'}
+          </div>
         </div>
       </div>
 
-      {/* Charts Placeholder */}
+      {/* Recent Solves */}
       <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6">
-        <h2 className="text-xl font-semibold text-white mb-6">Solve Volume</h2>
-        <div className="flex flex-col items-center justify-center h-64 text-center">
-          <BarChart3 className="h-12 w-12 text-gray-600 mb-4" />
-          <p className="text-gray-400 mb-2">
-            {solvesThisMonth === 0 ? 'No usage data yet' : 'Charts coming soon'}
-          </p>
-          <p className="text-sm text-gray-600">
-            {solvesThisMonth === 0
-              ? 'Make your first solve to see usage analytics here'
-              : `${solvesThisMonth} solves this month — detailed charts are in development`}
-          </p>
-        </div>
+        <h2 className="text-xl font-semibold text-white mb-6">Recent Solves</h2>
+        {recentSolves.length === 0 ? (
+          <div className="text-center py-12">
+            <Zap className="h-10 w-10 text-gray-600 mx-auto mb-3" />
+            <p className="text-gray-400">No solves yet</p>
+            <p className="text-sm text-gray-600 mt-1">
+              Run your first optimization to see activity here
+            </p>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-gray-700">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-400">When</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-400">Tool</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-400">Expression</th>
+                  <th className="text-center py-3 px-4 text-sm font-semibold text-gray-400">Dims</th>
+                  <th className="text-center py-3 px-4 text-sm font-semibold text-gray-400">Status</th>
+                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-400">Duration</th>
+                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-400">Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentSolves.map((solve, i) => (
+                  <tr key={i} className="border-b border-gray-700/50 hover:bg-[#242b3d]/50">
+                    <td className="py-3 px-4 text-sm text-gray-300">
+                      {formatTimestamp(solve.timestamp)}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-gray-300 font-mono">
+                      {(solve.tool || '').replace('sematryx_', '')}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-gray-400 max-w-[200px] truncate font-mono">
+                      {solve.expression || '-'}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-gray-300 text-center">
+                      {solve.dimensions || '-'}
+                    </td>
+                    <td className="py-3 px-4 text-center">
+                      {solve.status === 'success' ? (
+                        <span className="inline-flex items-center gap-1 text-xs text-green-400">
+                          <CheckCircle className="h-3.5 w-3.5" /> OK
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-xs text-red-400">
+                          <XCircle className="h-3.5 w-3.5" /> Fail
+                        </span>
+                      )}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-gray-300 text-right">
+                      {formatDuration(solve.durationMs)}
+                    </td>
+                    <td className="py-3 px-4 text-sm text-right font-medium text-primary-400">
+                      {solve.costCents > 0 ? formatCents(solve.costCents) : '-'}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
 
-      {/* Complexity Breakdown */}
+      {/* Pricing Reference */}
       <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 p-6">
-        <h2 className="text-xl font-semibold text-white mb-6">Cost by Complexity</h2>
+        <h2 className="text-xl font-semibold text-white mb-6">Pricing Reference</h2>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -156,17 +339,17 @@ export default function UsagePage() {
             <tbody>
               <tr className="border-b border-gray-700/50">
                 <td className="py-3 px-4 text-white">Small</td>
-                <td className="py-3 px-4 text-center text-gray-300">≤ 10</td>
+                <td className="py-3 px-4 text-center text-gray-300">&le; 10</td>
                 <td className="py-3 px-4 text-center text-primary-400 font-medium">$0.01</td>
               </tr>
               <tr className="border-b border-gray-700/50">
                 <td className="py-3 px-4 text-white">Medium</td>
-                <td className="py-3 px-4 text-center text-gray-300">≤ 50</td>
+                <td className="py-3 px-4 text-center text-gray-300">&le; 50</td>
                 <td className="py-3 px-4 text-center text-primary-400 font-medium">$0.03</td>
               </tr>
               <tr className="border-b border-gray-700/50">
                 <td className="py-3 px-4 text-white">Large</td>
-                <td className="py-3 px-4 text-center text-gray-300">≤ 100</td>
+                <td className="py-3 px-4 text-center text-gray-300">&le; 100</td>
                 <td className="py-3 px-4 text-center text-primary-400 font-medium">$0.05</td>
               </tr>
             </tbody>
