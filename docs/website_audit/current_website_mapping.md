@@ -1,6 +1,7 @@
 # Sematryx Website — Current Site Mapping (Repository Baseline)
 
-**Date:** 2026-03-21
+**Date:** 2026-03-21  
+**Content review:** 2026-03-21 (on-page copy verified for §1.5, §3.0, and updated rows below)
 
 **Purpose:** Factual inventory of the Sematryx marketing/docs/product site as implemented in this repository.  
 **Scope:** Structure, routes, navigation, components, and observable content themes.  
@@ -33,7 +34,7 @@
 | Tutorials | `/tutorials`, `/tutorials/*` | Step-by-step learning |
 | Benchmarks | `/benchmarks` | Performance claims / comparisons |
 | MCP | `/mcp`, `/docs/integrations/mcp` | Agent integration story + docs |
-| Domains | `/domains`, `/docs/domain-libraries`, domain tutorials | Domain libraries |
+| Domains | `/domains`, `/docs/domain-libraries`, domain tutorials | Domain libraries (**several routes are placeholders**—see §1.5) |
 | Pricing & keys | `/pricing`, `/api-keys` | Plans, pay-per-solve, API access |
 | Company | `/about` | Team, mission, positioning copy |
 | App | `/dashboard/*` | Signed-in usage, keys, optimizations, billing |
@@ -54,6 +55,29 @@
 - **Explainability**, **audit trails**, **regulated industries**, **compliance** (marketing and About).
 - **Pay-per-solve**, free tier solves/month, **credit packs**, **Private Learning Store** (pricing/marketing).
 - **Patent pending** appears in multiple places (e.g. home features, footer).
+
+### 1.5 Content depth and on-page fidelity
+
+Pages are **not** uniform: some routes are long-form marketing or docs; others are **minimal placeholders** (short copy, a “Coming Soon” badge, and links elsewhere). The **page inventory (§3)** summarizes **what a visitor actually sees**, not only the route’s nominal topic.
+
+**Thin / placeholder clusters (verified in source):**
+
+| Route(s) | What the page shows |
+|----------|---------------------|
+| `/domains` | Centered layout: headline “Domain Libraries”, one-line value prop (pre-built primitives for finance, engineering, logistics…), **`Coming Soon`** badge, copy that **domain libraries are in development**, link to **`/docs`**. |
+| `/docs/domain-libraries` | Same pattern: “Domain Libraries Docs”, states domain-specific libraries are **under development** and documentation **will appear here at launch**, **`Coming Soon`** badge, link **Back to docs**. |
+| `/tutorials/domain-specific-optimization`, `/tutorials/extending-domain-libraries` | Intro paragraph + large yellow **Coming Soon** box (“tutorial is currently **under development**”), links to `/docs/domain-libraries`, `/domains`, and cross-links between the two tutorials; below that, a **“What You’ll Learn”** bullet list (aspirational outline, not step-by-step content). |
+
+**Partial / mixed:**
+
+| Location | What the page shows |
+|----------|---------------------|
+| `/docs/sdks/python` | Full SDK-style sections (install, examples, collapsible sections). **Banner:** “**PyPI release coming soon**” with `pip install sematryx` described as when published, and **git+https** install from GitHub until then. |
+| `/docs/sdks/rest` | Large endpoint reference with `ExpandableEndpoint`. In code, **`comingSoonCategories`** = `['Context', 'Data Lake', 'Examples', 'Webhooks']` — those **category** headings render a **“Coming Soon”** pill and note that endpoints are **planned for a future release** (separate from the standalone **`/docs/api/webhooks`** doc page). |
+| `/dashboard` | Welcome, stat cards (keys, total requests, last request), Getting Started links. **Recent Activity:** if there are requests, body text **“Detailed activity coming soon”** with link to **`/dashboard/usage`**; if none, empty state. |
+| `/docs/concepts/*` (agentic / interpretable) | Code comments in examples mention **JavaScript SDK coming soon** (string inside example code, not the whole page). |
+
+**Long-form (examples where the site provides substantial sections):** home (`/`); `/why-sematryx`; `/conversational-optimization` (marketing); `/docs/conversational-optimization` (docs); `/docs/integrations/mcp`; many other docs and tutorials with multiple sections and code blocks.
 
 ---
 
@@ -142,65 +166,65 @@ Horizontal nav: **Overview** `/dashboard`, **Optimizations** `/dashboard/optimiz
 
 ## 3. Page inventory
 
-Below, **“Primary H1”** is taken from the page component when a single clear `<h1>` exists; some pages use hero copy without a literal `<h1>` in the first screen (noted where relevant).
+**Primary headings** are taken from each page’s `<h1>` or hero when that is the main title. **Summary** describes what appears on the page in the repo (body copy, CTAs, placeholders)—see **§1.5** for cross-cutting “coming soon” and thin-page patterns.
 
 ### 3.1 Marketing / landing
 
-| Route | Primary H1 / lead | Purpose (observed) | Summary & key sections | Face |
-|-------|-------------------|--------------------|---------------------------|------|
-| `/` | Hero: “Conversational Optimization / for AI Agents” (`Hero.tsx`) | Primary landing | Sections: Hero (MCP-native badge, waitlist + doc CTAs), `ConversationalOptimization`, `UseCases`, `AgentReady`, `Features` (Sematryx Intelligence / three pillars), `Differentiators`, `Pricing` component, `EmailSignup`, Footer | Marketing |
-| `/why-sematryx` | “Traditional solvers break. Sematryx explains why it doesn't.” | Positioning / value prop | Enterprise features, industry sections, comparison table, CTAs (e.g. API keys) | Marketing |
-| `/why-sematryx/agentic-intelligence` | “Agentic Intelligence” | Pillar detail | Marketing copy; uses `PillarsNav` in sidebar when wrapper applies | Marketing |
-| `/why-sematryx/interpretable-intelligence` | “Interpretable Intelligence” | Pillar detail | Same pattern | Marketing |
-| `/why-sematryx/adaptive-intelligence` | “Adaptive Intelligence” | Pillar detail | Same pattern | Marketing |
-| `/about` | “About Sematryx” | Company / mission | Mission, what we do, customer segments, team-style content | Marketing / company |
-| `/pricing` | (Page uses `Pricing` component + FAQ) | Pricing & FAQ | Pay-per-solve, dimensions, credit packs, free tier, Private Learning Store FAQ | Marketing |
-| `/mcp` | “Sematryx as an MCP Server” | MCP product overview | Tool list (e.g. optimize, explain, compare), use cases, CTAs to docs and tutorial | Marketing |
-| `/domains` | “Domain Libraries” | Domain libraries overview | Domain libraries positioning | Marketing |
-| `/conversational-optimization` | Large hero headline (marketing page) | Conversational optimization product | Dedicated landing-style page (distinct from `/docs/conversational-optimization`) | Marketing |
-| `/waitlist` | (Form-focused; multi-step fields) | Waitlist capture | Email + use case / feature multi-select; POST `/api/waitlist` | Marketing / conversion |
+| Route | Primary H1 / lead | Purpose (observed) | Summary & key sections (on-page) | Face |
+|-------|-------------------|--------------------|-----------------------------------|------|
+| `/` | Hero: “Conversational Optimization / for AI Agents” (`Hero.tsx`) | Primary landing | **Hero:** badge “MCP-Native Optimization”; headline + subcopy (“Describe your problem…”, pay-per-solve bullets: 100 free solves/month, $0.01–$0.05, no subscriptions); CTAs **Join Waitlist**, **View Documentation** → `/docs/integrations/mcp`; “Works with” (Claude Desktop, Cline, Python SDK, REST). **Below:** `ConversationalOptimization`, `UseCases`, `AgentReady`, `Features` (“Sematryx Intelligence”, three pillar cards + patent pending), `Differentiators`, `Pricing`, `EmailSignup`, `Footer`. | Marketing |
+| `/why-sematryx` | “Traditional solvers break. Sematryx explains why it doesn't.” | Positioning / value prop | Subhead on fuzzy constraints / regulators; **enterprise feature** cards (e.g. async explainability, compliance, domain libraries, visual intelligence); **industry** blocks (financial, manufacturing, supply chain, healthcare, energy, AI/ML research) with bullet advantages; **comparison table** vs “others”; CTAs to API keys / docs. | Marketing |
+| `/why-sematryx/agentic-intelligence` | “Agentic Intelligence” | Pillar detail | Long-form pillar marketing; **`PillarsNav`** when sidebar applies. | Marketing |
+| `/why-sematryx/interpretable-intelligence` | “Interpretable Intelligence” | Pillar detail | Same pattern. | Marketing |
+| `/why-sematryx/adaptive-intelligence` | “Adaptive Intelligence” | Pillar detail | Same pattern. | Marketing |
+| `/about` | “About Sematryx” | Company / mission | **What we do** prose; **problems we solve**; **target customers** (three numbered segments: AI agent builders, enterprise ops/data, domain experts); icon cards; team/advisor-style sections (as implemented). | Marketing / company |
+| `/pricing` | FAQ + `Pricing` component | Pricing & FAQ | **`Pricing` component** plus **FAQ** blocks: pay-per-solve by dimension tier, credit packs, free tier exhaustion, Private Learning Store, etc. | Marketing |
+| `/mcp` | “Sematryx as an MCP Server” | MCP product overview | **Hero** + **tool** cards (`sematryx_optimize`, `sematryx_explain`, `sematryx_compare` with short descriptions); **agent use cases** grid; CTAs to **`/docs/integrations/mcp`** and **`/tutorials/mcp-agent-demo`**. | Marketing |
+| `/domains` | “Domain Libraries” | Domain libraries (placeholder) | **Minimal page:** short paragraph on pre-built primitives; **`Coming Soon`** badge; text that libraries are **in development**; link to **`/docs`**. Not a full library catalog. | Marketing |
+| `/conversational-optimization` | “Optimize in Plain English” (hero) | Conversational optimization (marketing) | **Hero:** “New” + “Patent Pending” chips; **Read the Docs** → `/docs/conversational-optimization`, **Follow the Tutorial** → `/tutorials/conversational-optimization`. **Sections:** zero-code benefits + **example conversation** (`CodeBlock` text); “How it works”; additional narrative blocks. Distinct from the docs page at `/docs/conversational-optimization`. | Marketing |
+| `/waitlist` | “Join the Early Access Waitlist” (`<h2>`) | Waitlist capture | **Tagline:** “Solve complex optimization problems through conversation. No math degree required.” **Feature grid** (6 items: Conversational, Built for AI Agents / MCP, Auto-Tuned, Gets Smarter, Explainable, REST API & SDK)—uses emoji characters in UI. **Form:** email (required), optional multi-selects “What would you optimize?” and “What features interest you?”, submit → **`/api/waitlist`**. **Success state:** “You're on the waitlist!”, early access messaging. **Note:** No `Header`/`Footer` in this file—standalone layout. | Marketing / conversion |
 
 ### 3.2 Docs (`/docs/*`)
 
-| Route | Primary H1 | Purpose | Summary | Face |
-|-------|------------|---------|---------|------|
-| `/docs` | “Quick Start Guide” | Docs home | Python quick start, intelligence examples, domain/portfolio examples, links | Docs |
-| `/docs/architecture` | “System Architecture” | Architecture | System architecture documentation | Docs |
-| `/docs/authentication` | “Authentication” | Auth | API auth patterns | Docs |
-| `/docs/requests` | “Making Requests” | API usage | Request patterns | Docs |
-| `/docs/api/intelligence-config` | “Three Intelligence Pillars” (pillar overview) | Pillar config | Overview; sidebar expands to `/docs/concepts/*` | Docs (also linked from marketing nav) |
-| `/docs/concepts/agentic-intelligence` | Agentic (concept) | Developer pillar guide | Conceptual + API-oriented pillar content | Docs |
-| `/docs/concepts/interpretable-intelligence` | Interpretable (concept) | Developer pillar guide | Same | Docs |
-| `/docs/concepts/adaptive-intelligence` | Adaptive (concept) | Developer pillar guide | Same | Docs |
-| `/docs/conversational-optimization` | “Conversational Optimization” | Feature docs | conversational optimization documentation | Docs |
-| `/docs/domain-libraries` | “Domain Libraries Docs” | Domain libraries | Domain docs | Docs |
-| `/docs/integrations/mcp` | MCP integration | MCP setup | MCP integration documentation | Docs |
-| `/docs/sdks/javascript` | “JavaScript SDK” | SDK reference | JS SDK install, examples, collapsible sections | Docs |
-| `/docs/sdks/python` | “Python SDK” | SDK reference | Python SDK | Docs |
-| `/docs/sdks/rest` | “REST API” | REST reference | Endpoints, `ExpandableEndpoint` lists, examples | Docs |
-| `/docs/api/automation` | “Optimization API” | API automation | Python/cURL examples, intelligence presets, domain optimization examples | Docs |
-| `/docs/api/analytics` | “Analytics API” | Analytics | Analytics API documentation | Docs |
-| `/docs/api/webhooks` | “Webhooks” | Webhooks | Webhook documentation | Docs |
-| `/docs/billing` | “Billing & Usage” | Billing docs | Usage and billing documentation | Docs |
-| `/docs/advanced/rate-limiting` | “Rate Limiting” | Rate limits | Rate limiting | Docs |
-| `/docs/advanced/errors` | “Errors” | Error reference | Error catalog / handling | Docs |
-| `/docs/advanced/best-practices` | “Best Practices” | Guidance | Best practices | Docs |
+| Route | Primary H1 | Purpose | Summary (on-page) | Face |
+|-------|------------|---------|-------------------|------|
+| `/docs` | “Quick Start Guide” | Docs home | **Python** `Sematryx` quick start (`CodeBlock`); sections for **modes**, **explanation_level**, **domain/portfolio** example; links to deeper docs. | Docs |
+| `/docs/architecture` | “System Architecture” | Architecture | Architecture documentation (components/services as written on page). | Docs |
+| `/docs/authentication` | “Authentication” | Auth | API authentication patterns. | Docs |
+| `/docs/requests` | “Making Requests” | API usage | How to structure requests. | Docs |
+| `/docs/api/intelligence-config` | “Three Intelligence Pillars” (pillar overview) | Pillar config | Pillar overview; **`DocsNav`** expands to **`/docs/concepts/*`** pillar entries when on this page or a concept page. | Docs |
+| `/docs/concepts/agentic-intelligence` | Agentic (concept) | Developer pillar guide | Pillar concepts + code-oriented examples; sample strings may say JS SDK “coming soon”. | Docs |
+| `/docs/concepts/interpretable-intelligence` | Interpretable (concept) | Developer pillar guide | Same pattern. | Docs |
+| `/docs/concepts/adaptive-intelligence` | Adaptive (concept) | Developer pillar guide | Same pattern. | Docs |
+| `/docs/conversational-optimization` | “Conversational Optimization” | Feature docs (long-form) | **Back link** to **`/conversational-optimization`** (“Back to Overview”). **Sections:** value prop (“Optimization Made Simple”), benefits grid (non-technical users, rapid prototyping), feature cards (guidance, validation, domain detection, accessibility), **common use cases** (marketing budget, resource allocation, portfolio), **How it works** (4 numbered steps), links/tutorials as in page. | Docs |
+| `/docs/domain-libraries` | “Domain Libraries Docs” | Placeholder | **Thin page:** states domain-specific libraries (finance, engineering, logistics) are **under development**, docs **at launch**; **`Coming Soon`** badge; link **Back to docs**. | Docs |
+| `/docs/integrations/mcp` | “MCP Integration Quickstart” | MCP setup | **Back** to **`/mcp`**. Prerequisites (API key link to `/api-keys`, Claude/Cline); **step-by-step** config paths (e.g. `claude_desktop_config.json`), JSON snippet, security notes, further reading. Substantial procedural content. | Docs |
+| `/docs/sdks/javascript` | “JavaScript SDK” | SDK reference | **`@sematryx/javascript-sdk`**-style examples: install, basic optimize, intelligence `config`, domain-style examples, collapsible sections, error handling, TypeScript snippet. | Docs |
+| `/docs/sdks/python` | “Python SDK” | SDK reference | Describes thin wrapper + local/scipy fallback; **`pip install sematryx`**; **alert banner:** **PyPI release coming soon**, interim **`git+https://github.com/.../sematryx-sdk.git`** install; collapsible sections (installation, cloud/local, learning, REST fallback, errors). | Docs |
+| `/docs/sdks/rest` | “REST API” | REST reference | Large categorized endpoint list with **`ExpandableEndpoint`**; categories include **Optimization**, **Federated Learning**, etc.; **some categories** marked **Coming Soon** in UI (`Context`, `Data Lake`, `Examples`, **`Webhooks`** category listing—distinct from the separate **`/docs/api/webhooks`** documentation page). | Docs |
+| `/docs/api/automation` | “Optimization API” | API automation | **Optimization API** title; Python and **curl** examples; intelligence presets; response JSON samples; domain optimization code examples in page. | Docs |
+| `/docs/api/analytics` | “Analytics API” | Analytics | Analytics API documentation. | Docs |
+| `/docs/api/webhooks` | “Webhooks” | Webhooks | Dedicated webhooks **guide** page (not the REST reference’s “Webhooks” **category** block). | Docs |
+| `/docs/billing` | “Billing & Usage” | Billing docs | Billing and usage documentation. | Docs |
+| `/docs/advanced/rate-limiting` | “Rate Limiting” | Rate limits | Rate limiting. | Docs |
+| `/docs/advanced/errors` | “Errors” | Error reference | Errors. | Docs |
+| `/docs/advanced/best-practices` | “Best Practices” | Guidance | Best practices. | Docs |
 
 ### 3.3 Tutorials (`/tutorials/*`)
 
-| Route | Primary H1 | Purpose | Summary | Face |
-|-------|------------|---------|---------|------|
-| `/tutorials` | “Tutorials” | Tutorial index | Card grid of tutorials with difficulty/duration | Docs / learning |
-| `/tutorials/getting-started` | Getting started | Onboarding | First optimization walkthrough | Docs / learning |
-| `/tutorials/ai-content-generation` | Configuring intelligence | Engine configuration | “3 Core Pillars” configuration narrative | Docs / learning |
-| `/tutorials/data-transformation` | Problem setup | Objectives & constraints | Problem formulation | Docs / learning |
-| `/tutorials/monitoring-alerts` | Understanding results | Results & metrics | Interpretation of results | Docs / learning |
-| `/tutorials/webhook-automation` | Advanced strategies | Automation / webhooks | Webhook and advanced topics | Docs / learning |
-| `/tutorials/enterprise-workflows` | Domain-specific workflows | Enterprise / domains | Domain library usage, code samples | Docs / learning |
-| `/tutorials/mcp-agent-demo` | MCP demo | Agent + MCP | Interactive narrative / demo style content | Docs / learning |
-| `/tutorials/conversational-optimization` | Conversational optimization | NL optimization | Conversation flow tutorial | Docs / learning |
-| `/tutorials/domain-specific-optimization` | Domain-specific optimization | Domain intro | Domain libraries tutorial | Docs / learning |
-| `/tutorials/extending-domain-libraries` | Extending domain libraries | Extension | Custom / extension guidance | Docs / learning |
+| Route | Primary H1 | Purpose | Summary (on-page) | Face |
+|-------|------------|---------|-------------------|------|
+| `/tutorials` | “Tutorials” | Tutorial index | **Card grid** with title, description, difficulty, duration, category; links to each tutorial slug. | Docs / learning |
+| `/tutorials/getting-started` | Getting started | Onboarding | Walkthrough-style content for first optimization (as implemented in page). | Docs / learning |
+| `/tutorials/ai-content-generation` | Configuring Sematryx Intelligence | Engine configuration | Content aligned with **3 Core Pillars** configuration (per page body). | Docs / learning |
+| `/tutorials/data-transformation` | Problem setup | Objectives & constraints | Objectives, bounds, constraints narrative. | Docs / learning |
+| `/tutorials/monitoring-alerts` | Understanding results | Results & metrics | Results, metrics, explanations. | Docs / learning |
+| `/tutorials/webhook-automation` | Advanced strategies | Automation / webhooks | Webhooks / advanced strategies (per page). | Docs / learning |
+| `/tutorials/enterprise-workflows` | Domain-Specific Optimization (title on page) | Enterprise / domains | **Long-form** tutorial with **code samples** (`from sematryx.domains import ...`), domain hints, multi-industry examples—substantive content (not a placeholder). | Docs / learning |
+| `/tutorials/mcp-agent-demo` | MCP demo | Agent + MCP | Narrative/demo walkthrough for MCP + agents. | Docs / learning |
+| `/tutorials/conversational-optimization` | Conversational Optimization | NL optimization | **Long-form** tutorial: Python **`SematryxClient`**-style snippets (`start_conversational_optimization`, status loop, `continue_conversation`, complete flow); multiple **`CodeBlock`** sections; hero and step-by-step narrative (hundreds of lines in source). | Docs / learning |
+| `/tutorials/domain-specific-optimization` | Domain-Specific Optimization | Placeholder tutorial | **Yellow “Coming Soon”** panel: tutorial **under development**; links to **`/docs/domain-libraries`** and **`/domains`**; **“What You’ll Learn”** outline only. | Docs / learning |
+| `/tutorials/extending-domain-libraries` | Extending Domain Libraries | Placeholder tutorial | Same structure: **Coming Soon** panel, links to domain docs + **domain-specific** tutorial; **“What You’ll Learn”** outline. | Docs / learning |
 
 ### 3.4 Benchmarks
 
@@ -220,9 +244,9 @@ Below, **“Primary H1”** is taken from the page component when a single clear
 
 ### 3.6 Product (authenticated)
 
-| Route | Primary H1 | Purpose | Summary | Face |
-|-------|------------|---------|---------|------|
-| `/dashboard` | Dashboard | Overview | Stats / overview (Clerk session) | Product |
+| Route | Primary H1 | Purpose | Summary (on-page) | Face |
+|-------|------------|---------|---------------------|------|
+| `/dashboard` | “Welcome back…” | Overview | **Welcome** + subtitle “Here's what's happening with your API”. **Stat cards:** API Keys (active/total), Total Requests, Last Request. **Getting Started** column: create key, read **`/docs/authentication`**. **Recent Activity:** loading / empty state / or **“Detailed activity coming soon”** with link to **`/dashboard/usage`**. **New API Key** CTA. | Product |
 | `/dashboard/optimizations` | Optimizations | List sync | Optimization list, sync with API | Product |
 | `/dashboard/optimizations/[id]` | Optimization detail | Detail | Single optimization view | Product |
 | `/dashboard/keys` | API Keys | Key management | Keys in dashboard | Product |
@@ -337,6 +361,7 @@ Observed **terms and clusters** (non-exhaustive, drawn from `layout.tsx` metadat
 
 - **Most content is inline** in page `page.tsx` files under `src/app/**`.
 - **No separate CMS** observed in the routing layer; marketing content is component-driven.
+- **Depth varies widely** (long-form vs “Coming Soon” stubs); see **§1.5** and **§3** summaries.
 
 ### 6.4 API routes (website backend)
 
@@ -352,6 +377,8 @@ Observed **terms and clusters** (non-exhaustive, drawn from `layout.tsx` metadat
 - **`/docs/api/automation`** exists as a route but is **not** listed in `DocsNav.tsx`.
 - **`DocsLayoutWrapper.tsx`** is unused by the active `docs/layout.tsx` (duplicate docs shell pattern in repo).
 - **Two “conversational optimization” URLs:** `/conversational-optimization` (marketing) vs `/docs/conversational-optimization` (docs) — different purposes, similar naming.
+- **Navigation vs on-page status:** **`WhySematryxDropdown`** and **`DocsNav`** link to **`/docs/domain-libraries`** (and marketing to **Domain Libraries**) while **`/domains`** and **`/docs/domain-libraries`** are **placeholder** “Coming Soon” pages—users may expect a library catalog.
+- **Tutorial index vs body:** Index cards describe **enterprise-workflows** as “Domain-Specific Optimization” but the slug is **`/tutorials/enterprise-workflows`**; the **domain-specific** slug **`/tutorials/domain-specific-optimization`** is a **separate** placeholder page (see §1.5).
 
 ---
 
