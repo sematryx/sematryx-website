@@ -87,7 +87,7 @@ function OptimizationsContent() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
   const [isSyncing, setIsSyncing] = useState(false)
-  
+
   // Track if we've synced on this page load (using ref to persist across renders)
   const hasSyncedRef = useRef(false)
   const isInitialMountRef = useRef(true)

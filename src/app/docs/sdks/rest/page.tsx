@@ -110,8 +110,7 @@ export default function RESTAPIPage() {
   "intelligence_config": {
     "use_agentic_intelligence": true,
     "use_interpretable_intelligence": true,
-    "use_adaptive_intelligence": false,
-    "use_domain_extension": true
+    "use_adaptive_intelligence": false
   },
   "features_active": {
     "agentic_intelligence": true,
@@ -776,11 +775,13 @@ export default function RESTAPIPage() {
               <li><strong>use_agentic_intelligence</strong> (boolean): Enable multi-agent coordination</li>
               <li><strong>use_interpretable_intelligence</strong> (boolean): Enable explainability</li>
               <li><strong>use_adaptive_intelligence</strong> (boolean): Enable self-improvement</li>
-              <li><strong>use_domain_extension</strong> (boolean): Enable domain libraries</li>
               <li><strong>explanation_level</strong> (integer 0-5): Explanation detail level</li>
               <li><strong>use_gpu_acceleration</strong> (boolean): Enable GPU/CUDA</li>
               <li><strong>use_visual_intelligence</strong> (boolean): Enable visual analysis</li>
             </ul>
+            <p className="text-gray-500 text-sm mt-3">
+              <strong>Note:</strong> Domain-specific optimization is enabled by passing the <code className="text-gray-300">domain</code> parameter.
+            </p>
           </div>
         </section>
 
