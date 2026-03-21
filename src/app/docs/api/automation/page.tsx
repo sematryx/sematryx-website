@@ -101,8 +101,7 @@ result = client.optimize(
     "intelligence_config": {
       "use_agentic_intelligence": true,
       "use_interpretable_intelligence": true,
-      "use_adaptive_intelligence": false,
-      "use_domain_extension": true
+      "use_adaptive_intelligence": false
     },
   "features_active": {
     "agentic_intelligence": true,
@@ -167,7 +166,7 @@ result = client.optimize(
             Intelligence Configuration
           </h2>
           <p className="text-gray-400 mb-4">
-            Configure Sematryx's 3 Core Pillars: Agentic, Interpretable, and Adaptive intelligence, plus Domain Extension libraries.
+            Configure Sematryx's 3 Core Pillars: Agentic, Interpretable, and Adaptive intelligence.
           </p>
           <CodeBlock
             code={intelligenceConfig}
@@ -180,8 +179,10 @@ result = client.optimize(
               <li><strong>🤖 Agentic Intelligence:</strong> Multi-agent coordination for strategy selection</li>
               <li><strong>📖 Interpretable Intelligence:</strong> Explainability with configurable levels (0-5)</li>
               <li><strong>🧠 Adaptive Intelligence:</strong> Self-improvement and learning from experience</li>
-              <li><strong>🏗️ Domain Extension:</strong> Business domain libraries that leverage the engine (separate feature)</li>
             </ul>
+            <p className="text-gray-500 text-sm mt-3">
+              <strong>Note:</strong> Domain-specific optimization is enabled automatically when you pass the <code className="text-gray-300">domain</code> parameter.
+            </p>
           </div>
           <div className="bg-[#1a1f2e] border border-gray-700 rounded-lg p-6 mt-4">
             <h3 className="text-lg font-semibold text-gray-200 mb-3">Preset Configurations</h3>
