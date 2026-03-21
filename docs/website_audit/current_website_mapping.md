@@ -1,5 +1,7 @@
 # Sematryx Website — Current Site Mapping (Repository Baseline)
 
+**Date:** 2026-03-21
+
 **Purpose:** Factual inventory of the Sematryx marketing/docs/product site as implemented in this repository.  
 **Scope:** Structure, routes, navigation, components, and observable content themes.  
 **Not in scope:** Product strategy recommendations, messaging optimization, or redesign proposals.
